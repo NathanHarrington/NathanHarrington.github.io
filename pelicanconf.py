@@ -54,6 +54,7 @@ SOCIAL = (
 
 # Don't show generated categories in menu (like manuals)
 DISPLAY_CATEGORIES_ON_MENU=False
+DISPLAY_PAGES_ON_MENU=True
 
 # Show the colorful banner image on all pages
 #BANNER = 'images/banner.png'
