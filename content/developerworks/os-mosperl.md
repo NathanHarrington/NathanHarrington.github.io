@@ -1,4 +1,3 @@
-
 Title: Create mosaic movies with Perl, ImageMagick and MPlayer
 Date: 2006-07-11
 Category: articles
