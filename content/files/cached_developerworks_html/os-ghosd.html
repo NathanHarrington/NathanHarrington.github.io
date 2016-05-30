@@ -1,0 +1,581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Create fancy on-screen displays with Ghosd and Perl</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use Perl, Ghosd, and some network programming to display on-screen overlays of text and graphics based on messages from your local system and remote computers. Define custom images, font sizes, and colors to convey information integrated with your desktop." /><meta name="Description" content="Use Perl, Ghosd, and some network programming to display on-screen overlays of text and graphics based on messages from your local system and remote computers. Define custom images, font sizes, and colors to convey information integrated with your desktop.f
+      " /><meta name="Keywords" content="perl, Nathan Harrington, ghosd, opensource, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-02-13" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-02-13" /><meta name="Last update" content="20022007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use Perl, Ghosd, and some network programming to display on-screen overlays of text and graphics based on messages from your local system and remote computers. Define custom images, font sizes, and colors to convey information integrated with your desktop."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-ghosd">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 194821 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1005B" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1007E" class="left-nav-child">Building command-line display utilities</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100ED" class="left-nav-child">An on-screen notifier using Perl and Ghosd</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10187" class="left-nav-child">Implementation and notification examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101CC" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Create fancy on-screen displays with Ghosd and Perl</h1><p id="subtitle"><em>Let system events kick off on-screen alerts displaying text and images</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Create fancy on-screen displays with Ghosd and Perl">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 13 Feb  2007</p><blockquote>Use Perl, Ghosd, and some network programming to display on-screen overlays of text and graphics based on messages from your local system and remote computers. Define custom images, font sizes, and colors to convey information integrated with your desktop.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>On-screen displays for Windows&#174; and Linux&#174; graphical desktops have been around for years. Recent advances in frameless transparent windows for your Linux desktop has opened up another level of graphical capabilities. With anti-aliased fonts, true color, drop shadows, transparency, and image file loading, Ghosd gives you the capability for implementing the next level of on-screen displays.</p>
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N10052"><b>A note about security</b></a><br />
+The code and techniques described in this article are an example of how to create on-screen alerts. This is designed for use on a machine running on a private network. It is not for use on a machine exposed directly to the Internet, where it is possible that a malevolent program could attempt to execute arbitrary code on the machine.
+</td></tr></table></td></tr></table>
+
+<p>Using Perl and some custom compiled Ghosd programs, I'll show you how to implement your own event notification system. With some simple keyword matching and a client-server setup, you can receive on-screen type notifications of all your systems, remote or local.</p>
+
+<p><a name="N1005B"><span class="atitle">Requirements</span></a></p>
+<p><a name="N10061"><span class="smalltitle">Hardware</span></a></p>
+
+<p>Any PC manufactured after 2000 should provide plenty of horsepower for compiling and running the code. If you've got a graphical desktop, chances are good you're ahead of the game with a fast processor already at your desk.</p>
+
+<p><a name="N1006A"><span class="smalltitle">Software</span></a></p>
+
+<p>The Ghosd program requires the Pango and Cairo libraries. You'll need to have these installed for your Ghosd compilation and configuration to progress. Check <a href="#resources">Resources</a> for the Cairo and Pango libraries, or skip ahead and install a great distribution of Linux that has them preinstalled. I recommend Vector Linux, as it has all of the libraries and eye candy preinstalled and configured for you to get up to speed with Ghosd.</p>
+
+<p>Now that you have Pango and Cairo installed, you need to compile the Ghosd program itself. Once you've downloaded and extracted the Ghosd source code archive, compile it with the command <code>./configure &amp;&amp; make install</code>. After the configuration and install process has completed, check out the examples directory for some usage options with Ghosd. Ghosd is written in part as a library of functions to help your applications use the on-screen display design metaphor. As such, the provided examples are small C programs to show you the basics of how not only to use Ghosd from the command line but how to integrate it into your programs.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1007E"><span class="atitle">Building command-line display utilities</span></a></p>
+<p><a name="N10084"><span class="smalltitle">Modifying text.c for command-line usefulness</span></a></p>
+
+<p>Enter the examples directory and give the text.c program a try by issuing the command <code>./text</code>. You'll see the hardcoded text appear in the lower right corner, blazing white. For our purposes, we'll want to be able to specify the color, position, and content of the text messages. Instead of building a new program, let's just modify the existing text.c program to meet our needs. If you want to skip ahead, download the completed text.c file included in the source code repository and compile it with the <code>make</code> command.</p>
+
+<p>Add the variables below to the declaration section.</p>
+
+<br /><a name="N1009C"><b>Listing 1. test.c declaration update</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+int   posX   = -50;
+int   posY   = -50;
+float red    = 1.0;
+float green  = 1.0;
+float blue   = 1.0;
+int   ftSize = 30;
+int   fadIn  = 300;
+int   fadOut = 1500;
+char  displayText[500] = "default message";
+</pre></td></tr></table><br />
+
+<p>These are the default variables for the position, text contents, and color, font size, fade-in and fade-out speed in milliseconds, and an array to hold the display string. Next, we need to modify the display portion of the text to use the actual colors specified. In the render function, change the line <code>cairo_set_source_rgba(cr, 1, 1, 1, 1.0);</code> to <code>cairo_set_source_rgba(cr, red, green, blue, 1.0);</code>. This will enable the usage of the color values you passed in on the command line.</p>
+
+<p>We need to modify the program to print a default message instead of crashing if all parameters are not included on the command line. In the <code>main</code> function, remove the lines below.</p>
+
+<br /><a name="N100B8"><b>Listing 2. main() hardcoded display</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  pango_layout_set_markup(layout,
+                          "&lt;span font_desc='Trebuchet 30'&gt;"
+                          "some sample text using &lt;b&gt;ghosd&lt;/b&gt;"
+                          /* "ار�~Jد" */
+                          "&lt;/span&gt;", -1);
+  ghosd = ghosd_new();
+  ghosd_text_set_position(ghosd, -50, -50, layout);
+  ghosd_set_render(ghosd, render, layout);
+
+  ghosd_flash(ghosd, 300, 1500);
+  </pre></td></tr></table><br />
+
+<p>After the above code has been removed, insert the error-checking and display code below.</p>
+
+<br /><a name="N100C5"><b>Listing 3. main() error checking and display</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  if( argc == 10 )
+  { 
+    posX   = atoi(argv[2]);
+    posY   = atoi(argv[3]);
+    red    = atoi(argv[4]);
+    green  = atoi(argv[5]);
+    blue   = atoi(argv[6]);
+    ftSize = atoi(argv[7]);
+    fadIn  = atoi(argv[8]);
+    fadOt  = atoi(argv[9]);
+    sprintf(displayText, "&lt;span font_desc='Trebuchet %d'&gt;%s&lt;/span&gt;", ftSize, argv[1]);
+
+  }else{
+    sprintf(displayText,"&lt;span font_desc='Trebuchet 30'&gt;Incomplete command&lt;/span&gt;");
+  }
+
+  pango_layout_set_markup(layout, displayText, -1 );
+
+  ghosd = ghosd_new();
+  ghosd_text_set_position(ghosd, posX, posY, layout);
+  ghosd_set_render(ghosd, render, layout);
+
+  ghosd_flash(ghosd, fadIn, fadOt);
+</pre></td></tr></table><br />
+
+<p>With the simple error-checking code in place and the Pango layout updated, the text will be positioned however specified on the command line, using the specified size, color, and fading parameters. Run <code>make</code> to build your new text executable. Run the text Ghosd program example with a command like: <code>./text "red text example" -150 -150 1.0 0.1 0.1 40 500 2000</code>. The example command will fade in the "red text example" string over 500ms in a 40pt red font at position -150,-150. The text will then fade out after 2000ms (2 seconds) on the screen.</p>
+
+<p>The image example provided in the examples directory will suit our purposes just fine. Try the command <code>./image /usr/share/pixmaps/x264.png -x 40 -y 40</code> to show a simple image on your screen. The image below is an example of showing an image and some text simultaneously.</p>
+
+
+<br /><a name="N100DF"><b>Figure 1. Ghosd example text and image</b></a><br />
+<img alt="Ghosd example text and image" height="290" src="osdExample_Image.jpg" width="572"/>
+<br />
+<br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100ED"><span class="atitle">An on-screen notifier using Perl and Ghosd</span></a></p>
+<p><a name="N100F3"><span class="smalltitle">General strategy: Client-server strategy</span></a></p>
+
+<p>The Ghosd program has the capability of displaying text and images with unlimited variations of size, color, and style. To use the capability effectively for monitoring system status, e-mail messages, and any other desired parameter, we need to preserve this variability while providing a simple interface for its usage. The system implemented below uses a client-server architecture to accept display events from local and remote machines. </p> 
+
+<p>The message string will be sent by a client, which is processed for keywords of information (read from a configuration file), and the appropriate output will be shown. For example, if the server receives a <code>New e-mail from mark@developerWorks</code> string, it will find the e-mail keyword and show a mail picture, along with the full text in the lower right-hand corner. If the message string sent by the client contains "error," the full message string will be printed in big red letters in the middle of screen.</p> 
+
+<p>Let's get started with the implementation to see how this will work.</p>
+
+<p><a name="N10106"><span class="smalltitle">Server implementation</span></a></p>
+
+<p>The server needs to read the configuration file to determine how to display the text and images. It also needs to set up an infinite loop for listening to client connections on the specified port. After a connection has been established -- whether from the local or a remote machine -- the incoming messages are processed for matches to the keywords specified in the configuration file. Depending on the parameters in the configuration file, the appropriate text or image is displayed. With this overview of how the program works, let's begin at the beginning with the declarations section.</p>
+
+<br /><a name="N10113"><b>Listing 4. Declarations of osdServer.pl</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# osdServer.pl - process incoming text events based on keyword matching and
+#                display using Ghosd
+use strict;
+use FileHandle;
+use Socket;
+
+if( @ARGV != 1 ){ die "specify a port to listen on " }
+my %osdHash = ();
+my $proto    = "";
+my $port     = "";
+my $sockAddr = "";
+my $fullCmd  = "";
+</pre></td></tr></table><br />
+
+<p>Next up are the subroutines, beginning with <code>readOsdFile</code>, which is designed to process the osdServer.config file for the required keyword and display configurations.</p>
+
+<br /><a name="N10124"><b>Listing 4. readOsdFile subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# readKeyWordFile reads type, keywords, (text/image) parameters
+# text parameters:
+# X coordinate, Y coordinate, red, green, blue, font size, fade In, fade Out
+# image parameters:
+# image filename, X coordinate, Y coordinate
+# osdServer.confg format is:  type _#_ keywords _#_ osd parameters
+sub readOsdFile  
+{ 
+  open(OSDFILE,"osdServer.config") or die "no osdServer.config file: $!";
+
+    while(&lt;OSDFILE&gt;){
+
+      # ignore comment lines
+      if( !/^#/ ){
+        chomp($_);
+        my @arrLine = split "_#_";
+        $arrLine[0] =~ s/ //g;
+        $osdHash{ lc($arrLine[0]) }{ $arrLine[1] } = $arrLine[2];
+      }#if not a comment line
+
+    }#for each line in file
+
+  close(OSDFILE);
+
+}#readOsdFile
+</pre></td></tr></table><br />
+
+<p>Once the keyword and display parameter hash has been built, we can move on to our simple keyword matching subroutine: <code>matchWords</code>.</p>
+
+<br /><a name="N10135"><b>Listing 5. matchWords subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub matchWords
+{ 
+  my $msgString = $_[0];
+  my $type      = $_[1];
+
+  # for the type specified
+  for my $kwList ( keys %{ $osdHash{$type} } )
+  { 
+    # for each word
+    for my $checkWord ( split " ", $kwList )
+    { 
+      $checkWord =~ s/ //g;
+      if( $msgString =~ /$checkWord/i )
+      { 
+        if( $type eq "text" )
+        { 
+          $fullCmd .= qq{./text '$msgString' $osdHash{text}{$kwList} &amp;};
+        }else
+        { 
+          $fullCmd .= qq{./image -i $osdHash{image}{$kwList} &amp;};
+        }
+      }#if matching word
+    }#for each check word
+  }#for each key word list
+
+}#checkText
+</pre></td></tr></table><br />
+
+<p>The <code>matchWords</code> subroutine will perform a simple presence check for the word specified in the osdServer.config file, then build a display command based on the type of on-screen display desired. For example, it will build a Ghosd image command if the keyword matches and the config file has specified an image to display. With our subroutines set up, we move quickly into the short main program logic.</p>
+
+<br /><a name="N10146"><b>Listing 6. Main program logic for osdServer.pl</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+readOsdFile();
+
+$proto = getprotobyname('tcp');
+socket(SERVER, PF_INET, SOCK_STREAM, $proto) or die "socket: $!\n";
+
+$port     = $ARGV[0];
+$sockAddr = sockaddr_in($port, INADDR_ANY);
+bind(SERVER, $sockAddr) or die "bind: $!\n";
+
+listen(SERVER, SOMAXCONN) or die "listen: $!\n";
+
+# listen forever
+while( 1 )
+{
+  my $acceptSock = accept(HANDLER, SERVER) or die "accept: $!\n";
+  my($acceptPort, $acceptIpAddr) = sockaddr_in($acceptSock);
+
+  autoflush HANDLER 1;
+  while(my $msgString = &lt;HANDLER&gt;)
+  {
+    chomp($msgString);
+
+    matchWords($msgString,"text");
+    matchWords($msgString,"image");
+
+    $fullCmd = `$fullCmd` unless $fullCmd eq "";
+    $fullCmd = "";
+  }#while handler
+
+  close HANDLER or die "close HANDLER: $!\n";
+
+}#while forever
+</pre></td></tr></table><br />
+
+<p>The first part of the main program logic calls <code>readOsdFile</code> to set up the keyword matching and parameter hash. After the standard socket listening code is in place, the main loop is started to listen for new connections. Each time a connection comes in, every text and image type keyword match check specified in the config file is performed. If a match is found, the full command is appended and the full command of every display event is executed at once. This setup ensures that any dual image/text displays you have set up for a single event -- text and image on a new e-mail, for example -- displays at exactly the same time.</p>
+
+<p><a name="N10153"><span class="smalltitle">Configuration file</span></a></p>
+
+<p>With your server code in place, you're ready to create your own configuration file for displaying text the way you want to. Here's an example configuration file to help you get started:</p>
+
+<br /><a name="N10160"><b>Listing 7. Example osdServer.config file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+text _#_ email _#_ -250 -250 0.1 0.1 1.0 20 100 4300
+text _#_ SYS _#_ -150 -150 0.1 1.0 0.1 30 100 4300
+image _#_ SYS _#_ /usr/share/pixmaps/taskmanager.png -x -510 -y -510
+</pre></td></tr></table><br />
+
+<p>Recall that the format of the osdServer.config file is <code>type _#_ keyword _#_ ghosd parameters</code>, where the parameters are determined by the type specified in the first field. For example, the first line specifies that if the word "email" exists anywhere in the incoming string, write the message in 20-point red letters at position -250,-250 - fading in for 100ms and fading back out after a little more than four seconds. The image line specifies the image and coordinates of display, along with the keyword "SYS." We will discuss this keyword later in an example of how to use the program to monitor log files.</p>
+
+<p><a name="N1016D"><span class="smalltitle">Client implementation</span></a></p>
+
+<br /><a name="N10177"><b>Listing 8. osdClient.pl implementation</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# osdClient.pl - send simple client text to server
+use strict;
+use IO::Socket::INET;
+use POSIX qw(F_GETFL F_SETFL O_NONBLOCK);
+my $sock = "";
+
+if( $#ARGV != 2 ){ die "specify a ip, port, text string" }
+
+eval
+{
+  $sock = IO::Socket::INET-&gt;new( 
+    PeerAddr =&gt; $ARGV[0],
+    PeerPort =&gt; $ARGV[1]) || die "can't set it up $!";
+
+  $sock-&gt;blocking(0)
+};
+
+if( $@ =~ /socket/i )
+{
+  die "die in record retrieval socket setup with $@";
+}
+
+print $sock "$ARGV[2] \n";
+</pre></td></tr></table><br />
+
+<p>This simple piece of code sets up a connection with the specified server on the specified port, then sends the text passed to it on the command line on to the server. There are many excellent documents and how-tos out there for detailed descriptions of Perl's networking features, see <a href="#resources">Resources</a> for more information.</p>
+
+<p>When creating these scripts (or downloading them from the source code repository), make sure you place them in the same directory as the Ghosd examples, usually ghosd-0.0.1/examples.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10187"><span class="atitle">Implementation and notification examples</span></a></p>
+
+<p>Start the osdServer.pl program with the command is <code>perl osdServer.pl 9090</code>. The server program will now listen indefinitely on port 9090 for TCP connections from any host. Assuming you used the example configuration above, you can give your display setup a try with the command is <code>perl osdClient.pl 127.0.0.1 9090 "email test"</code>. This will display the blue "email test" message on your screen. </p>
+
+<p>You're now ready to go! Below are some more advanced examples to get you started.</p>
+
+<p><a name="N1019B"><span class="smalltitle">xmms notification example</span></a></p>
+
+<p>To have the currently playing song name display whenever the track is changed in xmms, follow these instructions. Go to the Preferences dialog in xmms by pressing <b>Ctrl+P</b>. Click the general plug-ins tab, then enable the Song Change plug-in. Click <b>configure</b> and add the following line:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+/usr/bin/perl (fullpathTo_osdClient.pl) 127.0.0.1 9090 "%n xmms"
+</pre></td></tr></table><br />
+
+<p>This will automatically send the current song title to the osdServer.pl program through the client. You'll need to add the following line to your osdServer.config file for the xmms events to be recognized correctly:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+text _#_ xmms _#_ -150 -150 1.0 1.0 0.1 20 500 2300
+</pre></td></tr></table><br />
+
+<p><a name="N101B7"><span class="smalltitle">System log notification example</span></a></p>
+
+<p>Here's a one-liner that will monitor your system log for any event and send the notification on to the osdServer.pl program:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+tail -n0 -f /var/log/messages |  \
+perl -lane '$_=substr($_,30,50);$r=`perl osdClient.pl 127.0.0.1 9090 "$_ SYS"`'
+</pre></td></tr></table><br />
+
+<p>The <code>tail -n0 -f</code> part says to skip to the end of the file and wait for new updates. The one-liner then sends a string to the osdServer.pl program by way of the osdClient.pl program that consists of the first 50 meaningful bytes of the log file entry. The "SYS" as seen in the example osdServer.config file is necessary to allow the keyword matching to take place for all system messages, regardless of their specific content.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101CC"><span class="atitle">Conclusion and further examples</span></a></p>
+
+
+
+      <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+        <a name="N101D5"><b>Share this...</b></a><br />
+        <p>
+        <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+              <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+            </td></tr><tr align="left" valign="top"><td width="21">
+
+              <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-ghosd/">
+                <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+              </a>
+            </td><td>
+
+              <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-ghosd/">Digg this story</a>
+            </td></tr><tr><td colspan="2">
+              <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+            </td></tr><tr align="left" valign="top"><td width="21"><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/></a>
+            </td><td><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+            </td></tr><tr><td colspan="2">
+              <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+            </td></tr><tr align="left" valign="top"><td width="21">
+              
+<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/></a> 
+
+              
+            </td><td>
+              <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+            </td></tr><tr><td colspan="2">
+              <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+            </td></tr></table>
+        </p>
+      </td></tr></table></td></tr></table>
+
+
+<p>With these two more advanced examples, you should have a good grasp of how to integrate the Ghosd-enabled on-screen display server and client into your computing environment. If you want to monitor events on remote machines, simply copy the osdClient.pl program to the remote machine and run it with the server's IP address specified, instead of 127.0.0.1. Consider specifying strings to match if input is from a remote machine source. Alternatively, you can specify images to go with certain machines to allow you to instantly recognize which machine the message came from. In addition, you can use the image display feature to display custom graphics that have meaning only to the user, letting you know when e-mail has arrived without telling anyone looking at your screen.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">SimpleView Template Plug-in</th><td nowrap="nowrap">os-ghosdPerlText01.zip</td><td align="right" nowrap="nowrap">3KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=194821&amp;filename=os-ghosdPerlText01.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Evan Martin wrote the <a href="http://neugierig.org/software/ghosd/">Ghosd</a> program.<br /><br /></li><li>
+Ghosd requires the <a href="http://www.cairographics.org/">Cairo</a> libraries.<br /><br /></li><li>
+You'll also need  <a href="http://www.pango.org/">Pango</a> to compile Ghosd.<br /><br /></li><li>
+Linux Journal has a great guide to <a href="http://www.linuxjournal.com/article/3237">Network Programming with Perl</a>.<br /><br /></li><li>
+Browse all the <a href="http://www.ibm.com/developerworks/views/opensource/libraryview.jsp">open source content</a> on developerWorks.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out developerWorks' <a href="http://www.ibm.com/developerworks/podcast/">podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Visit <a href="http://ibmdw.safaribooksonline.com/">Safari Books Online</a> for a wealth of resources for open source technologies.</li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Create fancy on-screen displays with Ghosd and Perl" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="194821" name="ArticleID" type="hidden"/><input value="02132007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

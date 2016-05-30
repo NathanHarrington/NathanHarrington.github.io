@@ -1,0 +1,696 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Create time-availability maps with Perl and Google Earth</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Time-availability maps provide a listing of who is most likely to be available for a certain hour in a certain location. Find out how to use Google Earth and a log of your communications to map and identify the time and place when availabilities match." /><meta name="Description" content="Time-availability maps provide a listing of who is most likely to be available for a certain hour in a certain location. Find out how to use Google Earth and a log of your communications to map and identify the time and place when availabilities match." /><meta name="Keywords" content="Perl, Google Earth, Time visualization, KML, Nathan Harrington, open source, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-08-26" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-08-26" /><meta name="Last update" content="26082008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Time-availability maps provide a listing of who is most likely to be available for a certain hour in a certain location. Find out how to use Google Earth and a log of your communications to map and identify the time and place when availabilities match."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-google-earth-perl">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 332332 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10065" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10086" class="left-nav-child">Description of general approach taken to
+  building time-availability maps</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100B7" class="left-nav-child">Extracting state outline information</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100F2" class="left-nav-child">Extracting e-mail time information</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1013A" class="left-nav-child">Assigning e-mail addresses a geographical location</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1018B" class="left-nav-child">Generating KML markup with createKml.pl</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1022E" class="left-nav-child">Usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10242" class="left-nav-child">Conclusion, further modifications</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Create time-availability maps with Perl and Google Earth</h1><p id="subtitle"><em>Visualize when your team members, customers, or systems are available by
+  extracting message  data and displaying it in Google Earth</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New site feature</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/library/i-mav-beta/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Check out our new article design and features. Tell us what you think.</a></p></td></tr></table></td></tr></table><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a>, Programmer, IBM　<br /></p><p> 26 Aug  2008</p><blockquote>Time-availability maps provide a listing of who is most likely to be available
+  for a certain hour in a certain location.  Find out how to use Google Earth and a log of
+  your communications to map and identify the  time and place when availabilities match.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Nationwide and international teams, flexible work hours, and four-day workweeks all
+  contribute to change in when and  where teams work together.  This article presents
+  tools and code to help you  find the best times to reach various members of your team
+  across geographical areas  using Google Earth.  Using a common method of message
+  time-tracking (e-mail headers)  and a program to generate Keyhole Markup Language (KML) with appropriate settings,
+  this article demonstrates useful visualization techniques using Google  Earth's TimeSpan feature and the "time slider."</p>
+
+<p><a name="N10065"><span class="atitle">Requirements</span></a></p>
+
+<p><a name="N1006C"><span class="smalltitle">Hardware</span></a></p>
+
+<p>Any hardware with 3-D acceleration capable of running Google Earth has sufficient
+  processing power for the code  in this article.  The KML described herein uses tens of
+  thousands of polygon vertices for  the United States alone, so faster processors may be
+  required for global rendering  or precision beyond the state level.</p>
+
+<p><a name="N10076"><span class="smalltitle">Software</span></a></p>
+
+<p>Google Earth V4 or later is required to support the TimeSpan feature critical to the
+  visualizations described.  Perl is required for KML building, as well
+  as extracting e-mail header information.  You'll need the Mail::IMAPClient and
+  IO::Socket::SSL modules from CPAN (see <a href="#resources">Resources</a>).</p>
+
+<p>Note that the code presented here is cross-platform and should run on any platform Google Earth and Perl will run on.  </p>
+
+<p><a name="N10086"><span class="atitle">Description of general approach taken to
+  building time-availability maps</span></a></p>
+
+<p>Time-availability maps provide a listing of who is most likely to be available for a
+  certain hour in a certain location.   For example, Figures 1 and 2 show users in
+  different portions of the country that will be  likely to receive messages during a
+  particular time window.  Instant messaging logs,  phone-usage records, group calendars,
+  badge-reader access, and any number of other time-related data records are suitable for
+  creating these time-availability maps.  </p>
+ 
+<p>This article focuses on the extraction of perhaps the most common form of availability
+  data: e-mail headers.  A person is most likely to be available around the times they are
+  most active sending messages.  Each  user is assigned the appropriate geographical area,
+  and KML is created with designator fade depths based  on message count per hour. Using
+  Google Earth's time-slider feature, including animation and total time window selection,
+  helps visualize the resulting  availability map for users throughout a geographic area.
+  Consider Figure 1, which demonstrates  an example visualization early in the day.</p>
+
+
+  <br /><a name="fig1"><b>Figure 1. Example visualization -- start time</b></a><br />
+<img alt=" Example visualization -- start time" height="355" src="figure1_startTime.jpg" width="572"/>
+<br />
+  <br />
+
+<p>Figure 2 displays a broader time window, later in the day, which helps identify regions
+  of availability for users through the United States.</p>
+
+
+  <br /><a name="fig2"><b>Figure 2. Example visualization -- later time</b></a><br />
+<img alt="Example visualization -- later time" height="357" src="figure2_moreTime.jpg" width="572"/>
+<br />
+  <br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100B7"><span class="atitle">Extracting state outline information</span></a></p>
+
+<p>One of Google's many excellent KML documentation pages lists an example with a rough
+  outline of U.S. states in KML.  Comprising about 13,000 points, these rough outlines
+  provide an excellent basis  for highlighting states.  Grab the <a href="http://code.google.com/apis/kml/documentation/us_states.kml">Google  U.S. states
+example file</a> and read on  for details on how the extractStates.pl program separates the state information.</p>
+
+<br /><a name="listing1"><b>Listing 1. extractStates.pl full program</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# extractStates.pl write each state coordinates into a separate file
+use strict;
+my $str   = "";  # built output string
+my $fname = "";  # current filename
+
+my $cmd = `mkdir states/`;
+
+while( my $line = &lt;STDIN&gt; )
+{
+  if( $line =~ /&lt;name&gt;/ )
+  {
+    # extract the state for file name
+    $fname = substr( $line, index($line,"CDATA[")+6 );
+    $fname = substr( $fname, 0, index($fname," (")  );
+
+  }elsif( $line =~ /&lt;TimeSpan&gt;/ )
+  {
+    # change the TimeSpan designator for later processing
+    $line = &lt;STDIN&gt;;  # begin tags
+    $line = &lt;STDIN&gt;;  # close TimeSpan
+    $line = qq{      &lt;TimeSpan&gt;&lt;/TimeSpan&gt;\n};
+
+  }elsif( $line =~ /&lt;\/Placemark/ )
+  {
+    # write out the file, reset variables after closing tag
+    open( OUTFILE, "&gt; states/$fname ") or die "Can't write state file";
+      print OUTFILE $str;
+      print OUTFILE $line;
+    close(OUTFILE);
+
+    $str = "";
+
+  }#if closing tag
+
+  # add a line if it's at the start or the built string is not blank
+  if( $line =~ /&lt;Placemark/ || $str ne "" ){ $str .= $line }
+
+}#line in
+</pre></td></tr></table><br />
+
+<p>After declaring variables and creating the states directory, the <code>extractStates.pl</code> program reads  every line from <code>STDIN</code>.  The us_states.kml file contains the state's rough border
+  geometries, and the  <code>extractStates.pl</code> program will write each
+  of these geometries into its own file.  The TimeSpan entries specific to the <code>us_states.kml</code> file are replaced with  a more-easily modifiable
+  placeholder, and the entire information for each  state is written out to the states directory.</p>
+
+<p>Save the code in Listing 1 above into a file named extractStates.pl and run the program
+  with the command  <code>cat us_states.kml | perl extractStates.pl</code>. 
+  Check the states directory to see  a list of files like that shown below.</p>
+
+<br /><a name="listing2"><b>Listing 2. List of states directory</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+ls -la states/* | head
+-rw-r--r-- 1 nathan nathan  6708 2008-07-08 17:11 states/Alabama
+-rw-r--r-- 1 nathan nathan 85426 2008-07-08 17:11 states/Alaska
+...
+-rw-r--r-- 1 nathan nathan 15804 2008-07-08 17:11 states/West Virginia
+-rw-r--r-- 1 nathan nathan 11536 2008-07-08 17:11 states/Wisconsin
+-rw-r--r-- 1 nathan nathan  3298 2008-07-08 17:11 states/Wyoming
+</pre></td></tr></table><br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100F2"><span class="atitle">Extracting e-mail time information</span></a></p>
+
+<p>Extracting e-mail headers and processing the entries for sent time is relatively easy
+  with the Mail::IMAPClient and  IO::Socket:SSL modules from CPAN.  The example below uses
+  the Google Internet Message Access Protocol (IMAP) interface, but the code presented here should work on any number of mail
+  servers.  You may  have to eliminate the SSL connection, depending on your server setup.</p>
+
+<br /><a name="listing3"><b>Listing 3. extractEmails.pl modules, connection setup</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w 
+# extractEmails.pl get all e-mails, print listing of from at what hour
+use strict;
+use Mail::IMAPClient;
+use IO::Socket::SSL;
+my %timeHash = ();    # data structure for whom at what time
+
+# create a SSL socket to the imap server
+my $socket = IO::Socket::SSL-&gt;new( PeerAddr =&gt; 'imap.gmail.com',
+                                   PeerPort =&gt; 993
+                                 ) or die "can't create socket";
+
+# create an imap connection through the ssl socket
+my $imap = Mail::IMAPClient-&gt;new( Socket   =&gt; $socket,
+                                  User     =&gt; 'yourEmailID@gmail.com',
+                                  Password =&gt; 'yourPassword'
+                                ) or die "can't connect imap";
+$imap-&gt;select("INBOX");
+my @messages = $imap-&gt;search('ALL');
+</pre></td></tr></table><br />
+
+<p>Creating the socket and IMAP connection is straightforward. Listing 4 creates and
+  prints the e-mail  and time-data structure.</p>
+
+<br /><a name="listing4"><b>Listing 4. Hour extraction, data-structure printing</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+my $msgCount = 0;
+for my $msg ( @messages )
+{
+  my $from = $imap-&gt;get_header($msg,"From");
+  my $date = $imap-&gt;get_header($msg,"Date");
+
+  # set date to main hour
+  $date = substr($date, index($date,":")-2,2);
+
+  # increment the hour's count for that id
+  $timeHash{$from}{$date}++;
+
+  $msgCount++;
+  if( $msgCount % 10 == 0 ){ print STDERR "$msgCount\n" }
+
+}#for each message
+
+$imap-&gt;logout();
+
+# print all of the hour/from combinations for later processing
+for my $from( keys %timeHash )
+{
+  for my $time( keys %{ $timeHash{$from} } )
+  {
+    print "$from TIME $time $timeHash{$from}{$time}\n";
+  }#for time
+}#for id
+
+</pre></td></tr></table><br />
+
+<p>Note that in this example, the time selected is the hour of sending for each e-mail. 
+  You may find it useful  to select hours, minutes, days, or weeks for your particular
+  availability scenario. Run the extractEmails.pl program with the command <code>perl
+extractEmails.pl &gt; emailHours</code>.  After printing  a progress indicator every 10
+  headers to <code>STDERR</code>, the command above will produce an <code>emailHours</code> file like that shown below.</p>
+
+<br /><a name="listing5"><b>Listing 5. Example <code>emailHours</code> file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+Dave &lt;dave@ibmdevworks.com&gt; TIME 11 6
+Dave &lt;dave@ibmdevworks.com&gt; TIME 21 8
+...
+Bob &lt;bob@ibmdevworks.com&gt; TIME 07 6
+Bob &lt;bob@ibmdevworks.com&gt; TIME 11 36
+</pre></td></tr></table><br />
+
+<p>The format of the <code>emailHours</code> file is name (if available),
+  e-mail address, <code>TIME</code> delimiter, hour.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1013A"><span class="atitle">Assigning e-mail addresses a geographical location</span></a></p>
+
+<p>The <code>emailHours</code> file now contains a list of all of the e-mail
+  addresses and the number  of times they sent a message for a given hour.  You may want
+  to process a select few  of your contacts, or create a list of the top senders of
+  e-mail.  Consider the following one-liner to  create a list of the top 50 e-mail senders
+  in the <code>emailHours</code> file.</p>
+
+<br /><a name="listing6"><b>Listing 6. Command to produce top 50 e-mail senders</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+cat emailHours | \
+  perl -lane '@a=split "TIME";$h{$a[0]}+=$F[@F-1]; \
+    END{for(keys %h){print "$h{$_} $_"}}' | sort -nr | head -n50  &gt; top50emails
+</pre></td></tr></table><br />
+
+<p>Note that the <code>\</code> characters in Listing 6 are for formatting
+  only and should not be included when  the command is run.  Running the above command
+  produces a list like that shown below.</p>
+
+<br /><a name="listing7"><b>Listing 7. Example <code>top50emails</code> file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+44 Bob &lt;bob@ibmdevworks.com&gt;
+38 Dave &lt;dave@ibmdevworks.com&gt;
+34 Tom &lt;tom@ibmdevworks.com&gt;
+30 Mike &lt;mike@ibmdevworks.com&gt;
+...
+</pre></td></tr></table><br />
+
+<p>Modify the <code>top50emails</code> file by inserting the state name,
+  then a <code>STATE</code> delimiter at the beginning of each file.  You
+  can do this manually or link  the state designator with a <code>geo-ip</code> locator, employee
+  address database, or other source of  geo-locating data.  Save the modified file as
+  <code>stateMapping</code>, as shown below.</p>
+
+<br /><a name="listing8"><b>Listing 8. Example <code>stateMapping</code> file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+New York STATE 44 Bob &lt;bob@ibmdevworks.com&gt;
+North Carolina STATE 38 Dave &lt;dave@ibmdevworks.com&gt;
+Virginia STATE 34 Tom &lt;tom@ibmdevworks.com&gt;
+Georgia STATE 30 Mike &lt;mike@ibmdevworks.com&gt;
+...
+</pre></td></tr></table><br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1018B"><span class="atitle">Generating KML markup with createKml.pl</span></a></p>
+
+<p>With the state coordinates extracted, the full e-mail headers and times counted, and
+  each relevant e-mail ID associated with a state name, a KML file can be generated to
+  produce the desired visualization.  Listing  9 shows the beginning of the
+  createKml.pl program.</p>
+
+<br /><a name="listing9"><b>Listing 9. createKml.pl program header, main loop</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+#createKml.pl build google earth kml, fade states based on entries per hour
+use strict;
+die "specify state mapping file, maximum, intervals " unless ( @ARGV == 3 );
+my( $inFile, $max, $interval ) = @ARGV;
+my %state = ();
+
+loadStateMapping();
+kmlHeader();
+kmlStyles();
+
+while( my $line = &lt;STDIN&gt; )
+{
+  # for bogus entry elimination
+  next unless length( $line) &gt; 20 ;
+  chomp($line);
+
+  #change person@ibm.com TIME 11 2 into components
+  my( $mail, $time ) = split "TIME ", $line;
+  my( $stHour, $countVal ) = split " ", $time;
+
+  # continue if a state defined for that mail
+  next unless exists($state{$mail});
+
+  open( INFILE,"states/$state{$mail}") or die "no state input file";
+    while( my $line = &lt;INFILE&gt; )
+    {
+      if   ( $line =~ /&lt;name&gt;/     ){ print "&lt;name&gt;&lt;![CDATA[$mail]]&gt;&lt;/name&gt;\n" }
+      elsif( $line =~ /&lt;TimeSpan&gt;/ ){ getTimes( $stHour )   }
+      elsif( $line =~ /Style_/ )    { getStyle( $countVal ) }
+      else                          { print $line }
+    }#while line in
+
+  close(INFILE);
+
+}#line in
+
+print qq{&lt;/Document&gt;\n&lt;/kml&gt;\n};
+</pre></td></tr></table><br />
+
+<p>After ensuring the proper usage and declaring variables, the <code>loadStateMapping</code> subroutine is called.  The assigned state is read
+  for each e-mail address, and the <code>kmlHeader</code> and <code>kmlStyles</code> subroutines are called to print the appropriate KML markup for the specified threshold and intervals.  </p>
+
+<p>The main loop is entered to read every line on <code>STDIN</code> and
+  extract relevant information.   The e-mail address  is specified as the place-mark
+  name, the TimeSpan start and end points  are computed, and the appropriate style are all
+  written based on the thresholds and  intervals specified.</p>
+
+<p>Listing 10 shows the first of these subroutines, <code>loadStateMapping</code>, in detail.</p>
+
+<br /><a name="listing10"><b>Listing 10. <code>loadStateMapping</code>, <code>kmlHeader</code> subroutines </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub loadStateMapping
+{
+  # create a hash storing which mail corresponds to which state
+
+  open( INFILE,"$inFile" ) or die "no in state file";
+    while( my $line = &lt;INFILE&gt; )
+    {
+      chomp($line);
+      my( $sname, $mail )  = split "STATE ", $line;
+
+      # skip the total count
+      $mail = substr($mail, index($mail," ")+1);
+
+      $state{$mail} = $sname;
+
+    }#stateMapping lines
+
+  close(INFILE);
+
+}#loadStateMapping
+
+sub kmlHeader
+{
+  print qq{&lt;?xml version="1.0" encoding="UTF-8"?&gt;\n};
+  print qq{&lt;kml xmlns="http://earth.google.com/kml/2.2"&gt;\n};
+  print qq{&lt;Document&gt;\n};
+  print qq{  &lt;name&gt;&lt;![CDATA[Time Availability]]&gt;&lt;/name&gt;\n};
+  print qq{  &lt;open&gt;1&lt;/open&gt;\n};
+
+}#kmlHeader
+</pre></td></tr></table><br />
+
+<p>For faster processing, the <code>loadStateMapping</code> file simply
+  reads the state assignment file.  Create a  hash keyed on e-mail address for each state
+  name, to be checked in the main program loop.  This allows  certain entries to be
+  skipped over if a state has not  been assigned.  The <code>kmlHeader</code> subroutine prints out the  main header markup for the KML
+  document.  Listing 11 shows the <code>getTimes</code> subroutine.</p>
+
+<br /><a name="listing11"><b>Listing 11. <code>getTimes</code> subroutine </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub getTimes
+{
+  my $endHour = $inHour + 1;
+  if( length($endHour) == 1 ){ $endHour = "0$endHour" }
+
+  print  qq{    &lt;TimeSpan&gt;\n};
+  print  qq{        &lt;begin&gt;2008-07-01T$inHour:00Z&lt;/begin&gt;\n};
+  print  qq{        &lt;end&gt;2008-07-01T$endHour:00Z&lt;/end&gt;\n};
+  print  qq{    &lt;/TimeSpan&gt;\n};
+
+}#getTimes
+</pre></td></tr></table><br />
+
+<p>Specifying the correct TimeSpan markup is performed by the code listed above in the
+  <code>getTimes</code> subroutine.  Listing 12 below shows the more-complex
+  <code>getStyle</code> subroutine.</p>
+
+<br /><a name="listing12"><b>Listing 12. <code>getStyle</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub getStyle
+{
+  # find the appropriate style based on the input value
+  my $inputVal = $_[0];
+  my $decInc = $max / $interval;
+
+  my $count = $decInc;
+  my $styleCount = 0;
+
+  # move through each interval, exit when the input value no longer fits
+  while( $count &lt;= $max )
+  {
+    if( $count &gt; $inputVal ){ last }
+    $styleCount++;
+    $count += $decInc;
+
+  }#While count less than max
+
+  # default to the last style if interval is outside the boundary 
+  if( $styleCount &gt;= $interval ){ $styleCount-- }
+
+  print qq{        &lt;styleUrl&gt;#style} . $styleCount . qq{&lt;/styleUrl&gt;\n};
+
+}#getStyle
+</pre></td></tr></table><br />
+
+<p>Like the <code>kmlStyles</code> subroutine shown below, the <code>getStyle</code> subroutine first creates a incrementer that is the maximum
+  specified value divided by the interval.  For example, a maximum value of 100 and an
+  interval of 5 while produce a  series of "buckets" 20 units apart that each input value
+  will fall into.  An input value of 40, for  example, will correspond to a low-medium
+  fade style, whereas a value  of 80 or greater will correspond to the most opaque fade
+  setting.  Listing 13 shows the <code>kmlStyles</code> subroutine with a similar function.</p>
+
+<br /><a name="listing13"><b>Listing 13. <code>kmlStyles</code></b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub kmlStyles
+{
+  # create a incremented "fade range" according to the number of intervals
+  my $hexInc = 255/$interval;
+  my $count = $hexInc;
+  my $styleNum = 0;
+
+  while( $count &lt;= 255 )
+  {
+    my $fade = sprintf("%X", $count );
+
+    print qq{  &lt;Style id="style} . $styleNum . qq{"&gt;\n};
+    print qq{    &lt;IconStyle&gt;\n};
+    print qq{      &lt;scale&gt;0.4&lt;/scale&gt;\n};
+    print qq{      &lt;Icon&gt;\n};
+    print qq{        &lt;href&gt;http://maps.google.com/mapfiles/kml/};
+    print qq{shapes/star.png&lt;/href&gt;\n};
+    print qq{      &lt;/Icon&gt;\n};
+    print qq{    &lt;/IconStyle&gt;\n};
+    print qq{    &lt;LabelStyle&gt;\n};
+    print qq{      &lt;color&gt;9900ffff&lt;/color&gt;\n};
+    print qq{      &lt;scale&gt;1&lt;/scale&gt;\n};
+    print qq{    &lt;/LabelStyle&gt;\n};
+    print qq{    &lt;LineStyle&gt;\n};
+    print qq{      &lt;color&gt;99FFFF99&lt;/color&gt;\n};
+    print qq{      &lt;width&gt;2&lt;/width&gt;\n};
+    print qq{    &lt;/LineStyle&gt;\n};
+    print qq{    &lt;PolyStyle&gt;\n};
+    print qq{      &lt;color&gt;} . $fade . qq{FF9933&lt;/color&gt;\n};
+    print qq{      &lt;fill&gt;1&lt;/fill&gt;\n};
+    print qq{      &lt;outline&gt;1&lt;/outline&gt;\n};
+    print qq{    &lt;/PolyStyle&gt;\n};
+    print qq{  &lt;/Style&gt;\n};
+
+    $styleNum++;
+    $count += $hexInc;
+
+  }#while count
+
+}#kmlStyles
+</pre></td></tr></table><br />
+
+<p>Regardless of the maximum or number of intervals specified, each defined style needs to
+  have a fade percentage of <code>00-ff</code>.  The appropriate  conversion between decimal intervals
+  and hexadecimal fade percentage is  performed using the <code>%X</code>
+  modifier in the <code>sprintf</code> command. Save the above code in a
+  file called createKml.pl and read  on for usage information.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1022E"><span class="atitle">Usage</span></a></p>
+
+<p>Selection of appropriate maximum and interval variables is largely dependent on your
+  specific data.  Try a maximum value of  20- to 40-percent less than the maximum value
+  recorded in <code>top50emails</code>.  Choosing an interval is largely a
+  trade-off between presenting too  much information with a high number of intervals, or
+  showing too little change between  the intervals when a low number is selected.  Try a
+  straightforward example with the  command <code>cat emailHours | perl
+createKml.pl stateMapping 20 2 &gt; timeMap.kml</code>.</p>
+
+<p>After opening Google Earth and loading the timeMap.kml file, look for the "time slider"
+  in the upper center of the screen.  Move  through the visualization in time by dragging
+  the slider, or press the  play button to show an animation.   Also try expanding the
+  visible time window to expand the time range  certain states are visible.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10242"><span class="atitle">Conclusion, further modifications</span></a></p>
+
+<p>With the incredible Google Earth interface, and the custom code above for creating KML,
+  you can build your  own time-availability maps for a wide variety of applications. 
+  Consider extracting login and activity times  from your instant messaging logs, phone
+  records, or other sources to build  additional and overlapping data sets.  Expand the
+  time windows, or focus more on  a minute-to-minute spread of information through your
+  company or customer set.  Extract  your Web-server visitor information and build a
+  municipality-specific set of place marks and designators to explore where and when
+  your Web-site visitors see your content.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-google-earth-perl.timeAvailabilityMaps.zip</td><td nowrap="nowrap">4KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=332332&amp;filename=os-google-earth-perl.timeAvailabilityMaps.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  Google offers excellent <a href="http://code.google.com/apis/kml/documentation/">KML documentation</a>.<br /><br /></li><li>
+  This article makes use of the <a href="http://code.google.com/apis/kml/documentation/us_states.kml">us_states.kml</a>
+  example KML  file from  <a href="http://www.spatialdatalogic.com/cs/blogs/brian_flood/archive/2006/09/15/Google-Earth-Time-Display.aspx">Brian  Flood</a>.<br /><br /></li><li>
+  To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  You'll need the <a href="http://earth.google.com/">Google Earth</a> application for these visuals.<br /><br /></li><li>
+  You'll need <a href="http://www.perl.com/">Perl</a>, as well as the <a href="http://search.cpan.org/author/MARKOV/Mail-IMAPClient-3.08/lib/Mail/IMAPClient.pod">Mail::IMAPClient</a>
+  and  <a href="http://search.cpan.org/author/SULLR/IO-Socket-SSL-1.13/SSL.pm">IO::Socket::SSL</a> modules from CPAN.<br /><br /></li><li>Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Create time-availability maps with Perl and Google Earth" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="332332" name="ArticleID" type="hidden"/><input value="08262008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

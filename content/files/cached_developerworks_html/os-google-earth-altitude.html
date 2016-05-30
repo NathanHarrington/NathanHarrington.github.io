@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Creating altitude attribute-enhanced image overlay maps in Google Earth</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Use Perl and the Imager module to enhance mapping applications by extracting and applying height information based on color to reveal a third dimension of data, showing more information in the same space." /><meta name="Description" content="Use Perl and the Imager module to enhance mapping applications by extracting and applying height information based on color to reveal a third dimension of data, showing more information in the same space." /><meta name="Keywords" content="Perl, Google Earth, Imager, altitude maps, Nathan Harrington , tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-09-23" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-09-23" /><meta name="Last update" content="23092008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use Perl and the Imager module to enhance mapping applications by extracting and applying height information based on color to reveal a third dimension of data, showing more information in the same space."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-google-earth-altitude">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 339493 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1006A" class="left-nav-child">Hardware and software requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1007B" class="left-nav-child">General approach used in this article</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1009C" class="left-nav-child">Extracting altitude information based on color</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100C6" class="left-nav-child">Altitude mapping with Perl and Imager</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10146" class="left-nav-child">altitudeMapper.pl usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10160" class="left-nav-child">Generating KML</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10183" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Creating altitude attribute-enhanced image overlay maps in Google Earth</h1><p id="subtitle"><em>Transform a set of planar images into 3-D visualizations</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New site feature</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/library/i-mav-beta/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Check out our new article design and features. Tell us what you think.</a></p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a>, Programmer, IBM<br /></p><p> 23 Sep  2008</p><blockquote>Use Perl and the Imager module to enhance mapping applications by extracting and
+  applying height information  based on color to reveal a third dimension of data, showing more information in the same space.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Recent applications have greatly increased the ease of development and ubiquity of 2-D
+  maps.  Tools like Microsoft&#174; Live Search Maps and Google Maps offer a wealth
+  of tools for enhancing these  single-plane maps, but often ignore altitude as the third
+  dimension of information.  This  article presents tools and code to allow you to extract
+  height information based on  pixel colors, and apply that height information across the
+  mapping context.  The end result is a third dimension  of data, showing more information
+  in the same space and opening up new methods of visualization  for your map users.</p>
+
+<p>This article demonstrates using the Imager Perl module to read and process images to
+  create per-pixel level altitude slices  of source images.  Combine these image slices
+  with Keyhole Markup Language (KML), and Google  Earth will render an approximate volumetric visualization of the new data set.</p>
+
+<p><a name="N1006A"><span class="atitle">Hardware and software requirements</span></a></p>
+
+<p>You'll need a modern machine to run Google Earth, including 3-D acceleration for usable
+  results.  Processing large images with Imager  can be time-consuming, so a fast processor and lots of RAM is useful.</p>
+
+<p>In addition to Google Earth, you'll need the Imager Perl module (see <a href="#resources">Resources</a>), as well as Perl itself. Note that all of the code
+  presented here is cross-platform and  should run on any platform Google Earth and Perl will run on.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1007B"><span class="atitle">General approach used in this article</span></a></p>
+
+<p>To demonstrate the concepts described in the introduction, NOAA weather radar data for
+  the contiguous United States is used.  The associated color gradients are determined for
+  each altitude, height data for each pixel is extracted,  then the secondary image is
+  sliced to produce the computed altitude images.  Figure 1 shows an example of what this
+  can look like.</p>
+
+
+  <br /><a name="fig1"><b>Figure 1. Example 2-D and 3-D precipitation visuals</b></a><br />
+<img alt="Example 2-D and 3-D precipitation visuals" height="607" src="figure1_2d_3d_precip.jpg" width="572"/>
+<br />
+  <br />
+
+<p>In the example shown above, the top image shows the standard 2-D  echo returns for
+  water in the atmosphere.  The bottom image  shows the same echo returns with their
+  altitude mapped according to a  second image that displays the cloud-top heights.  As
+  viewed from miles  away and near ground level, the Google Earth image overlay rendering
+  provides a much broader  range of information to the viewer.</p>
+
+<p>Although focusing on radar return data for "Echo Tops" and "Merged Reflectivity
+  Composite" maps, these techniques are  applicable to any set of planar images.  </p>
+
+<p><a name="N1009C"><span class="atitle">Extracting altitude information based on color</span></a></p>
+
+<p>NOAA provides outstanding resources for acquiring its imagery products, but not for the
+  data itself.  See <a href="#resources">Resources</a> for links to the KML and imagery
+  files.  In this article, the Echo Tops image  will provide the height data, but will
+  not produce any visualized pixels.  All of the  viewable imagery will come from the
+  "Merged Reflectivity Composite" map.  Figure  2 shows an example of cloud-top visualization and the associated height data from the key.</p>
+
+
+  <br /><a name="fig2"><b>Figure 2. Example Echo Top image and key with colors</b></a><br />
+<img alt="Example Echo Top image and key with colors" height="160" src="figure2_EchoTop_key.jpg" width="532"/>
+<br />
+  <br />
+
+<p>The amorphous blob in the bottom left is pixel data indicating the cloud-top heights
+  from a selected portion of the full  image.  Height information in thousands of feet is
+  presented in the top portion  of the image, along with magnified sections of the color
+  bar.  Note how multiple colors make  up the graduated color bar and that their index
+  values vary in  a relatively inconsistent manner.  This inconsistency and lack of an
+  easily processed table to translate  color to height is a relatively common issue that
+  must be dealt with when extracting data  from images.  This is most common where the
+  original data used  in generating the image is unavailable.</p>
+
+<p>Creating an average color value for each "color area" is performed by first extracting
+  each color area as shown in the  bottom right of the image.  These color chunks are
+  extracted from the Echo Tops key image and saved as a series of files in the
+  color.tiles/ directory.  If your selected data  does not have a single color for each
+  level of altitude, you'll need to  mimic the process.  Make sure you save the files with
+  filenames that will be ordered correctly by  the <code>ls -1
+color.tiles/</code> command &#8212; for example:  c00.png, c01.png, etc.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100C6"><span class="atitle">Altitude mapping with Perl and Imager</span></a></p>
+
+<p>With the color tiles created, the first step in the program is to read these color
+  tiles and develop an average color value  for each tile.  Create a file called
+  altitudeMapper.pl and insert the contents of  Listing 1.</p>
+
+<br /><a name="listing1"><b>Listing 1. altitudeMapper.pl header, color tiles read</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# altitudeMapper.pl - create slices of images based on computed height from 
+#                     color data in separate image
+use strict;
+use Imager;
+
+die "specify altitude image, slicee image " unless ( @ARGV == 2 );
+my( $fNameAlt, $fNameSli ) = @ARGV;
+
+my %cls = ();  # color averages
+my %hgt = ();  # height data for each pixel
+
+########  compute the average color for each tile ########
+for my $fName ( `ls -1 color.tiles/` )
+{
+  chomp($fName);
+  my $tileImage = Imager-&gt;new;
+  $tileImage-&gt;read(file=&gt;"color.tiles/$fName") or die "cannot open $fName: ";
+
+  my( $rAvg, $gAvg, $bAvg ) = 0;
+
+  for( my $colN = 0; $colN &lt;= ($tileImage-&gt;getwidth -1); $colN++ )
+  {
+    for( my $rowN = 0; $rowN &lt;= ($tileImage-&gt;getheight -1); $rowN++ )
+    { 
+      my $col2  = $tileImage-&gt;getpixel( x=&gt;$colN, y=&gt;$rowN );
+      my ( $r,$g,$b ) = $col2-&gt;rgba();
+
+      # count all of the colors for averaging later
+      $rAvg += $r;  $gAvg += $g; $bAvg += $b;
+
+    }#row
+  }#column
+
+  $cls{ $fName }{ r } = $rAvg / ($tileImage-&gt;getwidth * $tileImage-&gt;getheight);
+  $cls{ $fName }{ g } = $gAvg / ($tileImage-&gt;getwidth * $tileImage-&gt;getheight);
+  $cls{ $fName }{ b } = $bAvg / ($tileImage-&gt;getwidth * $tileImage-&gt;getheight);
+
+}#for each color.tiles
+</pre></td></tr></table><br />
+
+<p>After variable declaration and usage checks, each color-area file in the color.tiles
+  directory is read.  Using the  Imager <code>getpixel</code> subroutine, the red, green, and blue
+  color components for each pixel  are recorded to be averaged after all the data points
+  are collected.  This step  is critical to finding a closest match later on in the program.  </p>
+
+<p>The next section of code will read the Echo Tops image and record the appropriate
+  setting of altitude based on the color of each pixel in the  image.</p>
+
+<br /><a name="listing2"><b>Listing 2. altitudeMapper.pl read image-height data</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+########### Read height data ##############
+my $altImage  = Imager-&gt;new;
+$altImage-&gt;read( file=&gt; $fNameAlt ) or die "can't open $fNameAlt: ";
+my $maxCol    = $altImage-&gt;getwidth  -1; # getwidth is a very slow read 
+my $maxRow    = $altImage-&gt;getheight -1; # getheight is a very slow read 
+
+for( my $colN = 0; $colN &lt;= $maxCol; $colN++ )
+{ 
+  for( my $rowN = 0; $rowN &lt;= $maxRow; $rowN++ )
+  { 
+    my $currColor  = $altImage-&gt;getpixel( x=&gt;$colN, y=&gt;$rowN );
+    my ($r,$g,$b ) = $currColor-&gt;rgba();
+    
+    # skip if white or black pixel
+    next unless ( "$r,$g,$b" ne "0,0,0" &amp;&amp; "$r,$g,$b" ne "255,255,255"  );
+    
+    my $totalDev = 10000;
+    my $closest = "none";
+    
+    for my $key( keys %cls)
+    { 
+      my $devR = abs( $cls{$key}{r} - $r );
+      my $devG = abs( $cls{$key}{g} - $g );
+      my $devB = abs( $cls{$key}{b} - $b );
+      
+      # skip if deviation is greater than currently selected    
+      next unless ( ($devR + $devG + $devB) &lt; $totalDev );
+       
+      $totalDev = $devR + $devG + $devB;
+      $closest = $key;
+    
+    }#for key comparison 
+    
+    $hgt{ $closest }{ $colN }{ $rowN } = $currColor;
+  
+  }#row
+  
+  print "$colN\n" if( $colN % 100 == 0 ); # progress indicator
+
+}#column
+</pre></td></tr></table><br />
+
+<p>Images used in this example are 6,000 x 3,000 pixels, so reading from the <code>getwidth</code> and <code>getheight</code> subroutines is done
+  before the <code>for</code> loops  for a significant speed increase.  Each pixel is then read, and
+  its red, green, and blue deviations are measured  from each of the average colors
+  recorded in the previous step.  Once the  closest match has been found, that pixels'
+  altitude setting is stored in the <code>%hgt</code> hash variable.  Now
+  the appropriate altitude  information has been recorded, allowing the creation of image
+  slices from a  secondary image as shown below.</p>
+
+<br /><a name="listing3"><b>Listing 3.  altitudeMapper.pl image slicer based on height</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+############ Apply height data to image ###########
+my %layer     = (); # pixel x,y data for that layer
+my %avgLev    = (); # average colors for that layer
+my $lev       = keys %cls;  # number of image components to process
+my $compImage = Imager-&gt;new;
+$compImage-&gt;read( file=&gt;$fNameSli )  or die "Cannot load $fNameSli: ";
+$maxCol       = $compImage-&gt;getwidth  -1; # getwidth is a very slow read 
+$maxRow       = $compImage-&gt;getheight -1; # getheight is a very slow read 
+
+# process the layers from top to bottom
+for my $key( reverse sort keys %cls )
+{ 
+  my $imgOut = Imager-&gt;new;
+  $imgOut-&gt;read( file=&gt;"images/blank6000x3000.png") or die "blank image borked";
+  
+  for( my $colN = 0; $colN &lt;= $maxCol; $colN++ )
+  { 
+    for( my $rowN = 0; $rowN &lt;= $maxRow; $rowN++ )
+    { 
+      # if layer data exists, and not on the top level
+      if( exists($layer{ $colN }{ $rowN }) &amp;&amp; ($lev &lt; (keys %cls)) )
+      { 
+        # the color average from the previous layer 
+        my $newColor = Imager::Color-&gt;new( $avgLev{ $lev+1 }{ r },
+                                           $avgLev{ $lev+1 }{ g },
+                                           $avgLev{ $lev+1 }{ b } );
+        $imgOut-&gt;setpixel( x=&gt;$colN, y=&gt;$rowN, color=&gt;$newColor );
+      
+      }#set to previous layer if exists
+</pre></td></tr></table><br />
+
+<p>After declaring variables and opening the image to be "sliced," each layer in the <code>%hgt</code> hash is processed.  The <code>imgOut</code>
+  variable holds a transparent 6,000 x 3,000 canvas suitable for pixel placement and will
+  be written to disk at the end of each pass.  If  layer data exists for the above layer
+  (and there is a layer above), this average color  data for the previous layer is written
+  to the output image.  This ensures that  there are no "holes" in the image, where a
+  lower layer would not contain the  appropriate imagery from higher layers.  As you can
+  see in Figure 1, the bottom  layers are a consistent color, even though higher layers
+  contain different shades of yellow and  green.  Filling in these holes is one of the
+  requirements of translating planar maps into visualizations  more suitable for a 3-D environment.  </p>
+
+<p>Listing 4 overwrites these previous layer pixels if data for that layer exists in the
+  <code>$fNameSli</code> (Merged Reflectivity Composite) image.</p>
+
+<br /><a name="listing4"><b>Listing 4. altitudeMapper.pl copy new slice pixels </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+      # copy pixels from the original image if height data exists for this layer
+      if( exists( $hgt{ $key }{ $colN }{ $rowN } ) )
+      {   
+        my $currColor  = $compImage-&gt;getpixel( x=&gt;$colN, y=&gt;$rowN );
+        my($r, $g, $b) = $currColor-&gt;rgba();
+         
+        $imgOut-&gt;setpixel( x=&gt;$colN, y=&gt;$rowN, color=&gt;$currColor );
+        $layer{ $colN }{ $rowN } = $currColor;
+        
+        $avgLev{ $lev }{ r } += $r;
+        $avgLev{ $lev }{ g } += $g;
+        $avgLev{ $lev }{ b } += $b;
+        $avgLev{ $lev }{ count } ++;
+      
+      }# if height data exists for that pixel
+    
+    }#row
+  }#column
+</pre></td></tr></table><br />
+
+<p>In addition to copying the pixel from the <code>$fNameSli</code> image,
+  the color data for that  pixel is recorded for averaging.  This ensures a uniform color
+  background for each slice where  it is filling in the holes from higher layers.  Listing
+  5 writes out the final image and averages the  color values for each layer.</p>
+
+<br /><a name="listing5"><b>Listing 5. altitudeMapper.pl write image out, compute averages for layer </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  print "write tiles/$key\n";
+  $imgOut-&gt;write( file=&gt;"tiles/$key", type=&gt;"png") or die "can't write $key";
+  
+  # compute color averages for this level
+  if( exists( $avgLev{ $lev }{ count } ) )
+  { 
+    $avgLev{ $lev }{ r } = $avgLev{ $lev }{ r } / $avgLev{ $lev }{ count };
+    $avgLev{ $lev }{ g } = $avgLev{ $lev }{ g } / $avgLev{ $lev }{ count };
+    $avgLev{ $lev }{ b } = $avgLev{ $lev }{ b } / $avgLev{ $lev }{ count };
+  
+  }#if layer exists
+  
+  $lev--;
+
+}#for each key
+</pre></td></tr></table><br />
+
+<p>Note that the average color of the <code>$fNameSli</code> (Merged
+  Reflectivity Composite) pixels is recorded in  the <code>%avgLev</code>
+  hash for each image coordinate.  Certain  pixel colors may be present in the color-area
+  tiles that are not present in the <code>$fNameSli</code> image, and this
+  averaging helps smooth out  the look of the image where the colors do not match precisely.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10146"><span class="atitle">altitudeMapper.pl usage</span></a></p>
+
+<p>With the altitudeMapper.pl code in place, you need to create a directory for the
+  sliced and output images, as well as create source transparent image.  The first three
+  lines in Listing 6 show the  required commands.</p>
+
+<br /><a name="listing6"><b>Listing 6. Usage commands</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+mkdir images
+mkdir tiles
+convert -size 6000x3000 xc:none images/blank6000x3000.png
+# or create with The Gimp
+
+perl altitudeMapper.pl  \
+  images/EchoTop_18_20080725-061737.png \
+  images/MergedReflectivityComposite_20080725-061750.png 
+</pre></td></tr></table><br />
+
+<p>The last three lines in Listing 6 show the usage of the altitudeMapper.pl program
+  itself.  Note that the  <code>\</code> characters are to indicate a line
+  break for formatting purposes.  The first  image is the cloud-tops data, and the second image is the source to split into tiles.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10160"><span class="atitle">Generating KML</span></a></p>
+
+<p>You can browse the output image files located in the tiles directory or continue with
+  Listing 7.</p>
+
+<br /><a name="listing7"><b>Listing 7. kmlGenerator.pl program</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# kmlGenerator.pl - create kml for sliced images created by altitudeMapper.pl
+use strict;
+die "specify starting altitude, layer distance" unless @ARGV==2;
+my ( $alt, $distance ) = @ARGV;
+my $drawOrder = 1;
+
+print qq{&lt;?xml version="1.0" encoding="UTF-8"?&gt; \n};
+print qq{&lt;kml xmlns="http://earth.google.com/kml/2.0"&gt; \n};
+print qq{&lt;Folder&gt; \n};
+print qq{   &lt;name&gt;kmlGenerator output&lt;/name&gt;\n};
+
+while( my $line = &lt;STDIN&gt; )
+{
+  chomp($line);
+  print "   &lt;GroundOverlay&gt;\n";
+  print "     &lt;drawOrder&gt;$drawOrder&lt;/drawOrder&gt;\n";
+  print "     &lt;Icon&gt;&lt;href&gt;$line&lt;/href&gt;&lt;/Icon&gt;\n";
+  print "     &lt;altitude&gt;$alt&lt;/altitude&gt;\n";
+  print "     &lt;altitudeMode&gt;absolute&lt;/altitudeMode&gt;\n";
+  print "     &lt;name&gt;$drawOrder&lt;/name&gt;\n";
+  print "     &lt;LatLonBox&gt;\n";
+  print "         &lt;north&gt;51.000&lt;/north&gt;\n";
+  print "         &lt;south&gt;21.000&lt;/south&gt;\n";
+  print "         &lt;east&gt;-67.000&lt;/east&gt;\n";
+  print "         &lt;west&gt;-127.000&lt;/west&gt;\n";
+  print "     &lt;/LatLonBox&gt;\n";
+  print "   &lt;/GroundOverlay&gt;\n";
+  $drawOrder++;
+  $alt += $distance;
+}#while line in
+
+print "&lt;/Folder&gt;\n";
+print "&lt;/kml&gt;\n";
+</pre></td></tr></table><br />
+
+<p>The kmlGenerator.pl program wraps the appropriate KML around the sliced images. 
+  Various combinations of starting altitude and  distance between layers will produce
+  different volumetric effects at specific  distances and viewing angles.  Listing 8
+  demonstrates the program usage  with the parameters used to generate the image shown on
+  the bottom of Figure 1.</p>
+
+<br /><a name="listing8"><b>Listing 8.  kmlGenerator.pl usage</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+ls -1 tiles/* | perl kmlGenerator.pl  20000 10000 &gt; kmlOutput.kml
+</pre></td></tr></table><br />
+
+<p>Open the kmlOutput.kml file in Google Earth to view your new altitude attribute-enhanced imagery.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10183"><span class="atitle">Conclusion, further examples</span></a></p>
+
+<p>As evidenced, slicing the images into specific components based on imagery data in a
+  separate image is an  effective method for adding a third dimension of data to your
+  formerly flat visualizations.  These  color-averaging and layer void-filling techniques
+  are only one way to achieve similar  effects.  Consider drawing polygons tracing the
+  edge of certain layers with heights equal to  the cloud tops.  Or add transparent
+  graphics with computed transparencies perpendicular  to the Earth plane to create a more
+  realistic layered effect for all  viewing angles.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-google-earth-altitude-echoTops.zip</td><td nowrap="nowrap">4KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=339493&amp;filename=os-google-earth-altitude-echoTops.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  You'll need the <a href="http://earth.google.com/">Google Earth</a> application for these visuals.<br /><br /></li><li>
+  Google offers excellent <a href="http://code.google.com/apis/kml/documentation/">KML documentation</a>.<br /><br /></li><li>
+  You'll need <a href="http://www.perl.com/">Perl</a>, as well as <a href="http://search.cpan.org/~tonyc/">Tony Cook's</a> Perl  extension for generating
+  24-bit images: the <a href="http://search.cpan.org/~tonyc/Imager-0.65/">Imager</a> module, available from CPAN.<br /><br /></li><li>
+  Read the developerWorks article "<a href="https://www.ibm.com/developerworks/opensource/library/os-google-earth-perl/">Create 
+time-availability maps with Perl and Google Earth</a>" to learn about another unusual use of Google Earth.<br /><br /></li><li>
+  Raw weather radar image data is available from NOAA at: <a href="http://wdssii.nssl.noaa.gov/realtime/CONUS/">NOAA.gov</a> or try one of its <a href="http://wdssii.nssl.noaa.gov/geotiff/products_conus.kmz">Whole  U.S.</a> KML products.<br /><br /></li><li>
+  Get the most recent <a href="http://wdssii.nssl.noaa.gov/realtime/CONUS/EchoTop_18.txt">Echo Tops</a> and  <a href="http://wdssii.nssl.noaa.gov/realtime/CONUS/MergedReflectivityComposite.txt">Merged Reflectivity  Composite</a> images.<br /><br /></li><li>
+  To listen to interesting interviews and discussions for software developers, check out
+  <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+  Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Creating altitude attribute-enhanced image overlay maps in Google Earth" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="339493" name="ArticleID" type="hidden"/><input value="09232008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan_@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Reduce your PC's power consumption through smart activity monitors</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Learn how to reduce power consumption in your Linux computers by monitoring application-usage patterns and user activity." /><meta name="Description" content="Learn how to reduce power consumption in your Linux computers by monitoring application-usage patterns and user activity." /><meta name="Keywords" content="Perl, Xev, X Window System, Linux, power management, power reduction, energy efficiency, green, Nathan Harrington, open source, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-11-04" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-11-04" /><meta name="Last update" content="04112008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Learn how to reduce power consumption in your Linux computers by monitoring application-usage patterns and user activity."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-smart-monitors">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 348428 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10072" class="left-nav-child">Hardware and software requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1007E" class="left-nav-child">focusTracker.pl program</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10133" class="left-nav-child">Usage visualization</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10179" class="left-nav-child">monitorUsage.pl program</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101D9" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Reduce your PC's power consumption through smart activity monitors</h1><p id="subtitle"><em>Monitor application usage, system attributes, and user activity to more
+  effectively use the power-management systems of your laptop or desktop computer</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!--Updated 9/25/08 by gem-->
+<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">Learn and share!</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/web/library/wa-piabeta/?S_TACT=105AGX01&amp;S_CMP=nsf" class="smallplainlink">Exchange know-how with your peers -- try our new Pass It Along beta app</a></p></td></tr></table></td></tr></table><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a>, Programmer, IBM<br /></p><p> 04 Nov  2008</p><blockquote>Learn how to reduce your power consumption in your Linux&#174; computers by monitoring
+  application-usage  patterns  and user activity.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Advanced Configuration and Power Interface (ACPI) and the power configuration systems built into modern computers provide a wide
+  range of options for reducing  overall power consumption.  Linux and its associated user
+  space programs have many of  the tools necessary to master your PC power consumption in a  variety of contexts.  </p>
+
+<p>Much of the current documentation focuses on modifying your kernel parameters and
+  hdparm settings to reduce  unnecessary disk activity.  In addition, extensive
+  documentation is available for  changing your processor settings to maximize the
+  benefits of dynamic frequency scaling based  on your current power source.</p>
+
+<p>This article provides tools and code to build on these power-saving measures by
+  monitoring your application-usage patterns.  Use the techniques presented here to change
+  your power settings based on the application in focus, user activity, and general system performance.</p>
+
+<p><a name="N10072"><span class="atitle">Hardware and software requirements</span></a></p>
+
+<p>Any PC manufactured after 2000 should provide  hardware and software capable of reducing
+  power consumption.  You'll need  a modern Linux kernel, and it helps to have a Linux
+  distribution with many of the power-saving tools built in.  However, simply blanking a
+  screen or triggering an automatic  shutdown can provide substantial power-consumption
+  benefits.  Older hardware or those without  ACPI capability should still find the code presented here useful.</p>
+
+<p>Although demonstrated with a PC designed for direct input, servers or remote terminals
+  can use the same concepts to  reduce their power consumption based on user activity.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1007E"><span class="atitle">focusTracker.pl program</span></a></p>
+
+<p>Reducing power consumption by monitoring application usage can take many forms.  In
+  this article, the first step  is to identify characteristic usage patterns associated
+  with "wasted" power, then activate a power-saving mode when those patterns are detected.
+  The focusTracker.pl  program in Listing 1 contains code to begin the identification process.</p>
+
+<br /><a name="listing1"><b>Listing 1. focusTracker.pl program header</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# focusTracker.pl - collect focus data for usage visualizations
+use strict;
+use X11::GUITest qw( :ALL );    # find application focus
+use threads;                    # non blocking reads from xev
+use Thread::Queue;              # non blocking reads from xev
+$SIG{INT} = \&amp;printHeader;      # print header file to stderr on exit
+
+$|=1;                # non-buffered output
+my %log = ();        # focus tracking data structure
+my $lastId = "";     # last focused window id
+my $pipe = "";       # non blocking event reads via xev
+my @win = ();        # binary activity data for maxWindows applications
+my $cpu = "";        # cpu usage from iostat
+my $mbread_s = "";   # disk read mb/s from iostat
+my $totalWindow = 0; # total used windows
+my $maxWindows = 50; # total tracked windows
+</pre></td></tr></table><br />
+
+<p>In addition to the necessary module includes and variable declarations, the
+  signal-interrupt catcher is defined to allow the associated  header for each data run to
+  be printed out.  This separation of  data and header files makes visualization
+  processing easier with tools like kst.  Listing  2 shows the beginning of the main processing loop.</p>
+
+<br /><a name="listing2"><b>Listing 2. focusTracker.pl main loop start</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+while(my $line = &lt;STDIN&gt; )
+{
+  for my $c (0..$maxWindows){ $win[$c] = 0 }  #initialize all data positions
+
+  next if( $line =~ /Linux/ || length($line) &lt; 10 ); # header line, empty line
+
+  my $windowId   = GetInputFocus();
+  my $windowName = GetWindowName( $windowId ) || "NoWindowName";
+
+  if( ! exists($log{$windowId}) )
+  {
+    # if this is a new window, assign it to the next position in the data set 
+    $log{ $windowId }{ order } = $totalWindow;
+    $log{ $windowId }{ name }  = $windowName;
+    $totalWindow++ if( $totalWindow &lt; $maxWindows );
+
+  }# if a newly tracked window
+</pre></td></tr></table><br />
+
+<p>At each read from <code>stdin</code>, the current focus binary data (as
+  stored in <code>@win</code>) is reset to <code>0</code>. 
+  Every time a window gains focus that  has not been focused before, its position and name
+  are recorded in the <code>%log</code> hash.  This step is key to
+  associating the correct focus/nonfocused data with  the appropriate window name.  
+  Listing 3 shows the continuation of input reading and the beginning of the pipe management.</p>
+
+<br /><a name="listing3"><b>Listing 3. focusTracker.pl pipe management</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  if( $line =~ /avg-cpu/ )
+  {
+    # read the CPU usage, transform to 2-12 value for visualization
+    ( $cpu ) = split " ", &lt;STDIN&gt;;
+    $cpu = sprintf("%2.0f", ($cpu /10) + 2 );
+
+  }elsif( $line =~ /Device/ )
+  {
+    # read the disk reads, transform to 2-12 value for visualization
+    ( undef, undef, $mbread_s ) = split " ", &lt;STDIN&gt;;
+    $mbread_s = $mbread_s * 10;
+    if( $mbread_s &gt; 10 ){ $mbread_s = 10 }
+    $mbread_s = sprintf("%2.0f", $mbread_s + 2);
+
+    # check focus information
+    if( $windowId ne $lastId )
+    {
+      if( $lastId ne "" )
+      {
+        # close old pipe
+        my $cmd = qq{ps -aef | grep $lastId | grep xev | perl -lane '`kill \$F[1]`'};
+        system($cmd);
+      }
+      $lastId = $windowId;
+  
+      # open new pipe
+      my $res = "xev -id $windowId |";
+      $pipe = createPipe( $res ) or die "no pipe ";
+</pre></td></tr></table><br />
+
+<p>After reading the CPU and disk usage, the usage numbers are transformed into a series
+  of values on a scale of 2-12.  This  is for visualization purposes only, and the
+  transformation values may have to be changed to  support your multi-CPU or fibre-channel
+  disk setup.  The values  specified here work well for a single CPU and IDE disk access
+  on an IBM&#174; ThinkPad T42p.</p>
+
+<p>If the focus has changed between input reads, the old pipe to the <code>xev</code> process is killed and a new one started.  A <i>xev</i> program attached
+  to the currently focused window  will track any key presses or mouse movements.  Listing
+  4 shows how these events are  processed.</p>
+
+<br /><a name="listing4"><b>Listing 4. focusTracker.pl pipe reading</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    }else
+    { 
+      # data on the pipe indicates activity
+      if( $pipe-&gt;pending )
+      { 
+        for my $c (0..$maxWindows){ $win[$c] = 0 }  #initialize all data positions
+        $win[ $log{$windowId}{order} ] = 1;
+        
+        # clear the pipe
+        while( $pipe-&gt;pending ){  my $line = $pipe-&gt;dequeue or next }
+      
+      }#if events detected for that window
+    
+    }#if pipe settings
+    
+    # CPU usage, disk reads, focus tracking data    
+    print "$cpu $mbread_s @win \n";
+  
+  }#if device line
+
+}#while input
+</pre></td></tr></table><br />
+
+<p>The logic block is only reached if the focused application is the same between input
+  reads.  If there is pipe data  (a key press or mouse movement) from the focused
+  application, the appropriate activity binary state  is set for the appropriate
+  application.  Clearing the pipe is a  simple matter of reading off all the xev output lines.  </p>
+
+<p>After each full pass of input the CPU, disk and binary focus data is printed out. 
+  Listing 5 shows the  <code>createPipe</code> subroutine used to
+  create a nonblocking link to the xev  monitoring program, as well as the <code>printHeader</code> subroutine, which prints the data header information to
+  <code>STDERR</code>.</p>
+
+<br /><a name="listing5"><b>Listing 5. focusTracker.pl subroutines</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub createPipe
+{ 
+  my $cmd = shift;
+  my $queue = new Thread::Queue;
+  async{ 
+      my $pid = open my $pipe, $cmd or die $!;
+      $queue-&gt;enqueue( $_ ) while &lt;$pipe&gt;;
+      $queue-&gt;enqueue( undef );
+  }-&gt;detach;
+  
+  # detach causes the threads to be silently terminated on program exit
+  return $queue;
+
+}#createPipe
+
+sub printHeader
+{
+  for my $key ( sort { $log{$a}{order} &lt;=&gt; $log{$b}{order} } keys %log )
+  {
+    print STDERR "$log{$key}{order} $key $log{$key}{name} \n";
+  }
+}#printResult
+</pre></td></tr></table><br />
+
+<p><a name="N100F0"><span class="smalltitle">focusTracker.pl usage</span></a></p>
+
+<p>focusTracker.pl expects input from the <i>iostat</i> program at regular intervals. 
+  Listing 6 shows an example command line  for recording application usage information.</p>
+
+<br /><a name="listing6"><b>Listing 6. focusTracker.pl example command</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+iostat -m -d -c 1 | \
+  perl focusTracker.pl 2&gt; activityLog.header | tee activityLog.data
+</pre></td></tr></table><br />
+
+<p>Press <b>Ctrl+C</b> to terminate the focusTracker.pl program.  Note that the <code>\</code> character  is for line continuation only and should not be included
+  in the command line.  The <code>-m</code> switch tells iostat to display
+  values in megabytes per second  (where applicable), the <code>-d</code>
+  switch displays device information (disk throughput in this case), and <code>-c</code> specifies what CPU usage information should be displayed.  The
+  final option (<code>1</code>) tells iostat to display newly acquired
+  information every second.  Listing 7 shows example  output from this command, along with
+  lines from the header file printed  to activityLog.header when the user presses
+  <b>Ctrl+C</b>.</p>
+
+<br /><a name="listing7"><b>Listing 7. focusTracker.pl example output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+ 5  2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+ 6  2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 9  2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 5  2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 7  2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+...
+0 10485764 NoWindowName 
+1 33554434 Eterm 
+2 44040194 Eterm 
+3 41943042 focusTracker.pl (~/smartInactivityDetector) - VIM 
+4 27263164 Controlling ACPI Centrino features - Mozilla Firefox 
+</pre></td></tr></table><br />
+
+<p>Note how the second and fifth entries show focus information for the Eterm and Firefox
+  windows.  Switching between windows  and typing or moving the mouse will cause the focus
+  indicator for that window to switch from  0 to 1.</p>
+
+<p>Running the focusTracker program for short periods of time centered around your
+  presence is a good way  to collect data on application usage and computer inactivity. 
+  Alternatively, run the  focusTracker.pl for an entire computing session or workday to
+  generate a large amount of  data for later analysis and visualization.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10133"><span class="atitle">Usage visualization</span></a></p>
+
+<p>Processing the large amount of data generated by the focusTracker.pl program is best
+  performed with a tool  like <i>kst.</i> See Figure 1  for an example of data analysis of an activityLog.data file.  </p>
+
+
+<br /><a name="fig1"><b>Figure 1. kst visualization example</b></a><br />
+<img alt="kst visualization example" height="431" src="figure1_smartInactivityMonitor.jpg" width="559"/>
+<br />
+  <br />
+
+<p>The graph above is generated by specifying the CPU and disk usage as lines and the
+  binary focus data per application  as dots only.  Starting at about position 196 on the
+  X axis, the Firefox application  is focused, and an associated spike in CPU and disk
+  activity is shown.  This  activity is followed by no further input events and a return to "normal" CPU and disk usage.</p>
+
+<p>An observer of the user at this point would see a transition from writing code in
+  various Eterm windows to loading a  local traffic information page in Firefox.  This is
+  followed by the user leaving the computer  to head out to lunch.  </p>
+
+<p>A typical power-management setting would simply wait for the screensaver to activate
+  based on the system-inactivity timer.  With the knowledge of the usage patterns above, a
+  rule can be specified that when  the Firefox application is activated between 11:30 and
+  12:30, and there is only brief user  activity, trigger the entrance into a low power mode.</p>
+
+<p>Additionally, consider the low CPU and disk usage associated with the Eterm/<i>vim</i>
+  usage.  Activating a lower power-consumption mode is logical here, as little processing
+  power is required when entering  text in vim.  Spinning down the hard disk and setting a
+  reduced CPU speed setting  can be performed for any time range when the CPU and disk activity is below a set threshold.</p>
+
+<p><a name="N1015F"><span class="smalltitle">inactivityRulesFile settings</span></a></p>
+
+<p>Codfying the rules as described above is shown below.</p>
+
+<br /><a name="listing8"><b>Listing 8. Example inactivityRulesFile</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# format is:
+# start end CPU disk timeOut application command
+1130_#_1230_#_null_#_null_#_10_#_firefox_#_xscreensaver-command -activate
+0610_#_1910_#_6_#_2_#_30_#_vim_#_echo 6 &gt; /proc/acpi/processor/CPU0/performance
+</pre></td></tr></table><br />
+
+<p>Note that CPU and disk values can be specified as null if checking for user activity
+  only is desired.  If CPU and disk  values are specified, they are treated as minimum
+  usage values that need to  be reached before the command is run.  The <code>timeOut</code> variable specifies how many seconds of user inactivity to
+  wait before checking the CPU  and disk minimums.  The application variable specifies any
+  text in the applications'  title in X Window System.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10179"><span class="atitle">monitorUsage.pl program</span></a></p>
+
+<p>Processing the inactivityRulesFile and measuring system application usage is the
+  function of the  monitorUsage.pl program.  Listing 9 shows the first part of this
+  program.</p>
+
+<br /><a name="listing9"><b>Listing 9. monitorUsage.pl program header</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# monitorUsage.pl - track application usage patterns and run commands
+use strict;
+use X11::GUITest qw( :ALL );    # find application focus
+use threads;                    # non blocking reads from xev
+use Thread::Queue;              # non blocking reads from xev
+    
+$|=1;               # non-buffered output
+my $cpu = "";       # CPU usage from iostat
+my $mbread_s = "";  # disk read mb/s from iostat
+my @rules = ();     # rules from inactivityRulesFile
+my $ruleCount = 0;  # total rules
+my $lastId = "";    # last focused window id 
+my $pipe = "";      # non blocking event reads via xev
+my %app = ();       # current focused app attributes
+    
+open(INFILE," inactivityRulesFile") or die "can't open rules file";
+  while( my $line = &lt;INFILE&gt; )
+  { 
+    next if( $line =~ /^#/ );        # skip comment lines
+    my( $start, $stop, $cpu, $disk, 
+        $timeOut, $appName, $cmd ) = split "_#_", $line;
+      
+    $rules[$ruleCount]{ start }   = $start;
+    $rules[$ruleCount]{ stop }    = $stop;
+    $rules[$ruleCount]{ cpu }     = $cpu;
+    $rules[$ruleCount]{ disk }    = $disk;
+    $rules[$ruleCount]{ timeOut } = $timeOut;
+    $rules[$ruleCount]{ appName } = $appName;
+    $rules[$ruleCount]{ cmd }     = $cmd;
+    $ruleCount++;
+      
+  }#while infile
+      
+close(INFILE); 
+</pre></td></tr></table><br />
+
+<p>Similar to focusTracker.pl, the libraries are included and variables defined.  The
+  inactivityRulesFile contents are loaded into the <code>%rules</code> hash
+  for later processing.  Listing 10 shows more  of the similar iostat input processing and
+  focus checking.</p>
+
+<br /><a name="listing10"><b>Listing 10. monitorUsage.pl data reads, pipe handling</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+while(my $line = &lt;STDIN&gt; )
+{
+  next if( $line =~ /Linux/ ); # header line;
+
+  next if( length($line) &lt; 10 ); # any blank line
+
+  my $windowId = GetInputFocus();
+  my $windowName = GetWindowName( GetInputFocus() ) || "NoWindowName";
+
+  if( $line =~ /avg-cpu/ )
+  {
+    ( $cpu ) = split " ", &lt;STDIN&gt;;
+    $cpu = sprintf("%2.0f", ($cpu /10) + 2 );
+
+  }elsif( $line =~ /Device/ )
+  {
+    #read the disk reads, transform to 2-12 value for visualization
+    ( undef, undef, $mbread_s ) = split " ", &lt;STDIN&gt;;
+    $mbread_s = $mbread_s * 10;
+    if( $mbread_s &gt;10 ){ $mbread_s = 10 }
+    $mbread_s = sprintf("%2.0f", $mbread_s + 2);
+
+    if( $windowId ne $lastId )
+    { 
+      if( $lastId ne "" )
+      { 
+        # close old pipe
+        my $cmd = qq{ps -aef | grep $lastId | grep xev | perl -lane '`kill \$F[1]`'};
+        system($cmd);
+      }
+      $lastId = $windowId;
+
+      # open new pipe
+      my $res = "xev -id $windowId |";
+      $pipe = createPipe( $res ) or die "no pipe ";
+
+      # reset currently tracked app
+      %app = ();
+      $app{ id }           = $windowId;
+      $app{ name }         = $windowName;
+      $app{ cmdRun }       = 0;
+      $app{ lastActivity } = 0;
+</pre></td></tr></table><br />
+
+<p>There is no need to track multiple applications, so the <code>%app</code>
+  hash simply tracks the attributes  of the currently focused application.  Listing 11
+  shows the logic branch when the  same application has the focus through multiple input
+  reads.</p>
+
+<br /><a name="listing11"><b>Listing 11. monitorUsage.pl pipe reads</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    }else
+    {
+      # data on the pipe indicates activity 
+      if( $pipe-&gt;pending )
+      { 
+        # clear the pipe
+        while( $pipe-&gt;pending ){ my $line = $pipe-&gt;dequeue or next }
+
+        $app{ cmdRun } = 0;
+        $app{ lastActivity } = 0;
+</pre></td></tr></table><br />
+
+<p>Rules-matching and commands are only performed when the applications have been
+  inactive, so any keyboard  or mouse activity resets the application-inactivity timers. 
+  Listing 12 is called when there is  no user activity data on the pipe.</p>
+
+<br /><a name="listing12"><b>Listing 12. monitorUsage.pl rule-checking</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+      }else 
+      {
+        $app{ lastActivity }++;
+        print "no events for window $windowName last "
+        print "activity seconds $app{lastActivity} ago\n";
+      
+        my $currTime = `date +%H%M`;
+
+        for my $ruleNum ( 0..$ruleCount-1)
+        {
+          next unless( $app{cmdRun} == 0 );
+
+          next unless( $windowName =~ /$rules[$ruleNum]{appName}/i );
+
+          next unless( $app{lastActivity} &gt;= $rules[$ruleNum]{timeOut} );
+
+          next unless( $currTime &gt;= $rules[$ruleNum]{start} &amp;&amp;
+                       $currTime &lt;= $rules[$ruleNum]{stop} );
+
+          my $conditions = 0;
+          $conditions++ if( $rules[$ruleNum]{cpu}  eq "null" );
+
+          $conditions++ if( $rules[$ruleNum]{disk} eq "null" );
+
+          $conditions++ if( $rules[$ruleNum]{cpu}  ne "null" &amp;&amp;
+                            $rules[$ruleNum]{cpu}  &lt;= $cpu );
+
+          $conditions++ if( $rules[$ruleNum]{disk} ne "null" &amp;&amp;
+                            $rules[$ruleNum]{disk} &lt;= $mbread_s );
+
+          next unless( $conditions &gt; 1 );
+
+          print "running $rules[$ruleNum]{cmd}\n";
+          $app{ cmdRun } = 1;
+          system( $rules[$ruleNum]{cmd} );
+
+        }#for each rule to process
+
+      }#if events detected for that window
+
+    }#if pipe settings
+
+  }#if device line
+
+}#while input
+</pre></td></tr></table><br />
+
+<p>Each rule is processed according to the list shown above, beginning with a check to
+  make sure that rule's command  has not already been processed.  The name-matching check
+  is then performed, where a window name  like "Controlling ACPI Centrino features /
+  enhanced speedstep via software in Linux - Mozilla  Firefox" will match the rule
+  application name of "firefox."  Next, the total time (in seconds) of inactivity must be
+  reached, as well as the time-of-day window for the command to be processed.  Finally, if
+  the CPU and disk conditions  are met, the command is run and the next rule is processed.
+  Listing 13 shows the familiar  <code>createPipe</code> subroutine needed
+  to complete the monitorUsage.pl program.</p>
+
+<br /><a name="listing13"><b>Listing 13. monitorUsage.pl createPipe subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub createPipe
+{ 
+  my $cmd = shift;
+  my $queue = new Thread::Queue;
+  async{ 
+      my $pid = open my $pipe, $cmd or die $!;
+      $queue-&gt;enqueue( $_ ) while &lt;$pipe&gt;;
+      $queue-&gt;enqueue( undef );
+  }-&gt;detach;
+  
+  # detach causes the threads to be silently terminated on program exit
+  return $queue;
+
+}#createPipe
+</pre></td></tr></table><br />
+
+<p><a name="N101CC"><span class="smalltitle">monitorUsage.pl usage</span></a></p>
+
+<p>Run the monitorUsage.pl program with <code>iostat -m -d -c 1 | perl
+monitorUsage.pl</code>.  For testing purposes,  consider modifying the inactivityRulesFile
+  commands to run  programs like "beep," or "xmessage" to provide more effective feedback
+  when your conditions are met.  Also, try modifying the rule start and end times to be more inclusive to your testing scenarios.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101D9"><span class="atitle">Conclusion, further examples</span></a></p>
+
+<p>With the tools and code presented, you can reduce your power consumption through a
+  series of rules regarding application  usage.  After tuning your kernel, hdparm, ACPI,
+  and CPU settings, add these application monitors to  more effectively enter your
+  low-power states.  Use the focusTracker  and kst visualizations to find gaps of
+  inactivity, and create rules that can save you some  green and help make you greener.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-smart-monitors-InactivityDetector.0.1.zip</td><td nowrap="nowrap">4KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=348428&amp;filename=os-smart-monitors-InactivityDetector.0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  Get more information about Linux power-saving measures like <a href="http://en.wikipedia.org/wiki/Advanced_Configuration_and_Power_Interface">ACPI</a>, 
+  <a href="http://en.wikipedia.org/wiki/Dynamic_frequency_scaling">Dynamic Frequency 
+Scaling</a>, and <a href="http://en.wikipedia.org/wiki/Hdparm">hdparm</a>  for disk management.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li><li>
+  Learn how to <a href="http://search.cpan.org/perldoc?perlmodinstall">install Perl modules</a> and <a href="http://www.perl.org/docs.html">read more about Perl</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  You need the <a href="http://search.cpan.org/perldoc?threads">threads</a>, <a href="http://search.cpan.org/perldoc?Thread%3A%3AQueue ">Thread::Queue</a>  and <a href="http://search.cpan.org/perldoc?X11%3A%3AGUITest">X11::GuiTest</a>  modules from  <a href="http://www.cpan.org/">CPAN</a>. <br /><br /></li><li>
+  For monitoring system activity, <a href="http://cvsweb.xfree86.org/cvsweb/xc/programs/xev/">xev</a> is required.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.<br /><br /></li><li><a href="http://www.perl.org/get.html">
+Download Perl</a>,
+  or <a href="http://www.perl.org/docs.html">read more about Perl</a> at <a href="http://www.perl.org/">Perl.org</a>.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Reduce your PC's power consumption through smart activity monitors" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="348428" name="ArticleID" type="hidden"/><input value="11042008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan_@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

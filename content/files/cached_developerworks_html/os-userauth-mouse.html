@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Expand your user-authentication options with mouse dynamics</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Learn how to apply the open source tools cnee and Perl in mouse-click dynamics to measure the more-subtle characteristics of human-computer interaction. Use the number and hold time of mouse click events to help authenticate users." /><meta name="Description" content="Learn how to apply the open source tools cnee and Perl in mouse-click dynamics to measure the more-subtle characteristics of human-computer interaction. Use the number and hold time of mouse click events to help authenticate users." /><meta name="Keywords" content="Perl, Xev, X Window System, Linux, mouse dynamics, user identification, Nathan Harrington, open source, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-11-25" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-11-25" /><meta name="Last update" content="25112008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Learn how to apply the open source tools cnee and Perl in mouse-click dynamics to measure the more-subtle characteristics of human-computer interaction. Use the number and hold time of mouse click events to help authenticate users."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-userauth-mouse">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 353273 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#1" class="left-nav-child">Hardware and software requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#2" class="left-nav-child">demoLogin.pl program</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#3" class="left-nav-child">demoLogin.pl record usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#4" class="left-nav-child">demoLogin.pl compare signatures</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#5" class="left-nav-child">demoLogin.pl compare usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#conclusion" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Expand your user-authentication options with mouse dynamics</h1><p id="subtitle"><em>Use Perl, cnee, and custom algorithms to measure how specific users move the mouse and click buttons</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!--Updated 11/11/08 by jill
+<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">Learn and share!</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/web/library/wa-piabeta/?S_TACT=105AGX01&amp;S_CMP=nsf" class="smallplainlink">Exchange know-how with your peers
+try our new Pass It Along beta app</a></p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Nathan Harrington</a>, Programmer, IBM<br /></p><p> 25 Nov  2008</p><blockquote>Learn how to apply the open source tools <i>cnee</i> and Perl in mouse-click dynamics to measure the more subtle characteristics of human-computer interaction. Then use the number and hold time of mouse-click events to help authenticate users.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+  <p>Logging into a computer consists of entering a user ID, password, or on some ThinkPads, reading a fingerprint. But as I show in <a href="http://www.ibm.com/developerworks/views/opensource/libraryview.jsp?search_by=keystroke+dynamics" onmouseover="linkQueryAppend(this)">three earlier articles</a>, it's possible to authenticate a user with other means, too. Think of these articles as a proof-of-concept for authenticating a user independently of other credentials.</p>
+    
+    <p>In this article, we discuss how mouse-click hold times, or a combination of keyboard and mouse activity can enable new levels of access-requirements obfuscation.  Learn how to apply the open source tools cnee and Perl in applications to measure the characteristic attributes of how users manipulate the mouse.</p>
+
+<p>In addition to the many identification options presented by keystroke dynamics discussed in my <a href="http://www.ibm.com/developerworks/views/opensource/libraryview.jsp?search_by=keystroke+dynamics">three earlier articles</a>, mouse usage provides additional data to help determine identity.  This article uses example code to demonstrate mouse dynamics for enhancing the security of applications in authentication and continuous usage contexts. With an example login application and using the cnee tool to measure mouse events, learn how to add an additional layer of user-interaction requirements.</p>
+
+<p><a name="1"><span class="atitle">Hardware and software requirements</span></a></p>
+
+<p>Linux&#174; is required, with a functioning X Window System setup. Any distribution equipped with a graphical desktop released after 1999 should provide an already-configured environment with which to get started. You also need physical access to a computer with a directly connected mouse. Thin clients, VNC connections, and virtualized clients will work in theory, but the various layers of processing and network lag may cause unexpected behavior.</p>
+
+<p>Effective capture and processing of X Window System events is a task handled best by a program like GNU Xnee. Check the <a href="#resources">Resources</a> to download Xnee (and cnee, the command-line program used here). You'll also need Perl, which is standard on just about every Linux distribution today. Also required are the Tk, Tk::Png, threads, and Thread::Queue Perl modules.</p>
+
+<p>And for generating encrypted hashes of the mouse-click times, you'll need the mkpasswd program.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="2"><span class="atitle">demoLogin.pl program</span></a></p>
+
+<p>Creating a demonstration interface, measuring click times, and eventually comparing them to a stored signature is performed by the demoLogin.pl program. The program presents an interface similar to the GDM face browser using the Tk GUI generation modules.  An instance of the cnee program runs in the background to record mouse data precisely. This approach can be used to record attributes for certain applications or for the entire X Window System. This article focuses on demonstrating the monitoring of a single application, and the framework required to generate and compare signatures effectively.</p>
+
+<p>Figure 1 shows the interface created by the demoLogin.pl program. The standard login UI widgets are presented: a highlighted user picture, the password text box, and the <b>Submit</b> button. Each of these is clicked by the user and has its click-hold time measured to create a user identification signature.</p>
+
+
+<br /><a name="fig1"><b>Figure 1. Example demoLogin.pl user interface</b></a><br />
+<img alt="Example demoLogin.pl user interface" height="352" src="575_loginScreenCapture.jpg" width="572"/>
+<br />
+  <br />
+ 
+<p>Listing 1 shows the beginning of the demoLogin.pl program.</p>
+
+<br /><a name="listing1"><b>Listing 1. demoLogin.pl header</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# demoLogin.pl - example mouse dynamics login screen
+use strict;
+use Tk;            # GUI handling
+use Tk::PNG;       # load user images
+use threads;       # for asynchronous pipe reads
+use Thread::Queue; # for asynchronous pipe reads
+
+die "specify record or compare mode " unless @ARGV == 1;
+my $mode = $ARGV[0];
+
+my( $salt, $hash ) = ""; # to be read from mouse.signatures
+my $checkRng       = 5;  # fuziness of click time matching
+my $userMatch      = 0;  # click time match found
+my @clicks = ();         # significant press time for mouse click
+</pre></td></tr></table><br />
+
+<p>After including the requisite modules and specifying usage requirements, global variables are defined. Note the <code>$checkRng</code> variable and its description. Modification of this variable is key to determining what amount of variability is acceptable during a click-time signature match. The section <a href="#4">demoLogin.pl compare signatures</a> contains more information on this variable and its use. Listing 2 continues with the program and GUI setup.</p>
+
+<br /><a name="listing2"><b>Listing 2. demoLogin.pl GUI setup</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# cnee is used to monitor X windows mouse events
+my $cneeCmd = "cnee --record --mouse -e xnee.err 2&gt; raw.err | ";
+# open an asynchronous pipe to store events while tk churns
+my $pipe    = createPipe( $cneeCmd ) or die "cannot create cnee cpipe";
+
+# create a list of images to load (active and inactive)
+my @inactiveImages = `ls -1 images/*Inactive.png`; chomp(@inactiveImages);
+my @activeImages   = `ls -1 images/*Active.png`;   chomp(@activeImages);
+
+# create a Tk window and a canvas to overlay user images on
+my $mw  = Tk::MainWindow-&gt;new;
+my $can = $mw-&gt;Canvas( -width =&gt; 648, -height =&gt; 226,
+                       -borderwidth =&gt; 0, -highlightthickness =&gt; 0
+                     )-&gt;pack( -fill =&gt; "both", -expand =&gt; 1);
+</pre></td></tr></table><br />
+
+<p>As mentioned, cnee (part of the Xnee package) is started in the background to monitor mouse events while the Tk GUI is running. Two arrays are created that store a list of the active and inactive images. A Tk canvas is then created to provide a background for the inactive and active images. Listing 3 contains the rest of the interface GUI code.</p>
+
+<br /><a name="listing3"><b>Listing 3. demoLogin.pl inactive image setup</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  # load all of the inactive images onto the canvas
+  my $imgCount = 0;
+  while( $imgCount &lt;= $#inactiveImages )
+  {
+  my $tempImg = $mw-&gt;Photo( -file   =&gt; $inactiveImages[$imgCount],
+  -format =&gt; "png");
+  
+  $can-&gt;createImage( ($imgCount * 150) +40, 50,
+  -image  =&gt; $tempImg,
+  -anchor =&gt; 'nw',
+  -tags   =&gt;[" $imgCount"] );
+  
+  my $setVar = " $imgCount"; # this has to be set or variables get passed by 
+  # reference.  
+  
+  # call the active image display on click
+  $can-&gt;bind( $setVar, '&lt;1&gt;' =&gt; sub { clickImage( $setVar ) });
+  
+  $imgCount++;
+  
+  }#while each image
+  
+  # left space fill so entry and submit buttons placement ease
+  my $cantop2 = $mw-&gt;Canvas( -width =&gt; 50, -height =&gt; 150,
+  -highlightthickness =&gt; 0 )-&gt;pack( -side =&gt; "left");
+  
+  # asterisk entry box and submit button to run the click time processing
+  $mw-&gt;Entry ( -show =&gt; '*' )-&gt;pack( -side =&gt; "top");
+  $mw-&gt;Button( -text    =&gt; 'Submit',
+  -command =&gt; sub{ runSubmit() }) -&gt; pack( -side =&gt; "top");
+  
+  MainLoop();
+</pre></td></tr></table><br />
+
+  <p>Each inactive user image is loaded onto the canvas, and a callback is created to overlay the active image upon user click. After the loop, another canvas, password text box, and <b>Submit</b> button are created and packed into the Tk main window. Listing 4 shows the <code>clickImage</code> subroutine to provide user feedback when an image is clicked.</p>
+
+<br /><a name="listing4"><b>Listing 4. <code>clickImage</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub clickImage
+{
+  # overlay the inactive image with the 'active' one
+  my $imgNum = $_[0];
+  my $tempImg =  $mw-&gt;Photo( -file   =&gt; $activeImages[$imgNum],
+                             -format =&gt; 'png' );
+
+  $can-&gt;createImage( ($imgNum * 150) +40, 50,
+                     -image  =&gt; $tempImg,
+                     -anchor =&gt; 'nw',
+                     -tags   =&gt; ["activeImage$imgNum"] );
+
+}#clickImage
+</pre></td></tr></table><br />
+
+<p>Simply overlaying the active image upon the inactive image is sufficient for this demonstration program. Listing 5 continues with the UI callbacks.</p>
+
+<br /><a name="listing5"><b>Listing 5. <code>runSubmit</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub runSubmit
+{
+  # process the recorded cnee events, create signature or attempt match  
+  sleep(1);  # wait to ensure tk events bubble up to cnee
+
+  processEvents();
+
+  if( $mode eq "record" )
+  {
+    print "@clicks\n", `echo "@clicks" | mkpasswd -H md5 --stdin `;
+
+  }#if in record mode
+
+  exit(0);
+
+}#runSubmit
+</pre></td></tr></table><br />
+
+<p>If events are extracted immediately after the Tk mouse is pressed on <b>Submit</b>, the mouse-down event (and subsequent release event) will not be picked up by the cnee program. Sleeping 1 second is a simple method for ensuring all of the events have time to process through the cnee event detector and printout stages. In record mode only, the click-timing events are printed to STDOUT, along with the hash signature for those particular events. Listing 6 shows the processEvents subroutine called in Listing 5.</p>
+
+<br /><a name="listing6"><b>Listing 6. <code>processEvents</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub processEvents
+{
+  # read all relevant mouse events from cnee
+  my $lastTime = ""; # store initial mouse press time
+
+  while( $pipe-&gt;pending )
+  {
+    my $line = $pipe-&gt;dequeue or next;
+
+    # skip line unless it has mouse information ( 7 commas and no colons )
+    next unless( ( () = $line =~ /,/g ) == 7  &amp;&amp; $line !~ /:/ );
+
+    my( undef, $button, $x, $y, undef, undef, undef, $time ) = split ",", $line;
+
+    if( $button == 4 ){ $lastTime = $time }  # mouse down 4, mouse release 5
+
+    # only grab the most significant digits of the mouse click-hold time
+    if( $button == 5 ){ push @clicks, sprintf("%0.0f", ($time-$lastTime)/10) }
+
+  }#for each line of data
+
+}#processEvents
+</pre></td></tr></table><br />
+
+  <p>Mouse position and button information is printed out in the format shown in Listing 7. Subroutine <code>processEvents</code> records the mouse-down and up times, then extracts the most significant bits from that time. For example, the mouse-hold time shown below is 574 milliseconds. The <code>sprintf</code> function call shown in Listing 6 changes this to a click time of 57. This allows for a more-reasonable search space for matching key-hold time signatures.</p>
+
+<br /><a name="listing7"><b>Listing 7. Example cnee output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+0,6,427,141,0,0,0,1319180351
+0,4,0,0,1,0,0,1319181256
+0,5,0,0,1,0,0,1319181830
+0,6,428,141,0,0,0,1319182838
+</pre></td></tr></table><br />
+
+  <p>Listing 8 shows the <code>createPipe</code> subroutine used to set up a background connection to the cnee program.</p>
+
+<br /><a name="listing8"><b>Listing 8. <code>createPipe</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub createPipe
+{
+  my $cmd = shift;
+  my $queue = new Thread::Queue;
+  async{
+      my $pid = open my $pipe, $cmd or die $!;
+      $queue-&lt;enqueue( $_ ) while &lt;$pipe&gt;;
+      $queue-&lt;enqueue( undef );
+  }-&lt;detach;
+
+  #detach causes the threads to be silently terminated on exit (sometimes)
+  return $queue;
+
+}#createPipe
+</pre></td></tr></table><br />
+
+<p>Save these code samples as <code>demoLogin.pl</code> and follow the instructions below to begin measuring mouse dynamics.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="3"><span class="atitle">demoLogin.pl record usage</span></a></p>
+
+  <p>Unpack the <code>images</code> directory from the source <a href="#downloads">code archive</a>. Run the program with the command <code>perl demoLogin.pl record</code>. You should see a window pop up that looks similar to Figure 1.</p>
+
+<p>Try different click-hold times on the different UI elements. For example, hold the mouse-button-down for nearly 2 seconds on an image, then click the password-entry box and the <b>Submit</b> button with "normal" release times. This will result in the program computing a click signature like that shown below.</p>
+
+<br /><a name="listing9"><b>Listing 9. Example demoLogin.pl record output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+196 4 2
+$1$8spGJq5D$Nhz7i/cEfqW0VHfBz31F31
+</pre></td></tr></table><br />
+
+<p>Three numbers for three clicks, the first being 196-tenths of a second in hold time. The remaining two numbers represent more "normal" click-hold times of four-tenths and two-tenths of a second.</p>
+
+<p>Salt and hash information is printed on the second line, and should be placed in a file called <code>mouse.signatures</code>. Messages like "A thread exited while 2 threads were running" can be ignored safely.</p>
+
+<p>Depending on your click-hold time repetition skill, you may choose to create a signature based on number of clicks. Simply require the user to click a certain number of times, such as requiring a double-click on the password-entry box. The click signature will then have the requisite number of clicks stored in the mouse.signatures file.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="4"><span class="atitle">demoLogin.pl compare signatures</span></a></p>
+
+<p>With a set of repeatable timings and a mouse signature in place, the <code>demoLogin.pl</code> program can be modified to support signature comparisons. Start by replacing line 90 (<code>}#if in record mode</code>) with the lines shown below.</p>
+
+<br /><a name="listing10"><b>Listing 10. Replacement signature checking logic block</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  }else
+  { 
+    loadSignatureFile();
+    checkDynamics("", 0);
+
+    print "Match found\n"     if( $userMatch == 1 );
+    print "Unknown mouser!\n" if( $userMatch == 0 );
+  
+  }#if not in record mode
+</pre></td></tr></table><br />
+
+<p>Now when the demoLogin program is run with the "compare" option, the signature file will be loaded and the <code>checkDynamics</code> subroutine called. Add the subroutine shown in Listings 11 to the end of the demoLogin.pl file.</p>
+
+<br /><a name="listing11"><b>Listing 11. <code>loadSignatureFile</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub loadSignatureFile
+{ 
+  open(INFILE,"mouse.signatures") or die "no signature file";
+    my $line =&lt;INFILE&gt;;
+    die "empty file " unless defined $line;
+    chomp($line);
+    ( undef, undef, $salt, $hash ) = split '\$', $line;
+  close(INFILE);
+
+}#loadSignatureFile
+</pre></td></tr></table><br />
+
+<p><code>loadSignatureFile</code> simply reads the salt and hash stored from the record phase. Listing 12 shows the more complex <code>checkDynamics</code> subroutine.</p>
+
+<br /><a name="listing12"><b>Listing 12. <code>checkDynamics</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  
+sub checkDynamics
+{ 
+  # recursive 'fuzziness' matching for click time signatures
+  print "checking level $_[1] instring $_[0]\n";
+  my $inString = $_[0];
+  my $level    = $_[1];
+
+  my $start = $clicks[$level] - $checkRng;
+  my $stop  = $clicks[$level] + $checkRng;
+  my $curr  = $start;
+  
+  while( $curr &lt;= $stop &amp;&amp; $userMatch != 1 )
+  { 
+    if( $level == 2 ) # deepest level for only three letters
+    { 
+      my $res = `echo "$inString $curr" | mkpasswd -S $salt -H md5 --stdin`;
+      chomp($res);
+      if( $res eq qq/\$1\$${salt}\$${hash}/ ){ $userMatch = 1 }
+    
+    }else
+    {
+      # append to the current 'signature', go to next level
+      my $tempStr = "";  # temporary signature string
+      
+      if( length($inString) != 0 ){ $tempStr = "$inString $curr" }
+      else                        { $tempStr = $curr }
+      
+      checkDynamics( $tempStr, $level+1 );
+    
+    }#if at maximum level
+
+    $curr++;
+
+  }#while current less than stop
+  
+  return(""); 
+  
+}#checkDynamics
+</pre></td></tr></table><br />
+
+  <p>The <code>checkDynamics</code> subroutine recursively calls itself while building signatures encompassing the full range of possibilities defined by the <code>checkRng</code> parameter. Each string passed to <code>mkpasswd</code> is built level by level from a single mouse-click-hold time all the way up to a click-hold time for each recorded click by the user. For example, if the click-hold times are "197 10 10," the <code>checkDynamics</code> subroutine will work through necessary permutations to check "192 5 5," "203 15 15," and everything in between. Loose matching (with a high <code>checkRng</code> value) will drastically increase the amount of time required to check all possibilities.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="5"><span class="atitle">demoLogin.pl compare usage</span></a></p>
+
+<p>Run the program with the command <code>perl demoLogin.pl compare</code> and click the UI buttons. If you match the signature as recorded in the <code>mouse.signatures</code> file, you should see and output similar to that shown below.</p>
+
+<br /><a name="listing13"><b>Listing 13. Example demoLogin.pl compare output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+checking level 0 instring
+checking level 1 instring 196
+checking level 2 instring 196 -1
+checking level 2 instring 196 0
+checking level 2 instring 196 1
+checking level 2 instring 196 2
+checking level 2 instring 196 3
+checking level 2 instring 196 4
+checking level 2 instring 196 5
+checking level 2 instring 196 6
+checking level 2 instring 196 7
+checking level 2 instring 196 8
+checking level 2 instring 196 9
+checking level 1 instring 197 
+checking level 2 instring 197 -1
+checking level 2 instring 197 0
+checking level 2 instring 197 1
+checking level 2 instring 197 2
+checking level 2 instring 197 3
+checking level 2 instring 197 4
+checking level 2 instring 197 5
+checking level 2 instring 197 6
+Match found
+</pre></td></tr></table><br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="conclusion"><span class="atitle">Conclusion, further examples</span></a></p>
+
+<p>You can use the techniques described in this article to enhance the authentication options of your existing Perl applications or monitor the mouse usage in an existing program.</p>
+
+<p>In addition, mouse dynamics is one of the few fields where biometrics can be used for continuous authentication. Consider modifying your applications to use some of the techniques described in this article to detect and track common click positions, click-hold times, and other mouse usage patterns that are unique to your application's users. Try advancing the captcha arms race through measured click-hold times for your Web authentication applications.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-userauth-mouse.mouseDynamics_0.1.zip</td><td nowrap="nowrap">185KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=353273&amp;filename=os-userauth-mouse.mouseDynamics_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>The author of this article wrote three earlier articles for developerWorks on authenticating a user independently of other credentials. See:
+<ul>
+<li>"<a href="http://www.ibm.com/developerworks/opensource/library/os-keystroke/">Expand your text entry options with keystroke dynamics</a>"</li>
+<li>"<a href="http://www.ibm.com/developerworks/opensource/library/os-identify/">Identify and verify users based on how they type</a>"</li>
+<li>"<a href="http://www.ibm.com/developerworks/opensource/library/os-keystroke-perl-xev/">Create a continuous keystroke-dynamics monitor with Perl and xev</a>"</li>
+</ul>
+<br /></li><li>Use <a href="http://www.gnu.org/software/xnee/">Xnee and cnee</a> for monitoring mouse events.<br /><br /></li><li>
+    To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+    Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+    Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+    Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+    Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li><li>
+    Learn how to <a href="http://search.cpan.org/perldoc?perlmodinstall">install Perl modules</a> and <a href="http://www.perl.org/docs.html">read more about Perl</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>UNIX and Linux users: If you're new to installing Perl modules, Andreas J. Konig's <a href="http://search.cpan.org/perldoc?CPAN">CPAN  module</a> automates the installation of other modules.<br /><br /></li><li>You need the <a href="http://search.cpan.org/perldoc?threads">threads</a>, <a href="http://search.cpan.org/perldoc?Thread%3A%3AQueue ">Thread::Queue</a> and <a href="http://search.cpan.org/perldoc?Perl/Tk">Perl/Tk</a><br /><br /></li><li>
+    Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+    Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.<br /><br /></li><li><a href="http://www.perl.org/get.html">
+    Download Perl</a>,
+    or <a href="http://www.perl.org/docs.html">read more about Perl</a> at <a href="http://www.perl.org/">Perl.org</a>.</li></ul><br /><b>Discuss</b><br /><ul><li>
+    Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Expand your user-authentication options with mouse dynamics" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="353273" name="ArticleID" type="hidden"/><input value="11252008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

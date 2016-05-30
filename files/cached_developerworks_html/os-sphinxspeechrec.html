@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Create automated verbal conversation annotations for phone numbers, acronyms, and other spoken words</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use the open source Sphinx-4 speech-recognition package to capture letters and numbers from spoken conversations in near real time to create notes. Employ a custom Sphinx-4 dictionary file to extract likely matches to spoken letters and numbers. Process the text for higher order values, such as phone numbers and acronyms, and create a meeting annotator through search-engine lookups and local databases." /><meta name="Description" content="Use the open source Sphinx-4 speech-recognition package to capture letters and numbers from spoken conversations in near real time to create notes. Employ a custom Sphinx-4 dictionary file to extract likely matches to spoken letters and numbers. Process the text for higher order values, such as phone numbers and acronyms, and create a meeting annotator through search-engine lookups and local databases." /><meta name="Keywords" content="sphinx4, sphinx-4, nathan harrington, cmu/sphinx, cmu, sphinx, Perl,   conversation, annotation, speech recognition, speech,  recognition, Create automated   verbal conversation annotations for phone numbers, acronyms, and other  spoken words, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-11-13" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-11-13" /><meta name="Last update" content="18112007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use the open source Sphinx-4 speech-recognition package to capture letters and numbers from spoken conversations in near real time to create notes. Employ a custom Sphinx-4 dictionary file to extract likely matches to spoken letters and numbers. Process the text for higher order values, such as phone numbers and acronyms, and create a meeting annotator through search-engine lookups and local databases."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-sphinxspeechrec">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 268145 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10066" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1008C" class="left-nav-child">Installing Sphinx-4</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100C2" class="left-nav-child">Strategy for extracting letters and numbers
+  from speaker-independent voices</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100D1" class="left-nav-child">Custom dictionary, modification of Hello World example</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10142" class="left-nav-child">Text processing</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101A2" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Create automated verbal conversation annotations for phone numbers, acronyms, and other spoken words</h1><p id="subtitle"><em>Use Sphinx-4, a custom dictionary, and text-processing tools to extract relevant data from conversations</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Create automated verbal conversation annotations for phone numbers, acronyms, and other spoken words">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 13 Nov  2007</p><blockquote>Use the open source Sphinx-4 speech-recognition package to capture letters and
+  numbers from spoken conversations  in near real time to create notes. Employ a custom
+  Sphinx-4 dictionary file to  extract likely matches to spoken letters and numbers.
+  Process the text for higher order values, such as phone numbers and acronyms, and create
+  a meeting annotator  through search-engine lookups and local databases. </blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>The Carnegie Mellon University Sphinx project creates open source
+  speech-recognition tools for developers  and users. This article uses the Sphinx-4 code
+  base to provide automatic  recognition of a very small dictionary of common 
+  letters and  numbers. Converting this spoken information to text and processing the
+  strings for certain data structures, such  as phone numbers and acronyms, allows for the
+  creation of an  automated descriptive annotation of verbal conversations. </p>
+            <p>One of the more useful areas in which to implement this project is in a teleconference
+  annotation application.  Next time you join the developmental meeting, fire up your
+  conversation annotator, and you can have automatic lookups of individuals based on their
+  phone numbers when spoken  in the meeting, or see what the acronym of the day is
+  according to a Web search engine. You won't  have to stop what you are doing to enter in
+  the latest acronym  or employee serial number mentioned in the meeting to find out the
+  associated data. Sphinx-4 and  the conversation annotator we build here can take care of
+  a large portion of  the drudgery for you.</p>
+            <p><a name="N10066"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N1006C"><span class="smalltitle">Hardware</span></a></p>
+            <p>Sphinx is very resource-intensive, and, as a result, you will need fast hardware to
+  make the software useful. A  large heap of dedicated memory is required for useful
+  performance, so plan on running the  Sphinx application on an Intel&#174;
+  Pentium&#174; 4-class machine
+  with at least 1 GB of RAM. By contrast, the text-processing hardware requirements are
+  negligible and can  be run on the same machine without affecting the performance of the
+  speech-recognition processing.</p>
+            <p><a name="N10079"><span class="smalltitle">Software</span></a></p>
+
+            <p>You can run the applications we create in this article on hardware running Linux&#174; or
+  Microsoft&#174; Windows&#174;. Sphinx-4 depends on a recent JDK and Apache Ant
+  to create a custom  grammar processor. We need Perl and the associated lookup modules of
+  your choice. See the <a href="#resources">Resources</a> section for links to learn more
+  about and download the  software packages mentioned. </p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1008C"><span class="atitle">Installing Sphinx-4</span></a></p>
+            <p>Sphinx comes in many forms for various types and capabilities of speech recognition.
+  This article makes use of the Sphinx-4 package, which is the most user- and
+  developer-friendly of the recent releases.  Installing Sphinx-4 can be intimidating, so
+  consider the following steps highlighted from  the installation instructions:</p>
+            <ol>
+                <li>Download and extract Apache Ant. </li>
+                <li>Download and extract the Sun JDK (as of this writing,
+V1.6.0_02 appears to be the current release).</li>
+                <li>Download and extract the Sphinx-4 source package because we'll be modifying one of the demo programs to suit our
+  purposes.</li>
+
+                <li>Set  up your environment variables with the following commands: 
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+export ANT_HOME=${PWD}/apache-ant-1.7.0
+export JAVA_HOME=${PWD}/jdk1.6.0_02
+export PATH=${PATH}:${ANT_HOME}/bin
+</pre></td></tr></table><br />
+On Windows, you may need to set up your environment variables under <b>Control Panel
+  &gt; System &gt; Advanced &gt; Environment variables</b>. </li>
+                <li>Change to the sphinx4-beta directory, then to the lib subdirectory. </li>
+                <li>Activate the JSAPI binary license by  running the jsapi.sh shell script. Sphinx-4
+  provides support for JSAPI with a binary license,  so you'll need to accept the
+  agreement. </li>
+                <li>You may be asked to install  uudecode to unpack the components that JSAPI
+  requires. Most Linux distributions  have a package that includes uudecode in some form,
+  so consider checking your  available packages first if a uudecode installation is
+  required. On Windows, double-click the  jsapi.exe file and accept the license
+  agreement.</li>
+                <li>Back out and change to the main Sphinx4 directory.</li>
+                <li>Run the command <code>ant</code>, and the build process  should begin. </li>
+            </ol>
+            <p>The status message of "BUILD SUCCESSFUL" means you've  got your environment set up correctly and you're ready
+  to move on to  modification steps. If you receive a different message, check your build
+  directory and environment variables  or consult the Apache Ant and Sphinx-4
+  documentation for detailed installation  instructions for your environment. </p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100C2"><span class="atitle">Strategy for extracting letters and numbers
+  from speaker-independent voices</span></a></p>
+            <p>Speech recognition is a technology that always seems two to 10 years away from
+  speaker-independent recognition of a  large vocabulary. Annotating a meeting with
+  multiple voices, including overlapping speech, globally influenced accents, and a broad
+  range of technical and colloquial vocabularies, is nearly impossible for any
+  consumer-level software available on the  market. Sphinx and specifically the Sphinx-4
+  package delivers all the options we need to reliably recognize a very small (yet
+  useful) vocabulary in a speaker-independent  context.</p>
+            <p>We've already specified our limited vocabulary: the letters A-Z and numbers
+  0-9. Our strategy is to  simply extract any location where these letters or numbers are
+  uttered. A common description  for this approach is <i>word spotting.</i> Although
+  Sphinx-4 does not currently support  word spotting, we can still achieve useful results
+  by forcing all utterances to  match at least one of the words in the grammar. Once we
+  have this list of best-guess letters and numbers, we can apply standard text-processing
+  tools and informational lookups to  extract useful information.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100D1"><span class="atitle">Custom dictionary, modification of Hello World example</span></a></p>
+            <p><a name="N100D7"><span class="smalltitle">Creation of dictionary file </span></a></p>
+
+            <p>The first step in creating the pseudo word-spotting setup is to build the desired
+  dictionary file. In the Sphinx-4 directory tree, there is a directory called 
+  <code>bld/models/edu/cmu/sphinx/model/acoustic/WSJ_8gau_13dCep_16k_40mel_130Hz_6800Hz/dict/</code>.
+  This  directory contains  the alpha.dict and digit.dict dictionary files. At first
+  glance, it appears that combining these two dictionary files will produce the desired
+  file. This is not the case, however,  as we'll need to build our dictionary files from
+  the cmudict.0.6d file in the same  directory.</p>
+            <p>Change to the <code>bld/models/edu/cmu/sphinx/model/acoustic/WSJ_8gau_13dCep_16k_40mel_130Hz_6800Hz/dict/</code>
+  directory and issue  these commands to build the desired dictionary file:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+perl -ne 'print if( /^[A-Z]\ / )'                       cmudict* &gt;  alN.dict
+perl -ne 'print if(/^(ZERO|ONE|TWO|THREE|FOUR)[ (]/)'   cmudict* &gt;&gt; alN.dict
+perl -ne 'print if(/^(FIVE|SIX|SEVEN|EIGHT|NINE)[ (]/)' cmudict* &gt;&gt; alN.dict
+</pre></td></tr></table><br />
+            <p>Listing 1 shows the alN.dict file as created with simple letters and numbers as the
+  sole part of the  dictionary.</p>
+            <br /><a name="listing1"><b>Listing 1. Snippet from alN.dict dictionary file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+...
+W                    D AH B AH L Y UW
+X                    EH K S
+Y                    W AY
+Z                    Z IY
+FOUR                 F AO R
+ONE                  HH W AH N
+ONE(2)               W AH N
+THREE                TH R IY
+...
+</pre></td></tr></table><br />
+            <p><a name="N100FD"><span class="smalltitle">Modification of Hello World example </span></a></p>
+
+            <p>Sphinx-4 provides many configuration options to meet almost any need in the field of
+  speech recognition.  For our purposes, the most efficient approach is to simply modify
+  the existing Hello World example.  Under the Sphinx-4 root directory, change to the
+  <code>demo/sphinx/helloworld</code>  directory and edit the
+  helloworld.config.xml file.  Listing 2 shows the one  line of change required to use the
+  alN.dict dictionary file  we built.</p>
+            <br /><a name="listing2"><b>Listing 2. helloworld.config.xml changes</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+original (line 114):
+        &lt;property name="dictionaryPath"
+   value="resource:/edu.cmu.sphinx.model.acoustic.WSJ_8gau_13dCep_16k_40mel_130Hz_6800Hz.
+Model!/edu/cmu/sphinx/model/acoustic/WSJ_8gau_13d
+Cep_16k_40mel_130Hz_6800Hz/dict/cmudict.0.6d"/&gt;
+
+new:
+        &lt;property name="dictionaryPath"
+   value="resource:/edu.cmu.sphinx.model.acoustic.WSJ_8gau_13dCep_16k_40mel_130Hz_6800Hz.
+Model!/edu/cmu/sphinx/model/acoustic/WSJ_8gau_13d
+Cep_16k_40mel_130Hz_6800Hz/dict/alN.dict"/&gt;
+</pre></td></tr></table><br />
+            <p>Modifications are also necessary to the hello.gram grammar file in the same directory. 
+  Listing 3 shows the changes required to pick up just  the letters and numbers in our
+  dictionary file.</p>
+            <br /><a name="listing3"><b>Listing 3. hello.gram changes</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+
+original:
+public &lt;greet&gt; = (Good morning | Hello) 
+( Bhiksha | Evandro | Paul | Philip | Rita | Will );
+
+new:
+public &lt;greet&gt; = ( zero | one | two | three | four | five | six |seven | eight | nine | 
+a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | 
+w | x | y | z) * ;
+</pre></td></tr></table><br />
+            <p>You'll also need to make a cosmetic change to the HelloWorld.java file, as shown
+  below.</p>
+            <br /><a name="listing4"><b>Listing 4. HelloWorld.java change </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+original (line 59):
+    System.out.println
+        ("Say: (Good morning | Hello) " +
+                     "( Bhiksha | Evandro | Paul | Philip | Rita | Will )");
+
+new:
+    System.out.println
+        ("Listening for letters and numbers");
+</pre></td></tr></table><br />
+
+            <p>With the above changes in place, you can build and run the modified example. Change the
+  Sphinx-4 home directory and issue the command <code>ant</code> (the same
+  "BUILD SUCCESSFUL" message will let you know if your changes were correct). Run the
+  updated example with the  command <code>$JAVA_HOME/bin/java -mx312m -jar
+bin/HelloWorld.jar</code> (on Linux).  The command for Windows is:<code>java -mx312m
+-jar bin/HelloWorld.jar</code>.  Speak this sentence: "The phone
+  number for IBM tech support is one  eight zero zero four two six seven three seven
+  eight," and you should see output like that shown below:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+f o nine r four i b m x a four t one eight zero zero four two six seven three seven eight
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10142"><span class="atitle">Text processing</span></a></p>
+            <p>As you can see, the sentence uttered will be processed for letters and numbers
+  semi-correctly. The letters "IBM" and the  numbers in the phone number are recognized
+  correctly, but the remainder of the  words are incorrectly categorized as various
+  letters and numbers that are the best  match for a particular sound.</p>
+            <p>You may be asking yourself: Why not simply use a multithousand-word dictionary to
+  recognize those incorrect best guesses?  After all, Sphinx-4 provides large vocabulary
+  dictionaries and language models.  Why not simply configure the demonstration example to
+  recognize the remaining: "The  phone number for tech support is" and any other words that may be uttered? </p>
+            <p>The answer is because Sphinx-4 is good, but not perfect. Expanding the dictionary file
+  to recognize hundreds of thousands of  words will drastically reduce the effectiveness
+  of the simple number and letter matching. You  can test this yourself by checking some
+  of the other programs in the  Sphinx-4 "demo" directory or by modifying the existing
+  examples to use large dictionary files  and expanded grammar lists. Post-processing the
+  text of only letters and  numbers for higher-order data is a much easier method of
+  developing a useful  annotation system with available open source systems.</p>
+            <p>With two simple rules, extracting acronyms and phone numbers from the output text
+  becomes relatively simple: Any three consecutive letters are considered an acronym, and
+  any five or more digits together are  considered a phone number. Listings 5, 6, and 7
+  show the components of the annotateAcrNum.pl  program that perform these extractions and lookups:</p>
+            <br /><a name="listing5"><b>Listing 5. annotateAcrNum.pl part 1
+&#8212; Main program logic</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# annotateAcrNum.pl - extract and lookup acronyms and numbers from speech 
+#                     recognition text output
+use strict;
+use Yahoo::Search;
+use Net::Dict;
+$|=1;  # non buffered output for better user feedback
+
+my %numHash =
+("zero" =&gt; "0",
+"one"   =&gt; "1",
+"two"   =&gt; "2",
+"three" =&gt; "3",
+"four"  =&gt; "4",
+"five"  =&gt; "5",
+"six"   =&gt; "6",
+"seven" =&gt; "7",
+"eight" =&gt; "8",
+"nine"  =&gt; "9" );
+
+while( my $line = &lt;STDIN&gt; )
+{
+  print "$line" if( $line =~ /(Start|You said:)/ );
+
+  next unless ( $line =~ /You said:/ );
+  my @words = split " ", substr($line,9);  # ignore the "You said:" prefix
+
+  my @numArr = ();
+  my @letArr = ();
+
+  foreach my $chunk ( @words )
+  {
+    if( length($chunk) == 1 )
+    { 
+      phoneNmSearch(@numArr) if( @numArr &gt; 4 );
+      @numArr = ();
+
+      push @letArr, $chunk;
+
+      if( @letArr &gt; 2 )
+      { 
+        acronymSearch( @letArr );
+        shift( @letArr );
+      }
+
+    }elsif( length($chunk) &gt; 1 )
+    { 
+      push @numArr, $numHash{$chunk};
+      @letArr = ();
+    }#if length greater
+  }#for each word
+
+  phoneNmSearch( @numArr ) if( @numArr &gt; 4 );
+  acronymSearch( @letArr ) if( @letArr &gt; 2 );
+
+}#while stdin
+</pre></td></tr></table><br />
+            <p>The main program logic above searches for letter and number strings matching our
+  simplistic criteria. For each line  of speech-recognition text output by the Hello World
+  modified code, build separate arrays  of letters and numbers only. The letters array is
+  searched using the acronymSearch subroutine  described below. Note that the
+  letters array is shifted after each acronym lookup  in order to search for both "ibm"
+  and "bmx" from the string "i b m x." The numbers array does not perform this same
+  position shift, instead taking the  largest number it can find and performing a Web search. </p>
+            <br /><a name="listing6"><b>Listing 6. annotateAcrNum.pl part 2 &#8212; acronymSearch</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub acronymSearch
+{
+  my $dict = Net::Dict-&gt;new('dict.org');
+
+  my $str = @_; $str =~ s/ //g;
+
+  my $eref = $dict-&gt;define($str);
+  next if ($eref eq "" );
+  foreach my $entry (@$eref)
+  {   
+      my ($db, $definition) = @$entry;
+      next if (   !(defined($definition)) || !(defined($db))  );
+      if( $db =~ /(wn|vera|gazetteer|foldoc)/ ){ print "$db: $definition\n" }
+  }#for each definition
+
+}#acronymSearch
+</pre></td></tr></table><br />
+
+            <p>Subroutine acronymSearch makes use of the helpful Net::Dict module. 
+  Simply specify a dictionary  server and a query to look up in the large variety of
+  databases available.  Regular expression  <code>/(wn|vera|gazetteer|foldoc)/</code> limits the printout to those databases
+  that provide relatively terse descriptions.   You may find that your acronym space is
+  better represented by  other databases available at dict.org, requiring removal of this
+  regular expression  limiter.</p>
+            <br /><a name="listing7"><b>Listing 7. annotateAcrNum.pl part 3 &#8212; phoneNmSearch</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub phoneNmSearch
+{
+  my $str = @_; $str =~ s/ //g;
+  if( length($str) == 11 )
+  {
+    $str =~ /(\d)(\d\d\d)(\d\d\d)(\d\d\d\d)/;
+    $str = "$1-$2-$3-$4\n";
+  }elsif( length($str) == 10 )
+  {
+    $str =~ /(\d\d\d)(\d\d\d)(\d\d\d\d)/;
+    $str = "$1-$2-$3\n";
+  }elsif( length($str) == 7 )
+  {
+    $str =~ /(\d\d\d)(\d\d\d\d)/;
+    $str = "$1-$2\n";
+  }
+  print "Results for: $str\n";
+
+  my @results = Yahoo::Search-&gt;Results(Doc =&gt; "$str", AppId =&gt; "PhNmLookup" );
+  warn $@ if $@; # report any errors
+  
+  my $recCount = 0;
+  for my $res (@results)
+  {   
+      print "Title: ", $res-&gt;Title, " \n";
+      print $res-&gt;Summary, "\n";
+      print $res-&gt;Url, "\n";
+      print "\n";
+      last if( $recCount &gt; 1 ); # print first 3 results only
+      $recCount++;
+  }#for each result
+
+}#phoneNmSearch
+</pre></td></tr></table><br />
+            <p>For certain search engines, drastically more accurate search results can be attained by
+  the addition of formatting  to the phone number digits.  For example, changing
+  18004267378 to 1-800-426-7378 or 4152042 into 415-2042 is performed by the first portion
+  of the phoneNmSearch  subroutine.  This slightly modified phone number is then used as
+  the query in a Yahoo! search parameter using Jeffrey Friedl's handy Yahoo::Search Perl module.</p>
+
+            <p>With your custom Sphinx-4 speech recognition and the annotateAcrNum Perl program,
+  you're ready to start annotating  spoken conversations. Run the annotator with the
+  command  <code>$JAVA_HOME/bin/java -mx312m -jar bin/HelloWorld.jar | perl
+  annotateAcrNum.pl</code> (on Linux).  For Windows, the command is 
+  <code>java -mx312m -jar bin/HelloWorld.jar | perl
+annotateAcrNum.pl</code>. </p>
+            <p>Figure 1 shows the output of the annotator setup in "Terminal" on Vector Linux. Note
+  the underlined link text available to launch pages based on the Web search results.</p>
+            
+                <br /><a name="fig1"><b>Figure 1. Conversation annotator screenshot in Terminal on Vector Linux</b></a><br />
+                <img alt="Conversation Annotater screenshot in Terminal on Vector Linux" height="674" src="PhoneLookup_fin.jpg" width="572"/>
+            <br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101A2"><span class="atitle">Conclusion, further examples</span></a></p>
+            
+            
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N101AF"><b>Share this...</b></a><br />
+                <p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-sphinxpseechrec/">
+                                    <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-sphinxpseechrec/">Digg this story</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">
+                                    <img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+                                    <img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/>
+                                </a>
+                                
+                                
+                            </td><td>
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr></table>
+                </p>
+            </td></tr></table></td></tr></table>
+            
+            <p>The types of queries and databases chosen to search in this article are just general
+  examples of useful annotation. You may  find that using Google for your Web search
+  lookups is more effective, or  you can link your phone number lookups to your employer's
+  address book. Equal options are  available for the methods chosen to extract
+  higher-order data from the  recognized letters and  numbers. Perhaps your conversations focus
+  more on IP addresses or  employee serial numbers. Using some of the techniques
+  described, you can extract your dotted quads and unique identifiers, and link the lookups to your own databases.</p>
+            <p>Sphinx-4 also provides many options for enhancing the effectiveness of speech
+  recognition. Consider creating your own trained  acoustic models for you and members of
+  your team to provide a much higher accuracy  rate. Expand the dictionary file to include
+  tens of thousands of commonly spoken words  and test Sphinx-4's real time transcription qualities.</p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-sphinxspeechrecAnnotations_0.1.zip</td><td nowrap="nowrap">4KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=268145&amp;filename=os-sphinxspeechrecAnnotations_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  Read the article "<a href="http://www.ibm.com/developerworks/webservices/library/ws-xml-rpc/" onmouseover="linkQueryAppend(this)">Enable C++
+applications for Web  services using XML-RPC</a>" for a step-by-step guide to exposing C++
+  methods as  services.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  Learn more about and download <a href="http://cmusphinx.sourceforge.net/sphinx4/">Sphinx-4</a>.<br /><br /></li><li>
+  Learn more about and grab <a href="http://apache.oregonstate.edu/ant/binaries/apache-ant-1.7.0-bin.tar.gz">Apache Ant</a> to build Sphinx-4.<br /><br /></li><li>
+  The JDK file used for this
+  project was from the SE <a href="http://java.sun.com/javase/downloads/index.jsp">binary
+extractor V1.6.0_02</a>
+            <br /><br /></li><li>
+  The annotating Perl script makes use of the <a href="http://search.cpan.org/~neilb/Net-Dict-2.07/lib/Net/Dict.pod">Net::Dict</a> and <a href="http://search.cpan.org/~jfriedl/Yahoo-Search-1.10.13/lib/Yahoo/Search.pm">Yahoo::Search</a> modules at CPAN.<br /><br /></li><li>
+  If your system doesn't have Perl, get it from <a href="http://www.perl.org/">Perl.org</a>.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Create automated verbal conversation annotations for phone numbers, acronyms, and other spoken words" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="268145" name="ArticleID" type="hidden"/><input value="11132007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.9.xsl--></body></html>

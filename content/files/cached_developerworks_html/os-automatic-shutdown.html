@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Shut down idle computers on your network automatically</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Learn how to use Argus and client/server Perl code to monitor your network connections and shut down machines no longer in use." /><meta name="Description" content="Learn how to use Argus and client/server Perl code to monitor your network connections and shut down machines no longer in use." /><meta name="Keywords" content="power management, inactivity, shutdown, Perl, Argus, POE, open source, Nathan Harrington, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-10-21" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-10-21" /><meta name="Last update" content="21102008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Learn how to use Argus and client/server Perl code to monitor your network connections and shut down machines no longer in use."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-automatic-shutdown">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 346055 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10069" class="left-nav-child">Hardware requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10076" class="left-nav-child">Software requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10084" class="left-nav-child">Hardware placement</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1009A" class="left-nav-child">Argus setup on the control node</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100C9" class="left-nav-child">Selecting machines and bandwidth usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100DF" class="left-nav-child">process_racluster.pl for inactivity monitoring</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1012E" class="left-nav-child">Remote shutdown of systems</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10138" class="left-nav-child">Listen for shutdown requests: shutdownListener.pl</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10151" class="left-nav-child">Send shutdown requests: clientShutdown.pl</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10174" class="left-nav-child">Usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1017E" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Shut down idle computers on your network automatically</h1><p id="subtitle"><em>Save electricity, bandwidth, and wear by detecting inactive systems on your network and shutting them down automatically</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!--Updated 9/25/08 by gem-->
+<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">Learn and share!</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/web/library/wa-piabeta/?S_TACT=105AGX01&amp;S_CMP=nsf" class="smallplainlink">Exchange know-how with your peers -- try our new Pass It Along beta app</a></p></td></tr></table></td></tr></table><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Nathan Harrington</a>, Programmer, IBM<br /></p><p> 21 Oct  2008</p><blockquote>Learn how to use Argus and client/server Perl code to monitor your network connections and
+  shut down machines no longer in use.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Recent pushes for "green" technology focus mostly on talk, with little action for the
+  typical home- or small-office environment.   Many users leave their systems online
+  continuously through laziness or ignorance, resulting in a  significant source of power
+  consumption, as well as an additional vector for malware propagation.  The tools and
+  code presented here allow  you to find those inactive systems and securely start the
+  shutdown process.  With a Linux&#174;  box monitoring your network connections using
+  Argus and some custom Perl code, any system that  supports Perl can be set to be
+  remotely shut down when a  centralized set of inactivity rules are met.</p>
+
+<p><a name="N10069"><span class="atitle">Hardware requirements</span></a></p>
+
+<p>Although the control code for securely communicating and shutting down systems is
+  cross-platform, you'll need hardware capable of running Linux for the monitoring
+  computer, which we'll call the  <i>control node.</i> Such a node could be a Linksys
+  NSLU2 or similar low-wattage device running  Linux. The control node needs a method for
+  monitoring network connections throughout  your entire network. Minimal processing
+  power, RAM, and storage are  required, unless you intend to monitor hundreds of machines
+  on a high-bandwidth  pipe.  Virtually any PC manufactured after 2000 with an appropriate
+  network adapter and the capability  to run Linux should provide enough capacity to
+  monitor a small office or home  network. One network adapter for the control node will
+  suffice in low-traffic settings, but two is  better on busy networks. See the
+  "Hardware placement" section for suggestions on where to place your selected system.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10076"><span class="atitle">Software requirements</span></a></p>
+
+<p>Snort, Tcpdump, or a number of network monitoring software packages will work in theory
+  for measuring usage.  This article  uses a combination of Argus and racluster (an Argus
+  client) due to its simplicity and  light weight for tracking connection status.  In
+  addition to the heavy lifting done by Argus, you'll  need Perl and the associated
+  modules for network communications, random string generation,  and encryption.  These
+  modules are POE, String::MkPasswd,  and Crypt::Blowfish, respectively.  See <a href="#resources">Resources</a> for   details on finding and installing these modules.</p>
+
+<p><a name="N10084"><span class="atitle">Hardware placement</span></a></p>
+
+<p>Selecting an appropriate location for a full-network monitoring connection point is a
+  complex topic with many variables dependent  on specific network attributes.  A certain
+  amount of familiarity with network topologies is  assumed, as well as the ability to
+  identify the upstream connection point all  network traffic flows through.</p>
+
+<p>For example, consider a typical home network with four computers connected to a
+  wireless access point (WAP) or router  with an outbound connection through a cable or
+  DSL modem. (I realize  using the term "modem" here is inaccurate, but since the industry
+  latched onto the  misnomer, I'll use it, too &#8212; albeit reluctantly.)
+  Placing the control node network connection between the  WAP and the modem allows
+  monitoring of all connections to  the Internet from any machine on network.
+  Alternatively, many home-office WAPs are  also routers with wired Ethernet ports, so
+  connecting to the WAP's wired port directly  may suffice.</p>
+
+<p>Keep in mind that the correct placement of the control node (with the appropriate
+  network interface) and the associated configuration of  the network adapter or adapters
+  on the control node may  present a formidable challenge for the casual reader.  See <a href="#resources">Resources</a> for tutorials and research materials to help you get started in network monitoring.</p>
+
+<p><a name="N1009A"><span class="atitle">Argus setup on the control node</span></a></p>
+
+<p>Providing simple measurements of network connection attributes with minimal resource
+  consumption is ideal for this article.  Instead of  writing Snort rules or analyzing
+  Tcpdump output, use Argus and some command-line  switches to provide a minimal list of
+  network connections.  On the control node, install  Argus and run the following command.</p>
+
+<br /><a name="listing1"><b>Listing 1. Argus command on control node</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+argus -w /tmp/argusOutput -i eth0 
+</pre></td></tr></table><br />
+
+<p>Transaction records recorded by Argus are appended to the /tmp/argusOutput file, and
+  the <code>eth0</code> interface is assigned to sniff packets  in promiscuous mode.  Now that Argus is
+  set up to monitor the connections for each host on the network, use one of the many
+  Argus clients to print out information about  those connections.  Use the command <code>racluster -L0 -M  -u -r /tmp/argusOutput tcp</code> to show the current
+  connections on the network, including information like total  bytes transferred and
+  connection start times.  Note that this command  may produce a great deal of
+  information, so consider isolating  the most active connections with the command <code>racluster -L0 -M -u  -r /tmp/argusOutput tcp -w - | rasort -m bytes |
+head</code>. </p>
+  
+ <p><code>rasort</code> combined with <code>head</code> will produce a list of the top 10 connections by the number of bytes transferred.</p>
+
+<p>Note that the Argus and process_racluster.pl program (listed below) need to be run as a
+  user with appropriate privileges for  accessing the network adapter in promiscuous mode.
+  In most cases, this is the root user.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100C9"><span class="atitle">Selecting machines and bandwidth usage</span></a></p>
+
+<p>Each machine to be monitored for inactivity needs to have an identifier, a number of
+  bytes indicating inactivity, and a command to run when  inactivity is detected.  Listing
+  2 shows an example activityRules file.</p>
+
+<br /><a name="listing2"><b>Listing 2. Example activityRules file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+192.168.1.30_#_10_#_xmessage "Elena's laptop inactive"
+192.168.1.35_#_400_#_xmessage "Alexander's desktop inactive"
+</pre></td></tr></table><br />
+
+<p>Note that these numbers are examples only and need to be tuned for the specific usage
+  of machines on the network.  The first line  will pop up a message on the control nodes'
+  display (if X Window System  is active), letting the user know that the laptop is inactive and needs to be powered down.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100DF"><span class="atitle">process_racluster.pl for inactivity monitoring</span></a></p>
+
+<p>Reading the activityRules file, processing <code>racluster</code> output and executing commands is performed by the
+  process_racluster.pl program.  Listing 3 lists  the first part of process_racluster.pl.</p>
+
+<br /><a name="listing3"><b>Listing 3. process_racluster.pl part 1</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# process_racluster.pl - run commands if inactivity conditions are met
+use strict;
+
+my $sleepTime     = 600; # seconds between network activity reads
+my $argusFile     = "/tmp/argusOutput";
+my $raclusterFile = "/tmp/raclusterOutput";
+my %rules         = (); # store commands, thresholds for each ip
+
+open( INFILE, "activityRules" )  or die "can't open rules file";
+  while(my $line = &lt;INFILE&gt; )
+  {
+    my( $ip, $threshold, $command ) = split "_#_", $line;
+    $rules{ $ip }{ threshold } = $threshold;
+    $rules{ $ip }{ command   } = $command;
+
+  }#while in file
+
+close( INFILE );
+</pre></td></tr></table><br />
+
+<p>After variable declaration and reading the activityRules file, the next step is the
+  main logic loop.</p>
+
+<br /><a name="listing4"><b>Listing 4. process_racluster.pl part 2</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+while( 1 )
+{
+  # check if Argus is running 
+  my $cmd = qq{ps -aef | grep argus | wc -l };
+  die "argus no longer running" unless ( `$cmd` ne "1\n" );
+
+  # transform the argus data into human readable form
+  $cmd = qq{racluster -L0 -M -u  -r $argusFile tcp &gt; $raclusterFile};
+  $cmd = `$cmd`;
+
+  my %hosts = ();
+  open( INFILE, "$raclusterFile" ) or die "can't open argus output file";
+    while(my $line = &lt;INFILE&gt; )
+    {
+      # grab destination addr, port, total packets, bytes, connection status
+      $line = substr($line,68);
+   
+      my( $ipAndPort, undef, $bytes ) = split " ", $line;
+      my @parts = split '\.', $ipAndPort;
+
+      # skip if there is no port associated (probably not tcp)
+      next unless( $#parts  == 4 );
+  
+      # get just the ip address 
+      my $ip = substr($ipAndPort, 0, rindex($ipAndPort,".") );
+   
+      $hosts{$ip} += $bytes;
+    
+    }#while linein
+  close(INFILE);
+</pre></td></tr></table><br />
+
+<p>At each pass of the main logic, a simple process check is run to make sure the Argus
+  network connection monitor is active.  If so, the  <code>racluster</code> command described above is run, and the IP address and
+  associated byte count for all  connections to that address is recorded in the <code>%hosts</code> hash.  Listing 5 shows the remainder of the main logic loop.</p>
+
+<br /><a name="listing5"><b>Listing 5. process_racluster.pl part 3</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  for my $key( keys %rules )
+  {
+    my $foundKey = 0;
+    $foundKey = 1 if( ! exists($hosts{$key}) );
+
+    if( exists($hosts{$key}) &amp;&amp; ($hosts{$key} &lt; $rules{$key}{threshold})  )
+    {
+      $foundKey = 1;
+    }#if key is not found
+
+    next unless ( $foundKey == 1 );
+
+    # run the command, remove the entry from processing
+    system( $rules{$key}{command} );
+    delete $rules{$key};
+
+  }#for each key in the rules
+
+  # delete the processed files, wait for next pass
+  $cmd = qq{ rm $argusFile $raclusterFile };
+  $cmd = `$cmd`;
+
+  sleep($sleepTime);
+
+}#while 1 loop
+</pre></td></tr></table><br />
+
+<p>Each defined IP in the rule dataset is checked for existence in the <code>%hosts</code> hash.  If the IP is not found, or the byte threshold is less
+  than that specified in the rules file,  the inactive command is run.  After an inactive
+  state has been found, the  entry in the rule dataset is removed to prevent further
+  processing of an already-inactive host.  <code>/tmp/argusOutput</code> is deleted to reset the recorded connection status, and the temporary <code>racluster</code> output file is deleted to save space.  After sleeping for 10 minutes, the process repeats.</p>
+
+<p>To begin the inactivity processing, run the command <code>perl
+process_racluster.pl</code> with the same privileges as  the ID that ran Argus (usually
+  root).  As the "laptop" and  "desktop" systems move to inactive states, you'll see a
+  pop-up message on the control node  showing you which person to give the Kermit guilt
+  trip ("It's not easy being green").</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1012E"><span class="atitle">Remote shutdown of systems</span></a></p>
+
+<p>Providing a method for remotely shutting down systems is a great way to open doors for
+  control and abuse.  To prevent  some of these simpler attacks, the following client and
+  server implement a simple challenge-response  system.  This approach helps ensure that
+  systems will only respond to  the shutdown command if the correct encryption key is used.</p>
+
+<p><a name="N10138"><span class="atitle">Listen for shutdown requests: shutdownListener.pl</span></a></p>
+
+<p>Each system that will respond to remote shutdown requests needs to run the
+  shutdownListener.pl program.</p>
+
+<br /><a name="listing6"><b>Listing 6. shutdownListener.pl</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# shutdownListener.pl - manage challenge/response, shutdown if authenticated
+use strict;
+use POE qw(Component::Server::TCP Filter::Reference);
+use Crypt::Blowfish;
+use String::MkPasswd qw(mkpasswd);
+
+my $key = "&lt;enter your key of choice here&gt;";
+my $random = substr(mkpasswd,0,8);
+my $cipher = new Crypt::Blowfish $key;
+my $cipherText = "";
+
+# heavily influenced by the POE cookbook:
+POE::Component::Server::TCP-&gt;new
+  ( Alias =&gt; "shutdownListener",
+    Port         =&gt; 11211,
+    ClientFilter =&gt; "POE::Filter::Reference",
+    ClientInput  =&gt; sub {
+        my ( $sender, $heap, $input ) = @_[ SESSION, HEAP, ARG0 ];
+
+        if( $cipherText eq "" )
+        { 
+          # send the challenge text back to client
+          $heap-&gt;{client}-&gt;put( \$random );
+          $cipherText = $cipher-&gt;encrypt( $random );
+
+        }elsif( $cipherText eq $$input )
+        { 
+          print "challenge response match, shutting down\n";
+          # uncomment this line to actually shutdown the system
+          # system(`shutdown -h now`);   # linux
+          # system(`shutdown -s -t 01`); # windows
+          exit(0);
+        }else
+        { 
+          print "challenge response does not match, exiting server";
+          exit(1);
+        }#if cipher text not generated
+    },
+  );
+
+$poe_kernel-&gt;run();
+exit 0;
+</pre></td></tr></table><br />
+
+<p>The POE module provides one of the easiest ways to create bidirectional TCP
+  communications using Perl.  When a shutdown  request is received, the current random
+  string is sent back  to the client.  If the client's encrypted return string and the
+  locally encrypted string match, the shutdown command  is run.  Note that you should
+  replace the key with a unique value that  matches the key defined in clientShutdown.pl
+  below.  In addition to shutting down the  system, the shutdownListener.pl will terminate
+  its execution if the challenge response  is not met to deter repeated connection attempts.</p>
+
+<p>Save the shutdownListener.pl code on each machine that should enable remote shutdowns. 
+  shutdownListener.pl should be  run as a user with appropriate privileges to shutdown the machine and access the port selected.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10151"><span class="atitle">Send shutdown requests: clientShutdown.pl</span></a></p>
+
+<p>Each machine to be shut down listens to the control node for shutdown connection
+  requests.  These requests come from the  clientShutdown.pl program.</p>
+
+<br /><a name="listing7"><b>Listing 7. clientShutdown.pl </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# clientShutdown.pl - compute challenge request, send response
+use strict;
+use POE qw( Component::Client::TCP Filter::Reference);
+use Crypt::Blowfish;
+
+die "specify hostname " unless @ARGV == 1;
+
+my $host    = $ARGV[0];
+my $key     = "&lt;enter your key of choice here&gt;";
+my $cipher  = new Crypt::Blowfish $key;
+my $port    = 11211;
+my $sendStr = "getChallenge";
+
+# heavily influenced by the POE cookbook:
+POE::Component::Client::TCP-&gt;new
+  ( RemoteAddress =&gt; $host,
+    RemotePort    =&gt; $port,
+    Filter        =&gt; "POE::Filter::Reference",
+    Connected     =&gt; sub {
+        $_[HEAP]-&gt;{server}-&gt;put( \$sendStr );
+    },
+    ConnectError =&gt; sub {
+        die "could not connect to $host:$port ...\n";
+    },
+    ServerInput =&gt; sub {
+
+      # get the server response
+      my ( $input ) = @_[ ARG0 ];
+
+      # encrypt the response, send back
+      my $cipherText = $cipher-&gt;encrypt( $$input );
+      $_[HEAP]-&gt;{server}-&gt;put( \$cipherText );
+
+    },
+  );
+$poe_kernel-&gt;run();
+exit 0;
+</pre></td></tr></table><br />
+
+<p>Similar to shutdownListener.pl, the clientShutdown.pl program connects to the machine
+  to be shut down, retrieves the random text, encrypts it with the shared key, and returns
+  the encrypted text.  Again,  the encryption key needs to match between the client and
+  server. Modify the  activityRules file by inserting the line shown in Listing 8.</p>
+
+<br /><a name="listing8"><b>Listing 8. Remote shutdown in activityRules</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+192.168.1.33_#_5555554_#_perl clientShutdown.pl 192.168.1.33
+</pre></td></tr></table><br />
+
+<p>Now when process_racluster.pl is restarted and the total network usage for the
+  192.168.1.33 machine drops below approximately 5.5 MB over 10 minutes, the shutdown command will be sent.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10174"><span class="atitle">Usage</span></a></p>
+
+<p>To recap the usage instructions:  Modify the activityRules file to run the appropriate
+  commands for each machine.  Start shutdownListener.pl on any machine that should be
+  remotely shut down.   Start Argus and the process_racluster.pl program on the control node.</p>
+
+<p><a name="N1017E"><span class="atitle">Conclusion, further examples</span></a></p>
+
+<p>With the tools and code in this article, you can set up a network monitor to track the
+  total usage of specific machines  on your network.  Use the programs presented herein to
+  enforce an automatic shutdown  when systems become inactive on the network.  Consider
+  modifying Argus to search  for specific connection types or hosts.  Shut down systems
+  when only 15-minute e-mail checks are active, or when a streaming audio connection is
+  left playing in mute for  hours.  Monitor the protocol used or the connection start
+  times to further enhance the detection  of inactivity that triggers a shutdown.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-automatic-shutdown-inactiveShutdown_0.1.zip</td><td nowrap="nowrap">3KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=346055&amp;filename=os-automatic-shutdown-inactiveShutdown_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  For more information about network monitoring, check out the <a href="http://www.tcpdump.org/tcpdump_man.html">Tcpdump man page</a> and the <a href="http://www.snort.org/docs/snort_htmanuals/htmanual_283/">Snort  users manual</a>. <br /><br /></li><li>
+  The Linksys NSLU2 and WRT54G are special-purpose, low-energy devices upon which users
+  have installed  <a href="http://www.nslu2-linux.org/">NSLU2-Linux</a> and <a href="http://www.batbox.org/wrt54g-linux.html">BatBox  wrt54g</a>, respectively.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li><li>
+  Learn how to <a href="http://search.cpan.org/perldoc?perlmodinstall">install Perl
+modules</a> and <a href="http://www.perl.org/docs.html">read  more about Perl</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  <a href="http://qosient.com/argus/">Argus</a> monitors your network connections. <a href="http://qosient.com/argus/downloads.htm">Argus  Downloads</a> offers binary and
+  source code. The  <a href="ftp://qosient.com/pub/argus/src/argus-3.0.0.tar.gz">Argus
+"server"</a> and the  <a href="ftp://qosient.com/pub/argus/src/argus-clients-3.0.0.tar.gz">Argus client</a> source code include <code>racluster</code> and <code>rasort</code>.<br /><br /></li><li>
+  The challenge/response shutdown server uses the <a href="http://search.cpan.org/perldoc?POE">POE</a>,  <a href="http://search.cpan.org/perldoc?String::MkPasswd">String::MkPasswd</a>, and  <a href="http://search.cpan.org/perldoc?Crypt::BlowFish">Crypt::BlowFish</a> Perl modules.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>,  and get your
+  hands on application development tools and middleware  products from DB2&#174;,
+  Lotus&#174;, Rational&#174;, Tivoli&#174;, and  WebSphere&#174;.<br /><br /></li><li><a href="http://www.perl.org/get.html">Download Perl</a>, or <a href="http://www.perl.org/docs.html">read more about Perl</a> at <a href="http://www.perl.org/">Perl.org</a>.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Shut down idle computers on your network automatically" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="346055" name="ArticleID" type="hidden"/><input value="10212008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan_@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

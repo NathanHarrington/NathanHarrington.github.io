@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Visualizing time-dependent data with distortion portals</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Create an SDL-enabled application that allows you to create distortion portals in sequential image frames to explore the relationship of data sets through time." /><meta name="Description" content="Create an SDL-enabled application that allows you to create distortion portals in sequential image frames to explore the relationship of data sets through time." /><meta name="Keywords" content="SDL, C, temporal distortions, data visualization, Nathan Harrington, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-06-10" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-06-10" /><meta name="Last update" content="10062008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<!-- <script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script> -->
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Create an SDL-enabled application that allows you to create distortion portals in sequential image frames to explore the relationship of data sets through time."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-timedep">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 312345 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1007B" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1009E" class="left-nav-child">Developing a data set</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100AF" class="left-nav-child">Basic program structure</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100D2" class="left-nav-child">SDL configuration and loading images from disk</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10118" class="left-nav-child">Handling application events</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10149" class="left-nav-child">Setting the pixels blitting frame</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101D1" class="left-nav-child">Rendering the frames at each
+  pixel and animating the frames</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10219" class="left-nav-child">Main logic loop and usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#speed" class="left-nav-child">Speed considerations</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1029C" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Visualizing time-dependent data with distortion portals</h1><p id="subtitle"><em>Create useful visualization of data by linking their positions in time</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Visualizing time-dependent data with distortion portals">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 10 Jun  2008</p><blockquote>Create an SDL-enabled application that allows you to create distortion portals
+    in sequential image frames to explore the relationship of data sets through time.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     capture_referrer();
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+  <!-- START KRUGLE SEARCH HEADING PLAY
+					<table width="580" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                      <td class="v14-header-5">
+                     <strong>Show more developerWorks content related to my search</strong>
+                      </td>
+                    </tr>
+                  </table> -->
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>There are many ways to visualize data as snapshots, or sequential images showing
+  trending and time progressions. Few options exist for exploring the relationships
+  between data sets through time with an  interactive interface. This article demonstrates
+  code and techniques to create  what I call "animated distortion portals" in the data to
+  provide time-dependent visualizations  of various parts of the image. Additionally,
+  certain aspects of the code are  presented that allow for effective visualization on
+  slower-computing platforms without sacrificing usefulness. The code presented here will
+  allow new insights into  application-flow models and usage patterns by exploring various
+  data sets and how  they move through time.</p>
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N10069"><b>What is SDL? What is blitting?</b></a><br />
+                <p>In this article, <i>Simple DirectMedia Layer (SDL)</i> provides easy cross-platform access to
+  video modes and input  devices.  A certain level of familiarity is expected with SDL in
+  general, as well as  double-buffering, blitting and other 2-D image-processing techniques.</p>
+                <p>Wikipedia defines bit <i>blit (bitblt, blitting,</i> etc.) as a computer graphics operation in
+  which several bitmap patterns are  combined into one using a "raster operator." The name
+  derives from  the BitBLT machine instruction for the Xerox Alto computer, standing for
+  "Bit Block Transfer." </p>
+            </td></tr></table></td></tr></table>
+            <p><a name="N1007B"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10082"><span class="smalltitle">Hardware</span></a></p>
+            <p>Modern fast hardware is required for effective utilization of the visualization
+  algorithms in this article. Although  developed on an IBM&#174; ThinkPad running at
+  1.8 GHz, a much-faster processor and associated hardware data channels are recommended
+  for per-pixel correct  visualizations. To retain usefulness, the algorithms presented
+  allow for a  "chunk-drawing" effect, which retains much of the usefulness of the
+  temporal distortions  while still being able to run quickly on slower hardware. Fast
+  hardware is still required, and  a high-powered video card is recommended.</p>
+            <p><a name="N1008E"><span class="smalltitle">Software</span></a></p>
+
+            <p>The code presented here is capable of running on a variety of operating systems. We
+  used Linux&#174;. To follow along, you need a modern Linux
+  distribution that includes  a development environment capable of compiling C programs.
+  You need  the SDL and SDL_image libraries. And you need mplayer to extract
+  video frames into  a format usable by the application we develop here  (see <a href="#Resources">Resources</a>).</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1009E"><span class="atitle">Developing a data set</span></a></p>
+            <p>Consult the demonstration video (see <a href="#Resources">Resources</a>) for some ideas
+  on data sets  for with temporal visualizations.  Keep in mind that the choice to have a
+  static or moving background image  can create many issues with the clarity of the
+  visualization.  Static backgrounds  are recommended for those starting with these types
+  of visualizations, as their image  progressions are easier to integrate with traditional frameworks.</p>
+            <p>Possible sources of data include video of natural phenomena, simulations, or
+  user-built sequences of images.  Consider  the files in the included temporal.images/
+  directory, which consist of radar-like precipitation-reflectivity images created during a rainstorm.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100AF"><span class="atitle">Basic program structure</span></a></p>
+            <p>All  the functionality of the demonstration program is contained in one file called
+  temporalVisualizer.c.  Follow along  with this article to build your own copy or
+  download the complete source code. Listing 1 shows the beginning  of the program.</p>
+            <br /><a name="listing1"><b>Listing 1. temporalVisualizer.c includes, defines</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+//temporalVisualizer.c - display temporal distortion portals in video
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include "SDL.h"
+#include "SDL_image.h"
+
+#define WIDTH  1024     // screen dimensions
+#define HEIGHT 768
+#define MAX_IMAGES 110  // number of frames to read from disk
+#define PORTAL_DIA 50   // center distortion portal size
+
+// use 1 for per pixel correctness, multiples of ten for faster 'chunking'
+int chunkSize=1;
+
+int pixels[WIDTH][HEIGHT];      // frame number at each pixel coordinate
+int animateGrid[WIDTH][HEIGHT]; // record animation position at each pixel
+
+SDL_Surface *screen;            // surface to display to user
+SDL_Event event;                // keyboard, mouse event handling
+SDL_Surface* immutableImage;    // base image to overwrite each frame
+SDL_Surface* frame[MAX_IMAGES]; // array of frames to animate
+SDL_Rect baseRect;              // immutable image clipping rect
+SDL_Rect src;                   // current frame clipping rect
+
+int mouseX = 0;
+int mouseY = 0;
+int mouseIsDown = 0;
+int stopMainLoop = 0;
+</pre></td></tr></table><br />
+            <p>The variables defined  will be used mostly in the various functions within the
+  program.  Consider the following  function declarations.</p>
+            <br /><a name="listing2"><b>Listing 2. Function definitions</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void initScreen();
+void loadImages();
+void checkEvents();
+void resetPixels();
+void circleSetPixels(float, float, float);   
+void lineSet(int, int, int, int, int);
+void topCircle(float, float, int, float);
+void bottomCircle(float, float, int, float);
+void drawPixels();
+void animateFrames();
+</pre></td></tr></table><br />
+            <p>These definitions illustrate the overall logic flow of the program.  First,
+  the screen is set up and images are  loaded.  Then, each pass of the main loop checks
+  for events, resets the draw state,  draws the circular "portal" windows, then animates
+  their distortion back to the  current time frame. </p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100D2"><span class="atitle">SDL configuration and loading images from disk</span></a></p>
+
+            <p>SDL provides a wide array of configuration options for configuring video
+  modes and display surfaces.  Listing  3 shows the display options set by the <code>initScreen</code> function.</p>
+            <br /><a name="listing3"><b>Listing 3. <code>initScreen</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void initScreen()
+{
+  const SDL_VideoInfo *info;
+  Uint8  video_bpp;
+  Uint32 videoflags;
+
+  if ( SDL_Init(SDL_INIT_VIDEO) &lt; 0 )
+  {
+    fprintf(stderr, "Problem initializing SDL: %s\n",SDL_GetError());
+    exit(1);
+  }
+  atexit(SDL_Quit);
+
+  info = SDL_GetVideoInfo();
+  video_bpp = info-&gt;vfmt-&gt;BitsPerPixel;
+
+  // store surfaces in hardware video memory where possible, and enable 
+  // double buffering on the displayable surface
+  videoflags = SDL_HWSURFACE | SDL_RESIZABLE | SDL_DOUBLEBUF;
+
+  if ( (screen=SDL_SetVideoMode(WIDTH,HEIGHT,video_bpp,videoflags)) == NULL )
+  {
+    fprintf(stderr, "Video mode error: %s\n",SDL_GetError());
+    exit(2);
+  }
+  SDL_WM_SetCaption("temporalVisualization","temporalVisualization");
+
+}//initScreen
+</pre></td></tr></table><br />
+
+            <p>After defining variables and checking to see if the video interface is available, a
+  display surface is initialized  that uses hardware video memory.  This will help reduce
+  some of the speed issues  associated with blitting multiple surfaces in a traditional
+  2-D context.  Note that the SDL library has many  options for video interfaces that are
+  not covered here.  If you have difficulty  loading this basic configuration, consult the
+  SDL documentation or one of the many  available tutorials for assistance (see <a href="#Resources">Resources</a>).</p>
+
+            <p>With the display surface set up, the next step is to load the images from disk. Listing
+  4 shows the <code>loadImages</code> function.</p>
+            <br /><a name="listing4"><b>Listing 4. <code>loadImages</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void loadImages()
+{
+  int i=0;
+  char filename[100];
+
+  for( i=1; i&lt;=MAX_IMAGES; i++ )
+  {
+    sprintf(filename,"temporal.images/%d.jpg",i);
+
+    SDL_Surface *tempSurface;
+    if( (tempSurface=IMG_Load(filename))==NULL )
+    {
+      fprintf(stderr, "Image load error for file %s\n",filename);
+      exit(3);
+    }
+
+    frame[i] = SDL_ConvertSurface(tempSurface, screen-&gt;format, SDL_HWSURFACE);
+
+    fprintf(stdout,"loaded image %d\n",i);
+  }//for i
+
+  sprintf(filename,"temporal.images/%d.jpg",1);
+  immutableImage = SDL_ConvertSurface( IMG_Load(filename),
+                    screen-&gt;format, SDL_HWSURFACE);
+
+  baseRect.x = 1;
+  baseRect.y = 1;
+  baseRect.w = immutableImage-&gt;w;
+  baseRect.h = immutableImage-&gt;h;
+
+}//loadImages
+</pre></td></tr></table><br />
+
+            <p>Various image formats will use different color spaces from the display surface.  After
+  using the <code>IMG_Load</code> function to load each video frame into a
+  temporary surface, the  <code>SDL_ConvertSurface</code> function is used
+  to make sure all the surfaces used will have the same color format.  This pre-conversion
+  is critical for maintaining  color state through transitions of different frames as
+  their portions are blitted to the buffer  and, eventually, the screen.  </p>
+            <p>Next up, after image loading and screen configuration, is tracking the application events.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10118"><span class="atitle">Handling application events</span></a></p>
+            <p>The interface strategy is to have a "distortion portal" opened at the current mouse
+  coordinates when the mouse button  is down.  In addition to video-interface libraries,
+  SDL provides a framework to  do much of the event-handling work, as shown below.</p>
+            <br /><a name="listing5"><b>Listing 5. <code>checkEvents</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void checkEvents()
+{
+  while ( SDL_PollEvent(&amp;event) )
+  {
+    if( event.type == SDL_KEYDOWN &amp;&amp; event.key.keysym.sym == SDLK_ESCAPE)
+    {
+      stopMainLoop = 1;
+    }//if escape pressed
+
+    if( event.type == SDL_MOUSEBUTTONUP   ){ mouseIsDown = 0; }
+    if( event.type == SDL_MOUSEBUTTONDOWN ){ mouseIsDown = 1; }
+
+    if( event.type == SDL_MOUSEMOTION )
+    {
+      mouseX = event.motion.x;
+      mouseY = event.motion.y;
+
+      //snap mouse to grid if not per-pixel mode
+      if( chunkSize &gt; 1 )
+      {
+        mouseX = (int) mouseX/chunkSize;
+        mouseX *= chunkSize;
+        mouseY = (int) mouseY/chunkSize;
+        mouseY *= chunkSize;
+      }//if not trying high precision
+    }//mouse motion
+
+  }//while pollevent
+}//checkEvents
+</pre></td></tr></table><br />
+            <p>Consult the "<a href="#speed">Speed considerations</a>" section for 
+  the ideas behind transforming  mouse coordinates into a grid.  Before the image
+  components are copied  to the drawable surface, their locations are recorded to ensure
+  that they are drawn in  the correct order.  Listing 6 shows the <code>resetPixels</code> function, which re-initializes the pixels' 2-D array before each drawing pass.</p>
+            <br /><a name="listing6"><b>Listing 6. <code>resetPixels</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void resetPixels()
+{
+  int x,y =0;
+  for( x=0; x&lt;=WIDTH; x+=chunkSize )
+  {
+    for( y=0; y&lt;=HEIGHT; y+=chunkSize )
+    {
+      pixels[x][y]= 1;
+    }//y
+  }//x
+}//resetPixels
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10149"><span class="atitle">Setting the pixels blitting frame</span></a></p>
+            <p>Drawing frames of video at various positions in time that are potentially overlapping
+  requires special consideration in  the pre-rendering steps.  Additionally, distorting
+  the frames correctly as they move toward  the edge of the distortion portal is
+  implemented as a multipass set of  overlapping circles.  To keep these image components
+  drawn in the correct order,  each pixel's &#8212; or <i>chunk's</i> (more on that
+  below) &#8212; frame is determined  prior to the actual blitting steps.</p>
+            <p><a name="N1015A"><span class="smalltitle">
+                <code>circleSetPixels</code>,
+  <code>topCircle</code>, and <code>bottomCircle</code> functions</span></a></p>
+
+            <p>For a given set of coordinates and an ending frame, the <code>circleSetPixels</code> function will draw a series of overlapping circles. 
+  Each circle will have the appropriate frame  number to show a graduated distortion zone
+  between the start and end  frames.  Listing 7 shows the <code>circleSetPixels</code> function.</p>
+            <br /><a name="listing7"><b>Listing 7. <code>circleSetPixels</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void circleSetPixels(float startx, float starty, float inFrame)
+{
+  float frameInc = (inFrame-1) / PORTAL_DIA;
+  float i=0;
+  float currFrame=1;
+
+  for( i=(PORTAL_DIA*2); i&gt;=PORTAL_DIA; i-- )
+  {
+    int xshift = (PORTAL_DIA-i) * 2;
+    int yshift = PORTAL_DIA-i;
+
+    topCircle(    startx+xshift, starty+yshift, i, currFrame );
+    bottomCircle( startx+xshift, starty+yshift, i, currFrame );
+    currFrame += frameInc;
+  }//for i
+}//circleSetPixels
+</pre></td></tr></table><br />
+
+            <p>Circles are drawn in top and bottom halves, from largest diameter to
+  smallest.  Each half-circle is offset by computed x and y coordinates in order to ensure
+  that they are concentric.  As each circle is drawn, the <code>currFrame</code> variable moves to the  next frame between the base image
+  (defined in the <code>immutableImage</code> surface) and the
+  distortion-portal end frame.  As the  distortion-portal end  frame moves back through
+  time, the frames in between are spread  across the available distortion zone.  Thus, the
+  <code>frameInc</code> variable is defined to provide the proper frame
+  increment between 1 and  (Portal Frame/2) in the blended distortion zone.</p>
+            <p>Listing 8 shows the functions <code>topCircle</code> and <code>bottomCircle</code> as called by <code>circleSetPixels</code>.</p>
+            <br /><a name="listing8"><b>Listing 8. <code>bottomCircle</code>
+and <code>topCircle</code> functions</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void bottomCircle(float startx, float starty, int r, float inFrame)
+{
+  int i = 1;
+  float nexty = starty +(r*2);
+  for( i=r; i&gt;=1; i-- )
+  {
+    int length = (int) (sqrt( cos(0.5f * 3.14159 * (i-r)/r)) * r * 2);
+    int ofs = (r*2) - (length/2);
+    lineSet(startx+ofs, nexty-i, length, chunkSize, inFrame );
+  }//i
+}//bottomCircle
+
+void topCircle(float startx, float starty, int r, float inFrame)
+{
+  int i = 1;
+  for( i=1; i&lt;=r; i++ )
+  {
+    int length = (int) (sqrt( cos(0.5f * 3.14159 * (i-r)/r)) * r * 2);
+    int ofs = (r*2) - (length/2);
+    lineSet(startx+ofs, starty+i, length, chunkSize, inFrame );
+  }//i
+}//topCircle
+</pre></td></tr></table><br />
+
+            <p>Each top- and bottom-circle half is divided into a collection of horizontal lines.  The
+  functions above determine the  offset from the circle edge and length of each line.  The
+  <code>lineSet</code> function, as shown in Listing 9, traverses the entire line.</p>
+            <br /><a name="listing9"><b>Listing 9. <code>lineSet</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void lineSet(int inX, int inY, int inWidth, int inHeight, int frameNum )
+{
+  if( chunkSize &gt; 1 )
+  {
+    inX = (int) inX/chunkSize;
+    inX *= chunkSize;
+    inY = (int) inY/chunkSize;
+    inY *= chunkSize;
+  }//snap to grid if not in per-pixel mode
+
+  int x=0;
+  for( x=inX; x&lt;=(inX+inWidth); x+= chunkSize )
+  {
+    int y=0;
+    for( y=inY; y&lt;=(inY+inHeight); y+=chunkSize )
+    {
+      if( x &lt; WIDTH &amp;&amp; y &lt; HEIGHT )
+      {
+        if( frameNum &gt; pixels[x][y] ){ pixels[x][y] = frameNum; }
+      }//if on screen
+
+    }//for y
+  }//for x
+}//lineSet
+</pre></td></tr></table><br />
+            <p>After the now-familiar chunking code (see "<a href="#speed">Speed
+Considerations</a>"), each pixel on each line is set to the current frame if it is more
+  than the current frame  number.  This will prevent overlapping distortion windows from
+  showing conflicting portions of  video frames.  Additionally, this approach to
+  predetermining the frame numbers  at each pixel (or chunk) drastically reduces the
+  number of blitting operations required  to draw the correct visual.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101D1"><span class="atitle">Rendering the frames at each
+  pixel and animating the frames</span></a></p>
+
+            <p>Pre-processing the displayable visuals to select the correct pixels from the
+  appropriate images contains much of  the complexity of the program.  Actually rendering
+  the pixels to the drawable surface is  simple once the precise pixel values have
+  been determined.  Listing 10 shows the  <code>drawPixels</code> function.</p>
+            <br /><a name="listing10"><b>Listing 10. <code>drawPixels</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void drawPixels()
+{
+  int x,y = 0;
+  for( x=0; x&lt;=WIDTH; x+=chunkSize )
+  {
+    for( y=0; y&lt;=HEIGHT; y+=chunkSize )
+    {
+      src.x=x;
+      src.y=y;
+      src.w = chunkSize;
+      src.h = chunkSize;
+      SDL_BlitSurface( frame[pixels[x][y]], &amp;src, screen, &amp;src);
+    }//y
+  }//x
+}//drawPixels
+</pre></td></tr></table><br />
+            <p>Notice how in this function a rectangle of <code>chunkSize</code> by
+  <code>chunkSize</code> pixels is copied from the appropriate frame to the
+  drawable surface.  At a <code>chunkSize</code> of 1, this will create a
+  per-pixel correct rendering of  the distortion algorithm, while each increase in <code>chunkSize</code> will drastically  reduce the number of
+  <code>SDL_BlitSurface</code> calls required.  After copying the drawable
+  visuals, the animation of each frame  is controlled by the <code>animateFrames</code> function.</p>
+            <br /><a name="listing11"><b>Listing 11. <code>animateFrames</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void animateFrames()
+{
+  int x,y =0;
+  for( x=0; x&lt;=WIDTH; x+=chunkSize )
+  {
+    for( y=0; y&lt;=HEIGHT; y+=chunkSize )
+    {
+      if( animateGrid[x][y] &gt; 1 ){ animateGrid[x][y]--; }
+    }//y
+  }//x
+}//animateFrames
+</pre></td></tr></table><br />
+            <p>This function moves each frame back in time from the last image in the sequence to the
+  first.  Consult the  next section for the code block that sets each frame when the mouse is down.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10219"><span class="atitle">Main logic loop and usage</span></a></p>
+            <p><a name="N10220"><span class="smalltitle">Completing <code>main()</code>
+            </span></a></p>
+
+            <p>Recall from Listing 2 the main logic flow of setting up the screen, loading images,
+  processing events, setting pixel states, drawing, and animating the frames.  Listing 12
+  shows the code in <code>main()</code> and its implementation of this order.</p>
+            <br /><a name="listing12"><b>Listing 12. <code>main()</code> program code</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+int main(int argc, char *argv[])
+{
+  initScreen();
+  loadImages();
+
+  while ( stopMainLoop == 0 )
+  {
+    checkEvents();
+    if( mouseIsDown ){ animateGrid[mouseX][mouseY] = MAX_IMAGES-1; }
+    resetPixels();
+
+    int x,y = 0;
+    for( x=0; x&lt;=WIDTH; x+=chunkSize )
+    {
+      for( y=0; y&lt;=HEIGHT; y+=chunkSize )
+      {
+        if( animateGrid[x][y] &gt; 1 ){ circleSetPixels(x,y, animateGrid[x][y] ); }
+      }//y
+    }//x
+
+    SDL_BlitSurface(immutableImage, NULL, screen, &amp;baseRect);
+    drawPixels();
+    SDL_Flip(screen);
+
+    animateFrames();
+
+  }// while stopMainLoop == 0
+
+  SDL_Quit();
+  return(0);
+}//main
+</pre></td></tr></table><br />
+
+            <p>Once the screen is set up and the images are loaded, each pass of the main loop runs
+  <code>checkEvents</code> and <code>resetPixels</code>.  In
+  between, the last frame state is  set for the coordinates of the current mouse position
+  if the mouse button is pressed.  The next  loop section controls setting pixels
+  coordinates only if the frame at that  position is greater than the start frame.  <code>SDL_BlitSurface</code> clears the screen with the base image (<code>immutableImage</code>), and the <code>drawPixels</code>
+  function call fills in the drawable surface  with the appropriate image components. 
+  Finally, <code>SDL_Flip</code> transfers the back buffer to the screen
+  buffer, and <code>animateFrames</code> updates the smooth progression of the video frames.</p>
+            <p><a name="N1025F"><span class="smalltitle">Usage</span></a></p>
+
+            <p>Included in the article source code distribution is a temporal.images directory with
+  NOAA weather service radar images  suitable for experimentation.  Populate the directory
+  with images extracted from your video of  choice, or simply use the existing images with
+  the command  <code>gcc `sdl-config --cflags --libs` -lSDL_image
+temporalVisualizer.c &amp;&amp; ./a.out</code>. Note that you'll need to have the appropriate SDL and SDL_image libraries installed for
+  the compilation command above  to work.  Try modifying the <code>chunkSize</code> parameter to 10 at line 13 and recompile to drastically increase the speed of the visualizations.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="speed"><span class="atitle">Speed considerations</span></a></p>
+
+            <p>Adapting the code to support useful visualizations on computing platforms of various
+  speeds is controlled through  the use of the <code>chunkSize</code>
+  variable.  In the <code>checkEvents</code> function, the stored mouse
+  coordinates are forced into a grid of <code>chunkSize</code> by <code>chunkSize</code> squares.  The lines shown below and the similar entries in
+  the <code>lineSet</code> function ensure that the drawable pixels all
+  start and end on the  correct grid.  Each increase in the <code>chunkSize</code> variable drastically reduces the number of comparisons, as well as surface blits when drawing the portals.  </p>
+            <br /><a name="listing13"><b>Listing 13. Ensuring that the drawable pixels all start and end on the correct grid</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+        mouseX = (int) mouseX / chunkSize;
+        mouseX *= chunkSize;
+        mouseY = (int) mouseY / chunkSize;
+        mouseY *= chunkSize;
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1029C"><span class="atitle">Conclusion and further examples</span></a></p>
+            <p>With the code above and your completed temporalVisualizer.c program, you now have a
+  functional program for visualizing  frames from video or other sequential data sets in a
+  new and useful way.  </p>
+            <p>The  temporalVisualizer.c program was designed to be a framework
+  for further enhancements.  As such, consider  making the frames play backward or forward
+  in time depending on which button  was clicked.  Add the option to mouse over a portal
+  to have it freeze its current position.  Send the  frames further back in time the
+  longer the mouse button is pressed.  </p>
+            <p>Use  the code here and your own ideas to create new visualizations for understanding
+    and  exploring your data through time.</p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-timedep.temporalVisualizer_0.1.zip</td><td nowrap="nowrap">3224KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=312345&amp;filename=os-timedep.temporalVisualizer_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  View the author's <a href="http://youtube.com/watch?v=ot60Us-9jfY">demonstration
+video</a> of time-dependent visualization at  YouTube.com.<br /><br /></li><li>
+  Read about the <a href="http://www.libsdl.org/">Simple DirectMedia Layer</a> project, a
+  cross-platform multimedia  library.<br /><br /></li><li>
+  Read about <a href="http://www.libsdl.org/projects/SDL_image/">SDL_image</a>, an
+  image-loading library used with  the SDL library.<br /><br /></li><li>
+  There are many excellent tutorials on using SDL. Three are available at
+  the <a href="http://www.libsdl.org/tutorials.php">SDL Web site</a>, <a href="http://lazyfoo.net/SDL_tutorials/index.php">Lazy Foo' Productions</a>, and <a href="http://sol.gfxile.net/tutorials.html">Jari Komppa's  tutorials</a>.<br /><br /></li><li>
+                <a href="http://www.mplayerhq.hu/">MPlayer</a> is a
+  video player that supports the playback of a wide array of video file formats. <a href="http://www.mplayerhq.hu/design7/dload.html">Download MPlayer</a> for Linux,  Windows, and OS X. It's also available package form for  some Linux distributions.<br /><br /></li><li>
+  This article was inspired by the <a href="http://www.k2.t.u-tokyo.ac.jp/members/alvaro/Khronos/">Khronos Projector</a>.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Visualizing time-dependent data with distortion portals" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="312345" name="ArticleID" type="hidden"/><input value="06102008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

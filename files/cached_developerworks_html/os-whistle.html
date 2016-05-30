@@ -1,0 +1,727 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Whistle while you work to run commands on your computer</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use Linux or Microsoft Windows, the open source sndpeek program, and a simple Perl script to read specific sequences of tonal events -- literally whistling, humming, or singing to your computer -- and run commands based on those tones. Give your computer a short low whistle to check your e-mail or unlock your your screensaver with the opening bars of Beethoven's Fifth Symphony. Whistle while you work for higher efficiency." /><meta name="Description" content="Use Linux or Microsoft Windows, the open source sndpeek program, and a simple Perl script to read specific sequences of tonal events -- literally whistling, humming, or singing to your computer -- and run commands based on those tones. Give your computer a short low whistle to check your e-mail or unlock your your screensaver with the opening bars of Beethoven's Fifth Symphony. Whistle while you work for higher efficiency.f
+      " /><meta name="Keywords" content="hdaps, perl, Linux, open source, Nathan Harrington, tttosca, tttlca" /><meta name="DC.Date" scheme="iso8601" content="2007-01-09" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-01-09" /><meta name="Last update" content="09012007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use Linux or Microsoft Windows, the open source sndpeek program, and a simple Perl script to read specific sequences of tonal events -- literally whistling, humming, or singing to your computer -- and run commands based on those tones. Give your computer a short low whistle to check your e-mail or unlock your your screensaver with the opening bars of Beethoven's Fifth Symphony. Whistle while you work for higher efficiency."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-whistle">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 186736 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10058" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100A4" class="left-nav-child">Example setup and configuration</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100F0" class="left-nav-child">Example setup for window management using xwit</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1013C" class="left-nav-child">Additional examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10145" class="left-nav-child">The cmdWhistle.pl code</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10229" class="left-nav-child">Caveats and security concerns</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/linux/library.jsp">Linux technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct"> | </span><a href="http://www.ibm.com/developerworks/linux/" class="bctl">Linux</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Whistle while you work to run commands on your computer</h1><p id="subtitle"><em>Use open source software and microphone-enabled laptops to listen for specific tonal sequences and run commands</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Whistle while you work to run commands on your computer">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 09 Jan  2007</p><blockquote>Use Linux&#174; or Microsoft&#174; Windows&#174;, the open source sndpeek program, and a simple Perl script to read specific sequences of tonal events -- literally whistling, humming, or singing at your computer -- and run commands based on those tones. Give your computer a short low whistle to check your e-mail or unlock your your screensaver with the opening bars of Beethoven's Fifth Symphony. Whistle while you work for higher efficiency.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>For many years, computer users have been able to run processor-intensive speech recognition applications executing commands based on voice processing and requiring extensive configuration. While recent advances in processing power and algorithms have brought about user-independent voice recognition with reduced error rates, excellent opportunities exist for a simple tone pattern-based recognition system.</p>
+
+<p>Using the recently released sndpeek program to do the sophisticated processing, we will run a simple Perl program to allow for the easy generation of tonal codes. A Perl script will be presented to allow the user to customize the tonal input and detection environment.</p>
+
+<p><a name="N10058"><span class="atitle">Requirements</span></a></p>
+
+<p><a name="N1005E"><span class="smalltitle">Hardware</span></a></p>
+
+<p>You'll need a system with the capability of processing sound input, preferably from an integrated microphone, although any sound source capable of producing discrete tonal events will suffice. For example, whistling at your computer is one of the more effective ways to add a tertiary input channel (besides keyboard and mouse), but playback of an MP3 player's output through your line-in jack could produce the same results if configured properly. The code in this article was developed and tested on an IBM&#174; ThinkPad&#174; T42p with a 900-MHz processor and 1 GB of RAM. Much less-powerful systems should be easily capable of making use of the code presented in this article, as sndpeek is the primary resource consumer and is an efficient program.</p>
+
+<p><a name="N1006B"><span class="smalltitle">Software</span></a></p>
+
+<p>You'll need a functional sound-processing software environment to access your microphone hardware. Although sound configuration and troubleshooting is beyond the scope of this article, it may be useful to test this code on a Vector Linux Live CD, which has most of the drivers and components necessary for a functional setup of a diverse range of sound hardware. You will need at least a semifunctional installation of the sndpeek program, as the 3-D display portion of the code is not required.</p>
+
+<p>In <a href="#resources">Resources</a>, there is a link to the sndpeek Web page. Download the code and in the file <code>src/sndpeek/sndpeek.cpp</code>, find the section that says:</p>
+
+<br /><a name="N10083"><b>Listing 1. sndpeek modification</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    fprintf( stdout, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f ", 
+         mfcc(0), mfcc(1), mfcc(2), mfcc(3), mfcc(4), mfcc(5), mfcc(6),
+         mfcc(7), mfcc(8), mfcc(9), mfcc(10), mfcc(11), mfcc(12) );
+    fprintf( stdout, "\n" );
+</pre></td></tr></table><br />
+
+<p>Ensure that the output of the program is actually written at the end of every print window by flushing the output. Change the above section to read:</p>
+
+<br /><a name="N10090"><b>Listing 2. Second sndpeek modification</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    fprintf( stdout, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f ", 
+         mfcc(0), mfcc(1), mfcc(2), mfcc(3), mfcc(4), mfcc(5), mfcc(6),
+         mfcc(7), mfcc(8), mfcc(9), mfcc(10), mfcc(11), mfcc(12) );
+    fprintf( stdout, "\n" );
+    fflush(stdout);
+</pre></td></tr></table><br />
+
+<p>Now run the typical <code>./configure; make; make install</code> commands to build and install sndpeek on Linux. For Windows, make sure the program builds correctly. There are many options for building programs on Windows, which are beyond the scope of this article. If you want to see cmdWhistle in action, I recommend using the Vector Linux Live CD.</p>
+
+<p>Next up is the xwit application installation for command-line windowing control. Check <a href="#resources">Resources</a> for a link to the xwit download, and install with no changes to the source code. You're now ready to create some simple tones.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100A4"><span class="atitle">Example setup and configuration</span></a></p>
+
+<p><a name="N100AA"><span class="smalltitle">Creation of a simple tonal sequence</span></a></p>
+
+<p><a href="#download">Download</a> the source code and find the cmdWhistle.pl script. This is the main Perl program that allows you to create tonal sequences, as well as listen for specific tonal sequences and <code>run</code> commands. This article will first take you through the user-space usage and configuration of the cmdWhistle.pl program, then describe its various functions.</p>
+
+<p>Run the cmdWhistle.pl program with the following command: <code>sndpeek --print --nodisplay | perl cmdWhistle.pl -c</code>. This will start the sndpeek program listening to your microphone and print the output to the Perl program. Once the program is running, generate some simple whistles -- separate solid tones or rising-scale notes with one-third-second pause between. Note that you will have to be running this program in a relatively noise-free environment, so plug in your headphones and make sure your CD drive is spun down. If your laptop's battery is on fire, try unplugging the smoke detector before running this program.</p>
+
+<p>Experiment with different paces and tones to get a feel for the resolution of events the cmdWhistle program can capture. Experience with the subtleties of the program's tonal detection process is important for creating complex tone sequences that are repeatable. Your first tonal sequence should be simple: two low tones with 0.5 seconds between them for a "beep beep." Run <code>sndpeek --print --nodisplay | perl cmdWhistle.pl -c</code>, and when you see "enter a tone sequence," whistle twice with 0.5-second delay between the tones. An automatic timeout will occur after 4 seconds (configurable), and your tonal sequence will be printed out similar to the following example: <code>25.00 25.00 _#_ 0 500000 _#_ &lt;command here&gt; _#_ &lt;comment here&gt;</code>.</p>
+
+<p><a name="N100CC"><span class="smalltitle">Setup of command and detection of tonal sequence</span></a></p>
+
+<p>Let's dissect that line: tone values, delimiter, time values, delimiter, command area, delimiter, and comment area. Your next step is to copy this line into the default configuration file for the cmdWhistle.pl program: <code>{$HOME}/.toneFile</code>, which is probably /home/&lt;username&gt;/.toneFile. Once you have created the ~/.toneFile with the above tonal sequence line, you can modify the line to run a program. Change the command area text to <code>/bin/echo "two low"</code> and modify the comments area to something more descriptive, like <code>25.00 25.00 _#_ 0 500000 _#_ /usr/bin/echo "two low" _#_ two low tones</code>.</p>
+
+<p>Now that you have modified the configuration file to print out a notification, run the cmdWhistle.pl script in daemon mode with the command <code>sndpeek --print --nodisplay | perl cmdWhistle.pl</code>. The program will silently listen in the background for any of the events from the ~/.toneFile listing. Try your double low-tone whistle with the same temporal spacing and the same notes, and you will see the text "two low" printed to the screen. If you want to see the functioning of the cmdWhistle.pl script in detail, run it in daemon mode with the command <code>sndpeek --print --nodisplay | perl cmdWhistle.pl -v</code>. If your system supports the graphics display, remove the <code>--nodisplay</code> option for an excellent 3-D visualization of the sound input.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100F0"><span class="atitle">Example setup for window management using xwit</span></a></p>
+
+<p><a name="N100F6"><span class="smalltitle">Creation of raise, lower, and iconify sequences</span></a></p>
+
+<p>There are many options for useful tone input that mimic keyboard shortcuts or mouse movements. The example below is focused on providing window management functions to allow the user to keep his hands in the home position, happily hacking away while windows are placed as he prefers. Please see the "Additional examples" section for more detail on the possibilities offered with this expanded input method.</p>
+
+<p>Run the cmdWhistle.pl program in "create" mode with the command <code>sndpeek --print --nodisplay | perl cmdWhistle.pl -c</code>. You need to create some simple tones you can reproduce with ease for quick window management functions. I recommend a low tone for "lower," a high tone for "raise," and two midtones for "iconify." Make sure you pick something you can consistently perform accurately. Although you'll be able to modify the parameters that control the precision with which you need to enter your tonal sequences (both in pitch and time), it can still be difficult to match the tone in question or the precise timing. Three tonal options widely spaced in pitch is a good mix between command flexibility and simplicity for those of us who need more practice at the karaoke bar. Here is a sample ~/.toneFile with the three commands:</p>
+
+<br /><a name="N1010A"><b>Listing 3. Sample ~/.toneFile with three commands</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+20.00 _#_ 0 _#_ /usr/bin/xwit -pop -names rxvt _#_ raise rxvt windows
+#
+#
+40.00 _#_ 0 _#_ /usr/bin/xwit -pop -names nathan _#_ raise xterms starting with nathan@localhost
+#
+#
+25.00 25.00 _#_ 0 500000 _#_ /usr/bin/xwit -iconify -names nathan _#_ iconify nathan@localhost~
+</pre></td></tr></table><br />
+
+<p>Consider replacing the xwit commands with echo alternatives and practicing before sustained usage.</p>
+
+<p><a name="N10113"><span class="smalltitle">xwit - X functions accessible from a shell script</span></a></p>
+
+<p>Although there are many methods of command-line window control for X Window System, xwit is one of the more simple and portable methods that will work for many window managers. Download and install xwit, and execute the command <code>xwit -iconify</code> to ensure that the program is working. (This will minimize your current window) Although xwit does not have a "lower" function, we can provide a workaround by raising other windows. For this example, we use the the single high tone (40.00) to raise the windows with a title beginning with "nathan." Setting the title of your xterms is a simple mode of identification suitable for typical programming-type tasks. Other windows will be raised using a single low tone (20.00) if they begin with rxvt. Two medium tones (25.00) with a half-second delay will cause all of the windows that have a title beginning with "nathan" to be iconified. See <a href="#resources">Resources</a> for examples of what this looks like.</p>
+
+<p>One of the key benefits to this setup is the ability to continue typing in one window while making another window visible. This is useful for building subroutine structures while you bring your documentational reference to the foreground for API information. In effect, you can compute faster than you can type -- you can type and manage your windowing environment at the same time.</p>
+
+<p><a name="N10127"><span class="smalltitle">Windows shell scripts for raising and lowering windows</span></a></p>
+
+<p>For controlling windows on Microsoft operating systems, once simple way to raise windows is to use the WshShell.AppActivate command. If, for example, we want to raise the "gvim" application, we would create a file called "gvimActivate.vbs" with the following code:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+Set WshShell = WScript.CreateObject("WScript.Shell")
+WshShell.AppActivate "gvim";
+</pre></td></tr></table><br />
+
+<p>With the above file in place, all we have to do is execute it, and the "gvim" window will be given focus and brought to the foreground. If you are running on Windows, change the simple high-tone command in the ~/.toneFile to <code>40.00 _#_ 0 _#_ gvimActivate.vbs _#_ raise gvim window</code>.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1013C"><span class="atitle">Additional examples</span></a></p>
+
+<p>The sndpeek program and cmdWhistle.pl provide an additional user-input mechanism that can be utilized in unique ways. Set up an unlock code for your screensaver and whistle as you approach your desk -- no more bothersome password typing. Check your e-mail every time you whistle, check for your cell phone's unique tones, and send yourself an e-mail when your phone rings.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10145"><span class="atitle">The cmdWhistle.pl code</span></a></p>
+
+<p><a name="N1014B"><span class="smalltitle">History and strategy</span></a></p>
+
+<p>Fast Fourier transforms, sliding percentage windows, and some Linux audio programming can give you tonal-recognition capabilities with your language of choice. The sndpeek application, written by Ge Wang, Perry R. Cook, and Ananya Misra, provides a portable, fast and UNIX&#174; way of acquiring the information cmdWhistle.pl needs to detect tonal events. The simple command <code>sndpeek --print</code> will show real-time text analytics of the current sound source, as well as provide an excellent 3-D visualization. The fourth entry in the text analytics printed out by sndpeek is the output of the <code>Rolloff</code> function of sndpeeks processing using the "Marsyas" component of the sndtools distribution. Here's the description from the Rolloff.cpp source code:</p>
+
+<br /><a name="N10162"><b>Listing 4. Description from the Rolloff.cpp source code</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+Compute Rolloff (a percentile point) of the input fvec. 
+For example if perc_ is 0.90 then Rolloff would be the 
+index where the sum of values before that index are 
+equal to 90% of the total energy. 
+</pre></td></tr></table><br />
+
+<p>Using this value as our base "tone," the cmdWhistle.pl script will detect various time intervals between tones.</p>
+
+<p><a name="N1016B"><span class="smalltitle">Parameter configuration</span></a></p>
+
+<p>Let's start at the top of cmdWhistle.pl with the timing- and sensor-critical parameters:</p>
+
+<br /><a name="N10178"><b>Listing 5. cmdWhistle.pl timing- and sensor-critical parameters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+$|=1; #for non buffered standard output, useful for other programs to read 
+require 'sys/syscall.ph'; # for subsecond timing
+
+my $option = $ARGV[0] || ""; # simple option handling
+
+my $MAX_TIMEOUT_LENGTH = 4; # maximum length in seconds of tone pattern
+my $LISTEN_TIMEOUT = 2; # timeout value in seconds between tone
+my $MAX_TIME_DEV = 	100000; # maximum acceptable deviation between recorded
+	# pattern values and current time values
+my $MAX_TONE_DEV = 2; # maximum acceptable deviation between recorded
+	# pattern values and current tone values
+my $MAX_AVG_TONE = 5; # maximum number of samples to be averaged 
+</pre></td></tr></table><br />
+
+<p>The above variables and their comments are relatively straightforward. More detail will be available about their usage and configuration options later. The following is the remainder of the global variables and their descriptions.</p>
+
+<br /><a name="N10185"><b>Listing 6. Remainder of global variables and descriptions</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+my @queTones = ();	# running queue of recent tones detected 
+my $prevTone = 0; 	# the last solid tone detected, used for disambiguation
+my $prevInterval = 0; 	# previous interval of time
+my @baseTones = (); # the currently entered tone sequence
+my @baseTimes = (); # the currently entered temporal values
+my %toneHash = (); 	# tones, times and commands read from ~/.toneFile
+my $toneCount = 0; 	# the current count of tones entered
+my $startTime = ""; 	# start of a temporal block
+my $currTime = ""; 	# current time in the time out loop
+my $toneAge = 0; 		# for tone count synchronization
+my $timeOut = 0;		# to reset the timer window
+</pre></td></tr></table><br />
+
+<p><a name="N1018B"><span class="smalltitle">Subroutines</span></a></p>
+
+<p>We begin with the <code>getEpochSeconds</code> and <code>getEpochMicroSeconds</code> subroutines used to provide detailed and precise information on the status of temporal tonal patterns.</p>
+
+<br /><a name="N101A0"><b>Listing 7. getEpochSeconds and getEpochMicroSeconds subroutines</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub getEpochMicroSeconds {
+
+ my $TIMEVAL_T = "LL";   # LL for microseconds
+ my $timeVal = pack($TIMEVAL_T, ());
+
+ syscall(&amp;SYS_gettimeofday, $timeVal, 0) != -1 or die "micro seconds: $!";
+ my @vals = unpack( $TIMEVAL_T, $timeVal );
+ $timeVal = $vals[0] . $vals[1];
+ $timeVal = substr( $timeVal, 6);
+
+ my $padLen = 10 - length($timeVal);
+ $timeVal = $timeVal . "0" x $padLen;
+
+ return($timeVal);
+}#getEpochMicroSeconds
+
+sub getEpochSeconds {
+ my $TIMEVAL_T = "LL";   # LL for microseconds
+ my $start = pack($TIMEVAL_T, ());
+ syscall(&amp;SYS_gettimeofday, $start, 0) != -1 or die "seconds: $!";
+ return( (unpack($TIMEVAL_T, $start))[0] );
+}#getEpochSeconds
+</pre></td></tr></table><br />
+
+<p>Next up is the <code>readTones</code> subroutine, which first acquires the <code>Rolloff</code> data value as output from sndpeek. As you can see from the following comments section, the code first develops five samples of tones to compare together to form a basis for computing deviation. If the tone array queue is up to capacity, compute the deviation for each tone. If the comparison to any single tone in the queue exceeds the maximum tonal deviation, specify that the current processing did not produce a discernable tone.</p>
+
+<p>If the deviation of all tones in the queue is less than the acceptable threshold, perform the temporal layer of ambiguity detection. If you whistle in a slowly increasing tone, your individual notes will deviate in small-enough amounts from the acceptable threshold to produce recognized tonal events. This continuous detection can cause a problem, however. The <code>upDev</code> and <code>downDev</code> variables and comparison logic are designed to acquire these contiguous tonal changes if they deviate more than the <code>MAX_TONE_DEV</code> variable. If both the recent tones queue check and the contiguous tone check are passed, record the tone event and its time for later printing or comparison.</p>
+
+<p>The careful modification of these variables will help tune the program to recognize your particular tonal style and temporal deviations. The overall refresh rate of frequency analysis is dictated by the output of the sndpeek program. All of the other parameters can be configured to detect more widely spaced tonal events -- multiple simultaneous tonal events across a time threshold, or different timings between the tonal events.</p>
+
+<br /><a name="N101C7"><b>Listing 8. Detect more widely spaced tonal events</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub readTones
+{ 
+ # read the Rolloff output only, 
+ my(undef, undef, undef, $currentTone ) = split " ", $_[0];
+
+ if( @queTones == $MAX_AVG_TONE )
+ { 
+  my $localDiff = 0;
+  # check for a solid tone by comparing against the last five tones
+  # perform simple time related tonal smoothing, so if the tone
+  # wavers just a bit it's still counted as one tone
+  for my $chkHistTone ( @queTones )
+  { 
+   if( abs($currentTone - $chkHistTone) &gt; $MAX_TONE_DEV )
+   { 
+    $localDiff =1;
+    $prevTone = 0;
+   }#if deviation less than threshold
+  }#for each tone
+
+  if( $localDiff == 0 )
+  { 
+   # make sure the current tone is different than the previous one, this is to 
+   # ensure that long duration tones are not acquired as multiple tone events
+   # this step up or down will allow you to whistle continuously and pick up the 
+   # steps as discrete tone events
+   my $upDev  = $currentTone + $MAX_TONE_DEV;
+   my $downDev = $currentTone - $MAX_TONE_DEV;
+   if( $prevTone &gt; $upDev || $prevTone &lt; $downDev )
+   { 
+    my $currVal = getEpochMicroSeconds();
+    my $diffInterval = abs($prevInterval - $currVal);
+    if( $option ){
+     print "Tone: $currentTone ## last: [$currVal] curr: [$prevInterval] ";
+     print "difference is: $diffInterval\n";
+    }
+    if( $toneCount == 0 ){ $diffInterval = 0 }
+    push @baseTones, $currentTone;
+    push @baseTimes, $diffInterval;
+    $toneCount++;
+    $prevInterval = $currVal;
+   }#if deviation in tone
+
+   # now set the previous tone to the current tone so a continuous tone
+   # is not acquired as multiple tone events
+   $prevTone = $currentTone;
+
+  }#if a solid tone has been found
+
+  # if enough tones to create an useful queue have been added, pop one off
+  shift @queTones;
+
+ }#if enough tones to create a useful queue
+
+ # always push more tones on the avg
+ push @queTones, $currentTone;
+
+}#readTones
+</pre></td></tr></table><br />
+
+<p>When a tonal pattern is created, it is placed in the ~/.toneFile file and read by the following subroutine.</p>
+
+<br /><a name="N101D4"><b>Listing 9. Tonal pattern creation</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# readToneFile reads tone sequences and commands from ~/.toneFile
+# format is: tones _#_ times _#_ command _#_ comments
+sub readToneFile 
+{
+ #give it a full path to .toneFile if on windows
+ open(TONEFILE,"$ENV{HOME}/.toneFile") or die "no tone file: $!";
+
+  while(&lt;TONEFILE&gt;){
+
+   if( !/^#/ ){
+
+    my @arrLine = split "_#_";
+    $toneHash{ "$arrLine[0] $arrLine[1]" }{ tones }  = $arrLine[0];
+    $toneHash{ "$arrLine[0] $arrLine[1]" }{ times }  = $arrLine[1];
+    $toneHash{ "$arrLine[0] $arrLine[1]" }{ cmd }   = $arrLine[2];
+    $toneHash{ "$arrLine[0] $arrLine[1]" }{ comment } = $arrLine[3];
+
+   }#if not a comment line
+
+  }#for each line in file
+
+ close(TONEFILE);
+
+}#readToneFile
+</pre></td></tr></table><br />
+
+<p>When a tonal pattern is acquired by <code>readTone</code>, it is compared to the existing tonal patterns loaded from <code>readToneFile</code>. The <code>compareToneSequences</code> subroutine performs a simple difference check between the timings of the tones, as well as the values of the tones. Note that the differences between tone values and timings is not compounded. Missing the timing or tone on many notes by a small amount will not accumulate into a total match failure.</p>
+
+<p>For each tone in the tone file, build the tonal and temporal arrays for matching. The first comparison is between the number of tones, as there is no point comparing a seven-tone sequence to a two-tone sequence. For each of the tones and times, check that the values are within the acceptable deviation parameters. Maximum tone and temporal deviation is critical to allowing the matching of your tonal sequences with accuracy, not precision. You can increase the maximum tone or time deviation to allow you to be more liberal in your rhythmic timings or tonal production. Caution and experimentation is called for, as liberal settings can lead to spurious detection results. For example, try increasing just the tone deviation threshold to <code>5</code>, keeping the temporal deviation threshold at <code>100000</code>. This will allow you to enter tones remotely related to the expected patterns, at the correct times, and still match a pattern -- useful if you wish to practice your timings only.</p>
+
+<p>If the full pattern is a match, the command specified in the ~/.toneFile is run and the result printed out if verbose mode is enabled. The next step is to exit the subroutine if no matches are found or reset the current tone and time records if a match is made.</p>
+
+<br /><a name="N101FB"><b>Listing 10. Tonal pattern creation</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub compareToneSequences 
+{
+ my $baseCount = @baseTones;
+ my $countMatch = 0; # record how many tones matched
+
+ for my $toneFromFile ( keys %toneHash )
+ {
+  my @confTones = split " ", $toneHash{$toneFromFile}{tones};
+  my @confTimes = split " ", $toneHash{$toneFromFile}{times};
+
+  my $confCount = @confTones;
+
+  next unless( $confCount == $baseCount );
+
+  # as a learning aid, the matching and non matching portions of the
+  # comparison are printed out, so at least you can see what is going 
+  # wrong while trying to remember your tone codes
+  my $pos =0;
+  my $toneMatchFail = 0;
+  for( @baseTones )
+  { 
+   my $tonDiff = abs($confTones[$pos] - $baseTones[$pos]);
+   my $tonStr = "t $pos b $baseTones[$pos] ".
+          "c $confTones[$pos] \n";
+
+   my $timeDiff = abs($confTimes[$pos] - $baseTimes[$pos]);
+   my $timStr = "t $pos b $baseTimes[$pos] ".
+          "c $confTimes[$pos] d $timeDiff\n";
+
+   if( $tonDiff &gt; $MAX_TONE_DEV )
+   { 
+    $toneMatchFail = 1;
+    if( $option ){ print "NOTE DISSONANCE $tonStr" }
+   }else
+   { 
+    if( $option ){ print "NOTE MATCH $tonStr" }
+   }#if tone detected outside of deviation
+
+
+   # if it's an exact match, increment the matching counter
+   if( $timeDiff &lt; $MAX_TIME_DEV ){
+    if( $option ){ print "TIME MATCH $timStr" }
+    $countMatch++;
+   }else{
+    if( $option ){ print "TIME DISSONANCE $timStr" }
+    last;
+   }# deviation check
+
+   $pos++;
+
+  }# for each tone to check 
+
+  if( $countMatch == $confCount &amp;&amp; $toneMatchFail == 0 )
+  { 
+   my $cmd = $toneHash{$toneFromFile}{ cmd };
+   if( $option ){ print "run: $cmd\n" }
+   $cmd =`$cmd`;
+   if( $option ){ print "result: $cmd\n" }
+   last;
+
+  # otherwise, make the count of matches zero, in order to not reset
+  }else
+  { 
+   $countMatch = 0;
+  }
+
+ }#for each tone in tone file
+
+ # if the match count is zero, exit and don't reset variables so a longer
+ # tone sequence can be entered and checked
+ if( $countMatch == 0 ){ return() }
+
+ # if a match occured, reset the variables so it won't match another pattern
+ $toneCount = 0;
+ @baseTones = ();
+ @baseTimes = ();
+
+}#compareToneSeqeunces
+</pre></td></tr></table><br />
+
+<p><a name="N10201"><span class="smalltitle">Main program logic</span></a></p>
+
+<p>With the subroutines in place, the main program logic will allow the user to create a tone sequence, or will run in daemon mode to listen for tones and execute commands. The first section is executed when the user specifies option "-c" for create mode. A simple timeout process is used to end the knock sequence. Increase the maximum timeout length variable to permit pauses of more than 4 seconds between tones. If you leave the maximum timeout length at 4, the program will end and print your currently entered tone sequence.</p>
+
+<br /><a name="N1020E"><b>Listing 11. Timeout process</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+if( $option eq "-c" ){
+
+ print "enter a tone sequence:\n";
+
+ $startTime = getEpochSeconds(); # reset time out start
+
+ while( my $sndPeekOutput = &lt;STDIN&gt; )
+ { 
+
+  $currTime = getEpochSeconds();
+
+  # check if there has not been a tone in a while 
+  if( $currTime - $startTime &gt; $MAX_TIMEOUT_LENGTH ){
+
+   $timeOut = 1; # exit the loop
+
+  }else{
+
+   # if a tone has been entered before timeout, reset timers so
+   # more tones can be entered
+
+   if( $toneCount != $toneAge ){
+    $startTime = $currTime;  # reset timer for longer delay
+    $toneAge = $toneCount; # synchronize tone counts
+   }# if a new tone came in
+
+  }# if timer not reached
+
+  readTones( $sndPeekOutput );
+
+  if( $timeOut == 1 ){ last }
+ }#while stdin
+
+ if( @baseTones ){
+  print "place the following line in $ENV{HOME}/.toneFile\n\n";
+  for( @baseTones ){ print "$_ " }
+  print "_#_ ";
+  for( @baseTimes ){ print "$_ " }
+  print "_#_ (command here) _#_ &lt;comments here&gt;\n\n";
+ }#if tones entered
+</pre></td></tr></table><br />
+
+<p>Section two of the main logic continuously reads the output from the sndpeek <code>--print</code> command. Tonal groups are automatically reset after the timeout threshold is reached in order to differentiate between separate tonal patterns. Consider modifying the <code>LISTEN_TIMEOUT</code> variable to achieve faster tonal entry times, or lengthen the timeout variable to acquire tone patterns with more widely spaced events.</p>
+
+<br /><a name="N10223"><b>Listing 12. Modifying LISTEN_TIMEOUT</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+}else
+{ 
+ # main code loop to listen for tones and run commands
+ readToneFile();
+ $startTime = getEpochSeconds();
+
+ while( my $sndPeekOutput = &lt;STDIN&gt; )
+ { 
+
+  $currTime = getEpochSeconds();
+
+  if( $currTime - $startTime &gt; $LISTEN_TIMEOUT ){
+
+   $toneCount = 0;
+   @baseTones = ();
+   @baseTimes = ();
+   $startTime = $currTime;
+   if( $option ){ print "listen timeout - resetting tones \n" }
+
+  }else{
+
+   if( $toneCount != $toneAge ){
+    $startTime = $currTime;  # reset timer for longer delay
+    $toneAge = $toneCount;  # synchronize tone counts
+   }# if a new tone came in
+
+   compareToneSequences();
+
+  }#if not reset timeout
+
+  readTones( $sndPeekOutput );
+
+ }#while stdin
+
+}#if option set
+</pre></td></tr></table><br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10229"><span class="atitle">Caveats and security concerns</span></a></p>
+
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N10232"><b>Share this...</b></a><br />
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21">
+
+<a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-whistle/">
+<img alt="digg" border="0" height="10" src="//www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+</a>
+</td><td>
+
+<a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-whistle/">Digg this story</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21"><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img alt="del.icio.us" border="0" height="10" src="//del.icio.us/static/img/delicious.small.gif" width="10"/></a>
+</td><td><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21">
+
+<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img alt="Slashdot" border="0" height="16" src="//images.slashdot.org/favicon.ico" width="16"/></a> 
+
+
+</td><td>
+<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr></table>
+</p>
+</td></tr></table></td></tr></table>
+
+
+<p>The cmdWhistle program is well suited for providing an additional channel of user input for your system, while allowing your hands to continue manipulating the mouse and keyboard. Be wary of using cmdWhistle to do anything requiring authentication on your system. </p>
+
+<p>In addition to the obvious issue of listeners recording and mimicking your selected tonal sequence to run commands on your system, there are many other variables associated with tonal authentication that indicate usage in any serious context is premature at best. The tonal sequences are currently stored as two-digit "notes" in the ~/.toneFile, along with four- to nine-digit representations of the delay in microseconds. It is compartively easy to read this "password" file, and simply try and match the tone pattern to gain access to the system. One-way hashes could be used by eliminating some of the precision in the microseconds values, but this is best left to the reader with a desire to evaluate the risks on their own.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Source code</th><td nowrap="nowrap">os-whistle.zip</td><td align="right" nowrap="nowrap">3KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=186736&amp;filename=os-whistle.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Princeton University hosts the <a href="http://www.cs.princeton.edu/sound/software/sndpeek/">sndpeek</a> program.<br /><br /></li><li>
+ibiblio.org hosts a mirror of the <a href="http://www.ibiblio.org/pub/X11/contrib/utilities/xwit-3.4.tar.gz">xwit</a> program.<br /><br /></li><li>
+See a demonstration video on <a href="http://youtube.com/watch?v=R1gkdILzA_s">YouTube.com</a> or check it out on <a href="http://video.google.com/videoplay?docid=-8678611162403535488">Google Video</a>.<br /><br /></li><li>
+Visit IBM developerWorks' <a href="http://www.ibm.com/developerworks/opensource/top-projects/php.html">PHP project resources</a> to learn more about PHP.<br /><br /></li><li>
+Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, be sure to check out <a href="http://www.ibm.com/developerworks/podcast/">developerWorks podcasts</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Get involved in the developerWorks community by participating in <a href="http://www.ibm.com/developerworks/blogs/">developerWorks blogs</a>.</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Whistle while you work to run commands on your computer" name="ArticleTitle" type="hidden"/><input value="Open source, Linux" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="186736" name="ArticleID" type="hidden"/><input value="01092007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

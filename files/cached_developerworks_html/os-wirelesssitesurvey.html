@@ -1,0 +1,816 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Take your ThinkPad out for a walk to create wireless site surveys</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use the accelerometer embedded in a ThinkPad to record your movements while monitoring your network connectivity. Use custom algorithms to extract footstep features from the recorded data, then automatically plot signal strengths on a floor-plan map to determine the best areas of coverage." /><meta name="Description" content="Use the accelerometer embedded in a ThinkPad to record your movements while monitoring your network connectivity. Use custom algorithms to extract footstep features from the recorded data, then automatically plot signal strengths on a floor-plan map to determine the best areas of coverage." /><meta name="Keywords" content="site survey, wireless, signal strength, map, perl, HDAPS, ThinkPad,       Nathan J Harrington, open source, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-02-12" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-02-12" /><meta name="Last update" content="12022008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use the accelerometer embedded in a ThinkPad to record your movements while monitoring your network connectivity. Use custom algorithms to extract footstep features from the recorded data, then automatically plot signal strengths on a floor-plan map to determine the best areas of coverage."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-wirelesssitesurvey">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 287956 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1005A" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#recordData.pl" class="left-nav-child">Collecting data with recordData.pl</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100C6" class="left-nav-child">Extracting steps from recorded data </a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10127" class="left-nav-child">Identifying footsteps with findStep.pl</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101D1" class="left-nav-child">Rendering signal strength from recorded data</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1026F" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Take your ThinkPad out for a walk to create wireless site surveys</h1><p id="subtitle"><em>Record wireless network strengths along a walking path and render data points automatically</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Take your ThinkPad out for a walk to create wireless site surveys">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 12 Feb  2008</p><blockquote>Use the accelerometer embedded in a ThinkPad to record your movements while
+    monitoring your network connectivity.  Use custom algorithms to extract footstep
+    features from the recorded data, then automatically plot signal strengths on a floor-plan
+    map to determine the best  areas of coverage.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>Wireless site surveys are indispensable for developing accurate data models of network
+  coverage in a  variety of environments. Current options for creating a signal-strength
+  map of a large area require  time-consuming manual operations to designate points and
+  record signal  strengths. ThinkPads with the Hard Disk Active Protection System (HDAPS)
+  accelerometers allow for the  automation of much of this work through computed distance
+  traveled and signal-strength measurements. This article uses sample code to
+  extract the step features  from a stream of accelerometer data and presents rendering
+  algorithms for mapping a wireless  network's signal strength over a broad area.</p>
+            <p><a name="N1005A"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10060"><span class="smalltitle">Hardware</span></a></p>
+            <p>Many ThinkPads manufactured in 2003 and later sport HDAPS hardware. If you are unsure
+  whether your ThinkPad supports HDAPS, review its technical specifications on the Lenovo
+  Web site. A  functional 802.11 network card or built-in WiFi hardware is required.</p>
+            <p><a name="N10069"><span class="smalltitle">Software</span></a></p>
+
+            <p>You need a Linux&#174; distribution with kernel support for HDAPS. The HDAPS
+  driver must be included in  the kernel to enable access to the accelerometers. Newer
+  kernel distributions, including Red  Hat, Debian, Gentoo, and Ubuntu include HDAPS
+  drivers. Check out the  HDAPS-related articles in the <a href="#resources">Resources</a>
+  section for more  information on how to get started with HDAPS kernel drivers.</p>
+
+            <p>You'll also need the Time::HiRes module from the Perl file archive, CPAN, to provide
+  subsecond timing control  when recording data. ImageMagick is also required, as the
+  rendering program uses  the convert and composite commands to generate the final
+  signal-strength maps.  See <a href="#resources">Resources</a> for links to these tools.</p>
+            <p>Note that the techniques and algorithms described in this article should work with any
+  notebook computer that has on-board  accelerometers. Those with MacBooks or ThinkPads
+  running an  operating system other than Linux should be able to adapt the code presented here without difficulty.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="recordData.pl"><span class="atitle">Collecting data with recordData.pl</span></a></p>
+            <p><a name="N10088"><span class="smalltitle">recordData.pl program description</span></a></p>
+
+            <p>Listing 1 shows the recordData.pl program.  The first 12 lines define the
+  program's global variables,  including where to find the HDAPS sensor data and the
+  wireless network  connection information.  Subroutines <code>readPosition</code> and <code>readSignal</code> simply extract
+  the (x,y) accelerometer  and the signal-strength values from the appropriate files.  In
+  this example, the  main program loop prints out this information and sleeps for
+  one-twentieth of a second.  Depending on your data collection context, you may desire
+  more samples per  second or the addition of a separate parameter, such as ESSID.  For
+  the purposes of  this article, 20 samples per second is sufficient resolution to record an average user's walking characteristics. </p>
+            <br /><a name="listing1"><b>Listing 1. recordData.pl &#8212;
+Accelerometer and signal-strength data collection</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w  
+# recordData.pl - record accelerometer readings and wireless signal strength
+# usage: recordData.pl | tee logFile
+use strict;
+use Time::HiRes qw( usleep );
+
+$|=1; # non-buffered output
+
+my $hdapsFN = "/sys/devices/platform/hdaps/position"; # hdaps data
+my $netwkFN = "/proc/net/wireless";                   # network data
+my ($restX, $restY ) = ""; # default position of hdaps sensors
+my $SLEEP_INTERVAL = 50000; # microseconds to pause between data reads
+
+# setup the default position of the hdaps sensor values
+($restX, $restY ) = readPosition();
+
+while(1)
+{
+  my ($currX, $currY) = readPosition();
+  $currX -= $restX;  # adjust for rest data state
+  $currY -= $restY;
+
+  print Time::HiRes::time(), " ", readSignal(), " $currX $currY \n";
+  usleep($SLEEP_INTERVAL);
+}#end main loop
+
+# begin subroutines
+
+sub readPosition
+{
+  my ($posX, $posY) = "";
+  open(FH," $hdapsFN") or die "can't open hdaps file";
+    while(my $hdapsLine = &lt;FH&gt; )
+    { 
+      $hdapsLine =~ s/(\(|\))//g; # remove parens
+      ($posX, $posY) = split ",", $hdapsLine;
+    }# while hdaps line read
+  close(FH);
+  return( $posX, $posY );
+}#readPosition
+
+sub readSignal
+{ 
+  my $sigLev = 0;
+  open(FH," $netwkFN") or die "can't open wireless network file";
+    while( my $networkLine = &lt;FH&gt; )
+    { 
+      next unless( /eth/ );
+      (undef, undef, undef, $sigLev ) = split " ", $networkLine;
+    }# while read
+  close(FH);
+  return( $sigLev );
+}#readSignal
+</pre></td></tr></table><br />
+            <p><a name="recordData.pl_logging"><span class="smalltitle">recordData.pl usage for logging data</span></a></p>
+
+            <p>Associate your network card with an access point and start the recordData.pl program
+  with the command  <code>perl recordData.pl | tee logFileN</code>. Further
+  processing of the output in  <code>logFile</code> is dependent on the user
+  holding the ThinkPad in a  specific manner. For example, walk to the desired data
+  collection start point, close  the ThinkPad, and hold it at your side like a book or
+  briefcase. Pause in this position for  at least two seconds, then begin to walk down the
+  row or hallway toward the data  collection end point. Remember to pause at the end of
+  the data-collection run for at  least two seconds, then open the ThinkPad and stop the
+  recordData.pl program  with <b>Ctrl+C</b>.</p>
+            <p>Remember to walk normally. Let your ThinkPad-holding arm swing freely. These
+  characteristic oscillations will  be detected later as features indicating a step.
+  Record a different log file for each row and give them a sequential name or numbering
+  scheme for ease of processing later. Isolating the walking motion from the associate
+  translations and rotations is  accomplished by listening for the two-second pause before
+  and after a data run.  Make sure your data runs are punctuated by standing still to
+  ensure that the post-processing is successful. Listing 2 shows an example output of the
+  recordData.pl program with time, signal strength, and X and Y accelerometer readings during a typical walking session.</p>
+            <br /><a name="listing2"><b>Listing 2. Example output of recordData.pl</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+...
+1199973721.01845 179.  -15 -140 
+1199973721.06944 181.  -11 -141 
+1199973721.12043 181.  -8 -139 
+1199973721.22242 183.  -4 -139 
+...
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100C6"><span class="atitle">Extracting steps from recorded data </span></a></p>
+            <p>Visualizing the output of a typical data-collection run is a task best suited for
+  <i>kst</i>
+
+                &#8212; a KDE application for plotting  data. Although not required for this article,
+  kst is indispensable for analyzing live and  recorded data. If you have kst installed,
+  you can generate a graph  like that shown below with the command <code>kst -y 2 -y 3 -y 4 logFile</code>.</p>
+            
+                <br /><a name="fig1"><b>Figure 1. Data-collection visualization using kst</b></a><br />
+                <img alt="Data-collection visualization using kst" height="438" src="allDataFinal.jpg" width="572"/>
+            <br />
+            <br />
+            <p>Annotations and indicators of the vital points are shown in Figure 1.  The required
+  sequence of events is demonstrated,  showing the start of the data logging, then the
+  moving of the ThinkPad to  the vertical "walking" position.  The initial "rest" state is
+  recorded, followed by the  "walking" section.  The rest period is then shown again,
+  followed by movement back to a  "standard" configuration to manually stop the program.</p>
+            <p><a name="N100EC"><span class="smalltitle">Extracting relevant data portions</span></a></p>
+
+            <p>The first step in creating a signal-strength plot from the <code>recordData</code> log files is to isolate only the relevant data portions. 
+  Listing 3 shows the detectEnds.pl program, which is designed to print only the rest/walking/rest portions of the data log files.</p>
+            <p>detectEnds.pl reads each line of the <code>logFile</code> input from the
+  recordData.pl program. If there  are more than two seconds (40 samples based on a
+  50,000-microsecond delay) worth of data with a  Y accelerometer reading less than -100,
+  a primitive average-deviation check is  performed. If the average deviation is near
+  zero, a rest state is set. Following  the initial rest state, the walking condition is
+  expected based on a high deviation  for a group of points. When the walking condition is
+  set, the second rest detected  will terminate the detectEnds.pl program, leaving an
+  <code>endFile</code> with the same format as the initial <code>logFile</code>, but with substantially more useful data. </p>
+            <br /><a name="listing3"><b>Listing 3. detectEnds.pl &#8212; Print only relevant portion of log file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# detectEnds.pl - find rest/walking/rest section of recordData.pl output
+# usage: cat logFile |  detectEnds.pl &gt; endFile
+use strict;
+my @dataArr = ();
+my $maxDeviation = 1;
+my $minimumData = 40; # 2 seconds at 20 samples/sec
+my $lastMode = "start";
+
+while(my $line = &lt;STDIN&gt; )
+{ 
+  my( $time, $signal, $x, $y ) = split " ", $line;
+
+  # only process entries where unit is rotated properly
+  next if( $y &gt; -100 );
+
+  push @dataArr, $y;  # add to the data sample
+
+  # if at least N seconds or data has been recorded
+  next if( @dataArr &lt;= $minimumData );
+
+  # zero deviation is near zero movement (rest), deviation 4 or more is walking
+  my $deviation = avgCheck(9) + avgCheck(19) + avgCheck(29) + avgCheck(39);
+
+  if( $deviation == 0 )
+  { 
+    # first rest, before any other state
+    $lastMode = "rest" if( $lastMode eq "start" );
+
+    # terminate if post-walking rest detected
+    exit(0) if ( $lastMode eq "walking" );
+
+  }elsif( $deviation &gt;= 4 )
+  { 
+    # set walking mode on first rest detection
+    $lastMode = "walking" if( $lastMode eq "rest" );
+
+  }#check deviation
+
+  shift @dataArr;  # maintain a minimumData size sample
+  print $line if( $lastMode eq "rest"  || $lastMode eq "walking" );
+}#while line in 
+
+# begin subroutines 
+
+sub avgCheck
+{ 
+  # build and average of two seconds worth of data, return an integer of it's
+  # deviation from the center point
+  my $avgIndex = $_[0];
+  my $avgArr = 0;
+  for my $eachArr ( @dataArr ){ $avgArr += $eachArr };
+  $avgArr = $avgArr / ($minimumData+1);
+
+  return(1) if(  abs( $dataArr[$avgIndex] - $avgArr ) &gt; $maxDeviation );
+  return(0);
+}# avgCheck
+</pre></td></tr></table><br />
+            <p>Create an isolated walking file with the command <code>cat logFileN |
+perl detectEnds.pl &gt; endFileN</code>. An <code>endFile</code> will now
+  contain only the relevant portions of  accelerometers and signal strength, without the
+  extraneous translation and rotation associated  with the start and stop of the program.</p>
+            <p>Note that the row data needs to be kept separate for effective rendering. If you have
+  three rows, for example, consider the following one-liner to help automate the
+  processing of multiple files:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+perl -e 'while($c&lt;3){`cat logFile$c | perl detectEnds.pl &gt; endFile$c`;$c++}'
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10127"><span class="atitle">Identifying footsteps with findStep.pl</span></a></p>
+            <p>With the relevant data portion now available in the <code>endFile</code>,
+  processing for indicating footsteps is  much more straightforward. Consider Figure 2,
+  which shows a kst program output of  <code>endFile</code> processing with
+  footsteps indicated. Listing 4 describes  the findStep.pl program, which will produce a data
+  file used in building the image in Figure 2.</p>
+            
+                <br /><a name="fig2"><b>Figure 2. Refined data with footsteps indicated</b></a><br />
+                <img alt="Refined data with   footsteps indicated" height="459" src="processedDataFinal.jpg" width="572"/>
+            <br />
+            <br />
+            <br /><a name="listing4"><b>Listing 4. findStep.pl program</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w 
+# findStep.pl - indicate peaks and nadirs (left and right steps) in an endFile
+use strict;
+die "usage: cat endFile | findStep.pl dataSz lowOrder &gt; steps" unless @ARGV==2;
+
+my $dataSz   = $ARGV[0]; # number of samples to process for a wave
+my $lowOrder = $ARGV[1]; # level of modulation that indicates a low order wave
+my @lineArr = ();
+
+# read the whole file in to set defaults and compute total data size
+while( my $line = &lt;STDIN&gt; )
+{
+  chomp($line);
+  push @lineArr, "default $line -60 -240 ";
+}#while stdin
+
+die "specify dataSz at most (totalSampleSize/2)-1" if ( (@lineArr/2)+1 &lt; $dataSz );
+
+my $lineNum = $dataSz; # skip the first N samples (known 'resting' mode)
+
+for( $lineNum = $dataSz; $lineNum &lt; (@lineArr-$dataSz); $lineNum++ )
+{
+  my ( undef, $time, $signal, $x, $y ) = split " ", $lineArr[$lineNum];
+
+  # require a coffee bender before twitch=step
+  next unless ( highOrderWave($lineNum, $y) == 1);
+
+  if( findModulation( "peak", $lineNum, $y ) == (($dataSz*2)+1) )
+  {
+    $lineArr[$lineNum] =~ s/default/peak   /i;
+    $lineArr[$lineNum] = "peak $time $signal $x $y $y -240";
+  }elsif( findModulation( "nadir", $lineNum, $y ) == (($dataSz*2)+1) )
+  {
+    $lineArr[$lineNum] =~ s/default/nadir  /i;
+    $lineArr[$lineNum] = "nadir $time $signal $x $y -60 $y";
+  }#if peak or nadir detected
+
+}#for each linearr
+
+for my $lineItem( @lineArr ){ print "$lineItem\n" }
+</pre></td></tr></table><br />
+            <p>findStep.pl requires two parameters:</p>
+            <ul>
+                <li>
+                    <code>dataSz'</code>
+                    &#8212; Minimum number of data points to consider for a wave</li>
+                <li>
+                    <code>lowOrder'</code>
+                    &#8212; Minimum threshold that must be reached for a modulation to be considered a "step"</li>
+            </ul>
+
+            <p>Experimentation with these variables may be required, depending on the characteristics
+  of the data collector's gait  or method of holding the ThinkPad. Modification of the
+  sample size in <code>recordData</code> and <code>detectEnds</code> may also require changes for these variables. After
+  reading in the contents of the  file to determine the full data size, as well as setting
+  default values, each data point in  the walking section is processed. Two checks are
+  performed &#8212; one to determine  a modulation of sufficient amplitude, another to
+  detect the type of modulation. If  a peak or nadir is detected, that particular entry is
+  set using a string identifier, and  all the entries are printed out after processing. </p>
+            <br /><a name="listing5"><b>Listing 5. <code>highOrderWave</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub highOrderWave
+{   
+  my(  $startVal, $currY ) = @_;
+  my $avgSize = 0;
+  
+  # for selected sample size before and after current position, build average
+  for( my $pos = ($startVal-$dataSz); $pos &lt;= ($startVal+$dataSz); $pos++ )
+  { 
+    my ( undef, undef, undef, undef, $checkY ) = split " ", $lineArr[$pos];
+    $avgSize += $checkY;
+  }#for each position dataSz before and after
+  
+  $avgSize = $avgSize / (($dataSz*2)+1);
+  $avgSize = abs($avgSize - $currY);
+  
+  return(0) if( $avgSize &lt;  $lowOrder );
+  return(1);
+
+}#highOrderWave
+</pre></td></tr></table><br />
+            <p>Listing 5 shows the modulation-amplitude check in <code>highOrderWave</code> in detail. Implementing another primitive 
+  average-check  algorithm, <code>highOrderWave</code> simply computes the deviation
+  of all items in the  data sample from the current item.  If the deviation is greater
+  than the <code>lowOrder</code> parameter, the function returns true and
+  further processing for a peak  or nadir modulation is performed in the main program
+  logic.  Low-order modulations are common  during the resting state among
+  hyper-caffeinated programmer types, as  well as during the weight-shifting motions prior
+  to the beginning of  a walking motion.  Increase the <code>lowOrder</code>
+  variable as described above to  isolate only the most pronounced modulations to be
+  detected by the <code>findModulation</code> subroutine, as shown below.</p>
+            <br /><a name="listing6"><b>Listing 6. <code>findModulation</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub findModulation
+{ 
+  my( $peakType, $startVal, $currY ) = @_;
+  my $totalMatch = 0;
+
+  # for selected sample size before and after current position
+  for( my $pos = ($startVal-$dataSz); $pos &lt;= ($startVal+$dataSz); $pos++ )
+  { 
+    # stop checking if a previous modulation found nearby
+    return(0) if( $lineArr[$pos] =~ /$peakType/ );
+
+    my ( undef, undef, undef, undef, $checkY ) = split " ", $lineArr[$pos];
+
+    if( $peakType eq "peak" ){     $totalMatch++ if( $checkY &lt;= $currY ); }
+    elsif( $peakType eq "nadir" ){ $totalMatch++ if( $checkY &gt;= $currY ); }
+
+  }#for each position dataSz before and after
+
+  return( $totalMatch );
+
+}#findModulation
+</pre></td></tr></table><br />
+
+            <p>Given a collection of data points that show an oscillating pattern of peaks and nadirs,
+  it is relatively easy to extract the high  and low points by simply measuring nearby
+  values. For each data point in the current  sample size, <code>findModulation</code> first checks for previously defined modulation events
+  within the same sample range. This  check prevents clustering of modulation points on
+  plateaus and hiccups of nearby  point detections. When a "peak" check is specified, the
+  <code>findModulation</code> counts the number of points at or below the
+  current data point. The inverse is  performed for a nadir check, with the total number
+  of points at or above the  current data point returned by the <code>findModulation</code> subroutine. Recall from Listing 4 that the return
+  value from <code>findModulation</code> is compared to the total sample
+  size. If the count of less  than or equal to is the same as the sample size, a peak is
+  indicated. Inversely, if the  count of greater than or equal to sample size, a nadir is set.</p>
+
+            <p>Generate a file with peak and nadir step information with the command <code>cat endFileN | perl findStep.pl 3 5 &gt; stepFileN</code>.  Values 3 for <code>dataSz</code> and 5 for <code>lowOrder</code> work well with
+  the author's data  collection files.  <code>stepFileN</code> will contain
+  the final information necessary to  begin the image-rendering process.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101D1"><span class="atitle">Rendering signal strength from recorded data</span></a></p>
+            <p><a name="N101D7"><span class="smalltitle">Blueprint selection, identify row starting points</span></a></p>
+            <p>Data files containing isolated steps with the corresponding wireless-signal information
+  are now prepared. A  building floor-plan diagram is ideal for representing this data on
+  a set of useful reference points.  Although any image from a blueprint to a hand-drawn
+  diagram will work well,  the rendering program requires the dimensions to
+  be regular. The diagrams used  for this example are all rectangular, with equal-shaped
+  portions of the building throughout  the image. If you have an irregularly shaped
+  building (an L-shaped floor plan, for example), you may need to divide the diagrammable
+  portions into regular  sections corresponding to the appropriate row data collections.</p>
+            <p>Consult the first part of Figure 3 below for an example diagram.  Note the white
+  background and border around  the image.  These characteristics make rendering and
+  compositing much more  efficient.  You'll need to identify the row starting points in
+  this image to feed the  rendering program.  For example, if you open the blueprint image
+  file in The Gimp and place  your cursor over the beginning of a row data collection
+  point, you can see that the row starts  at position 44,30.  Prepare a list of the
+  starting points for each row of data that has been  collected.</p>
+            <p><a name="N101E3"><span class="smalltitle">
+                <code>rowRender.pl</code> program and design decisions</span></a></p>
+            <p>Before we continue with a description of the <code>rowRender.pl</code>
+  program and further examples, some  words are required about the rendering approach
+  chosen for this  implementation. There appears to be some limitation with the C and Perl
+  APIs to the gd package. No  matter the options selected or the parameters specified,
+  drawing an alpha-blended circle does not appear to be possible. The simplest method of
+  removing this limitation  is to draw all the geographic primitives on the command line
+  using ImageMagick's <code>convert</code> command. The rowRender.pl program
+  simply builds a  long chain of ImageMagick <code>convert</code> commands
+  to be executed and runs the  commands in chunks to produce the desired output.</p>
+            <br /><a name="listing7"><b>Listing 7. rowRender.pl program &#8212; Main logic</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# rowRender.pl - draw alpha blended signal strength circles at each step
+use strict;
+die "usage: cat steps | rowRender.pl inImg outImg stX stY size" unless @ARGV==5;
+my $alpha = 220;      # alpha color blending for signal circles
+my @steps = ();       # signal measurements
+my $cmd = "convert "; # beginning of ImageMagick command
+my ($inFile, $outFile, $startX, $startY, $dotSize) = @ARGV; # input, output files
+
+# pre-compute the number of steps
+while(my $line = &lt;STDIN&gt;)
+{
+  my( undef, undef, $signal, undef, undef) = split " ", $line;
+  push @steps, $signal  if( $line =~ /(peak|nadir)/ );
+}#while stdin
+
+# assumes consistent width through entire image
+my( undef, undef, $width ) = split " ", `identify $inFile`;
+$width = substr($width, 0, index($width,"x"));
+$width = $width - ($startX * 2);   # right image border compensation
+
+# set stepSize manually for blueprint images with irregular borders, an 'L'
+# shaped building for example
+my $stepSize = $width / @steps;
+
+for( my $lineNum = 0; $lineNum &lt; @steps; $lineNum++ )
+{
+  $cmd .= qq{ -fill "rgba(} . computeColor($steps[$lineNum]) . qq{,$alpha)" };
+  $cmd .= qq( -draw 'circle $startX,$startY, );
+  $cmd .= ($startX + $dotSize) . "," . ($startY + $dotSize) . qq(' \\\n);
+
+  runCommand() if( $lineNum % 50 == 0 );
+  $startX += $stepSize;
+
+}#for each step
+
+runCommand();
+</pre></td></tr></table><br />
+
+            <p>rowRender.pl expects an input image such as a blueprint or other diagram and an output
+  image name.  The <code>startX</code> and <code>startY</code>
+  parameters are coordinates of  the beginning of the row (all rendering is left to
+  right), and the <code>dotSize</code> parameter is the diameter of the
+  alpha-blended circle to draw at each step.</p>
+
+            <p>The total number of steps is computed, and the ImageMagick identify program is used to
+  determine the width of  the image to be rendered. <code>rowRender</code>
+  assumes that each row is  traversed in full and that the footsteps are distributed
+  evenly across the entire image. For each  of these evenly spaced steps, the
+  alpha-blended circle drawing command is built  based on the signal strength. <code>computeColor</code> shown in Listing 8 determines what level of color to
+  display, while <code>runCommand</code> simply executes commands as built.</p>
+            <br /><a name="listing8"><b>Listing 8. <code>computeColor</code> subroutine from rowRender.pl</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub computeColor
+{ 
+  # simplistic computation of custom color range based on signal levels
+  my $signal = $_[0];
+
+  my $color = qq(255,140,10); # default orange
+  if( $signal &gt;= 197 &amp;&amp; $signal &lt; 207  )
+  {
+    $color = abs( $signal - 207 );
+    $color = $color * 8;           # intervals of 10
+    $color = $color + 175;         # starting at green 175
+    $color = qq(59,$color,10);
+
+  }elsif( $signal &gt;= 189 &amp;&amp; $signal &lt; 197 )
+  {
+    $color = abs( $signal - 197 );
+    $color = $color * 18;          # 10 intervals
+    $color = $color + 75;          # starting at red 75
+    $color = qq($color,234,39);
+
+  }elsif( $signal &gt;= 181 &amp;&amp; $signal &lt; 189 )
+  {
+    $color = abs( $signal - 189 );
+    $color = $color * 15;          # 10 intervals
+    $color = $color + 124;         # starting at green 124
+    $color = qq(255,$color,10);
+  }
+  return($color);
+}#computeColor
+
+sub runCommand
+{
+  $cmd = `$cmd $inFile $outFile`;
+  $inFile = "$outFile"; # use output as input for multi-pass image writing
+  $cmd = qq( convert );
+}#runCommand
+</pre></td></tr></table><br />
+            <p>As shown above, four arbitrary buckets of signal strength were chosen corresponding to
+  red (&lt;181),  orange (181-188), yellow (189-196), and green (197-207).  Color values
+  are chosen based on where the signal  level falls in its color classification bucket. 
+  These values will almost certainly need to be changed  based on the signal-strength data
+  collected during  the first step.  The color-choosing algorithms here represent a
+  straightforward example for rendering  differentiation.</p>
+            <p><a name="N10237"><span class="smalltitle">Rendering the final image</span></a></p>
+
+            <p>Build a diagram with a single row of data rendered with the command <code>cat steps | perl  rowRender.pl bluePrint.png out.png 44 20 30</code>. 
+  Recall that the start X,Y coordinates are  determined from The Gimp image editor and
+  represent the starting point  of data collection for that particular row.  For multiple
+  rows of data, consider building a  file with the associated row start X,Y coordinates
+  like that shown below.</p>
+            <br /><a name="listing9"><b>Listing 9. Render batch commands example</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+cat steps0 |perl rowRender1.pl bluePrint.png out.png 20 44 30
+cat steps1 |perl rowRender1.pl out.png out.png       20 74 30
+cat steps2 |perl rowRender1.pl out.png out.png       20 99 30
+..
+cat stepsN |perl rowRender1.pl out.png done.png      X  Y  dotSize
+</pre></td></tr></table><br />
+            <p>You may also want to try changing the alpha-blending amount to more easily see the
+  background diagram.  If you have  created a blueprint file with a white background, the
+  final overlay is easily  accomplished with ImageMagick.  Listing 10 shows how to use
+  convert and composite to easily  overlay just the visible portions of the blueprint onto
+  the signal-strength rendering.</p>
+            <br /><a name="listing10"><b>Listing 10. ImageMagick commands for final image processing</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+convert -transparent "#FFFFFF" bluePrint.png transparent.png
+composite -compose over transparent.png done.png finalImg.png
+</pre></td></tr></table><br />
+            <p>Figure 3 shows an example output of the rendering steps listed above.</p>
+            
+                <br /><a name="fig3"><b>Figure 3. Rendering step composite image</b></a><br />
+                <img alt="Rendering step composite image" height="291" src="compositeFinal2.jpg" width="572"/>
+            <br />
+            <br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1026F"><span class="atitle">Conclusion and further examples</span></a></p>
+            <p>The techniques and code in this article allow you to measure wireless-signal strength
+  much more efficiently than  existing stop-and-click methods.  Mapping multiple floors of
+  a building or vast open spaces, such as warehouses and manufacturing facilities, can be
+  done nearly as quickly as you  can walk.  With this signal-strength information, you'll
+  be able to more efficiently distribute site access points to improve the speed and coverage of your wireless network.</p>
+            <p>For further research, consider integrating the footfall detection code with gpsd and
+  kismet to enhance the resolution of  your broad area network-mapping setups.  Make full
+  use of your wireless card's functionality and map the signal strength from multiple access points simultaneously.</p>
+            
+            
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N10282"><b>Share this...</b></a><br />
+                <p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-wirelesssitesurvey/">
+                                    <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-wirelesssitesurvey/">Digg
+this story</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">
+                                    <img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+                                    <img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/>
+                                </a>
+                                
+                                
+                            </td><td>
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr></table>
+                </p>
+            </td></tr></table></td></tr></table>
+            
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-wirelesssitesurveyofficeSignalMaps0.1.zip</td><td nowrap="nowrap">17KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=287956&amp;filename=os-wirelesssitesurveyofficeSignalMaps0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  For more information about interesting things to do with HDAPS sensors in ThinkPads,
+  read  "<a href="http://www.ibm.com/developerworks/library/l-knockage.html" onmouseover="linkQueryAppend(this)">Knock-based
+commands for your Linux laptop</a>."<br /><br /></li><li>
+  Check out the <a href="http://hdaps.sourceforge.net/">HDAPS development information</a> on SourceForge.<br /><br /></li><li>
+  Plot scientific and other data using <a href="http://kst.kde.org/">kst</a>.<br /><br /></li><li>
+  See "<a href="http://www.ibm.com/developerworks/webservices/library/ws-xml-rpc/" onmouseover="linkQueryAppend(this)">Enable
+C++ applications for Web services  using XML-RPC</a>" for a step-by-step guide to exposing C++ methods as services.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  Grab the <a href="http://search.cpan.org/~jhi/Time-HiRes-1.9711/">Time::HiRes</a> module from CPAN.<br /><br /></li><li>
+  Learn more about Linux kernel
+  <a href="http://mirrors.kernel.org/">download mirrors</a> for acquiring HDAPS.<br /><br /></li><li>
+  Learn more about and download <a href="http://www.gimp.org">The Gimp</a> image
+  manipulation software. Available for  download  for Windows&#174;, Mac OS X, and
+  many flavors of UNIX&#174;.<br /><br /></li><li>
+                <a href="http://www.imagemagick.org/">ImageMagick</a> is a software suite to create,
+  edit, and compose bitmap images, available for Windows, Mac OS X, and many flavors of UNIX.<br /><br /></li><li>
+  Grab <a href="http://www.perl.org/">Perl</a> from Perl.org.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Take your ThinkPad out for a walk to create wireless site surveys" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="287956" name="ArticleID" type="hidden"/><input value="02122008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.9.xsl--></body></html>

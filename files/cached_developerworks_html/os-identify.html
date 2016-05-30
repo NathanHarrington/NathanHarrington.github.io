@@ -1,0 +1,747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Identify and verify users based on how they type</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/>
+<meta name="Abstract" content="Modify the GNOME Display Manager (GDM) to support user verification through keystroke-dynamics processing. Create and store a one-way encrypted hash of your keystroke patterns when entering your user name. Add code to GDM to read current keystroke patterns and permit a user to log in when the characteristics are a match." /><meta name="Description" content="Modify the GNOME Display Manager (GDM) to support user verification through keystroke-dynamics processing. Create and store a one-way encrypted hash of your keystroke patterns when entering your user name. Add code to GDM to read current keystroke patterns and permit a user to log in when the characteristics are a match." /><meta name="Keywords" content="gdm, keystroke, dynamics, key timings, user identification, Linux, Nathan Harrington, open source, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-03-18" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-03-18" /><meta name="Last update" content="18032008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<!-- <script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script> -->
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script>
+<!-- 09/24/07 tdc:  Start testing css reference -->
+<link rel="stylesheet" type="text/css" href="http://www.ibm.com/developerworks/portal/js/css/local/tree.css" />
+<!-- 09/24/07 tdc:  End  testing css reference --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Modify the GNOME Display Manager (GDM) to support user verification through keystroke-dynamics processing. Create and store a one-way encrypted hash of your keystroke patterns when entering your user name. Add code to GDM to read current keystroke patterns and permit a user to log in when the characteristics are a match."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-identify">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID for this content is: 294976 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1006E" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10098" class="left-nav-child">General approach to simple keystroke dynamics in GDM</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100BE" class="left-nav-child">Modifying xevKeyDyn.pl for dynamics creation and practice</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10163" class="left-nav-child">Modifying GDM to support keystroke dynamics</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1023A" class="left-nav-child">Building and using the code</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10283" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Identify and verify users based on how they type</h1><p id="subtitle"><em>Integrate keystroke dynamics-based user verification in GDM</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Identify and verify users based on how they type">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 18 Mar  2008</p><blockquote>Modify the GNOME Display Manager (GDM) to support user verification through
+    keystroke-dynamics processing.   Create and store a one-way encrypted hash of your
+    keystroke patterns when entering  your user name.  Add code to GDM to read current
+    keystroke patterns and permit  a user to log in when the characteristics are a match.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>Many commercial products today provide two-factor authentication on Linux&#174;
+  systems. These technologies generally require  the purchase of additional hardware and
+  create a closed implementation unsuitable  for many environments. The code and processes
+  presented here allow you to implement a low-cost authentication-input system based on
+  the characteristics of how a  user types his password into the GDM. Moving beyond
+  examples and into implementation, the  modifications to GDM presented here allow you to 
+  enhance the security of your computer.</p>
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N10068"><b>What is GDM?</b></a><br />
+GNOME, which is part of the GNU project, defines the GNOME Display Manager (GDM) as
+software that implements all  significant features required for managing attached and
+remote displays. This  includes authenticating users, starting the user session, and
+terminating the user session.  As we learn here, GDM is readily extensible for supporting keystroke dynamics </td></tr></table></td></tr></table>
+            <p><a name="N1006E"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10075"><span class="smalltitle">Hardware</span></a></p>
+            <p>Almost any computer manufactured in the past 10 years with any old  processor and
+  puny amount of RAM  should provide plenty of power for building and using the code
+  described here. This article was  developed on IBM&#174; T30 and T42 ThinkPads with
+  Intel&#174; Pentium&#174; 4 processors, but slower hardware will be sufficient.</p>
+            <p><a name="N10084"><span class="smalltitle">Software</span></a></p>
+
+            <p>Start with a standard Linux distribution, such as Ubuntu V7.10. You need the various
+  libraries required to compile GDM from  the source. Note that many libraries are
+  required to build GDM, including everything from  GTK to Xinerama, so plan to use your
+  favorite package manager to pull  down the prerequisites (see <a href="#resources">Resources</a>).</p>
+            <p>Check <a href="#resources">Resources</a> for the GDM source code and note that this
+  article was built using the gdm-2.20.0  release.  Keep in mind that this release will
+  not compile straight from the archive on the Ubuntu V7.10 distribution.  Small changes
+  to the Makefile are described below  to allow the make process to complete.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10098"><span class="atitle">General approach to simple keystroke dynamics in GDM</span></a></p>
+            <p>As a biometric, keystroke dynamics are relatively imprecise. Unlike Iris scans or
+  fingerprints, even the most highly repetitive  individuals make subtle variations in
+  their typing patterns. The challenge in  using keystroke dynamics in an authentication
+  or verification context is to discern  acceptable variations from incorrect credentials.</p>
+            <p>Consider Figure 1 below, which shows the intra-key release times of the author's typing
+  of "nathan." (The trailing "n" is not measured because it is the final character in the string.)</p>
+            
+                <br /><a name="N100A7"><b>Figure 1. Intra-key release timings for "nathan"</b></a><br />
+                <img alt="Intra-key release timings for nathan" height="429" src="kst_two_572x438.jpg" width="572"/>
+            <br />
+            <br />
+            <p>As you can see, the delay between key releases are relatively regular for this
+  particular user and this particular text.  Note how the spike at position 19 indicates
+  an extended pause between keys, but  the rest of the entries are grouped in relatively
+  close proximity. Therefore, an algorithm that  permits a "close-enough" match is
+  required to compensate for the average  user's inability to precisely match a given set of intra-key timings.</p>
+            <p>All the design decisions and testing in this article took place in a non-networked
+  context for GDM logins.  Exercise caution before implementing remote logins with
+  keystroke dynamics, as network  latency and a host of other variables need to be considered for reliable verification.</p>
+            <p>Instead of replacing the standard Linux authentication process, the approach used here
+  will introduce another layer of verification  based on the user name.  This allows for
+  easy integration with existing  security configurations, as the user name and password
+  will remain unchanged.  This approach also allows  for a transparent addition to the
+  security policy, as account lockouts and  password change processes will remain unaffected.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100BE"><span class="atitle">Modifying xevKeyDyn.pl for dynamics creation and practice</span></a></p>
+
+            <p>Before beginning modifications to the GDM source, establishing a test program to create
+  and practice keystroke dynamics  is highly recommended. The test program used is a
+  derivative of the  xevKeyDyn.pl program first described in the developerWorks
+  article "Expand your text  entry options with keystroke dynamics" (see <a href="#resources">Resources</a>). You'll need to consult that article for instructions to
+  install and configure  <i>xev</i> and xevKeyDyn.pl properly. Once you have
+  completed the steps shown in  "Expand your text entry options with keystroke dynamics,"
+  return here to continue building the  test program. Alternatively, you may skip to the
+  <a href="#download">Download</a> area  and grab the new practice_xevKeyDyn.pl program.</p>
+            <p><a name="N100D2"><span class="smalltitle">Review of the xevKeyDyn.pl program</span></a></p>
+            <p>Recall that the xevKeyDyn.pl program is designed to measure various keystroke related
+  events and their timings.   The modifications below focus on measuring just the
+  key-release timings, as well as  providing  a useful interface for practicing keystrokes.</p>
+            <p><a name="N100DB"><span class="smalltitle">Modifications to detect release timings only</span></a></p>
+            <p>Starting at line 25, make the changes shown in Listing 1.</p>
+            <br /><a name="listing1"><b>Listing 1. xevKeyDyn.pl main logic modifications</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+## remove lines:
+  printPassword( \@keysOne );
+
+  readPassword( \@keysTwo, "Confirm the");
+  printPassword( \@keysTwo );
+
+  my $catch = &lt;STDIN&gt;  #initial password catch
+     $catch = &lt;STDIN&gt;  #confirmation password catch
+
+  next unless( charactersMatch() );
+  next unless( totalTimeOK() );
+  next unless( hasNonPrintable() );
+  next unless( individualKeyTimingsOK() );
+
+  $passwordOK = 1;
+
+## insert line:
+  printCharacteristics();
+</pre></td></tr></table><br />
+            <p>Fill out the <code>printCharacteristics</code> subroutine called in the main loop by inserting the
+  code in Listing 2  starting at line 31.</p>
+            <br /><a name="listing2"><b>Listing 2. <code>printCharacteristics</code> subroutine </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub printCharacteristics
+{
+  my $count = 0;
+  my $sig1 = "";
+
+  while( $count &lt; ($#keysOne) )
+  {
+    my( $time1, undef, undef) = split " ", $keysOne[$count];
+    my( $time2, undef, undef) = split " ", $keysOne[$count+1];
+    my $timeDiff_0 = $time2 - $time1;
+
+    $sig1 .= substr( $timeDiff_0, 0, length($timeDiff_0)-1) . " ";
+    $count++;
+  }
+
+  $sig1 = substr($sig1,0,length($sig1)-1);
+
+  map { print "", (split " ", $_)[1]; } @keysOne;
+
+  my $val =`echo "$sig1" | mkpasswd -H md5 --stdin`;
+  print " ", substr($val,0,11) , " ";
+  print substr($val,11);
+  print "\n";
+  print "$sig1\n";
+
+}#printCharacteristics
+</pre></td></tr></table><br />
+            <p>Shown here in <code>printCharacteristics</code> (as well as below in the
+  GDM modifications), is the removal of  the least significant portion of the intra-key
+  release timings. When measuring  intra-key release times, most often in the hundreds of
+  milliseconds, it  is highly unlikely to match the precise millisecond of the key
+  release. To compensate for this, the  least-significant digit is removed from the end of
+  a time difference resulting  in a useful, but less specific data point. For example, if
+  the time between "n" and "a" character is  235 milliseconds, the recorded value will be
+  "23." Later processing will make use of this relative imprecision to make more accurate matches.</p>
+            <p>Ensure that only key releases are recorded by making the changes shown in Listing 3.</p>
+            <br /><a name="listing3"><b>Listing 3. Read key releases only</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#change line:
+if( $inLine =~ /KeyPress event/ || $inLine =~ /KeyRelease event/ )
+#to:
+if(  $inLine =~ /KeyRelease event/ )
+</pre></td></tr></table><br />
+            <p>Finally, make a small change that seems required based on certain keyboard
+  configurations, as shown below.</p>
+            <br /><a name="listing4"><b>Listing 4. Catch-time display variability</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#change lines:
+      # get the time entry
+      my $currTime = &lt;XEV&gt;
+
+#to:
+      # get the time entry
+      my $currTime = &lt;XEV&gt;
+      # certain configurations require this additional read
+      $currTime = &lt;XEV&gt;  if( $currTime !~ /time / );
+</pre></td></tr></table><br />
+            <p>Save your changes to practice_xevKeyDyn.pl and read on for usage instructions on how to
+  build and practice  your keystroke-dynamics "signature."</p>
+            <p><a name="N10127"><span class="smalltitle">Printing measurements to practice timings</span></a></p>
+
+            <p>As described in "Expand your text entry options with keystroke dynamics" (see <a href="#resources">Resources</a>),  use <i>xwininfo</i> to get the window ID of your local
+  terminal and run <code> perl practice_xevKeyDyn.pl &lt;windowId&gt;</code>
+  Enter the user name you want to create a keystroke-dynamics signature for and press
+  <b>Enter</b> twice to display the built cryptographic hash and key-release intervals.
+  Listing 5 shows an example output  of the practice_xevKeyDyn.pl program. </p>
+            <br /><a name="listing5"><b>Listing 5. Example practice_xevKeyDyn.pl output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+Enter a password:
+nathan
+
+nathan $1$Ag51/gt5 $WBcCKPxP5xnbDu2S5BbNt.
+
+24 26 13 23 11
+Enter a password:
+nathan
+
+nathan $1$gva6aFYD $oZhayCi3AdVXsuyQ0uBFg0
+
+26 26 11 22 11
+Enter a password:
+</pre></td></tr></table><br />
+            <p>For testing purposes, try to create an even, easily repeatable timing pattern, such as
+  two-tenths of a second between  each key release. Note how there are always (total
+  characters -1) numbers printed  as  the  release between the final key and <b>Enter</b> are not recorded.</p>
+            <p><a name="N1014E"><span class="smalltitle">Creating a /etc/shadow.dynamics file</span></a></p>
+
+            <p>Once you have developed a key-release interval setup that you have practiced
+  repeatedly, it's time to create a  repository for the GDM modification to read.  Copy
+  the cryptographic hash representing  your preferred timings, such as <code>nathan $1$gva6aFYD $oZhayCi3AdVXsuyQ0uBFg0</code> and insert it as a new
+  line into the  /etc/shadow.dynamics file.  Change the permissions on the
+  /etc/shadow.dynamics file with the command <code>chmod o-r
+  /etc/shadow.dynamics</code> and modify the  owner so the GDM program can read it with the
+  command  <code>chown gdm /etc/shadow.dynamics</code>.  Repeat the
+  insertion process for every user you  want to enable keystroke-dynamics verification
+  for, but remember that this  process is not a well-tested and robust solution.  It's
+  possible there are many security  vulnerabilities in the code and storage mechanisms
+  presented here, so take care  when deploying this outside your personal machine.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10163"><span class="atitle">Modifying GDM to support keystroke dynamics</span></a></p>
+            <p><a name="N1016A"><span class="smalltitle">Setup read and processing of keystroke dynamics and current release timings</span></a></p>
+            <p>With an established keystroke-dynamics signature in place, it's time to start modifying
+  the GDM source to permit logins  only when the keystroke-dynamics criteria have been
+  met. Unpack the gdm-2.20.0 source  and add the following library definition and variable
+  declarations in gui/gdmlogin.c at line 66.</p>
+            <br /><a name="listing6"><b>Listing 6. gdmlogin.c variables, data structures</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#include &lt;crypt.h&gt;
+int g_in_username_mode = 1;  // check only username dynamics
+int g_dynamics_loaded = 0;   // loaded /etc/shadow.dynamics file ok
+int g_name_index = -1;       // current username index in /etc/shadow.dynamics
+int g_matched_dynamics = 0;  // username dyanmics match the stored dynamics
+
+guint32 g_release_time[500]; // maximum five hundred key release events
+int g_release_count = 0;     // total number of key release events
+int g_sig[500];              // maximum five hundred intra key timings
+int g_range = 2;             // search range for dynamics match
+int g_user_count = 0;        // current number of users in /etc/shadow.dynamics
+
+struct g_user
+{
+  char username[50];
+  char salt[50];
+  char password[50];
+  char salty_password[50];
+};
+
+struct g_user g_user_dynamics[500];  // maximum five hundred users
+</pre></td></tr></table><br />
+            <p>As the GDM code says, "It's hard to be event controlled while maintaining state," so we
+  add our own state-monitoring variables and data structures to process the
+  keystroke-dynamics functions.  Next, add  these function definitions at line 209.</p>
+            <br /><a name="listing7"><b>Listing 7. gdmlogin.c function declarations</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void load_shadow_dynamics(void);
+char * check_dynamics( char *, int);
+</pre></td></tr></table><br />
+            <p>After the data structures, state variables, and function definitions are in place, add
+  the <i>load_shadow_dynamics</i> function at line  3163.</p>
+            <br /><a name="listing8"><b>Listing 8. load_shadow_dynamics function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+void load_shadow_dynamics(void)
+{
+  FILE *fp;
+  struct stat f_status;
+  int retcode;
+  char *shadow_file;
+  shadow_file = "/etc/shadow.dynamics";
+
+  fp = NULL;
+  VE_IGNORE_EINTR (retcode = g_lstat (shadow_file, &amp;f_status));
+
+  // make sure it's a 'normal' file     
+  if (retcode == 0) 
+  {
+    if (S_ISREG (f_status.st_mode)) 
+    {
+      g_dynamics_loaded = 1;
+      VE_IGNORE_EINTR (fp = fopen (shadow_file, "r"));
+    }           
+  }
+
+  if( fp != NULL )
+  {
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t  read;
+    while((read = getline(&amp;line, &amp;len, fp)) != -1 )
+    {
+      char username[50] = "";
+      char salt[50] = "";
+      char password[50] = "";
+
+      if( sscanf( line, "%s %s %s", username, salt, password) == 3 )
+      {
+        sprintf(g_user_dynamics[g_user_count].username, "%s", username);
+        sprintf(g_user_dynamics[g_user_count].salt, "%s", salt);
+        sprintf(g_user_dynamics[g_user_count].password, "%s", password);
+        sprintf(g_user_dynamics[g_user_count].salty_password,
+          "%s%s", salt, password);
+        g_user_count++;
+      }else
+      {
+        g_dynamics_loaded = 0;
+      }//if incorrect dynamics file
+    }//while line in
+  }//if file pointer is not null
+
+  VE_IGNORE_EINTR (fclose (fp));
+
+}//load_shadow_dynamics
+</pre></td></tr></table><br />
+            <p>The first part of <code>load_shadow_dynamics</code> sets up the file read
+  variables and does sanity checks  on the file's readability. Recall that the format of
+  the /etc/shadow.dynamics file is  "username salt password," which the <code>while</code> loop reads
+  each line of the file  into the <i>g_user_dynamics</i> data structure.</p>
+            <p>Now enable some user feedback based on the loading of the shadow dynamics file at line
+  1379.</p>
+            <br /><a name="listing9"><b>Listing 9. User-name area dynamics feedback</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+// change:
+        gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _("_Username:"));
+// to:
+        if( g_dynamics_loaded == 0 )
+          gtk_label_set_text_with_mnemonic (GTK_LABEL (label), 
+            _("_Username: (dynamics misconfigured)"));
+        else
+          gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _("_Username:"));
+
+        g_release_count = 0;
+        g_in_username_mode = 1;
+</pre></td></tr></table><br />
+            <p>Do a similar feedback addition at line 1414.</p>
+            <br /><a name="listing10"><b>Listing 10. Password-area dynamics feedback</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+// change:
+            gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _("_Password:"));
+// to:
+         if( g_dynamics_loaded == 0 )
+           gtk_label_set_text_with_mnemonic (GTK_LABEL (label), 
+             _("_Password: (dynamics misconfigured)"));
+         else
+           gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _("_Password:"));
+
+         g_in_username_mode = 0;
+</pre></td></tr></table><br />
+            <p>Call the load of the dynamics file by inserting the following at line 3239.</p>
+            <br /><a name="listing11"><b>Listing 11. Call load_shadow_dynamics</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+load_shadow_dynamics();
+</pre></td></tr></table><br />
+            <p>Finally, set up the recording of each key-release event by adding the following lines
+  at line 2135.</p>
+            <br /><a name="listing12"><b>Listing 12. Record key-release times</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+        if( g_in_username_mode == 1 )
+        {
+          g_release_time[g_release_count] =  event-&gt;time;
+          g_release_count++;
+        }
+</pre></td></tr></table><br />
+            <p><a name="N101DC"><span class="smalltitle">Processing and matching keystroke dynamics in GDM</span></a></p>
+            <p>So far, the program has read the keystroke "signatures" from /etc/shadow.dynamics and
+  placed every key-release time in the appropriate data structure. The next two code
+  listings will process the current key-release times and look for a match with the
+  existing signatures. To begin, add the code in Listing 13 at line 889. </p>
+            <br /><a name="listing13"><b>Listing 13. Main logic-flow dynamics check setup</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+        g_matched_dynamics = 0;
+        if( g_in_username_mode == 1 )
+        {
+          int i =0;
+          g_name_index = -1;
+          for( i=0; i&lt; g_user_count; i++ )
+          {
+            if( strcmp( g_user_dynamics[i].username,
+                          gtk_entry_get_text(GTK_ENTRY(entry)) ) == 0  )
+            {
+              g_name_index = i;
+              i = g_user_count; // to exit the loop
+            }
+          }//for each username read from file
+
+          // require at least two key presses to measure
+          if( g_name_index != -1 &amp;&amp; g_release_count &gt;= 2 )
+          {
+            i=0;
+            for( i=0; i&lt; g_release_count-1; i++ )
+            {
+              char sig_num[50] = "";
+              sprintf( sig_num, "%u", abs(g_release_time[i] - g_release_time[i+1]) );
+
+              char clip_str[50] = "";
+              strncat( clip_str, sig_num, strlen(sig_num)-1 );
+              g_sig[i] = atoi( clip_str );
+            }//for each i
+
+            check_dynamics("", 0);
+          }
+
+          if( g_matched_dynamics != 1 )
+          {
+            // name not found, set username to garbage value to ensure no-login
+            // this way you can't defeat keystroke dynamics checks by removing an
+            // entry from the /etc/shadow.dynamics file
+            //  -comment this line out if you want to enable non-dynamics protected
+            //  logins
+            gtk_entry_set_text (GTK_ENTRY (entry), " ");
+          }
+
+        }// if in username mode
+</pre></td></tr></table><br />
+
+            <p>When the user clicks <b>OK</b> or presses <b>Enter</b> to move from user name to
+  password entry, the logic block shown above  is executed. The first <code>for</code> loop looks for the current user name in the list of loaded user
+  names from /etc/shadow.dynamics.  If a matching user name was found, the next <code>for</code> loop discards the least-significant portion of the timing
+  interval between keystrokes and builds a  new array <i>g_sig</i> with the timing values.
+  Once the current timing signature  has been created, the <i>check_dynamics</i> function
+  is called to walk through all the possible combinations of the signature that are within
+  the <code>g_range</code> distance from the current signature. At line 875,
+  insert the code shown  in Listing 14 to build the <code>check_dynamics</code> function.</p>
+            <br /><a name="listing14"><b>Listing 14. <code>check_dynamics</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+char * check_dynamics( char * in_string, int level )
+{       
+  int start = g_sig[level] - g_range;
+  int stop  = g_sig[level] + g_range;
+  int curr  = start;
+         
+  // eliminate the g_matched_dynamics != 1 check to enforce consistent 
+  // processing time regardless of when the match is found.  In theory, this 
+  // will reduce the ability to perceive a dynamics match due to processing 
+  // time - which becomes much more effective for longer usernames or greater
+  // g_range values
+
+  while( curr &lt;= stop &amp;&amp; g_matched_dynamics != 1 )
+  {
+    if( level == (g_release_count-2) )
+    {
+      // if deepest level, perform match check
+      char current_timing[500];
+      char current_salt[50];
+
+      sprintf( current_timing, "%s %d", in_string, curr);
+      sprintf( current_salt, "%s", g_user_dynamics[g_name_index].salt);
+      char * crypt_pass = crypt( current_timing, current_salt);
+
+      if( strcmp(crypt_pass, g_user_dynamics[g_name_index].salty_password) == 0)
+        g_matched_dynamics = 1;
+
+    }else
+    {
+      // append to the current 'signature', go to next level
+      char test_pass[500] = "";
+      if( strlen(in_string) != 0 )
+        sprintf(test_pass,"%s %d", in_string, curr);
+      else
+        sprintf(test_pass,"%d", curr);
+
+      check_dynamics( test_pass, level+1);
+    }//if at maximum level
+    
+    curr++;
+
+  }//while current &lt; stop
+
+  return("");
+
+}//check_dynamics
+</pre></td></tr></table><br />
+            <p>The <code>check_dynamics</code> function recursively calls itself while
+  building signatures encompassing the full  range of possibilities defined by the <code>g_range</code> parameter. Each <code>in_string</code> variable
+  is built level by  level from a single intra-key release time all the way up to a
+  key-release time for each recorded letter in the user name. For example, if you enter
+  keys that have corresponding release times  of "20 20 20 20 20," the <code>check_dynamics</code> function will work through the necessary permutations
+  to check  "18 18 18 18 18," "22 22 22 22 22," and everything in between. </p>
+
+            <p>After reading the large comment block, note that loose matching (with a high <code>g_range</code> value) or long user names will drastically increase the
+  amount of time  required to check all possibilities. An attacker can potentially exploit
+  this extended processing attribute  by looking for relatively short processing times. If
+  the overall time is measurably  shorter than most other measured times, the attacker can
+  be reasonably assured  they have entered the release times correctly. Removing the <code>g_matched_dynamics != 1</code>  check will disable this capability at the
+  expense of continued processing, even  when a match has been found.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1023A"><span class="atitle">Building and using the code</span></a></p>
+
+            <p>As mentioned, the gdm-2.20.0 code will not compile directly from the archive. 
+  Run <code>./configure</code> followed by <code>make</code>
+  and you should see an  error message like that shown below.</p>
+            <br /><a name="listing15"><b>Listing 15. Example GDM build errors</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+    make  all-recursive
+    make[1]: Entering directory `/home/nathan/gdm-2.20.3'
+    Making all in po
+    make[2]: Entering directory `/home/nathan/gdm-2.20.3/po'
+    file=`echo af | sed 's,.*/,,'`.gmo \
+              &amp;&amp; rm -f $file  &amp;&amp;  -o $file af.po
+    /bin/sh: -o: not found
+    make[2]: *** [af.gmo] Error 127
+    make[2]: Leaving directory `/home/nathan/gdm-2.20.3/po'
+    make[1]: *** [all-recursive] Error 1
+    make[1]: Leaving directory `/home/nathan/gdm-2.20.3'
+    make: *** [all] Error 2
+</pre></td></tr></table><br />
+            <p>To eliminate this problem, you'll need to make the changes described in Listing 16 at
+  line 331 in gdm-2.20.0/Makefile.</p>
+            <br /><a name="listing16"><b>Listing 16. GDM Makefile modifications</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+# change:
+SUBDIRS = \
+  po      \
+  config      \
+# to:
+SUBDIRS = \
+  config      \
+</pre></td></tr></table><br />
+
+            <p>This change removes support for GDM in multiple languages, but English is still
+  supported.  If you've made  it this far, chances are good you'll be able to understand
+  the GDM greeter without support  in your natural language, so make the final build
+  process change and insert  <code>$(EXTRA_DAEMON_LIBS)  \</code> at line
+  555 to enable  <i>crypt.h</i> support when building <i>gdmlogin.c</i>.</p>
+            <p>Run another <code>make</code> followed by <code>make
+install</code>, and  you will have a newly built version of GDM installed in
+  /usr/local/sbin/. To test your installation  on Ubuntu V7.10, enter <code>runlevel 1</code> and start GDM as root, preferably with the <code>-nodaemon</code> option. Keep in  mind that as you enter your user name
+  according to your (hopefully  well-practiced) timings, it make take a few tries to enter
+  your user name with enough precision to match the expected values.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10283"><span class="atitle">Conclusion and further examples</span></a></p>
+            <p>GDM has now been modified to support intra-key timings for release-events only. Go
+  ahead and tell your password  to a friend. They still won't be able to log in using GDM
+  without knowing the precise method of  typing required when entering your user name. Use
+  the architecture described here  and in the "Expand your text entry options with
+  keystroke dynamics" article to add  total user-name entry checks, nonprintable character
+  requirements, or other keystroke-related features to further enhance GDM keystroke-dynamics support.</p>
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N1028F"><b>Share this...</b></a><br />
+                <p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-identify/">
+                                    <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-identify/">Digg
+this story</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">
+                                    <img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+                                    <img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/>
+                                </a>
+                                
+                                
+                            </td><td>
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr></table>
+                </p>
+            </td></tr></table></td></tr></table>
+            
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-identify_gdmDynamics_0.1.zip</td><td nowrap="nowrap">27KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=294976&amp;filename=os-identify_gdmDynamics_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>Learn about the <a href="http://www.gnome.org/projects/gdm/">GNOME Display Manager</a> at <a href="http://www.gnome.org/">Gnome.org</a>.<br /><br /></li><li>
+  This article builds on the developerWorks article "<a href="http://www.ibm.com/developerworks/opensource/library/os-keystroke/" onmouseover="linkQueryAppend(this)">Expand  your text entry options with keystroke dynamics</a>."<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  Download GDM V2.20.0's source code from <a href="http://ftp.gnome.org/pub/gnome/sources/gdm/2.20/?C=S;O=A">Gnome.org</a>,  <a href="http://ftp.se.debian.org/pub/gnome/sources/gdm/2.20/">Debian.org</a>,  or <a href="http://www.gtlib.gatech.edu/pub/gnome/sources/gdm/2.20/">Georgia  Tech</a>.<br /><br /></li><li>
+  A major distribution like Ubuntu provides excellent package management for developing a
+  build environment and installing  prerequisites necessary to compile GDM. <a href="http://www.ubuntu.com/getubuntu/download">Download  Ubuntu</a> to get started with this Linux distribution.<br /><br /></li><li>
+  For easy testing, <a href="http://xorg.freedesktop.org/releases/development/X11R6.8.2rc/xorg-x11-6.8.1.902.tar.gz">download
+ xev</a>, an X  Window System package.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Identify and verify users based on how they type" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="294976" name="ArticleID" type="hidden"/><input value="03182008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.9.xsl--></body></html>

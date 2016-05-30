@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Create your own real-time visual effects</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use EffecTV and Simple DirectMedia Layer (SDL) to create your own real-time visual effects on live video. Learn how to integrate geometric primitives, bitmap image loading, and simple motion tracking to create your own games, leading-edge user interfaces, or immersive environments. Explore the EffecTV and SDL architectures, and learn how to harness the power of open source video processing on Linux." /><meta name="Description" content="Use EffecTV and Simple DirectMedia Layer (SDL) to create your own real-time visual effects on live video. Learn how to integrate geometric primitives, bitmap image loading, and simple motion tracking to create your own games, leading-edge user interfaces, or immersive environments. Explore the EffecTV and SDL architectures, and learn how to harness the power of open source video processing on Linux.f
+      " /><meta name="Keywords" content="visual effects, effectv, sdl, linux, open source, Nathan Harrington, video, tttosca, tttlca" /><meta name="DC.Date" scheme="iso8601" content="2006-01-17" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2006 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2006-01-17" /><meta name="Last update" content="16012006krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use EffecTV and Simple DirectMedia Layer (SDL) to create your own real-time visual effects on live video. Learn how to integrate geometric primitives, bitmap image loading, and simple motion tracking to create your own games, leading-edge user interfaces, or immersive environments. Explore the EffecTV and SDL architectures, and learn how to harness the power of open source video processing on Linux."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-viseffects">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 101607 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10059" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1008B" class="left-nav-child">Installation</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100C4" class="left-nav-child">Creation of a simple effect</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10187" class="left-nav-child">Motion tracking</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1022E" class="left-nav-child">Interactive logic development</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1024D" class="left-nav-child">Rainbows</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N102CD" class="left-nav-child">Butterflies</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N103A1" class="left-nav-child">Conclusion</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/linux/library.jsp">Linux technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct"> | </span><a href="http://www.ibm.com/developerworks/linux/" class="bctl">Linux</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Create your own real-time visual effects</h1><p id="subtitle"><em>Integrate geometric primitives and images into video with EffecTV and SDL</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Create your own real-time visual effects">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 17 Jan  2006</p><blockquote>Use EffecTV and Simple DirectMedia Layer (SDL) to create your own real-time visual effects on live video. Learn how to integrate geometric primitives, bitmap image loading, and simple motion tracking to create your own games, leading-edge user interfaces, or immersive environments. Explore the EffecTV and SDL architectures, and learn how to harness the power of open source video processing on Linux&#174;.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Real-time video effects processing is becoming more common throughout major sporting events. NASCAR, the NFL, professional hockey, and other sports apply real-time video effects, such as the colored first-down line in football, based on precise geospatial data. Advanced user interfaces and immersive environments employ specialized input hardware to specify coordinates in a 3-D world with six degrees of freedom. These technologies all require investment in expensive hardware and custom data acquisition packages. You can build your own system for real-time video effects processing based on simple motion tracking and existing open source software.</p>
+
+<p>EffecTV is a fantastic application written by Fukuchi Kentaro that gives you access to the raw pixel data from a video capture device. You can use its existing open source framework to modify more than two dozen effects, or add your own. With the integration of the SDL libraries, the EffecTV framework makes it easy to add your own effects with more abstracted interfaces, making them easier to create and integrate with existing code.</p>
+
+<p>This article will cover the installation and setup of EffecTV, the integration with a geometrical primitives API, and the application of a simple motion-tracking algorithm on a computer running Fedora Core V3. You can use your own distribution of Linux, as the software components are not specific to Fedora distributions. When you complete the installation, you can use these basic concepts and architecture descriptions to build your own immersive environments, games, or next-generation computing interfaces.</p>
+
+<p><a name="N10059"><span class="atitle">Requirements</span></a></p>
+<p><a name="N1005F"><span class="smalltitle">Hardware</span></a></p>
+
+<p>Aside from a monitor, you need three pieces of hardware to use EffecTV:</p>
+
+<ol>
+<li>The first requirement is a speedy main processor. The code in this article was developed and run on a 500-MHz Intel&#174; Pentium&#174; III, which is acceptable for full-motion video in a 320x240-pixel window. Running the same code on a 2-GHz (or faster) Pentium 4 produces full-motion video at 800x600. The lesson here: Faster CPUs yield better results.</li>
+
+<li>The video capture card is the second vital piece needed for real-time video processing. Hauppauge WinTV cards provide excellent performance for the price and have great support in the Linux community. I used a WinTV-GO PCI model that I picked up for about $80 at the local electronics store. This is the least expensive capture card from Hauppauge, and hits the sweet spot between price and performance for this application. You can find more expensive capture cards and cards that won't work at all with Linux. What is needed at a bare minimum to make sure your card works is a Brooktree/Conexant Bt8x8 series chipset in the video capture card. See <a href="#resources">Resources</a> to find a capture card that will work with your computer.</li>
+
+<li>The final piece of the puzzle is a camera. I used a consumer-grade camcorder that sent its output to the video capture card using a composite (standard) video cable. You <i>can</i> use a USB cam, but it will almost certainly not provide usable results. In my experience, the full-motion video from a USB cam is blurry at best. However, no matter which camera you have, if the video4linux drivers can read from it, it will almost certainly work for EffecTV, and for the purposes of this article.</li>
+</ol>
+
+<p><a name="N1007F"><span class="smalltitle">Software</span></a></p>
+
+<p>Your kernel must include the video4linux modules. Any V2.6-level kernel will include these modules by default, including the newer Fedora distributions (Core V2 and higher). If you are using an older kernel, you have to install the video4linux software before your video capture will work. You will also need to have the SDL runtime and development libraries installed. Netwide Assembler (NASM) support (an assembly language compiler) is also required for EffecTV to process its included effects correctly.</p>
+
+<p>Fear not: No assembly programming is required to understand this article.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1008B"><span class="atitle">Installation</span></a></p>
+
+<p>To begin the process of EffecTV installation, complete the steps below. The locations of each component are listed in <a href="#resources">Resources</a>.</p>
+
+<ol>
+<li>Install NASM. For Fedora Core V3, you may find it at fc3/disc2/Fedora/RPMS/nasm-0.98.38-3.i386.rpm.</li>
+<li>Download and untar EffecTV V3.10 from SourceForge.</li>
+<li>Enter the effectv-3.10 directory and type <code>make</code>.</li>
+<li>Plug in your camera.</li>
+</ol>
+
+<p>If you have installed all of your software prerequisites, the make should proceed without error. Now you are ready to see the amazing things EffecTV can do. In the current directory, type <code>./effectv -channel 1</code> and press the up arrow key to cycle through the effects. <code>-channel 1</code> in this context tells your video capture card to read from line in. Your options may vary depending on your hardware.</p>
+
+<p>Once you have EffecTV up and running, let's add the last package we need. SDL_gfxPrimitives from Andreas Schiffler is an excellent API for drawing alpha-blended circles and lines (among other things). We will use this code to abstract away the physical drawing of lines, circles, and bitmaps. The included EffecTV effects manipulate the pixels directly, but we will use existing code and a modular approach to reuse what others have done.</p>
+
+<ol start="5">
+<li>Download and install SDL_gfx and SDL_gfx-devel RPMS from ferzkopp.net (see <a href="#resources">Resources</a>).</li>
+</ol>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100C4"><span class="atitle">Creation of a simple effect</span></a></p>
+<p><a name="N100CA"><span class="smalltitle">Architecture modification</span></a></p>
+
+<p>Our approach of reusing existing code, instead of taking on the challenge of direct pixel modification, will require a substantial change to the EffecTV architecture. We will eliminate all but one effect from the program and move the modification of the pixels displayed to the user into the screen.c file.</p>
+
+<p>Begin by modifying the program to compile only the component we need. In this case, we will use the existing default effect that doesn't do anything (yet), which is called dumbTV.</p>
+
+<ol start="1">
+<li>In <code>main.c</code>, edit the <code>effectRegisterFunc</code> function and remove all the <code>*Register</code> lines except <code>dumbRegister</code>.</li>
+<li>In <code>effects/Makefile</code>, edit <code>EFFECTS = &lt;effect names &gt;</code> to be just <code>EFFECTS = $(DUMB)</code>.</li>
+<li>In <code>effects/Makefile</code>, remove all the object definition entries except <code>DUMB = dumb.o</code>.</li>
+<li>In effects/effects.h, remove all the entries except: <code>extern effectRegisterFunc dumbRegister</code>.</li>
+</ol>
+
+<p><a name="N1010E"><span class="smalltitle">Blue circle effect</span></a></p>
+
+<p>For our first simple effect, we will draw an alpha-blended (semitransparent) circle at a fixed position over the video stream. The first step is to add the drawing functions to the <code>screen.c</code> file:</p>
+
+<ol start="1">
+<li>In <code>screen.c</code>, add <code>'#include "SDL_gfxPrimitives.h"'</code> to the definitions.</li>
+<li>Append the following function to the bottom of <code>screen.c</code>:</li></ol>
+<br /><a name="N10134"><b>Listing 1. Append to screen.c</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    /* add a blue circle using primitives */
+    void screen_draw_blue_circle( int x, int y ){
+      // screen is the SDL surface that will be rendered with a SDL_Flip operation
+      filledCircleRGBA(screen, x, y, 30, 100,155,255, 150);
+    }// screen_draw_circle
+</pre></td></tr></table><br />
+<ol start="3">
+<li>In screen.h, add the function definition:</li></ol>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    void screen_draw_blue_circle( int x, int y );
+    </pre></td></tr></table><br />
+
+<p>Modify the <code>Makefile</code> to properly compile our included GFX Primitives.</p>
+
+<ol start="4"><li>In <code>Makefile</code>, change:</li></ol>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  LIBS = v4lutils/libv4lutils.a -lm `sdl-config --libs` $(LIBS.extra)   
+</pre></td></tr></table><br />
+  to:
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+  LIBS = v4lutils/libv4lutils.a -lm `sdl-config --libs` \
+  $(LIBS.extra) -L/usr/lib -lSDL -lpthread -lSDL_gfx -lSDL_image
+</pre></td></tr></table><br />
+
+<p>Add the code to draw a blue circle on the image at position 50x, 50y. Adding this in the <code>main.c</code> file will allow for easier changing of the location of the circle.</p>
+
+<p>In <code>main.c</code>, in the <code>StartTV</code> function, add <code>screen_draw_blue_circle( 50, 50 );</code> just above <code>screen_update();</code>.</p>
+
+<p>Type <code>make</code> and run <code>./effectv -channel 1</code>, and you will see a plain video image with an alpha-blended blue circle at position 50,50. Later, we will see how to load an image and overlay it on the video stream. This is useful for adding borders, captions, or other types of static overlays to your video.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10187"><span class="atitle">Motion tracking</span></a></p>
+
+<p>The motion-tracking algorithm implemented for this project is designed for simplicity. See <a href="#resources">Resources</a> for starting points of applied applications for facial, human form, geometric shape, or other types of advanced motion tracking and content recognition.</p> 
+
+<p>In this case, we will simply determine the coordinates of a cell of pixels closest to the top of the captured image and that changed from the previous frame. Due to various issues with digital cameras involving noise, pixels will rarely maintain their exact color value between frames. Grab a magnifying glass and train your camera on a white background to see this phenomenon. An appropriate motion threshold must be selected to ignore color changes due to electronic noise. Lower the threshold if your camera has a higher color-constancy per pixel. Raise the threshold if you are using a USB cam or are in a visually noisy environment.</p>
+
+<p>In the existing architecture we modified, the <code>dumb.c</code> draw function copies the source pixel memory area into the destination memory area. We will use this function to check every portion of the source area for motion.</p>
+ 
+<ol start="1">
+<li>In <code>effects/dumb.c</code>, add the following to the function definition section:</li></ol> 
+<br /><a name="N101AC"><b>Listing 2. Add to effects/dumb.c</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  /* for motion detection */
+  static int get_last_motion_x(void);  // return the last x location of movement
+  static int get_last_motion_y(void);  // return the last y location of movement
+
+  #define MOTION_THRESHOLD  3000000
+  int last_motion_x = 0;               // last coordinate of motion x plane
+  int last_motion_y = 0;               // last coordinate of motion y plane
+
+  // record previous frame pixels to check for motion
+  int previous[DEFAULT_VIDEO_HEIGHT][DEFAULT_VIDEO_WIDTH]; 
+
+  // process current frame of pixels
+  int motion[DEFAULT_VIDEO_HEIGHT][DEFAULT_VIDEO_WIDTH];
+
+  // process a 5x5 chunk of pixels for motion
+  // Expand the chunk size to speed up the motion processing at the cost of 
+  // placement precision of where the motion is in the frame.
+  // Decrease the chunk size for a precise measurement of where the motion was
+  // at the cost of increased processing time per frame.
+  int x_chunk = 5;  
+  int y_chunk = 5;
+</pre></td></tr></table><br />
+
+<ol start="2">
+<li>In <code>effects/dumb.c</code>, add the following functions to retrieve the motion coordinates:</li></ol>
+<br /><a name="N101C3"><b>Listing 3. Retrieve motion coordinates</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  int get_last_motion_x(){ 
+    int newx = last_motion_x;
+    last_motion_x = 0;
+    return(newx);
+  }
+  int get_last_motion_y(){
+    int newy = last_motion_y;
+    last_motion_y = 0;
+            
+    return(newy);
+  }         
+</pre></td></tr></table><br />
+
+<ol start="3">
+<li>In <code>effects/dumb.c</code>, modify the <code>dumbRegister</code> function to include the following:</li></ol>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    entry-&gt;get_last_motion_x = get_last_motion_x;
+    entry-&gt;get_last_motion_y = get_last_motion_y;
+</pre></td></tr></table><br />
+
+<ol start="4">
+<li>In <code>EffecTV.h</code>, modify the <code>_effect struct</code> to include the following:</li></ol>
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    int (*get_last_motion_x)(void);
+    int (*get_last_motion_y)(void);
+</pre></td></tr></table><br />
+  
+<p>Now add our new motion detection code by commenting out the existing draw function and adding the following code into <code>effects/dumb.c</code>:</p>
+
+<br /><a name="N101FA"><b>Listing 4. Simple motion tracking in draw</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+/* draw with highest point on screen in motion */
+static int draw(RGB32 *src, RGB32 *dest){
+
+  int highest_y = video_width;  // highest point Y value of motion
+  int highest_x = video_height; // highest point X value of motion
+  int x=0;  // loop variables
+  int y;
+  int i;
+  int temp_cell = 0;
+
+  // for each row in the frame
+  for( i=0; i &lt; video_height; i+= y_chunk ){
+
+    // for each column in the frame
+    for( x=0; x &lt; video_width; x++ ){
+
+      // create a 5x5 chunk of data that is the sum of colors for all 25 pixels
+      for( y=i; y &lt; (i+y_chunk); y++ ){
+
+        RGB32 pixel_value;                     // temporary pixel color value
+        pixel_value = *(src+x+y*video_width);  // current frame pixel
+        *(dest+x+y*video_width) = pixel_value; // update destination surface
+        temp_cell += pixel_value;              // increment cell color sum
+
+      }//for y
+
+      // if 5x5 cell has been processed
+      if( x % x_chunk == 0 ){
+
+        // compute average color value of 5x5 cell
+        temp_cell = temp_cell / (x_chunk * y_chunk);
+        motion[i][x] = temp_cell;
+
+        // if the difference between previous frame and current frame is
+        // greater than the threshold, there was motion
+        if( abs(previous[i][x] - motion[i][x]) &gt; MOTION_THRESHOLD ){
+
+          // if the motion was higher up than any previous recorded motion
+          // update the current highest portion
+          if( i &lt; highest_y ){
+            highest_y = i;
+            highest_x = x;
+          }// highest x part
+
+        }//motion detect
+
+        // set pixel in previous for the next frame, regardless if there was motion
+        previous[i][x] = motion[i][x];
+        temp_cell = 0;
+
+      }// if the chunk is ready to be processed
+
+    }// for x
+
+  }// for i
+}// end draw function with motion detection
+</pre></td></tr></table><br />
+
+<p>Now we have a motion-tracking function that is run for every frame of video that comes in. Let's retrieve the coordinates and draw a blue circle where there is motion. In <code>main.c</code>, update the <code>StartTV</code> function by replacing the <code>screen_draw_blue_circle( 50,50 )</code> function call with:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    int motion_x = currentEffect-&gt;get_last_motion_x();
+    int motion_y = currentEffect-&gt;get_last_motion_y();
+    screen_draw_blue_circle( motion_x, motion_y);
+</pre></td></tr></table><br />
+
+<p>Type <code>make</code> and run <code>./effectv -channel 1</code>, and you will see your video image with a blue circle drawn wherever the motion coordinates are. Go ahead and shake your hand. It won't fall off.</p>
+
+
+<br /><a name="fig1"><b>Figure 1. Blue dot with motion tracking</b></a><br />
+<img alt="Blue dot motion tracking" height="130" src="three_blue_small_time.jpg" width="482"/>
+<br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1022E"><span class="atitle">Interactive logic development</span></a></p>
+<p><a name="N10234"><span class="smalltitle">Current framework possibilities</span></a></p>
+
+<p>You now have a framework and a simple example that allows you to read in a frame of video, process it on the pixel level, and draw over the video as an SDL Surface. Anything you can do with an SDL Surface you can now do with your motion-tracked blue dot example. Fire up those 3-D SDL libraries, map the drawing surface onto a plane, and you can have full-motion video as an aspect of your 3-D world. Put in some special gesture recognition, and you have the beginnings of fun games like those available for PlayStation2. Track colorful objects (like marker tips) through your video interface, and integrate the open source Sphinx library from Carnegie Mellon University (see <a href="#resources">Resources</a>) to cast spells based on your marker (wand) position and the word you say. Anything you can do with SDL you can do with this framework. Read on for one example of how to create an immersive environment.</p>
+
+<p><a name="N10241"><span class="smalltitle">Why rainbows and butterflies?</span></a></p>
+
+<p>My initial ideas focused on laser beam-type duels between friends in front of the camera. I planned on taking a snapshot of the background before the players entered the field of view. Small irregular-shaped holes extracted from this background would then overlay the player's image when the opponent's laser beam struck their targets. I had planned a system of simple gestures, such as movement in quadrant 1 for shield, movement in quadrant 2 for laser beam fire, as a method of control, complete with particle effects -- pulsing laser shields and sound effects taken from previous work with SDL. I encourage you to follow similar lines of thought to make some exciting games that take advantage of the unique capabilities of a video interface.</p>
+
+<p>At the same time, I had the desire to create something "magical" for my 3-year-old daughter that was related to my work with SDL. Laser beams and holes in the torso didn't quite cut it. I decided to make an interface that would allow her to simply move in front of the camera, and she could make rainbows and butterflies surround herself.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1024D"><span class="atitle">Rainbows</span></a></p>
+
+<p>To begin, start with a detailed description of the effect:</p>
+
+<ul>
+<li>If there was motion in the current frame, add a rainbow piece between the end of previous rainbow piece and the current motion position.</li>
+<li>Rainbow pieces have a <i>lifetime</i>, so the gradually fade out to be replaced by new rainbow pieces.</li>
+</ul>
+
+<p>Once you've got a good idea of what you want to see, adding the code to the existing architecture is easy.</p>
+
+<ol start="1">
+<li>Drop in <code>rainbow.h</code> and <code>rainbow.c</code> from the files below (or download the whole package -- see <a href="#resources">Resources</a>). The contents of these files are self-explanatory, and simply serve to animate the fade-out portion of the rainbow and manage the variables to make sure new components are drawn correctly.</li>
+
+<li>Update <code>screen.c</code> with <code>#include "rainbow.h"</code>.</li>
+
+<li>Append <code>screen.c</code> with the following function:</li></ol>
+<br /><a name="draw_rainbow_listing"><b>Listing 5. Draw the rainbow</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+void screen_draw_rainbow(){
+
+  int i;
+  // for each rainbow piece, if it's on the screen, get its coordinates
+  // draw all of the bars of color, and apply the fade
+  for(i=0;i &lt; =RAINBOW_PIECES;i++){
+    int end_x = get_rainbow_end_x(i);
+    // if end_x = -200, then the bar is in unused state, and will not be drawn
+    if(   end_x != -200 ){
+      int start_x = get_rainbow_start_x(i);
+      int start_y = get_rainbow_start_y(i);
+      int end_y = get_rainbow_end_y(i);
+      int c;
+      // for each rainbow bar, 
+      for( c=0;c &lt;=RAINBOW_SIZE;c++ ){
+        int fade = get_rainbow_life(i);
+        fade = fade *4;
+        int r;
+        int g;
+        int b;
+        if( c&lt;4 ){
+          r=255; g=102; b=0;    // red
+        }else if( c &lt; 8 ){
+          r= 255; g=204; b=0;   // orange
+        }else if( c &lt; 12 ){
+          r=255; g = 255; b=0;  // yellow
+        }else if( c &lt; 16 ){
+          r=51; g=255; b=0;     // green
+        }else if( c &lt; 20 ){
+          r=0; g=0; b= 255;     // blue
+        }else{
+          r=153; g=0; b=255;    // violet
+        }
+        lineRGBA(screen, start_x, start_y+c, end_x, end_y+c, r,g,b, 50+fade);
+      }//for chunkiness
+
+    }//if not an empty draw
+  }//for each rainbow piece
+}// screen_draw_rainbow
+</pre></td></tr></table><br />
+
+<ol start="4">
+<li>In <code>main.c</code>, add <code>#include "rainbow.h"</code>.</li>
+
+<li>In <code>main.c</code>, replace:
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+screen_draw_blue_circle( motion_x, motion_y);
+screen_update();
+</pre></td></tr></table><br />
+
+with:
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+screen_draw_rainbow();
+screen_update();
+if( motion_y != 240 ){
+  add_rainbow_piece(motion_x, motion_y);
+}// if not off the screen
+animate_rainbow_pieces();
+</pre></td></tr></table><br />
+</li>
+
+<li>In <code>Makefile</code>, append <code>rainbow.o</code> to <code>COREOBJS = main.o screen.o video.o frequencies.o palette.o</code>.</li>
+</ol>
+
+<p>Type <code>make</code> and run <code>./effectv -channel 1</code>, and you will see a video image with rainbow following the motion.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N102CD"><span class="atitle">Butterflies</span></a></p>
+
+<p>To begin, start with a detailed description of the effect: Randomly have butterflies appear out of the rainbow and float up the screen.</p>
+
+<p>Again, once you've got a good idea of what you want to see, adding the code to the existing architecture is easy.</p>
+
+<ol start="1">
+<li>Drop in <code>butterfly.h</code>, <code>butterfly.c</code> and the images directory from the files below (or download the whole package -- see <a href="#resources">Resources</a>). The contents of these files are self-explanatory and simply serve to animate the "fluttering" of the butterflies (by cycling through different size versions of the same image), and moving the butterflies up the screen by decrementing their Y coordinate.</li>
+
+<li>Update <code>screen.c</code> with <code>#include "butterfly.h"</code>.</li>
+
+<li>In <code>screen.c</code>, add <code>#include sdl/sdl_image.h</code>.</li>
+
+<li>The butterflies will be drawn to the SDL surface as transparent bitmaps. I found it easiest to do this in the <code>screen.c</code> file.</li>
+
+<li>In <code>screen.c</code>, append the <code>load_butterfly_anims</code> function:</li></ol>
+<br /><a name="draw_rainbow_listing"><b>Listing 6. Draw the butterfly</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+void load_butterfly_anims(){
+
+  int i=0;
+  for( i=0;i &lt;=11;i++ ){
+    char filename[50] ;
+    sprintf(filename, "images/bf%d.png", i);
+    anims_0[i] = IMG_Load(filename);
+
+    sprintf(filename, "images/bf%d.2.png", i);
+    anims_1[i] = IMG_Load(filename);
+
+    sprintf(filename, "images/bf%d.4.png", i);
+    anims_2[i] = IMG_Load(filename);
+
+    sprintf(filename, "images/bf%d.6.png", i);
+    anims_3[i] = IMG_Load(filename);
+  }// for 12 butterfly superfly
+
+}// load_butterfly_anims
+</pre></td></tr></table><br />
+
+<ol start="6">
+<li>In <code>screen.c</code>, append the <code>draw_butterflies</code> function:</li></ol>
+<br /><a name="N1032F"><b>Listing 7. Draw butterflies</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+// draw the butterflies
+void screen_draw_butterflies(){
+  int i=0;
+  for(i=0; i &lt;=MAX_BUTTERFLIES; i++){
+ 
+    int bx = get_butterfly_x(i);
+    if( bx != -200 ){
+      int by = get_butterfly_y(i);
+      int bf = get_butterfly_frame(i);
+      screen_butterfly_animate( bx, by, i, bf );
+    }
+
+  }//for i butterflies
+}//animate_butterflies
+</pre></td></tr></table><br />
+
+<ol start="7">
+<li>In <code>screen.c</code>, append the <code>draw_butterflies</code> function:</li>
+</ol>
+<br /><a name="N10348"><b>Listing 8. Append draw_butterflies</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+void screen_butterfly_draw( int x, int y, int butterfly_number, int frame ){
+
+  // draw the appropriate bitmap for animation stage
+  SDL_Rect src, dest;
+  src.x = 0;
+  src.y = 0;
+  dest.x = x;
+  dest.y = y;
+  if( frame == 0 ){
+    src.w = anims_0[butterfly_number]-&gt;w;
+    src.h = anims_0[butterfly_number]-&gt;h;
+    dest.w = anims_0[butterfly_number]-&gt;w;
+    dest.h = anims_0[butterfly_number]-&gt;h;
+    SDL_BlitSurface(anims_0[butterfly_number], &amp;src, screen, &amp;dest);
+  }else if(  frame == 1 ){
+    src.w = anims_1[butterfly_number]-&gt;w;
+    src.h = anims_1[butterfly_number]-&gt;h;
+    dest.w = anims_1[butterfly_number]-&gt;w;
+    dest.h = anims_1[butterfly_number]-&gt;h;
+    SDL_BlitSurface(anims_1[butterfly_number], &amp;src, screen, &amp;dest);
+  }else if(  frame == 2 ){
+    src.w = anims_2[butterfly_number]-&gt;w;
+    src.h = anims_2[butterfly_number]-&gt;h;
+    dest.w = anims_2[butterfly_number]-&gt;w;
+    dest.h = anims_2[butterfly_number]-&gt;h;
+    SDL_BlitSurface(anims_2[butterfly_number], &amp;src, screen, &amp;dest);
+  }else if(  frame == 3 ){
+    src.w = anims_3[butterfly_number]-&gt;w;
+    src.h = anims_3[butterfly_number]-&gt;h;
+    dest.w = anims_3[butterfly_number]-&gt;w;
+    dest.h = anims_3[butterfly_number]-&gt;h;
+    SDL_BlitSurface(anims_3[butterfly_number], &amp;src, screen, &amp;dest);
+  }// compress animation
+}// screen_butterfly_draw
+</pre></td></tr></table><br />
+
+<ol start="8">
+<li>In <code>screen.h</code>, add the following function definitions:</li>
+</ol>
+<br /><a name="N10360"><b>Listing 9. Add to screen.h</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+void screen_draw_butterfly_bitmap( int x, int y, int butterfly_number);
+void screen_butterfly_animate( int x, int y, int butterfly_number, int frame);
+void screen_draw_butterflies(void);
+void load_butterfly_anims(void);
+</pre></td></tr></table><br />
+
+<ol start="9">
+<li>In <code>main.c</code>, add <code>butterfly.h</code> to the function definitions.</li>
+
+<li>In <code>Makefile</code>, append <code>butterfly.o</code> to <code>COREOBJS = main.o screen.o video.o frequencies.o palette.o rainbow.o</code>.</li>
+</ol>
+
+<p>Type <code>make</code> and run <code>./effectv -channel 1</code>, and you will see your video image overlaid with rainbows and butterflies following the motion on the screen.</p>
+
+
+<br /><a name="fig2"><b>Figure 2. Rainbows and butterflies with motion tracking</b></a><br />
+<img alt="Rainbows and butterflies with motion tracking" height="133" src="rainbow_three.jpg" width="508"/>
+<br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N103A1"><span class="atitle">Conclusion</span></a></p>
+<p><a name="N103A7"><span class="smalltitle">Capabilities</span></a></p>
+
+<p>With your current framework and example effects, you are on your way to creating exciting visual effects and interfaces. I encourage you to follow the UNIX&#174; way, and plug existing code and tools into the current architecture. Find the most elegant way to integrate your ideas, and you will succeed in making them a reality.</p>
+
+<p><a name="N103B2"><span class="smalltitle">Further work</span></a></p>
+
+<p>The resources below cover many example projects that cover the range of interfaces. From immersive 3-D sculpting environments to crowd interaction and simple games. You can find starting points for tracking objects in video, pattern recognition, and ideas for games. I hope you can use what you have learned in this article and from the resources below to create your own visual effects.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code for this article</th><td nowrap="nowrap">os-viseffects.zip</td><td align="right" nowrap="nowrap">278KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=101607&amp;filename=os-viseffects.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/>|<img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=101607&amp;filename=os-viseffects.zip&amp;method=dd&amp;locale=worldwide"><b>Download Director</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Discover the capabilities of <a href="http://www.libsdl.org/">Simple DirectMedia Layer (SDL)</a>, download source code, and see <a href="http://www.libsdl.org/demos.php">examples</a>, and read <a href="http://www.libsdl.org/docs.php">SDL documentation</a>.<br /><br /></li><li>
+Read about <a href="http://effectv.sourceforge.net">EffecTV</a> download the <a href="http://effectv.sourceforge.net/download.html">source</a>, and see <a href="http://effectv.sourceforge.net/gallery.html">screenshots</a> of effects.<br /><br /></li><li>
+Learn more about the <a href="http://www.ferzkopp.net/Software/SDL_gfx-2.0/">SDL GFX Primitives library</a> and more by Andreas Schiffler.<br /><br /></li><li>
+A fantastic resource for all things is <a href="http://www.exploits.org/v4l/">video on Linux</a>.<br /><br /></li><li>
+Read the article from <a href="http://arstechnica.com/">Ars Technica</a> about <a href="http://faq.arstechnica.com/link.php?i=1286">video capture</a>. It covers hardware compatibility, options, and tradeoffs between Hauppauge and no-name brands.<br /><br /></li><li>
+Read the article from <a href="http://www.linuxquestions.org/">LinuxQuestions.org</a> on <a href="http://www.linuxquestions.org/questions/showthread.php?threadid=353534">choosing a Linux-compatible video capture card</a>.<br /><br /></li><li>
+Check out some examples of <a href="http://www.monzy.org/audience/">video-related interactive audience participation projects</a>.<br /><br /></li><li>
+<a href="http://www.jarrellpair.com/">Jarrell Pair</a> covers visual effects, augmented reality, and immersive environments.<br /><br /></li><li>
+<a href="http://ydegoyon.free.fr/pidip.html">PiDiP</a> real-time video effects processing software is available for Linux distributions and Mac OS X.<br /><br /></li><li>
+<a href="http://www.gephex.org/">Gephex</a> is a modular video jockey software. <a href="http://www.gephex.org/download.php">Download</a> software for various Linux distributions.<br /><br /></li><li>
+<a href="http://www.piksel.org/Frei0r">frei0r</a> is a minimalistic plug-in API for video effects.<br /><br /></li><li>
+This Shockwave Flash real-time video processing <a href="http://www.protozoo.com/?p=179">game</a> provides an excellent example of what is possible with a USB cam.<br /><br /></li><li>
+<a href="http://www.cs.caltech.edu/~ss/sdraw/">3-D surface drawing</a> allows artists and designers to create 3-D shapes comfortably and naturally with hand motions and physical tools.<br /><br /></li><li>
+Learn more about the <a href="http://projekt.medieninformatik.de/argui/">Augmented Reality</a> user interface project.<br /><br /></li><li>
+Carnegie Mellon University is dedicated to speech technology research, development, and deployment. The <a href="http://www.speech.cs.cmu.edu/">Speech at CMU</a> Web site contains links to Sphinx and other projects.<br /><br /></li><li>Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and webcasts</a>.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Download a free trial version of <a href="http://www.ibm.com/developerworks/downloads/ws/was/?S_TACT=105AGX03&amp;S_CMP=art">WebSphere Application Server V6.0</a>.<br /><br /></li><li>
+Build your next development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX03&amp;S_CMP=art">IBM trial software</a>, available for download directly from developerWorks.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+<a href="http://www.kernelnewbies.org/">KernelNewbies.org</a> has lots of resources for people who are new to hacking the kernel: FAQ, IRC channel, mailing list, and wiki.<br /><br /></li><li>
+Get involved in the developerWorks community by participating in <a href="http://www.ibm.com/developerworks/blogs/">developerWorks blogs</a>.</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Create your own real-time visual effects" name="ArticleTitle" type="hidden"/><input value="Open source, Linux" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="101607" name="ArticleID" type="hidden"/><input value="01172006" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

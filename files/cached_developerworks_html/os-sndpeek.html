@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Identify speakers with sndpeek</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Use sndpeek and custom algorithms to match voices to a pre-recorded library. Create applications to let you know who is speaking in teleconferences, podcasts, and live media events. Build basic assistance programs to help the hearing-impaired identify speakers in a bandwidth-limited context." /><meta name="Description" content="Use sndpeek and custom algorithms to match voices to a pre-recorded library. Create applications to let you know who is speaking in teleconferences, podcasts, and live media events. Build basic assistance programs to help the hearing-impaired identify speakers in a bandwidth-limited context." /><meta name="Keywords" content="sndpeek, voiceprints, Perl, open source, Nathan Harrington, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-04-15" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-04-15" /><meta name="Last update" content="15042008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<!-- <script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script> -->
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script>
+<!-- 09/24/07 tdc:  Start testing css reference -->
+<link rel="stylesheet" type="text/css" href="http://www.ibm.com/developerworks/portal/js/css/local/tree.css" />
+<!-- 09/24/07 tdc:  End  testing css reference --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use sndpeek and custom algorithms to match voices to a pre-recorded library. Create applications to let you know who is speaking in teleconferences, podcasts, and live media events. Build basic assistance programs to help the hearing-impaired identify speakers in a bandwidth-limited context."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-sndpeek">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 300634 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10063" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1008A" class="left-nav-child">Building a library of sound files to match against</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10114" class="left-nav-child">Matching algorithm with average approximation</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101A6" class="left-nav-child">Visualization of matches</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101BA" class="left-nav-child">Usage</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101D0" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Identify speakers with sndpeek</h1><p id="subtitle"><em>Let your computer tell you who is speaking in teleconferences, podcasts, and live media events</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Identify speakers with sndpeek">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 15 Apr  2008</p><blockquote>Use sndpeek and custom algorithms to match voices to a pre-recorded library.
+  Create applications to let  you know who is speaking in teleconferences, podcasts, and
+  live media events. Build basic assistance  programs to help the hearing-impaired identify
+  speakers in a bandwidth-limited  context.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>Reliable authentication of an individual through voice-print analysis is complex and
+  difficult. However, sndpeek and some custom algorithms  can provide a voice-print
+  matching configuration of considerably  reduced complexity while retaining a great deal
+  of usefulness. This article demonstrates the  tools and code you'll need to modify
+  sndpeek to record individual voice-print files for a given speaker. Each of these files
+  are then compared to the incoming real-time audio stream to provide best-guess matches
+  and visualizations for the  current speaker.</p>
+            <p><a name="N10063"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10069"><span class="smalltitle">Hardware</span></a></p>
+            <p>You need a system with the capability of processing sound input, preferably from an
+  external microphone. The code in  this article was developed and tested on an
+  IBM&#174; ThinkPad T42p sporting an 1,800-MHz processor and 1 GB of RAM.
+  Less-powerful systems should be capable  of using of the code presented here, as sndpeek
+  is the primary resource consumer  and is an efficient program.</p>
+            <p><a name="N10075"><span class="smalltitle">Software</span></a></p>
+            <p>You need an operating system that supports sound processing and a microphone, which
+  current versions of Mac OS X,  Windows&#174;, and Linux&#174; do today. Although sound
+  configuration and troubleshooting is  beyond the scope of this article, it may be useful
+  to test this code on a Vector Linux  Live CD, which has most of the drivers and
+  components necessary for a functional setup  on a diverse range of sound hardware. Also
+  required for useful  levels of detail on the display is hardware 3-D acceleration.</p>
+            <p>The sndpeek application (see <a href="#resource">Resources</a>),
+  is designed to work on  Windows, Mac OS X, and Linux. Make sure you have a functional
+  audio environment before proceeding with  the modifications described here.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1008A"><span class="atitle">Building a library of sound files to match against</span></a></p>
+            <p><a name="N10091"><span class="smalltitle">Voice reference file requirements</span></a></p>
+            <p>To accurately match a voice requires something to compare the current sound to. You'll
+  need a long duration sample  of the person speaking to create a reliable template upon
+  which to match. The preferred  amount is 5 minutes of normal speech, including silences,
+  pauses between words, etc.</p>
+            <p>There are many attributes of normal human conversation that should be avoided, such as
+  coughs, keyboard clacking, as  well as excessive line or ambient noise. A relatively
+  noise-free environment is required because the presence of any sound outside the emitted
+  vocal expression can adversely affect the reference voice print.</p>
+            <p>From the available recorded voice materials, you'll need to use your favorite audio
+  editing program (such as Audacity) to splice together a single-voice audio file.  For
+  example, I used  both recorded conference calls and IBM developerWorks podcasts
+  as the source material for single-voice audio files used in the development of this article.</p>
+            <p>Note that you may need more or substantially less source data depending on the inherent
+  differences of the speakers to be  matched. Consider Figure 1 and the average
+  differences between a small portion of their voices. The graph was generated in real
+  time using baudline, another  excellent audio-processing tool.</p>
+            
+                <br /><a name="fig1"><b>Figure 1. Example average voice waveforms using baudline</b></a><br />
+                <img alt="Example average voice waveforms using baudline" height="379" src="figure1.jpg" width="534"/>
+            <br />
+            <br />
+            <p><a name="N100B5"><span class="smalltitle">Modifications to sndpeek</span></a></p>
+            <p>Download and extract the sndpeek source code (see <a href="#resource">Resources</a>).
+  Building an average of a  voice print's spectral components requires modifications to
+  the sndpeek.cpp file.   Begin by adding some library includes and variable declarations
+  starting at line 284.</p>
+            <br /><a name="listing1"><b>Listing 1. Library includes, variable declarations</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+// for reading *.vertex* entries in the current directory
+#include &lt;dirent.h&gt;
+
+// voice matching function prototypes
+void initialize_vertices( );
+void build_match_number( int voices_index );
+
+// for voiceprint matching
+int g_voice_spectrum[200];          // human voice useful data in 0-199 range
+int g_total_sample_size = 0;        // current size, or number of data points
+float g_loudness_threshold = -0.8;  // what is a loud enough sample
+</pre></td></tr></table><br />
+            <p>Next, add the code shown below to begin the monitoring process starting at line 1339.</p>
+            <br /><a name="listing2"><b>Listing 2. <code>display_func</code> variable declaration, sample size incrementer</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+    // simple vU meter, sample incrementer
+    int loud_total = 0;
+    g_total_sample_size++; 
+</pre></td></tr></table><br />
+
+            <p>Finish the monitoring process by adding the code shown in Listing 3 directly below the
+  <code>glVertex3f</code> function call on line 1519.  Listing 3 sets the
+  current spectrum count if only the  first waveform in the waterfall display is being
+  processed and the current data point  is from 0 to 200 as part of the overall spectrum. 
+  The most useful data points regarding  the human voice, especially when band-limited on
+  a phone line, is in the  0-200 range.</p>
+            <br /><a name="listing3"><b>Listing 3. Recording of voice spectrum data</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+                        // record spectrum of vertices for storing or analysis
+                        //  only for the most significant portion of the 
+                        //  current waveform
+                        if( i== 0 &amp;&amp; j &lt; 200 )
+                        {
+                          if( pt-&gt;y &gt; g_loudness_threshold )
+                          {
+                            g_voice_spectrum[j]++;
+                            loud_total++; 
+                          }
+                        }// if current waveform and significant position
+</pre></td></tr></table><br />
+            <p>Once the specified audio file has been read in its entirety, we'll need to print out
+  the stored spectrum information for  the created voice print. Starting at line 720,
+  change the code shown in Listing 4 to that shown in Listing  5.</p>
+            <br /><a name="listing4"><b>Listing 4. Original end of file section</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+            else
+                memset( buffer, 0, 2 * buffer_size * sizeof(SAMPLE) );
+</pre></td></tr></table><br />
+            <br /><a name="listing5"><b>Listing 5. Write vertex file and exit after WAV file processed</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+            else
+            {
+                memset( buffer, 0, 2 * buffer_size * sizeof(SAMPLE) );
+            }
+
+            fprintf( stdout, "Vertex freq. count in %s.vertex \n", g_filename);
+            FILE *out_file;
+            static char str[1024];
+            sprintf( str, "%s.vertex", g_filename);
+
+            out_file = fopen(str, "w");
+            fprintf(out_file, "%2.0d\n", g_total_sample_size);
+            fprintf(out_file, "%s\n",str);
+            for( int i = 0; i &lt; 200; i++ )
+              fprintf( out_file, "%03d  %08d\n", i, g_voice_spectrum[i]);
+            fclose(out_file);
+            exit( 0 );
+</pre></td></tr></table><br />
+            <p>After a successful build using <code>make linux-alsa</code>, you can
+  build as many vertex files as you  like with the command <code>sndpeek
+  'personVoice'.wav</code>. Each  vertex file will be created in the current directory with
+  the name  <code>'personVoice'wav.vertex</code>. You may find it useful to
+  edit the  .vertex file directly to change the speaker's name to something more legible.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10114"><span class="atitle">Matching algorithm with average approximation</span></a></p>
+            <p><a name="N1011B"><span class="smalltitle">Strategy</span></a></p>
+            <p>As you can see in Figure 1, the human voice produces a distinct average of
+  characteristic frequencies when speaking. Although  this attribute may change for
+  languages with a strong tonal component,  empirical evidence shows an English speaker's
+  sound is very similar regardless  of the words actually spoken. This fact will be used
+  by the modification shown  below to create a simple count of the number of deviations
+  between the current waveform and  all of the stored voice prints from the *.vertex files.</p>
+            <p><a name="N10125"><span class="smalltitle">Further modification of sndpeek &#8212; Matching implementation</span></a></p>
+            <p>To complete the matching, we'll need to set up some additional variables and data
+  structures. Place the contents of  Listing 6 in sndpeek.cpp, starting at line 296.</p>
+            <br /><a name="listing6"><b>Listing 6. Matching-variable declarations</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+struct g_vprint
+{ 
+  char name[50];        // voice name
+  int sample_size;      // number of data samples from vertex file
+  int freq_count[200];  // spectrum data from vertex file
+  int draw_frame[48];   // render memory
+  int match_number;     // last 3 running average
+  int average_match[3]; // last 3 data points
+} ;
+
+int g_total_voices = 0;        // number of vertex files read
+int g_maximum_voices = 5;      // max first 5 vertex files in ./
+g_vprint g_voices[5];
+int g_average_match_count = 3; // running average of match number
+int g_dev_threshold = 20;      // deviation between voiceprint and current
+
+struct g_text_characteristics
+{ 
+  float x;
+  float y;
+  float r;
+  float g;
+  float b;
+} ;
+
+static g_text_characteristics g_text_attr[5];
+</pre></td></tr></table><br />
+
+            <p>With the variables in place, loading the vertex data into the appropriate structures is
+  performed by the <code>initialize_vertices</code> function. Add the code
+  in Listing 7, starting at line 399.</p>
+            <br /><a name="listing7"><b>Listing 7. <code>initialize_vertices</code> function </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+//-----------------------------------------------------------------------------
+// Name: initialize_vertices
+// Desc: load "voiceprint" data from *.vertex
+//-----------------------------------------------------------------------------
+void initialize_vertices()
+{
+  DIR           *current_directory;
+  struct dirent *dir;
+  current_directory = opendir(".");
+  if (current_directory)
+  {
+    while ((dir = readdir(current_directory)) != NULL)
+    { 
+      if( strstr( dir-&gt;d_name, ".vertex" ) &amp;&amp; g_total_voices &lt; g_maximum_voices )
+      { 
+        FILE * in_file;
+        char * line = NULL;
+        size_t len = 0;
+        ssize_t read;
+        int line_pos = 0;
+
+        in_file = fopen( dir-&gt;d_name, "r");
+        if (in_file == NULL)
+             exit(EXIT_FAILURE);
+
+        // file format is sample size, file name, then data all on separate lines
+        while ((read = getline(&amp;line, &amp;len, in_file)) != -1)
+        { 
+          if( line_pos == 0 )
+          { 
+            g_voices[g_total_voices].sample_size = atoi(line);
+            // intialize structure variables
+            g_voices[g_total_voices].match_number = -1;
+            for( int j=0; j&lt; g_average_match_count; j++ )
+              g_voices[g_total_voices].average_match[j] = -1;
+          }else if( line_pos == 1 )
+          { 
+            sprintf( g_voices[g_total_voices].name, "%s", line );
+          }else
+          { 
+            // read numbers 0-200  frequency count
+            static char temp_str[1024] ;
+            g_voices[g_total_voices].freq_count[
+              atoi( (strncpy(temp_str, line, 4))) ] =
+                atoi( (strncpy(temp_str, line+5, 8)) );
+          }
+          line_pos++;
+        }
+
+        fclose(in_file);
+
+        g_total_voices++;
+      }// if vertex file
+    }// while files left
+
+    closedir(current_directory);
+  }// if directory exists
+
+}
+</pre></td></tr></table><br />
+            <p>The <code>initialize_vertices</code> function needs to be called in the
+  main program, so add  the function call in the main subroutine at line 597.</p>
+            <br /><a name="listing8"><b>Listing 8. Loading vertices in main program call</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+    // load vertices if not building new ones
+    if( !g_filename ) initialize_vertices();
+</pre></td></tr></table><br />
+
+            <p>Initializing the data to default values and specifying locations for the match text to
+  be rendered is shown below. Starting at line 955, inside the <code>initialize_analysis</code> function, add the code in Listing 9. </p>
+            <br /><a name="listing9"><b>Listing 9. Initialize analysis data structures,
+text-display attributes</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+    // initialize the spectrum buckets for voice, text color and position attr.
+    for( int i=0; i &lt; 200; i++ )
+      g_voice_spectrum[i]= 0;
+      
+    g_text_attr[0].x = -0.2f;
+    g_text_attr[0].y = -0.35f;
+    
+    g_text_attr[1].x = 0.8f;
+    g_text_attr[1].y = 0.35f;
+    
+    g_text_attr[2].x = 0.8f;
+    g_text_attr[2].y = -0.35f;
+    
+    g_text_attr[3].x = 0.2f;
+    g_text_attr[3].y = -0.35f;
+    
+
+    g_text_attr[0].r = 1.0f;
+    g_text_attr[0].g = 0.0f;
+    g_text_attr[0].b = 0.0f;
+    g_text_attr[1].r = 0.0f;
+    g_text_attr[1].g = 0.0f;
+    g_text_attr[1].b = 1.0f;
+    g_text_attr[2].r = 0.0f;
+    g_text_attr[2].g = 1.0f;
+    g_text_attr[2].b = 0.0f;
+    g_text_attr[3].r = 0.01f;
+    g_text_attr[3].g = 1.0f;
+    g_text_attr[3].b = 0.0f;
+</pre></td></tr></table><br />
+            <p>The <code>build_match_number</code> is the final function to add. Place the
+  contents of Listing 10 on  line 1449 under the pre-existing <code>compute_log_function</code>. The first part of <code>build_match_number</code> looks to see if the current value in the recorded
+  voice-print spectrum is  outside the accepted deviation. If it is, a variable is
+  incremented to count all deviations for  the current sample. After ensuring that at
+  least three data points are available, the  current match number is set based on an
+  average of the most  recent three recordings. For more accuracy, consider increasing the
+  number of samples required or the  number of data points to average.</p>
+            <br /><a name="listing10"><b>Listing 10. <code>build_match_number</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+//-----------------------------------------------------------------------------
+// Name: build_match_number
+// Desc: compute the current deviation and average of last 3 deviations
+//-----------------------------------------------------------------------------
+void build_match_number(int voices_index)
+{ 
+
+  int total_dev = 0;
+  int temp_match = 0;
+
+  for( int i=0; i &lt; 200; i++ )
+  {  
+    int orig =  g_voices[voices_index].freq_count[i] /
+                  (g_voices[voices_index].sample_size/100);
+    if( abs( orig - g_voice_spectrum[i]) &gt;= g_dev_threshold)
+      total_dev ++;
+
+  }// for each spectrum frequency count
+
+  // walk the average back in time
+  for( int i=2; i &gt; 0; i-- )
+  { 
+    g_voices[voices_index].average_match[i] =
+      g_voices[voices_index].average_match[i-1];
+    if( g_voices[voices_index].average_match[i] == -1 )
+      temp_match = -1;
+  }
+  g_voices[voices_index].average_match[0] = total_dev;
+
+  // if all 3 historical values have been recorded
+  if( temp_match != -1 )
+  { 
+    g_voices[voices_index].match_number =
+      (g_voices[voices_index].average_match[0] +
+        g_voices[voices_index].average_match[1] +
+        g_voices[voices_index].average_match[2]) / 3;
+  }
+  
+} 
+</pre></td></tr></table><br />
+
+            <p>Matching voice entries is nearly complete, the final step being an addition directly
+  below line 1712. Add the contents of  Listing 11 to perform the matching. Note how the
+  most recent match is determined regardless  of the render state. This is to ensure an
+  accurate rendering  back in time of the text waterfall display when sufficient match
+  data is unavailable. If a  full sample of data has been read, the current match state is
+  created using the <code>build_match_number</code> subroutine, and the voice
+  print with the best match is printed on <code>stdout</code> and set to be
+  rendered. Next, the data is  reinitialized to prepare for the next run.</p>
+            <p>If a full sample of data has not been read, only the most recent text is printed to the
+  screen. If there is enough loudness  on the line, which usually indicates someone
+  speaking, the render variable  is set. This ensures that the most recent match is
+  continuously rendered while another  sample is gathered.</p>
+            <br /><a name="listing11"><b>Listing 11. Main match processing</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+        // run the voice match if a filename is not specified
+        if( !g_filename )
+        {
+          
+          // compute most recent match
+          int lowestIndex = 0;
+          for( int vi=0; vi &lt; g_total_voices; vi++ )
+          { 
+            if( g_voices[vi].match_number &lt; g_voices[lowestIndex].match_number )
+              lowestIndex = vi;
+          }// for voice index vi
+          
+          if( g_total_sample_size == 100 )
+          { 
+            g_total_sample_size = 0;
+            for( int j =0; j &lt; g_total_voices; j++ )
+              build_match_number( j );
+            
+            // decide if first frame is renderable
+            if( g_voices[lowestIndex].match_number != -1 &amp;&amp;
+                  g_voices[lowestIndex].match_number &lt; 20 )
+            { 
+              fprintf(stdout, "%d %s", 
+                        g_voices[lowestIndex].match_number,
+                        g_voices[lowestIndex].name );
+              fflush(stdout);
+              g_voices[lowestIndex].draw_frame[0] = 1;
+            }
+            
+            // reset the current spectrum
+            for( int i=0; i &lt; 200; i++ )
+              g_voice_spectrum[i]= 0;
+          
+          }else
+          { 
+            // fill in render frame if virtual vU meter active
+            if( loud_total &gt; 50 &amp;&amp; g_voices[lowestIndex].match_number &lt; 20 )
+            { 
+              if(  g_voices[lowestIndex].match_number != -1 )
+                g_voices[lowestIndex].draw_frame[0] =1;
+            
+            }//if enough signal
+          
+          }// if sample size reached
+          
+          // move frames back in time
+          for( int vi = 0; vi &lt; g_total_voices; vi++ )
+          { 
+            for( i= (g_depth-1); i &gt; 0; i-- )
+              g_voices[vi].draw_frame[i] = g_voices[vi].draw_frame[i-1];
+            g_voices[vi].draw_frame[i] = 0;
+          
+          }//shift back in time
+        
+        }// if not a g_filename
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101A6"><span class="atitle">Visualization of matches</span></a></p>
+            <p>With matching complete and the render states updated, all that's left is to actually
+  draw the match text on the  screen. Maintaining similarity with sndpeek visualizations
+  conventions is provided by  rendering the text in its own waterfall display. Listing 12
+  shows the rendering process,  with some custom colors depending on which voice
+  prints matched. Insert the  code in Listing 12 at line 1893 in sndpeek.cpp.</p>
+            <br /><a name="listing12"><b>Listing 12. Rendering of match names</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+        // draw the renderable voice match text
+        if( !g_filename ) 
+        {       
+          for( int vi=0; vi &lt; g_total_voices; vi++ )
+          { 
+
+            for( i=0; i &lt; g_depth; i++ )
+            {
+            
+              if( g_voices[vi].draw_frame[i] == 1 )
+              {
+                fval = (g_depth -  i) / (float)(g_depth);
+                fval = fval /10;
+                sprintf( str, g_voices[vi].name );
+              
+                if( vi == 0 )
+                {
+                  glColor3f( g_text_attr[vi].r * fval,
+                              g_text_attr[vi].g, g_text_attr[vi].b );
+                }else if( vi == 1 )
+                {
+                  glColor3f( g_text_attr[vi].r, 
+                              g_text_attr[vi].g, g_text_attr[vi].b * fval);
+                }else if( vi == 2 )
+                {
+                  glColor3f( g_text_attr[vi].r, 
+                              g_text_attr[vi].g * fval , g_text_attr[vi].b);
+                }else if( vi == 3 )
+                {
+                  glColor3f( g_text_attr[vi].r,
+                              g_text_attr[vi].g * fval, g_text_attr[vi].b);
+                }
+                draw_string( g_text_attr[vi].x, g_text_attr[vi].y,
+                              -i, str, 0.5f );
+              }// draw frame check
+
+            }//for depth i
+
+          }//for voice index vi
+        }
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101BA"><span class="atitle">Usage</span></a></p>
+            <p>Test your changes with <code>make linux-alsa; sndpeek</code>. If there
+  are no errors in the build process, you should see a normal sndpeek window with the
+  usual waveform and lissjous visualizations.  One of the easiest ways to test the program
+  is by  splicing together various 10- to 30-second intervals of speech from your
+  single-speaker source files. Depending on  the size of your voice-print files, available
+  speakers, and various other factors, you may have to tweak some of the options
+  implemented in the changes  above. As various people begin speaking, you should see the
+  associated names appear as part  of the sndpeek visualizations, as well as a
+  text-percentage match printed to <code>stdout</code>.  Consult the demonstration video link in the
+  <a href="#resource">Resources</a> section for  an example of what this can look like.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101D0"><span class="atitle">Conclusion and further examples</span></a></p>
+            <p>As you can see from the demonstration video, the results are not 100-percent accurate,
+  but do provide for a  useful augmentation of identifiable speakers. With the tools and
+  modifications to sndpeek described here, you can begin to isolate specific individuals
+  from audio recordings based on  their voice prints.</p>
+            <p>Consider hooking up the real-time voice monitor to your next conference call and have a
+  better idea of who is  speaking when. Create an additional widget on your
+  Web-conferencing page to help automatically identify  speakers to new members of your
+  team. Track certain voices  in televised programs, so you know when the news anchors
+  break into your favorite  show. Move beyond Caller ID and identify who left you a
+  message, not just what number  they called from.</p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-sndpeek.voicePrint_0.1.zip</td><td nowrap="nowrap">15KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=300634&amp;filename=os-sndpeek.voicePrint_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  Princeton University hosts the <a href="http://www.cs.princeton.edu/sound/software/sndpeek/">sndpeek</a> program. <br /><br /></li><li>
+  View the demonstration video at <a href="http://www.youtube.com/watch?v=KRtBKmNUjug">YouTube.com</a> or via 
+  <a href="http://nathanharrington.info/sndpeekVoicePrint.mpeg">direct
+download</a>.<br /><br /></li><li>
+  Another project using sndpeek is the developerWorks article "<a href="http://www.ibm.com/developerworks/library/os-whistle/" onmouseover="linkQueryAppend(this)">Whistle while  you work to run commands on your computer</a>."<br /><br /></li><li>
+  Learn more about audio files with <a href="http://audacity.sourceforge.net/">Audacity</a>.<br /><br /></li><li>
+  Find out how to use <a href="http://www.baudline.com/">baudline</a> to monitor real-time audio attributes.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  Download <a href="http://www.cs.princeton.edu/sound/software/sndpeek/">sndpeek</a>, the real-time
+  audio visualization program, which is hosted by Princeton University.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Identify speakers with sndpeek" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="300634" name="ArticleID" type="hidden"/><input value="04152008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal-yes" type="radio"/>Yes</td><td><input value="No" id="goal-no" name="goal-no" type="radio"/>No</td><td><input value="Don't know" id="goal-undecided" name="goal-undecided" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="58"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="58"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="58"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="61"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="http://www.ibm.com/developerworks/jp/i/icon/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

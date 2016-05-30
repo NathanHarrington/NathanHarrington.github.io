@@ -1,0 +1,699 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Expand your text entry options with keystroke dynamics</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Measure the total time of entry and verify the time between keystrokes to help authenticate a user regardless of the data being entered. Require nonprintable characters, such as backspace and break, in the password to enable new levels of password obfuscation. Learn how to apply the open source tools xev and Perl in keystroke dynamics to measure the more-subtle characteristics of human-computer interaction." /><meta name="Description" content="Measure the total time of entry and verify the time between keystrokes to help authenticate a user regardless of the data being entered. Require nonprintable characters, such as backspace and break, in the password to enable new levels of password obfuscation. Learn how to apply the open source tools xev and Perl in keystroke dynamics to measure the more-subtle characteristics of human-computer interaction." /><meta name="Keywords" content="keystroke dynamics, keybaord, xev, password, perl, open source, Nathan Harrington, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-12-04" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-12-04" /><meta name="Last update" content="04122007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Measure the total time of entry and verify the time between keystrokes to help authenticate a user regardless of the data being entered. Require nonprintable characters, such as backspace and break, in the password to enable new levels of password obfuscation. Learn how to apply the open source tools xev and Perl in keystroke dynamics to measure the more-subtle characteristics of human-computer interaction."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-keystroke">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 272370 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10061" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10081" class="left-nav-child">Modifying and compiling xev</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100B5" class="left-nav-child">Processing keyboard events for total time of entry</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10160" class="left-nav-child">Requiring nonprintables</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10197" class="left-nav-child">Key-hold times</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101D9" class="left-nav-child">Example implementations</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101F6" class="left-nav-child">Remote access and implementation notes</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10202" class="left-nav-child">Conclusion and further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Expand your text entry options with keystroke dynamics</h1><p id="subtitle"><em>Use xev, Perl, and custom algorithms to measure characters and how they are typed</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Expand your text entry options with keystroke dynamics">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 04 Dec  2007</p><blockquote>Measure the total time of entry and verify the time between keystrokes to help
+  authenticate a user regardless of the  data being entered. Require nonprintable
+  characters, such as backspace and break, in the password to enable new levels of password
+  obfuscation.  Learn how to apply the open source tools xev and Perl in keystroke
+  dynamics to measure the more-subtle characteristics of human-computer interaction.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>The whorls and ridges on your fingertips can identify you based on what you touch.  How
+  you touch and especially type  can often be just as unique an activity.  Keystroke
+  dynamics is a relatively new field  that enables identification of individuals through
+  statistical analysis of their typing  patterns.  Many commercial products analyze the
+  dynamics of password  entry, as well as continuous typing monitoring for enhanced
+  security.  This article uses example code to demonstrate keystroke dynamics for enhancing the
+  security of your  applications in authentication and continuous data entry contexts.</p>
+            <p><a name="N10061"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10067"><span class="smalltitle">Software</span></a></p>
+
+            <p>Linux&#174; is required with a functioning X Window System setup, such as Gnome or
+  KDE. Any distribution  equipped with a graphical desktop released after 1999 should
+  provide an already-configured environment with which to get started. Effective capture
+  and processing of X Window events  is a task handled best by a program like xev &#8212; the X event viewer. Check <a href="#resources">Resources</a> to download xev. You
+  need to download the source  code for xev even if it is already installed or available
+  as a package for your distribution.  And you need Perl, which is all but ubiquitous in Linux distributions today.</p>
+            <p><a name="N10078"><span class="smalltitle">Hardware</span></a></p>
+            <p>You need hardware with sufficient RAM and CPU horsepower to display X Window System and
+  run Linux smoothly.  We need physical access to a computer with a keyboard hooked
+  directly to it. Thin clients,  Virtual Network Computing (VNC) connections, and virtualized clients will work in
+  theory, but the various layers of  processing and network overhead may cause
+  unpredictable latency, which will affect  the system's behavior.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10081"><span class="atitle">Modifying and compiling xev</span></a></p>
+            <p>The general approach used in this article to demonstrate the use of keystroke
+  dynamics is to capture all events with xev and pipe them into a Perl program custom-made
+  for password creation and confirmation. </p>
+
+            <p>To install xev from scratch, download xorg-x11-6.8.1.tar.gz and unpack it. Change to the directory
+  xc/programs/xev and type <code>xmkmf</code>.  The Imakefile file is used by
+  the xmkmf program to generate a makefile.  Build the xev program by typing <code>make</code>.   The make commands should complete without error,  but if you
+  have a problem, please consult the X.org documentation.  If you can build the xev
+  program correctly, you'll need to  make one simple change to print out the keystroke
+  events with more precise  timings.  Listing 1 shows the xev.c file with the <code>fflush(stdout);</code> statement added on line 164.</p>
+            <br /><a name="listing1"><b>Listing 1. Modified xev.c</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+...
+        printf ("    XFilterEvent returns: %s\n",
+                XFilterEvent (eventp, e-&gt;window) ? "True" : "False");
+    }
+    fflush(stdout);
+}
+
+static void
+do_KeyRelease (XEvent *eventp)
+{   
+...
+</pre></td></tr></table><br />
+            <p>Save the updated file and rerun <code>make</code> to build the new
+  version of xev. Copy xev to your current working directory for use by the password-entry
+  program. To test your xev setup, open an xterm window and type the command <code>xwininfo</code>. Click  on the current xterm window and look at the output.
+  You should see a  line similar to "xwininfo: Window id: 0x32000012
+  nathan@kinakuta:~." Grab the hex code signifying the  Window ID of your xterm and
+  run the command  <code>./xev -id 0x32000012</code>. All events within the
+  xterm window will now  be printed as they occur. Try pressing different keys or moving
+  the mouse, then press <b>Ctrl+C</b> to exit.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100B5"><span class="atitle">Processing keyboard events for total time of entry</span></a></p>
+            <p>Many software developers enter their most commonly used passwords at nearly their
+  regular typing speeds.  If someone else  is entering your password, though, chances are
+  good they will be considerably slower.  The first section of code below
+  shows how to set up a simple password entry and confirmation program that takes into
+  account the full  timing of password entry.  Other measurements show that your password
+  entry is usually done  as fast as you can type or with a steady rhythm.  Listing 2
+  introduces the xevKeyDyn.pl  program through its main logic loop.</p>
+            <br /><a name="listing2"><b>Listing 2. main xevKeyDyn.pl program logic</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w 
+# xevKeyDyn.pl  keystroke dynamics password demonstrator using xev
+use strict;
+$|=1; #to ensure timely display of non-printable equivalent strings
+
+die "specify a window id to read xev events from" if( @ARGV != 1 );
+
+my $cmd = "./xev -id $ARGV[0]";
+my $maxTimeDiff = 500;  # one half second
+my $maxKeyDiff = 100;   # one tenth second
+my $passwordOK = 0;
+
+my @keysOne = ();  # first password array of "key event time" items
+my @keysTwo = ();  # confim password array
+
+my @nonPrintable = (
+'Control_','Alt_','Shift_','Up','Left','Right','Down','BackSpace','Print',
+'_Lock','Prior','Next','Home','End','Insert','Delete','Pause','Break' );
+
+# main program loop
+
+while( $passwordOK == 0 )
+{ 
+  readPassword( \@keysOne, "Enter a");
+  printPassword( \@keysOne );
+  
+  readPassword( \@keysTwo, "Confirm the");
+  printPassword( \@keysTwo );
+  
+  my $catch = &lt;STDIN&gt;;  #initial password catch
+     $catch = &lt;STDIN&gt;;  #confirmation password catch
+
+  next unless( charactersMatch() );
+  next unless( totalTimeOK() );
+  
+  $passwordOK = 1;
+
+}#while passwordOk =0;
+</pre></td></tr></table><br />
+
+            <p>The main program logic first turns buffered output off. This will be used later during
+  the nonprintable character management.  After checking to make sure an X Window ID has
+  been specified, some  variables are set up for times between the total password entry
+  and the between key event entry.  These times are in milliseconds, which should provide
+  enough precision for  all but the most erratic typists. The <code>keysOne</code> and <code>keysTwo</code>
+  variables hold the passwords as entered,  and the <code>nonPrintable</code> array contains the most  significant portions of the
+  various nonprintable characters supported.  The program will loop continuously until a
+  valid password in character matching and  total time of entry is entered. Listing 3
+  shows the <code>readPassword</code> subroutine.</p>
+            <br /><a name="listing3"><b>Listing 3. <code>readPassword</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub readPassword
+{
+  my $arrRef = $_[0];  # looks less like line noise 
+  @{$arrRef} = ();     # clear the hash
+
+  shift;
+  print "@_ password:\n";
+
+  open( XEV, " $cmd |" ) or die "can't open xev";
+  while( my $inLine = &lt;XEV&gt; )
+  {
+    if( $inLine =~ /KeyPress event/ || $inLine =~ /KeyRelease event/ )
+    { 
+      my $keyType = substr($inLine, 0, index($inLine,","));
+
+      # get the time entry
+      my $currTime = &lt;XEV&gt;
+         $currTime = substr( $currTime, index($currTime,"time ")+5);
+         $currTime = substr( $currTime, 0, index($currTime,","));
+
+      # get the key name 
+      my $currKey = &lt;XEV&gt;
+         $currKey = substr( $currKey, index($currKey,"keysym ")+7);
+         $currKey = substr( $currKey, 0, index($currKey,"),"));
+         $currKey = substr( $currKey, index($currKey, ", ")+2);
+
+
+      # echo the non-printable key names to the screen on key release only
+      if( $keyType =~ /KeyRelease/ )
+      { 
+        map { print "&lt;$currKey&gt;" if( $currKey =~ /$_/ ) } @nonPrintable;
+      }
+
+      # continue to read if return pressed and no keys read, exit loop if return pressed
+      # after keys have been entered
+      next if( $currKey =~ /Return/ &amp;&amp; @{$arrRef} == 0 );
+      last if( $currKey =~ /Return/ &amp;&amp; @{$arrRef} != 0 );
+
+      # add the "time key type" to the array
+      push @{$arrRef}, "$currTime $currKey $keyType";
+
+    }#if a key press or release
+
+  }#while xev in
+
+  close(XEV);
+
+}#readPassword
+</pre></td></tr></table><br />
+
+            <p>As you may recall from the xev testing performed above, an individual key press or
+  key-release event causes four  or five lines to be printed by the xev program. <code>readPassword</code> listens for a key related event, then extracts the
+  individual key name (like  <b>J</b> or <b>Ctrl+L</b>). The key name, its time, and type
+  are then added  to the current password array for later processing. When the
+  <b>Enter</b> key is pressed, the subroutine  exits if at least one character has been
+  entered. Listing 4 shows the <code>printPassword</code> subroutine, which
+  is used to print out  the password keys and timings for reference.</p>
+            <br /><a name="listing4"><b>Listing 4. <code>printPassword</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub printPassword
+{
+  my $arrRef = $_[0];  
+
+  for my $keyStr ( @{$arrRef} )
+  {
+    my( $time, $key, $type ) = split " ", $keyStr;
+    print "Key: $key at $time Type: $type\n";
+  }
+
+  print "Total time: ", getTotalTime( $arrRef );
+  print "\n\n";
+  
+}#printPassword
+</pre></td></tr></table><br />
+
+            <p>With the main program code and two subroutines listed above, xevKeyDyn.pl can read and
+  print out two passwords.  To ensure that the passwords match in characters and character
+  order, we'll add  the <code>charactersMatch</code> subroutine, as shown in
+  Listing 5.</p>
+            <br /><a name="listing5"><b>Listing 5. <code>charactersMatch</code> subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub charactersMatch
+{   
+  # the hold a key and press enter check, or you type so fast you press enter
+  # before releasing your previous key
+  if( ($#keysOne+1) % 2 != 0 || ($#keysTwo+1) % 2 != 0 )
+  { 
+    print "Key event missed, please try again.\n";
+    return(0);
+  }
+  
+  if( $#keysOne != $#keysTwo )
+  { 
+    print "Passwords are not equal length\n";
+    return(0);
+  }
+  
+  my $count = 0;
+  while( $count &lt; $#keysOne )
+  { 
+    my( undef, $key1, undef ) = split " ", $keysOne[$count];
+    my( undef, $key2, undef ) = split " ", $keysTwo[$count];
+    last if( $key1 ne $key2 );
+    $count++;
+  }#while each key entry
+  
+  return(1) if( $count == $#keysOne );
+  
+  print "Password keys do not match. \n";
+  return(0);
+
+}#charactersMatch
+</pre></td></tr></table><br />
+            <p>The first check performed ensures that a key press and key-release event is recorded
+  for a given entry.  As you experiment with the xevKeyDyn.pl program, you may notice that
+  certain keystrokes tend  to overlap, especially those that exist within a two-hand
+  required word. That is,  as your left hand types <b>a s d f</b>, and your right pinkie
+  flies in to crush the <b>Enter</b> key, you'll often depress <b>Enter</b>
+  moments before releasing the <b>f</b> key. This first check ensures that a press and
+  release is recorded  for every key stroke you intended.</p>
+            <p>After a simple check to ensure the two passwords are of equal length, each key is then
+  matched in the entire  password &#8212; ensuring that the fifth character is a
+  zero in both  passwords, for example. If the passwords collected all of the required key
+  press and key releases,  are the same length, and contain all the same characters, a
+  match was found and  the subroutine exits successfully. Listing 6 adds subroutines for
+  the first basic keystroke dynamics-related check: total time of password entry.</p>
+            <br /><a name="listing6"><b>Listing 6. <code>totalTime</code>
+and <code>getTotalTime</code> check subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub totalTimeOK
+{ 
+  return(1) if( abs(getTotalTime(\@keysOne) - getTotalTime(\@keysTwo)) &lt; $maxTimeDiff);
+  print "Total length 1 is: ", getTotalTime( \@keysOne ), "\n";
+  print "Total length 2 is: ", getTotalTime( \@keysTwo ), "\n";
+  print "Passwords are too far apart in total length \n";
+  return(0);
+}#totalTimeOK
+
+sub getTotalTime
+{ 
+  # get the first and last times, and return the difference
+  my $arrRef = $_[0];
+  my ($strTime, undef, undef ) = split " ", ${$arrRef}[0];  # first array item
+  my ($endTime, undef, undef ) = split " ", ${$arrRef}[$#{$arrRef}]; # last array item
+  return( $endTime - $strTime );
+}#getTotalTime
+</pre></td></tr></table><br />
+            <p>Subroutine <code>getTotalTime</code> simply subtracts the time of the
+  last keystroke (in milliseconds)  from the time of the first keystroke.  The <code>totalTimeOK</code> subroutine considers a password and its confirmation
+  valid if their total  time discrepancy is less than <code>maxTimeDiff</code> (500 milliseconds).</p>
+            <p>Run the program with the command <code>perl xevKeyDyn.pl
+0x32000012</code>.  Try typing your various  passwords here and notice how the overall
+  time to enter them is  recorded.  Develop a steady rhythm and you can reduce the <code>maxTimeDiff</code> variable to one-tenth of a second or less for advanced users.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10160"><span class="atitle">Requiring nonprintables</span></a></p>
+
+            <p>Hiding in plain sight is a common tactic for adding obfuscation to a security scheme. 
+  Requiring nonprintable characters, such as backspace or pause, is a simple way to add
+  another layer  of obfuscation to your password.  Using the xev program as the event
+  grabber allows for  a seamless addition of the requirement for nonprintables.  With this
+  function enabled, you  can tell your friends the characters in your password and they
+  still won't be able to use it.   Listing 7 shows the <code>hasNonPrintable</code> subroutine used to check a password for one of the
+  expected prefixes in  the <code>@nonPrintable</code> array.</p>
+            <br /><a name="listing7"><b>Listing 7. <code>hasNonPrintable</code>
+                </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub hasNonPrintable
+{ 
+  for my $keyStr ( @keysOne )
+  { 
+    my( undef, $key, undef ) = split " ", $keyStr;
+    map { return(1) if( $key =~ /$_/ ) } @nonPrintable;
+  }
+
+  print "A non-printable character is required.\n";
+  return(0);
+
+}#hasNonPrintable
+</pre></td></tr></table><br />
+            <p>Enable the <code>hasNonPrintable</code> check by adding the line shown in
+  Listing 8 to the main program loop.</p>
+            <br /><a name="listing8"><b>Listing 8. <code>hasNonPrintable</code> addition to main  program loop</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+  next unless( charactersMatch() );
+  next unless( totalTimeOK() );
+  next unless( hasNonPrintable() ); # add at line 35
+</pre></td></tr></table><br />
+            <p>Catching and requiring nonprintables is one way to hide password attributes in plain
+  sight.  Even if monitored, a  casual attacker will be stymied by the presence of
+  backspace and other characters  that apparently alter the presence or order of characters in the password string.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10197"><span class="atitle">Key-hold times</span></a></p>
+
+            <p>A complement to the obfuscation and total timing measurements is a precision between
+  keystrokes requirement. If you type the first part of your password rapidly, but the
+  second part slowly due to numbers  or case shifts, the consistency will be measured. 
+  Moreover, if a typist with different  pacing enters the letters slowly, but rapidly
+  enters the numbers (perhaps due  to the use of a keypad), the <code>individualKeyTimingsOK</code> subroutine will detect these differences.  </p>
+            <br /><a name="listing9"><b>Listing 9. <code>individualKeyTimingsOK</code>
+                </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+sub individualKeyTimingsOK 
+{ 
+
+  my $count = 0;
+  while( $count &lt; ($#keysOne-1) )
+  {
+    my( $time1, undef, undef) = split " ", $keysOne[$count];
+    my( $time2, undef, undef) = split " ", $keysOne[$count+1];
+
+    my $timeDiff_0 = $time2 - $time1;
+
+    ( $time1, undef, undef) = split " ", $keysTwo[$count];
+    ( $time2, undef, undef) = split " ", $keysTwo[$count+1];
+
+    my $timeDiff_1 = $time2 - $time1;
+
+    if( abs($timeDiff_0 - $timeDiff_1) &gt; $maxKeyDiff )
+    {
+      print "Intra-key timings invalid at position [$count] for " .
+            "$timeDiff_0 and $timeDiff_1, please try again.\n";
+      return(0);
+    }
+    $count++;
+
+  }#for each character
+
+  return(1);
+
+}#individualKeyTimingsOK
+</pre></td></tr></table><br />
+            <p>Listing 9  shows the <code>individualKeyTimingsOK</code> subroutine.  For
+  this example, only the times  between a keystroke and the keystroke immediately
+  following it are measured.  Timings are considered  a match if the differences between
+  the keystrokes across passwords are less than the <code>maxKeyDiff</code>
+  threshold (100 milliseconds).   Lower the threshold to a value less than one-tenth of a
+  second to require certain matches specific  to a typist.  The author used to be in the
+  habit of choosing passwords that  could be typed with one hand at different positions on
+  the keyboard.  Running the  xevKeyDyn.pl program shows that these passwords have a very
+  short overall time of  entry, as well as certain key-press events within 20 milliseconds
+  of each other.  Repeatable precision of 20 one-thousandths of a second for specific
+  keystrokes is difficult for even the  fastest typists to mimic, much less guess even
+  when the correct password  characters are known.</p>
+            <p>Enable the <code>individualKeyTimingsOK</code> check by adding the line
+  shown in Listing 10 to the main program loop.</p>
+            <br /><a name="listing10"><b>Listing 10. <code>individualKeyTimingsOK</code> addition to main program loop</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+  next unless( charactersMatch() );
+  next unless( totalTimeOK() );
+  next unless( hasNonPrintable() ); 
+  next unless( individualKeyTimingsOK() ); # add at line 36
+</pre></td></tr></table><br />
+
+            <p>With the nonprintable requirement and individual timings between keys check in place,
+  run the program with  <code>perl xevKeyDyn.pl 0x32000012</code>.  Try
+  various combinations of characters  and nonprintables.  Vary your speed between keys or
+  across sections of  your password to experiment with your new options for text entry.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101D9"><span class="atitle">Example implementations</span></a></p>
+
+            <p>Consider the example password shown in Listing 11.  The characters entered were <code>'s-&lt;backspace&gt;-e-c-r-3-t</code> with a new twist: The <b>s</b> key was
+  held down until after  the last key in the password was pressed and released.  The
+  simplistic yet powerful method that xev records keyboard events enables a seamless
+  introduction of this  new feature.  Overlapping key-press/release events is a facet of
+  human computer interaction that is  familiar to anyone who has constructed simple games
+  or real-time user interfaces.  Most often this feature is ignored, and password text
+  boxes simply record key-press  events and ignore key-release events.  Measuring the
+  press and release times of  keystrokes is an important step to adding more robust
+  identification features in this  application designed to monitor keystroke dynamics.</p>
+            <br /><a name="listing11"><b>Listing 11. Example password for "secr3t"</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+nathan:$ perl xevKeyDyn.pl 0x32000012
+Enter a password: 
+s&lt;BackSpace&gt;cr3t             # note that the 'e' has been erased
+Key: s at 9813585 Type: KeyPress   # note no immediate release for 's' key
+Key: e at 9813832 Type: KeyPress
+Key: e at 9813951 Type: KeyRelease
+Key: BackSpace at 9814160 Type: KeyPress
+Key: BackSpace at 9814264 Type: KeyRelease
+Key: c at 9814483 Type: KeyPress
+Key: c at 9814586 Type: KeyRelease
+Key: r at 9814809 Type: KeyPress
+Key: r at 9814880 Type: KeyRelease
+Key: 3 at 9815078 Type: KeyPress
+Key: 3 at 9815221 Type: KeyRelease
+Key: t at 9815356 Type: KeyPress
+Key: t at 9815451 Type: KeyRelease
+Key: s at 9815649 Type: KeyRelease  # 's' key release
+</pre></td></tr></table><br />
+            <p>Many users find the requirement for a specific duration of password to be a
+  nonburdensome addition to their  authentication process.  With the appropriate
+  persuasion, increasing the security  of your authentication schemes can be as easy as
+  applying these control  algorithms to your current password entry code.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101F6"><span class="atitle">Remote access and implementation notes</span></a></p>
+            <p>Remote authentication schemes, such as Ajax login pages or thin clients running
+  server-hosted X sessions, require special consideration.  Key event-timing accuracy can
+  vary greatly between entry  sessions and even individual keystrokes as network latencies
+  and machine processing  times are subject to a wide variety of influences.  Take care
+  that the implementation of your  keystroke-measuring systems do not become an
+  authentication barrier during unpredicted machine  states, such as high network load or failed disk drives consuming extra resources. </p>
+            <p>Also note that implementing keystroke dynamics requires the user to have character and
+  keystroke accuracy.  If the  techniques described in this article are implemented, the
+  release time and the initial key-press time have to be accurate.  You can modify the
+  code presented here to support  only key-press events.  However, the loss of information
+  for key press and hold while  other keys are pressed will occur.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10202"><span class="atitle">Conclusion and further examples</span></a></p>
+            
+            
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N1020F"><b>Share this...</b></a><br />
+                <p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-keystroke/">
+                                    <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-keystroke/">Digg
+this story</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">
+                                    <img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+                                    <img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/>
+                                </a>
+                                
+                                
+                            </td><td>
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr></table>
+                </p>
+            </td></tr></table></td></tr></table>
+            
+            <p>You can use the techniques described in this article to enhance the authentication options of your existing Perl applications or modify any program based on these concepts.  In addition, keystroke dynamics is one of the few fields where biometrics can be used for continuous authentication.  Consider modifying your applications to use some of the techniques described in this article to detect and track common typographical errors, keys pressed closely together and other typing patterns that are unique to your application's users.  Try advancing the captcha arms race through measured keystroke press and release times for your web authentication applications. </p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-keystrokeDynamics_0.1.zip</td><td nowrap="nowrap">2KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=272370&amp;filename=os-keystrokeDynamics_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+        Get more information about <a href="http://en.wikipedia.org/wiki/Keystroke_dynamics">keystroke dynamics</a> from Wikipedia.<br /><br /></li><li>
+        "<a href="http://www.ibm.com/developerworks/webservices/library/ws-xml-rpc/" onmouseover="linkQueryAppend(this)">Enable C++ applications for Web services using XML-RPC</a>"
+        is a step-by-step guide to exposing C++ methods as services.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+        One of the easiest ways to get xev is through a
+        full <a href="http://www.x.org/wiki/Releases/Download?highlight=%28download%29">X11 source code</a>  download.<br /><br /></li><li>
+        Grab <a href="http://www.perl.org/">Perl</a> from the source at Perl.org.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Expand your text entry options with keystroke dynamics" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="272370" name="ArticleID" type="hidden"/><input value="12042007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.9.xsl--></body></html>

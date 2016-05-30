@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Beef up the Find command in Firefox</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="The Find command in Firefox locates the user-specified text in the body of a Web page. The command is an easy-to-use tool that works well enough for most users most of the time. Sometimes, however, a more powerful Find-like tool would make locating text easier. This article shows how to build a tool that isolates relevant text in Web pages faster by detecting the presence and absence of nearby words." /><meta name="Description" content="The Find command in Firefox locates the user-specified text in the body of a Web page. The command is an easy-to-use tool that works well enough for most users most of the time. Sometimes, however, a more powerful Find-like tool would make locating text easier. This article shows how to build a tool that isolates relevant text in Web pages faster by detecting the presence and absence of nearby words." /><meta name="Keywords" content="Firefox, search, Greasemonkey, plug-in, open source, nathan Harrington , tttosca" /><meta name="DC.Date" scheme="iso8601" content="2008-08-12" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT400" /><meta name="DC.Rights" content="Copyright (c) 2008 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2008-08-12" /><meta name="Last update" content="12082008krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "The Find command in Firefox locates the user-specified text in the body of a Web page. The command is an easy-to-use tool that works well enough for most users most of the time. Sometimes, however, a more powerful Find-like tool would make locating text easier. This article shows how to build a tool that isolates relevant text in Web pages faster by detecting the presence and absence of nearby words."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-customsearch-firefox">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 329705 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1006B" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1008A" class="left-nav-child">Greasemonkey and Firefox extensions</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10098" class="left-nav-child">Examples of what this Greasemonkey script is designed to do</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100F2" class="left-nav-child">greppishFind.user.js Greasemonkey user script</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1025F" class="left-nav-child">Installing the greppishFind.user.js script</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1026C" class="left-nav-child">Usage examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1028B" class="left-nav-child">Conclusion, further additions</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Beef up the Find command in Firefox</h1><p id="subtitle"><em>Create a Greasemonkey script to highlight search entries relative to nearby content</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New site feature</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/library/i-mav-beta/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Check out our new article design and features. Tell us what you think.</a></p></td></tr></table></td></tr></table><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Beef up the Find command in Firefox">harrington.nathan@gmail.com</a>), Programmer, IBM　<br /></p><p> 12 Aug  2008</p><blockquote>The Find command in Firefox locates the user-specified text in the body of a Web
+  page. The command is an  easy-to-use tool that works well enough for most users most of
+  the time. Sometimes, however,  a more powerful Find-like tool would make locating text
+  easier. This article shows how  to build a tool that isolates relevant text in Web pages
+  faster by detecting the presence  and absence of nearby words.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Native text-search capabilities in Firefox provide useful highlighting of contiguous
+  search terms and phrases.  Additional  Firefox extensions are available to incorporate
+  regular-expression searches and other text-highlighting capabilities.  This article
+  presents tools and code needed to add  your own text-searching interface to Firefox. 
+  With a Greasemonkey user script and  some custom algorithms, you'll be able to add <code>grep
+  -v</code> functionality to text searches &#8212; that is, highlighting  a first search term where a second one is not located nearby.</p>
+
+<p><a name="N1006B"><span class="atitle">Requirements</span></a></p>
+
+<p><a name="N10072"><span class="smalltitle">Hardware</span></a></p>
+
+<p>Text searches on typical Web pages with older (pre-2002) hardware are nearly
+  instantaneous.  However, the code presented  here is not designed for speed and may
+  require faster hardware to perform at  a user-friendly speed on large Web pages.</p>
+
+<p><a name="N1007B"><span class="smalltitle">Software</span></a></p>
+
+<p>The code was developed for use with Firefox V2.0 and Greasemonkey V0.7.  Newer versions
+  of both will require testing  and possibly modifications to ensure their functionality. 
+  As a Greasemonkey script, the code  presented here should work on any operating system
+  that supports Firefox and  Greasemonkey. We tested on Microsoft&#174; Windows&#174;
+  and Linux&#174; Ubuntu V7.10 releases.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1008A"><span class="atitle">Greasemonkey and Firefox extensions</span></a></p>
+
+<p>User modification to Web pages is the role Greasemonkey fulfills, and the code
+  presented here uses the Greasemonkey framework  to search for and highlight the relevant
+  text.  See <a href="#resources">Resources</a> for the Greasemonkey Firefox extension.</p>
+
+<p><a name="N10098"><span class="atitle">Examples of what this Greasemonkey script is designed to do</span></a></p>
+
+<p>Those familiar with the UNIX <code>grep</code> command and its common
+  <code>-v</code> option know how indispensable <code>grep</code> is for extracting relevant lines  of text from a file.  Text
+  files conforming the UNIX tradition of simplicity generally store their text in a
+  line-by-line format that makes it easy to  find words close together.  The <code>-v</code> option prints lines where the specified text is not found.</p>
+
+<p>Unlike text files, Web pages generally divide text with tags and other markers 
+  rendered into lines by the browser.  A  wide variety of browser window sizes makes it
+  difficult to isolate nearby text based  on expected line positions.  Tables, links, and
+  other text markup also make it  difficult to isolate text that is in the same "line."</p>
+
+<p>Algorithms in this article are designed to address some of these difficulties by
+  providing a simple <code>grep</code>-like functionality piped to a
+  function that works like <code>grep</code>'s <code>-v</code>
+  option.  This allows the user to find  a certain word of text, then only highlight
+  entries where a different word is not nearby.  Figure 1  shows what this can look like.</p>
+
+
+  <br /><a name="fig1"><b>Figure 1. Example of DOM and DOM hierarchy searches</b></a><br />
+<img alt="Example of DOM and DOM hierarchy searches" height="393" src="figure1_DOMexample.jpg" width="569"/>
+<br />
+  <br />
+
+<p>In the top portion of the image, the search text of "DOM" is highlighted by the script. 
+  In the bottom portion, notice how only the first three "DOM" entries are highlighted
+  because the second search text of "hierarchy" is  found in close proximity to the third
+  "DOM."</p>
+
+<p>Consider Figure 2.</p>
+
+
+  <br /><a name="fig2"><b>Figure 2. Example of 2008 and 2008 PM searches</b></a><br />
+<img alt="Example of 2008 and 2008 PM searches" height="466" src="figure2_2008Example.jpg" width="471"/>
+<br />
+  <br />
+
+<p>The first portion of the image shows all the 2008 entries, while the second portion
+  only shows the before-noon entries due  to the <code>-v</code> keyword of
+  PM.  Read on for full details and  further examples of how to implement this functionality.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100F2"><span class="atitle">greppishFind.user.js Greasemonkey user script</span></a></p>
+
+<p>An introduction to the unique aspects of the Greasemonkey programming environment are
+  beyond the scope of this  article.  Familiarity with Greasemonkey, including how to
+  install, modify, and debug scripts, is assumed.  Consult the <a href="#resources">Resources</a>  for more information about Greasemonkey and how to
+  get started programming your own  user scripts.</p>
+
+<p>Generally speaking, the greppishFind.user.js user script is started on a page load,
+  provides a text area after a specific  key combination is entered, and performs
+  highlighting searches based on user-entered text.  Listing 1 shows the beginning of the greppishFind.user.js user script.</p>
+
+<br /><a name="listing1"><b>Listing 1. greppishFind.user.js program heading</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+// ==UserScript==
+// @name          greppishFind
+// @namespace     IBM developerWorks
+// @description   grep and grep -v function-ish for one or two word searches
+// ==/UserScript==
+
+var boxAdded = false;       // user interface for search active
+var dist = 10;              // proximity distance between words
+
+var highStart = '&lt;high&gt;';   // begin and end highlight tags
+var highEnd   = '&lt;/high&gt;';
+
+var lastSearch = null;      // previous highlight text
+
+window.addEventListener('load', addHighlightStyle,'true');
+window.addEventListener('keyup', globalKeyPress,'true');
+</pre></td></tr></table><br />
+
+<p>After defining the required metadata that describes the user script and its function,
+  global variables, and highlighting tags, the <code>load</code> and <code>keyup</code> event listeners are added
+  to process user-generated events.  Listing  2 details the <code>addHighlightStyle</code> function called by the load event listener.</p>
+
+<br /><a name="listing2"><b>Listing 2. <code>addHighlightStyle</code> function </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function addHighlightStyle(css)
+{
+  var head = document.getElementsByTagName('head')[0];
+  if( !head ) { return; }
+
+  var style = document.createElement('style');
+  var cssStr = "high {color: black; background-color: yellow; }";
+  style.type = 'text/css';
+  style.innerHTML = cssStr;
+  head.appendChild(style);
+}//addHighlightStyle
+</pre></td></tr></table><br />
+
+<p>The function creates a new node in the current DOM hierarchy with the appropriate
+  highlighting information.  In this case, it's a simple yellow-on-black text attribute.
+  Listing 3 shows the code  of the other event listener, <code>globalKeyPress</code>, as well as the <code>boxKeyPress</code> function.</p>
+
+<br /><a name="listing3"><b>Listing 3. <code>globalKeyPress</code>, <code>boxKeyPress</code> functions</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function globalKeyPress(e)
+{
+  // add the user interface text area and button, set focus and event listener
+  if( boxAdded == false &amp;&amp; e.altKey &amp;&amp; e.keyCode == 61 )
+  {
+    boxAdded = true;
+    var boxHtml = "&lt;textarea wrap='virtual' id='sBoxArea' " +
+              "style='width:300px;height:20px'&gt;&lt;/textarea&gt;" +
+              "&lt;input name='btnHighlight' id='tboxButton' " +
+              "value='Highlight' type='submit'&gt;";
+    var tArea = document.createElement("div");
+    tArea.innerHTML = boxHtml;
+    document.body.insertBefore(tArea, document.body.firstChild);
+
+    tArea = document.getElementById("sBoxArea");
+    tArea.focus();
+    tArea.addEventListener('keyup', boxKeyPress, true );
+
+    var btn = document.getElementById("tboxButton");
+    btn.addEventListener('mouseup', processSearch, true );
+
+  }//if alt = pressed
+
+}//globalKeyPress
+
+function boxKeyPress(e)
+{
+  if( e.keyCode != 13 ){ return; }
+
+  var textarea = document.getElementById("sBoxArea");
+  textarea.value = textarea.value.substring(0,textarea.value.length-1);
+  processSearch();
+
+}//boxKeyPress
+</pre></td></tr></table><br />
+
+<p>Catching each keystroke and listening for a specific combination is the purpose of
+  <code>globalKeyPress</code>. When the <b>Alt+=</b>  keys are pressed (that is,
+hold <b>Alt</b> and press the <b>=</b> key), the user interface for the search box is
+added to the current DOM.   This interface consists of a text area for entering the
+keywords and a <b>Submit</b> button.  After the new items are added, the text area needs
+to be selected by the <code>getElementById</code> function to set the focus
+correctly.  Event listeners are then added  to process the keystrokes in the text area, as
+well as executing the search when  the <b>Submit</b> button is clicked.</p>
+
+<p>The second function in Listing 3 processes each keystroke in the text area.  If the
+  <b>Enter</b> key is pressed, the text area's value has the newline removed and the <code>processSearch</code> function executed.  Listing 4 details the <code>processSearch</code> function.</p>
+
+<br /><a name="listing4"><b>Listing 4. <code>processSearch</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function processSearch()
+{
+  // remove any existing highlights
+  if( lastSearch != null )
+  {
+    var splitResult = lastSearch.split( ' ' );
+    removeIndicators( splitResult[0] );
+  }//if last search exists
+
+  var textarea = document.getElementById("sBoxArea");
+
+  if( textarea.value.length &gt; 0 )
+  {
+    var splitResult = textarea.value.split( ' ' );
+    if( splitResult.length == 1 )
+    { 
+      oneWordSearch( splitResult[0] );
+
+    }else if( splitResult.length == 2 )
+    { 
+      twoWordSearch( splitResult[0], splitResult[1] );
+
+    }else
+    { 
+      textarea.value = "Only two words supported";
+
+    }//if number of words
+  }//if longer than required
+
+  lastSearch = textarea.value;
+
+}//processSearch
+</pre></td></tr></table><br />
+
+<p>Each search is stored in the <code>lastSearch</code> variable to be
+  removed each time <code>processSearch</code> is called.  After the
+  removal, the search query is highlighted using <code>oneWordSearch</code>
+  if there is only one query word or if the <code>twoWordSearch</code>
+  function if the <code>grep -v</code> functionality is desired.  Listing 5
+  shows the details on the <code>removeIndicators</code> function.</p>
+
+<br /><a name="listing5"><b>Listing 5. <code>removeIndicators</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function removeIndicators( textIn )
+{
+  // use XPath to quickly extract all of the rendered text
+  var textNodes = document.evaluate( '//text()', document, null,
+                                     XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
+                                     null );
+
+  for (var i = 0; i &lt; textNodes.snapshotLength; i++)
+  {
+    textNode = textNodes.snapshotItem(i);
+
+    if( textNode.data.indexOf( textIn ) != -1 )
+    {
+      // find the appropriate parent node with the innerHTML to be removed
+      var getNode = getHtml( textNode );
+      if( getNode != null )
+      {
+        var temp = getNode.parentNode.innerHTML;
+        var reg = new RegExp( highStart, "g");
+        temp = temp.replace( reg, "" );
+
+        reg = new RegExp( highEnd, "g");
+        temp = temp.replace( reg, "" );
+        getNode.parentNode.innerHTML = temp;
+
+      }//if correct parent found
+
+    }//if word found
+  }//for each text node
+
+}//removeIndicators
+</pre></td></tr></table><br />
+
+<p>Instead of traversing the DOM tree manually, <code>removeIndicators</code> uses XPath to extract the text  nodes in the
+  document quickly.  If any of the text nodes contains the <code>lastSearch</code> text (the most recent highlighted word), <code>getHtml</code> finds the appropriate parent node, and the highlighted text
+  is removed.  Note that combining the extract of <code>innerHTML</code> and
+  assignment of <code>innerHTML</code> into one step will cause various
+  issues, so temporarily assigning the <code>innerHTML</code> to an external
+  variable is required.  Listing 6 is the <code>getHtml</code> function that
+  shows in detail how to find the appropriate parent node.</p>
+
+<br /><a name="listing6"><b>Listing 6. <code>getHtml</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function getHtml( tempNode )
+{
+  // walk up the tree to find the appropriate node
+  var stop = 0;
+
+  while( stop == 0 )
+  {
+    if( tempNode.parentNode != null &amp;&amp;
+        tempNode.parentNode.innerHTML != null )
+    {
+      // make sure it contains the tags to be removed
+      if( tempNode.parentNode.innerHTML.indexOf( highStart ) != -1 )
+      {
+
+        // make sure it's not the title or greppishFind UI node
+        if( tempNode.parentNode.innerHTML.indexOf( "&lt;title&gt;" ) == -1 &amp;&amp;
+            tempNode.parentNode.innerHTML.indexOf("btnHighlight") == -1)
+        {
+          return( tempNode );
+
+        }else{ return(null); }
+
+      // the highlight tags were not found, so go up the tree
+      }else{ tempNode = tempNode.parentNode; }
+
+    // stop the processing when the top of the tree is reached
+    }else{ stop = 1; }
+
+  }//while
+  return( null );
+}//getHtml
+</pre></td></tr></table><br />
+
+<p>While walking up the DOM tree in search of the <code>innerHTML</code>
+  with the highlighting tags inserted, it is  important to disregard two specific nodes. 
+  The nodes containing <code>title</code> and <code>btnHighlight</code> should  not be updated, as changes in
+  these nodes cause the document  to display incorrectly.  When the correct node is found,
+  regardless of the number  of parents up the DOM tree it is, the node is returned and the
+  highlighting removed.  Listing  7 is the first of the functions that adds highlighting to the document.</p>
+
+<br /><a name="listing7"><b>Listing 7. <code>oneWordSearch</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function oneWordSearch( textIn )
+{
+  // use XPath to quickly extract all of the rendered text
+  var textNodes = document.evaluate( '//text()', document, null,
+                                     XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
+                                     null );
+
+  for (var i = 0; i &lt; textNodes.snapshotLength; i++)
+  {
+    textNode = textNodes.snapshotItem(i);
+
+    if( textNode.data.indexOf( textIn ) != -1 )
+    {
+      highlightAll( textNode, textIn );
+
+    }//if word found
+  }//for each text node
+
+}//oneWordSearch
+</pre></td></tr></table><br />
+
+<p>Again using XPath, <code>oneWordSearch</code> processes each text node to
+  find the query.  When found, the <code>highlightAll</code> function is
+  called, as shown in Listing 8.</p>
+
+<br /><a name="listing8"><b>Listing 8. <code>highlightAll</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function highlightAll( nodeOne, textIn )
+{
+  if( nodeOne.parentNode != null )
+  {
+    full = nodeOne.parentNode.innerHTML;
+    var reg = new RegExp( textIn, "g");
+    full = full.replace(  reg,  highStart + textIn + highEnd );
+    nodeOne.parentNode.innerHTML = full;
+  }//if the parent node exists
+}//highlightAll
+
+function highlightOne( nodeOne, wordOne, wordTwo )
+{
+  var oneIdx = nodeOne.data.indexOf( wordOne );
+  var tempStr = nodeOne.data.substring( oneIdx + wordOne.length );
+  var twoIdx = tempStr.indexOf( wordTwo );
+
+  // only create the highlight if it's not too close
+  if( twoIdx &gt; dist )
+  {
+    var reg = new RegExp( wordOne );
+    var start = nodeOne.parentNode.innerHTML.replace(  
+      reg,  highStart + wordOne + highEnd 
+    );
+    nodeOne.parentNode.innerHTML = start;
+  }//if the distance threshold exceeded
+}//highlightOne
+</pre></td></tr></table><br />
+
+<p>Similar to the <code>removeIndicators</code> function, <code>highlightAll</code> uses a regular expression to replace the text to be
+  highlighted with markup, including the highlighting tags and the original text.</p>
+
+<p>Function <code>highlightOne</code>, used later in the <code>twoWordSearch</code> function, checks that the first word is sufficiently
+  far away from the second word,  then performs the same replacement.  Word distance
+  checks need to take place in  the rendered text as returned from the XPath statement;
+  otherwise, various markup, such as <code>&lt;b&gt;</code>, will affect the
+  distance calculations.  Listing 9 shows the <code>twoWordSearch</code>
+  function in detail.</p>
+
+<br /><a name="listing9"><b>Listing 9. <code>twoWordSearch</code> function</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+function twoWordSearch( wordOne, wordTwo )
+{
+  // use XPath to quickly extract all of the rendered text
+  var textNodes = document.evaluate( '//text()', document, null,
+                                     XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
+                                     null );
+  var nodeOne;
+  var foundSingleNode = 0;
+
+  for (var i = 0; i &lt; textNodes.snapshotLength; i++)
+  {
+    textNode = textNodes.snapshotItem(i);
+
+    // if both words in the same node, highlight if not too close
+    if( textNode.data.indexOf( wordOne ) != -1 &amp;&amp;
+        textNode.data.indexOf( wordTwo ) != -1 )
+    { 
+      highlightOne( textNode, wordOne, wordTwo );
+      foundSingleNode = 0;
+      nodeOne = null;
+    }else
+    { 
+      if( textNode.data.indexOf( wordOne ) != -1 )
+      { 
+        // if the first word is already found, highlight the entry
+        if( foundSingleNode == 1  &amp;&amp;
+            nodeOne.parentNode != null &amp;&amp;
+            nodeOne.parentNode.innerHTML.indexOf( wordTwo ) == -1 )
+        { 
+          highlightAll( nodeOne, wordOne );
+        }//if second word is in the same parent node
+
+        // record current node found 
+        nodeOne = textNode;
+        foundSingleNode = 1;
+
+      }//if text match
+
+      if( textNode.data.indexOf( wordTwo ) != -1 ){ foundSingleNode = 0; }
+
+    }//if both words in single node
+
+  }//for each text node
+
+  // no second word nearby, highlight all entries
+  if( foundSingleNode == 1 ){ highlightAll( nodeOne, wordOne ); }
+
+}//twoWordSearch
+</pre></td></tr></table><br />
+
+<p>Walking through each text node as retrieved from the XPath call is done the same way as
+  in the <code>oneWordSearch</code> function.  If both words are found
+  within the current text node, the <code>highlightOne</code> function is
+  called to highlight the instances of <code>wordOne</code> where it is
+  sufficiently distant from <code>wordTwo</code>. </p>
+
+<p>If both words are not in the same node, the <code>foundSingleNode</code>
+  variable is set on the first match.  On  subsequent matches, the <code>highlightAll</code> function is called when the single node is detected
+  again before a second node  match.  This ensures that each instance of the first word is
+  highlighted &#8212; even  those that do not have the second word nearby.  Upon
+  a loop, a  final check is made to run <code>highlightAll</code>
+  if the last <code>wordOne</code> match was isolated and still needs to be highlighted.</p>
+
+<p>Save the file created with the above code as greppishFind.user.js and read on for installation and usage details.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1025F"><span class="atitle">Installing the greppishFind.user.js script</span></a></p>
+
+<p>Open your Firefox browser with the Greasemonkey V0.7 extension installed and enter
+  the URL to the directory where  greppishFind.user.js is located.  Click on the
+  greppishFind.user.js file and you should  see the standard Greasemonkey install pop up. 
+  Select <b>install</b>, then reload the page  to activate the extension.</p>
+
+<p><a name="N1026C"><span class="atitle">Usage examples</span></a></p>
+
+<p>Once the greppishFind.user.js script is installed into Greasemonkey, you can mimic the
+  examples shown in Figure 1 by entering <code>dom inspector</code> as a
+  search query at www.google.com.   When the results page appears, press <b>Alt+=</b> to
+  activate the user interface.  Type  the query <code>DOM</code>
+  (case-sensitive) and press <b>Enter</b> to see all  entries of DOM highlighted.  Change
+  the query to  <code>DOM hierarchy</code>, and you'll see how only the
+  first three entries of DOM are highlighted, as  shown in Figure 1.</p>
+
+<p>Choose a directory listing such as file:///home/ or file:///c:/ to show entries like
+  those listed in Figure 2.  You may want to experiment  with changes to the distance
+  parameter or highlighting style to  achieve results tailored to your searches.</p>
+
+<p><a name="N1028B"><span class="atitle">Conclusion, further additions</span></a></p>
+
+<p>With the code above and your completed greppishFind.user.js program, you now have a
+  baseline for implementing  your own text-search capabilities in Firefox.  Although this
+  program focuses on specific cases of certain  words appearing in close proximity to
+  others, it provides a framework  for further text-searching options.</p>
+
+<p>Consider adding color changes for highlighted words based on how close the secondary
+  terms are.  Expand the number  of <code>grep -v</code> words to eliminate
+  entries gradually.  Use the code here and  your own ideas to create new Greasemonkey
+  user scripts that further enhance  users' abilities to find text.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-customserach-firefox-greppishFind_0.1.zip</td><td nowrap="nowrap">3KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=329705&amp;filename=os-customserach-firefox-greppishFind_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+  Learn more about Greasemonkey at <a href="http://www.greasespot.net">Greasespot.net</a>.<br /><br /></li><li>
+  Read about <a href="http://developer.mozilla.org/en/docs/About_JavaScript">JavaScript</a> from the source at Mozilla.org<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/" onmouseover="linkQueryAppend(this)">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/" onmouseover="linkQueryAppend(this)">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp" onmouseover="linkQueryAppend(this)">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource" onmouseover="linkQueryAppend(this)">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/" onmouseover="linkQueryAppend(this)">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+  Grab the <a href="https://addons.mozilla.org/firefox/addon/748">Greasemonkey</a> Firefox
+  add-on (extension) from Mozilla.org.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/" onmouseover="linkQueryAppend(this)">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs" onmouseover="linkQueryAppend(this)">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img align="left" alt="Nathan Harrington" src="http://www.ibm.com/developerworks/i/p-nharrington.jpg" valign="top"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Beef up the Find command in Firefox" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="329705" name="ArticleID" type="hidden"/><input value="08122008" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/us/en/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/us/en/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/us/en/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/us/en/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

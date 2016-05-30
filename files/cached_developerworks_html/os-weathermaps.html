@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Develop your own weather maps and alerts</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Traditional weather reports will give notice of vague forecasts and severe weather alerts in your general area. The code and tools presented in this article will allow you to create precise detection zones so you can receive a page, SMS, or e-mail a few minutes before a precipitation event is likely to occur at the monitored location. Use GD and Perl for image processing of the NOAA WSR-88D radar data to create your own precipitation alerts for precise areas. Choose your notification method and let users know when the rain will begin and when it will clear." /><meta name="Description" content="Traditional weather reports will give notice of vague forecasts and severe weather alerts in your general area. The code and tools presented in this article will allow you to create precise detection zones so you can receive a page, SMS, or e-mail a few minutes before a precipitation event is likely to occur at the monitored location. Use GD and Perl for image processing of the NOAA WSR-88D radar data to create your own precipitation alerts for precise areas. Choose your notification method and let users know when the rain will begin and when it will clear.f
+      " /><meta name="Keywords" content="Perl, GD, WSR-88D, radar, precipitation, alerts, noaa, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-06-05" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-06-05" /><meta name="Last update" content="05062007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Traditional weather reports will give notice of vague forecasts and severe weather alerts in your general area. The code and tools presented in this article will allow you to create precise detection zones so you can receive a page, SMS, or e-mail a few minutes before a precipitation event is likely to occur at the monitored location. Use GD and Perl for image processing of the NOAA WSR-88D radar data to create your own precipitation alerts for precise areas. Choose your notification method and let users know when the rain will begin and when it will clear."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-weathermaps">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 226551 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1005A" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10078" class="left-nav-child">Image acquisition</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100B3" class="left-nav-child">Selecting your location on the map</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100CD" class="left-nav-child">Image artifact considerations</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100EA" class="left-nav-child">Using GD for simple yellow, green, and red reflectivity acquisition</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1013B" class="left-nav-child">State monitor with rules</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101B8" class="left-nav-child">Full precipitation monitoring configuration</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Develop your own weather maps and alerts</h1><p id="subtitle"><em>Process radar data with open source image processing tools to create custom alerts</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Develop your own weather maps and alerts">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 05 Jun  2007</p><blockquote>Traditional weather reports will give notice of vague forecasts and severe weather alerts in your general area. The code and tools 
+  presented in this article will allow you to create precise detection zones so you can receive a page, SMS, or e-mail a few minutes before a 
+  precipitation event is likely to occur at the monitored location. Use GD and Perl for image processing of the NOAA WSR-88D radar data to 
+  create your own precipitation alerts for precise areas. Choose your notification method and let users know when the rain will begin and when 
+  it will clear.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p>The National Oceanic and Atmospheric Administration (NOAA) is a fantastic government agency responsible for the majority of the weather 
+  data in the United States. Using the publicly available and easily accessible reflectivity data from one of the WSR-88D class radar systems, this 
+  article will show you how to choose a location and set up weather-change alerts for a precise geographical area. Please note that this is not a 
+  substitute for severe weather alert systems or designed to produce reliable precipitation forecasts. Rather, this article presents code and 
+  processes for determining if it's likely to rain very soon in a specific area. Conversely, the same code is used to produce alerts when a 
+  no-precipitation window has opened, giving you a handy notice of when it's time to dash inside from your car.</p>
+            <p><a name="N1005A"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10060"><span class="smalltitle">Hardware</span></a></p>
+            <p>Any PC manufactured after 2000 should provide plenty of horsepower for compiling and running the code in this article. The code presented 
+  here is a relatively simple image processing algorithm using GD. If you want to monitor multiple locations with subsecond response times, 
+  you'll need a fast processor. The rest of us should be fine with anything Pentium
+  II&#174; or later.</p>
+            <p><a name="N1006B"><span class="smalltitle">Software</span></a></p>
+
+            <p>Perl and GD are a must for this article, although if you have a preferred image processing tool suite, you can modify the algorithms used here 
+  to perform effectively in any number of environments. You'll also need an image-compositing tool, such as The Gimp, to build a geophysical map 
+  of the radar's environment and to choose a set of pixel coordinates specifying your
+  location. In addition, it's handy to have a good command-line download tool, such as wget. Check <a href="#resources">Resources</a> 
+  for links.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10078"><span class="atitle">Image acquisition</span></a></p>
+
+            <p>The WSR-88D class radar systems have many acquisition modes for developing data on atmospheric precipitation. The most commonly 
+  used form of radar energy return mapping is the Base Reflectivity graph. We will use this graph for the processing of localized precipitation 
+  information. To begin, visit <a href="http://www.noaa.gov/">NOAA.gov</a>, and enter your city and state for a forecast. Click the <b>radar</b> 
+  image for your localized area, and you will see an image like that shown below.</p>
+            
+                <br /><a name="fig1"><b>Figure 1. Base reflectivity Web page example</b></a><br />
+                <img alt="Base Reflectivity web page example" height="677" src="screenCap_weatherPage1.jpg" width="572"/>
+            <br />
+            <br />
+
+            <p>The radar image shown is actually composed of layers you can download separately. 
+  <a href="http://www.srh.noaa.gov/jetstream/remote/ridge_download.htm">Downloading RIDGE Radar Images</a> describes the various layers and how 
+  to download them. For our example, we'll need the topographical, highways, and county maps to accurately identify the precise location to track. 
+  You'll only have to download these layers once, and you'll be able to reuse them later. Listing 1 shows the various images you'll need to 
+  download if you live in central North Carolina. Consult the NOAA documentation to find the radar designation and appropriate URLs for your area.</p>
+            <br /><a name="N100A4"><b>Listing 1. Radar image overlays  Central North Carolina</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+County Outlines: http://www.srh.noaa.gov/ridge/Overlays/County/Short/RAX_County_Short.gif
+Highway: http://www.srh.noaa.gov/ridge/Overlays/Highways/Short/RAX_Highways_Short.gif
+Topographical relief: http://www.srh.noaa.gov/ridge/Overlays/Topo/Short/RAX_Topo_Short.jpg
+</pre></td></tr></table><br />
+
+            <p>With these layers downloaded, you can combine them with the base reflectivity image to produce a more easily readable image map. 
+  Here is the radar image for the <a href="http://www.srh.noaa.gov/ridge/RadarImg/N0R/RAX_N0R_0.gif">central North Carolina area</a>. 
+  Download the equivalent layers and radar return image for your area, and you'll be ready to move on to the next step.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100B3"><span class="atitle">Selecting your location on the map</span></a></p>
+            <p>Fire up The Gimp or your image manipulation tool of choice and combine the overlays you downloaded for your area. 
+  I recommend applying the overlays in the following order: topographical, counties, highways. Do not include the radar base reflectivity image 
+  as it can make precise area location more difficult. Zoom in on your general area and use your mouse to identify the precise location you 
+  want to monitor. Note the pixel coordinates as they will be used as the basis for the
+  monitoring area in the image-processing code. Figure 2 shows a screenshot from The Gimp window, as the Research Triangle Park area 
+  in central North Carolina is identified. The precise coordinates in this case are shown
+  in the bottom left-hand corner as 263,258.</p>
+            
+                <br /><a name="fig2"><b>Figure 2. Precise location identification</b></a><br />
+                <img alt="Precise location identification" height="575" src="noRadarZoom.jpg" width="572"/>
+            <br />
+            <br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100CD"><span class="atitle">Image artifact considerations</span></a></p>
+            <p>A common occurrence for the base reflectivity data is to show the equivalent of light precipitation where there is in fact clear skies. This 
+  explanation of this behavior is beyond the scope of this article, but we need to deal with these false positives in order to reliably detect when 
+  a precipitation event is likely to occur. Figure 3 shows a sample base reflectivity image on a clear day in central North Carolina.</p>
+            
+                <br /><a name="fig3"><b>Figure 3. Clear day base reflectivity false positives</b></a><br />
+                <img alt="Clear day base reflectivity false positives" height="406" src="baseRef_example.gif" width="572"/>
+            <br />
+            <br />
+            <p>As you can see from the radar data, there appears to be light precipitation within a 30-mile radius of the radar antenna. A quick look outside 
+  shows this is obviously not the case, and the program shown below will compensate for this behavior by only detecting precipitation events 
+  of a certain threshold. Precipitation events in the "Light" classification have a base reflectivity of between 0 and 15 DBZ. This seems to correspond 
+  well to the reflectivity range of the false positives, so the program described below will consider anything of higher reflectivity to be a trackable 
+  precipitation event. Specifically, any pixels that are green, yellow, or red will be considered precipitation events as they pass through the 
+  detection area.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100EA"><span class="atitle">Using GD for simple yellow, green, and red reflectivity acquisition</span></a></p>
+            <p>With your selected pixel coordinates and a single-layer base reflectivity map, the logical process for detecting precipitation near a spot on the 
+  map is straightforward. First, scan the reflectivity data in the immediate area around the detection coordinates, allowing for precipitation front 
+  movement from any direction. If the scanned data indicates reflectivity above "low" (the presence of green, yellow or red pixels), consider the 
+  status to be "raining." If there is no reflectivity above the "low" threshold, consider the status to be "clear." The omni-directionality of the detection 
+  algorithm is important to ensure the capability for detecting precipitation gaps in a developing storm system.</p>
+            <p>The <code>getPrecipState.pl</code> program shown in Listings 2 and 3 uses Perl and GD to implement
+  the high-level logical process:</p>
+            <br /><a name="N100FE"><b>Listing 2. getPrecipState.pl  Section 1</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# getPrecipState.pl - process WSR-88D N0 (base reflectivity) data to indicate
+#                     precipitation status, such as 'raining' or 'clear'
+use strict;
+use GD;
+
+die "specify file name, X pixel, Y pixel, distance, threshold " unless @ARGV == 5;
+my( $fname, $pointX, $pointY, $distance, $threshold ) = @ARGV;
+
+my %colorList =( "2,253,2"     =&gt; "lightGreen 20DBZ",
+                 "1,197,1"     =&gt; "mediumGreen 25DBZ",
+                 "0,142,0"     =&gt; "darkGreen 30DBZ",
+                 "253,248,2"   =&gt; "lightYellow 35DBZ",
+                 "229,188,0"   =&gt; "mediumYellow 40DBZ",
+                 "253,139,0"   =&gt; "darkYellow 45DBZ",
+                 "253,0,0"     =&gt; "lightGreen 50DBZ",
+                 "212,0,0"     =&gt; "mediumGreen 55DBZ",
+                 "188,0,0"     =&gt; "darkGreen 60DBZ",
+                 "248,0,253"   =&gt; "lightPurple 65DBZ",
+                 "152,84,198"  =&gt; "mediumPurple 70DBZ",
+                 "253,253,253" =&gt; "takeCover! 75DBZ" );
+
+my $radarMap = newFromGif GD::Image( "$fname" ) || die "bad image file $fname";
+</pre></td></tr></table><br />
+            <p>The first section of <code>getPrecipState.pl</code> ensures that the program has the correct number of variables to process. After defining 
+  a simple hash of the colors considered to be valid precipitation, the image specified is loaded from disk. Note that if you want to track strong 
+  reflectivity signals only in the N0 map, simply remove the green and yellow colors from
+  the <code>colorList hash</code>.</p>
+            <br /><a name="N10115"><b>Listing 3. getPrecipState.pl  Section 2</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+my $startCol = $pointX - ($distance/2);
+my $startRow = $pointY - ($distance/2);
+my $endCol   = $pointX + ($distance/2);
+my $endRow   = $pointY + ($distance/2);
+
+my $colN = $startCol;
+
+my $precipCount = 0;
+
+while( $colN &lt;= $endCol )
+{
+  my $rowN = $startRow;
+  while( $rowN &lt;= $endRow )
+  {
+    my $index = $radarMap-&gt;getPixel( $colN, $rowN );
+    my( $r, $g, $b ) = $radarMap-&gt;rgb($index);
+    if( exists( $colorList{"$r,$g,$b"} ) )
+    {
+      $precipCount++;
+      if( $precipCount &gt;= $threshold ){ $colN = 700; $rowN = 700 }
+    }
+    $rowN++;
+  }#column
+
+  $colN++;
+}#row
+
+if( $precipCount &gt;= $threshold )
+{
+  print "$fname is raining\n" ;
+}else
+{
+  print "$fname is clear \n";
+}</pre></td></tr></table><br />
+            <p>The remainder of the <code>getPrecipState.pl</code> code shown in Section 2 sets up a square detection area bounded 
+  by the start and end <code>Col|Row</code> variables. The next two
+  <code>while</code> loops simply scan the detection area for precipitation pixels as defined by their color match to those 
+  specified in the <code>colorList</code> hash variable. If enough precipitation pixels have been counted to exceed the threshold 
+  parameter, exit the loops and write the "raining" status. If there are too few precipitation pixels to exceed the threshold parameter, print the 
+  "clear" status.</p>
+
+            <p>With your base reflectivity layer downloaded as shown above, run the program with the command 
+  <code>perl getPrecipState.pl &lt;radar_image&gt; &lt;X coord&gt; &lt;Y
+  Coord&gt; &lt;distance&gt; &lt;threshold&gt;</code>. For example, if your radar image is from the central North Carolina WSR-88D station, your 
+  location coordinates are 263,258 and you want to detect the presence of moderate or greater precipitation within an approximately 5-mile area 
+  around the detection zone, you would specify a command of <code>perl getPrecipState.pl RAX_N0R_0.gif 263 258 10 40</code>.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1013B"><span class="atitle">State monitor with rules</span></a></p>
+            <p>Now that you have your rain/clear processor completed, you can tie the output to a simple state monitor to produce alerts based on your rules. 
+  For example, let's assume you want an e-mail notification when rain is in the immediate area, and an on-screen notification pop-up after it has 
+  passed. The following configuration file will send an e-mail using mutt for the rain
+  warning and pop-up a message box to the local display for 10 seconds when the rain has passed.</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+raining ## mutt -s "rain proximity alert" 919749089?@cingularme.com &lt; /dev/null
+clear ## kdialog --passivepopup "The rain has passed" 10
+</pre></td></tr></table><br />
+            <p>To process these notification configuration options correctly, we'll need a program that determines the initial state of the detection zone, 
+  then monitors the zone for changes in status and sends the appropriate output.  Listing
+  4 shows the stateMonitor.pl program.</p>
+            <br /><a name="N10150"><b>Listing 4. stateMon.pl  Section 1</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# stateMon.pl - simple monitoring of precipitation state
+use strict;
+my %cmdHash = ();
+my $initialState = "null";
+eval
+{
+  open(STATE,notify.state) or die "could not open state file";
+    $initialState = &lt;STATE&gt;;
+  close(STATE);
+};
+
+if( $@ =~ /could not open state file/ )
+{
+  open(STATE,"&gt;notify.state") or die "can't open state file for writing";
+    print STATE "null";
+  close(STATE);
+}#file not found error
+
+open(CFG,notify.config) or die "can't open notification configuration";
+  while(&lt;CFG&gt;)
+  {
+    my( $keyword, $command ) = split " ##";
+    $cmdHash{$keyword} = $command;
+  }
+close(CFG);
+</pre></td></tr></table><br />
+
+            <p>The first section will declare variables and attempt to load the previous configuration from the notify.state file. If the file does not exist (as 
+  determined by the file open error), write the "null" state to the file. The notify.config file is then processed to load the commands to run upon 
+  each state being reached. Listing 5 shows the remainder of the <code>stateMon.pl</code> program.</p>
+            <br /><a name="N10163"><b>Listing 5. stateMon.pl  Section 2</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+while(my $status = &lt;STDIN&gt;)
+{
+  open(STATE,"&gt;notify.state") or die "can't open state file for writing";
+    print STATE "$status";
+  close(STATE);
+
+  for my $keyword ( keys %cmdHash )
+  {
+    if( $status =~ /$keyword/i )
+    {
+      last if( $initialState eq "null" );
+      if( $initialState !~ /$status/i )
+      {
+        my $cmd = `$cmdHash{$keyword}`;
+      }#if status is not initial state
+    }#if status and keywork match
+  }#for each keyword
+
+}#while stdin
+</pre></td></tr></table><br />
+
+            <p>The standard "while" type loop starts by reading the output from the <code>getPrecipState.pl</code> program.  The current state is then written to the notify.state file, which saves the state for the 
+  next read.  Each key read from the notify.config file is then processed. If the current status matches a key from the notify.config file as stored in the 
+  <code>%cmdHash</code> variable, continue the processing. If the initialState is "null" (a previous state had not been recorded), 
+  exit the loop. Otherwise, if the current state does not match the recorded state, run the command specified.</p>
+
+            <p>Take the following case as an example: <br />
+  The program starts, and the notify.state file does not exist, so it is created with the contents "null". The "clear" status has been passed in by the 
+  <code>getPrecipState.pl</code> program, so the first section in Listing 5 will write "clear" into the notify.state file. The keys specified 
+  in <code>%cmdHash</code> are processed, but because the <code>initialState</code> was set to "null", the loop is exited, and no commands are run. On the next pass, the 
+  <code>stateMon.pl</code> program will read the "clear" status from the notify.state file, and if the 
+  <code>getPrecipState.pl</code> program passes in a "raining" status, the appropriate notification will be sent to 
+  the specified e-mail address.</p>
+            <p>To use the <code>stateMon.pl</code> program, simply pipe the output of
+  the <code>getPrecipState.pl</code> program into the <code>stdin</code> of <code>stateMon.pl</code>, like so: 
+  <code>perl getPrecipState.pl RAX_N0R_0.gif 263 258 10 40 | perl stateMon.pl</code>.</p>
+            <p>Keep in mind that you can modify the <code>getPrecipState.pl</code> program and the notify.config alert descriptions file to 
+  support any number of events. If you'd like to receive a notice when the notification zone receives a high percentage of rainfall compared to the 
+  surrounding areas, it's a simple matter of changing the processing algorithms of the
+  <code>getPrecipState.pl</code> program and printing out a different keyword to be matched by the contents of the notify.config file.</p>
+
+            <p>Also note that if you want to reset the status of the <code>stateMon.pl</code> operations (such as raining, clear or null), simply 
+  delete the notify.state file or change the contents manually. This will allow you to reset the status of the detection system based on other factors, 
+  such as wind speed or computed cloud cover.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101B8"><span class="atitle">Full precipitation monitoring configuration</span></a></p>
+            
+            
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N101C5"><b>Share this...</b></a><br />
+                <p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-weathermaps">
+                                    <img alt="digg" border="0" height="10" src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                
+                                <a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-weathermaps">Digg
+this story</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">
+                                    <img alt="del.icio.us" border="0" height="10" src="http://del.icio.us/static/img/delicious.small.gif" width="10"/>
+                                </a>
+                            </td><td>
+                                <a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr><tr align="left" valign="top"><td width="21">
+                                
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+                                    <img alt="Slashdot" border="0" height="16" src="/developerworks/i/slashdot-favicon.gif" width="16"/>
+                                </a>
+                                
+                                
+                            </td><td>
+                                <a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+                            </td></tr><tr><td colspan="2">
+                                <img alt="" border="0" height="5" src="http://www.ibm.com/i/c.gif" width="1"/>
+                            </td></tr></table>
+                </p>
+            </td></tr></table></td></tr></table>
+            
+
+            <p>With your selected radar image, geographical coordinates in pixel (X,Y) form, and the programs described above, you can create a simple 
+  precipitation and alert-clearing system. A basic configuration approach is to use wget
+  (available for UNIX&#174; and Windows&#174;) and a scheduler, such as cron, to automatically download the WSR-88D base reflectivity 
+  image for your area every 5 minutes. Use the same scheduler to run the <code>getPrecipState.pl</code> command with the most recent image and pipe the
+  output to the <code>stateMon.pl</code> program. Just like that, you'll receive messages as precipitation events approach, as well 
+  as when the rain will clear. Very handy if you want to know when to run outside to put the top up on your convertible or when a break in the rain 
+  will allow you to run out and check your snail mail without getting drenched.</p>
+            <p>This approach to radar image processing is useful for precipitation related messages,
+  as well as developing data on various weather-related events. You can use slightly modified versions of this code to track precipitation trends over 
+  a broad time range. Another option is to change the bounding areas to provide simple rain gate monitor, in order to find out if it has rained on 
+  your favorite park bench in the past few hours, before you head for the picnic.</p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample code</th><td nowrap="nowrap">os-weathermaps-radarProc_0.1.zip</td><td align="right" nowrap="nowrap">1.5KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=226551&amp;filename=os-weathermaps-radarProc_0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+    The National Oceanic and Atmospheric Administration explains the <a href="http://www.roc.noaa.gov/">WSR-88D</a> radar system.<br /><br /></li><li>
+  CPAN hosts the <a href="http://search.cpan.org/~lds/GD-2.35/">GD Image Processing</a> Perl module.<br /><br /></li><li>
+  For automated file downloads, try <a href="http://www.gnu.org/software/wget/">wget</a> for UNIX variants and Windows.<br /><br /></li><li>
+  To determine your pixel coordinates in a layered radar image, try <a href="http://www.thegimp.org/">The Gimp</a>.<br /><br /></li><li>
+"<a href="http://www.ibm.com/developerworks/webservices/library/ws-xml-rpc/">
+Enable C++ applications for Web services using XML-RPC</a>" is a step-by-step guide to exposing C++ methods as services.<br /><br /></li><li>
+Browse all the <a href="http://www.ibm.com/developerworks/views/opensource/libraryview.jsp?">open source content</a> on developerWorks.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX01&amp;S_CMP=ART">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Develop your own weather maps and alerts" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="226551" name="ArticleID" type="hidden"/><input value="06052007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

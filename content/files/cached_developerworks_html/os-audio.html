@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Make incoming e-mail play custom tunes</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="'You've got mail' is so 20th century. Use Perl and Sound eXchange (SoX) to play sound files on your Linux or Windows computer based on the content of incoming e-mail messages. Your system can compose and blend certain sounds to give you a heads-up on the who, what, and why of your in-box content." /><meta name="Description" content="'You've got mail' is so 20th century. Use Perl and Sound eXchange (SoX) to play sound files on your Linux or Windows computer based on the content of incoming e-mail messages. Your system can compose and blend certain sounds to give you a heads-up on the who, what, and why of your in-box content.f
+      " /><meta name="Keywords" content="Gmail, Perl, SoX, e-mail sound, Nathan Harrington, open source, POP, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-01-23" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-01-23" /><meta name="Last update" content="23012007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "'You've got mail' is so 20th century. Use Perl and Sound eXchange (SoX) to play sound files on your Linux or Windows computer based on the content of incoming e-mail messages. Your system can compose and blend certain sounds to give you a heads-up on the who, what, and why of your in-box content."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-audio">IBM developerWorks</a><BR><BR><BR><BR>
+
+<BR><BR>This a cached-text copy of the developerWorks article for arhcival sake.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-audio/">IBM developerWorks</a><BR><BR><BR><BR>
+
+<body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 188831 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1005D" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100D1" class="left-nav-child">The emailMixer.pl program</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10172" class="left-nav-child">Environment configuration</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10185" class="left-nav-child">Further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Make incoming e-mail play custom tunes</h1><p id="subtitle"><em>Compose and blend sounds based on sender and content</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Make incoming e-mail play custom tunes">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 23 Jan  2007</p><blockquote>"You've got mail" is so 20th century. Use Perl and Sound eXchange (SoX) to play sound files on your Linux&#174; or Windows&#174; computer based on the content of incoming e-mail messages. Your system can compose and blend certain sounds to give you a heads-up on the who, what, and why of your in-box content.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>Developers have long made advancements in visual notifications of arriving e-mail. Today, we see everything from simple icons changing color and shape to pop-up notifications to detailed summaries from sliding windows. Developers have not spent as much effort making sound notifications deliver anything beyond the recorded AOL voice effusing, "You've got mail." In the open source world, the best to hope for is your computer tooting different sound files based on the account or storage area where your e-mail landed.</p>
+
+<p>This article shows how to create and play back custom sound files based on the content of incoming e-mail messages. SoX -- the Swiss Army knife of sound processing programs -- and simple keyword matching will be used to create custom sound files played back upon receipt of e-mail. No more simple <i>ding</i> to indicate the arrival of an e-mail regardless of recipient, sender, or subject. You can now hear a <i>ding-bang-whoosh</i> signifying an e-mail from your manager, or a <i>bell-squawk-chirp</i> to let you know your bank statement is available.</p>
+
+<p><a name="N1005D"><span class="atitle">Requirements</span></a></p>
+
+<p><a name="N10063"><span class="smalltitle">Hardware</span></a></p>
+
+<p>This article was developed in part on an Intel&#174; Pentium&#174; 4 with 256 MB of RAM. You need at least a Pentium I processor with 64 MB of RAM if you are running Linux. The customary increase in processing power is required if you intend to use SoX on Win32, as this article demonstrates. The more sound samples you intend to process per notification, the more powerful your hardware should be to reduce the time spent synthesizing your alert sounds. A Pentium II class or newer CPU should suffice for most situations.</p>
+
+<p><a name="N10070"><span class="smalltitle">Software</span></a></p>
+
+<p>A newer (V2.4 or later) version of Linux is recommended, as the presence of the <i>aplay</i> utility (included with <i>alsa</i>) will make usage of the script seamless. You will also need Perl with the following modules: IO::Socket::SSL and Mail::POP3Client. You can install these with the command <code>cpan -i &lt;module_name&gt;</code> on Win32 and Linux. If you intend to use the emailMixer.pl program on Win32, configure your build environment using one of the many options available for compiling Perl modules. Most mainstream Linux distributions include the tools necessary for building these modules.</p>
+
+<p><a name="N10083"><span class="smalltitle">Sound file selection</span></a></p>
+
+<p>The approach to computing and building informational sound effects about new e-mail is based on three components. To provide the most information in the least amount of time and without potential confusion from the plethora of sounds, a simple time-division approach was taken. Selection of sound files requires the individual files to have peak sound interest at short, middle, or long durations. This relatively subjective term produces a sound bank selection with immediate sound output, gradual peak and decline, and a third group with a gradual crescendo. Combining these files according to the various input parameters associated with the e-mail contents produces a sound that's rich in meaning. See <a href="#resources">Resources</a> for examples of what this sounds like.</p>
+
+<p>The sound files included with the OpenOffice distribution provide an interesting body of samples to work with. For our purposes, we will use the space2, space3, (long-duration) sparcle, (medium) glasses, and laser (short) sound effects from the /usr/lib/ooo-1.1/share/gallery/sounds/ directory (on Fedora Core 3). KDE_Dialog_Disappear.wav (renamed to notify.wav) was chosen to be the default e-mail notification, which we will use if no keywords match.</p>
+
+<p><a name="N10093"><span class="smalltitle">Example sound configuration file</span></a></p>
+
+<p>The emailMixer.pl program reads the specified config file (emailMixer.config by default) for the sound files you wish to mix, depending on the location of a keyword match. Consider the following example:</p>
+
+<br /><a name="N100A0"><b>Listing 1. Example emailMixer.config file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+From: _#_ Nathan _#_ glasses.wav
+Subject: _#_ IBM _#_ sparcle.wav
+Body _#_ developerWorks _#_ space2.wav
+DefaultSound _#_ defaultSound _#_ notify.wav
+</pre></td></tr></table><br />
+
+<p>The format of the emailMixer.config file is message part <code>&lt;delimiter&gt; keyword(s) &lt;delimiter&gt;</code> sound file. In this example, if the word "Nathan" is in the From area, the glasses.wav file is specified. This is our short-peak duration sound effect, while sparcle.wav is the medium-duration effect played when the Subject header contains "IBM." The final two lines indicate mixing of the long-duration space2.wav sound effect upon matching "developerWorks" in the body of the message and to play just the notify.wav file if there are no keyword matches.</p>
+
+<p>Note that if you want to search the message headers, you need to specify the exact header name. For example, "from" or "From:" will not precisely match the header "From:" due to the absence of a colon and the presence of a leading space, respectively.</p>
+
+<p><a name="N100B0"><span class="smalltitle">Installation of SoX</span></a></p>
+
+<p>Before you begin processing sound files, download and install SoX. This will provide all the tools needed to build, process, and mix the sound files necessary for useful e-mail notification (see <a href="#resources">Resources</a>). On most modern Linux distributions, you should already have SoX installed. In a Win32 environment, download and unpack the binaries in the same directory that the emailMixer.pl program and your sound effects are in.</p>
+
+<p><a name="N100BD"><span class="smalltitle">Sound file preprocessing</span></a></p>
+
+<p>Included with the SoX code distribution is the program soxmix, which will combine two files and optionally apply user-specified effects. The soxmix program requires that the files to be mixed together be the same data type and sample rates. The sound effects we selected are in different formats, two being Signed 16 bit Little Endian, Rate 22050 Hz and two others being Unsigned 8 bit, Rate 11025 Hz. Using SoX, they can all be converted to the same format to allow the soxmix program to process them correctly. Use the command <code>sox space2.wav -r 11025 -c1 -b downSample_space2.wav polyphase</code> to change the format of the space2.wav file from Signed 16 bit Little Endian, Rate 22050 Hz to Unsigned 8 bit, Rate 11025 Hz. If you see error messages regarding forcing the format to unsigned, don't panic as this is not actually an error condition. Test the output file's correctness by playing it back. If it sounds OK, it's fine.</p>
+
+<p>Note the "polyphase" option on the end of the SoX command. This is important to preserve the pitch of the file while altering its sample rate. If you remove the polyphase option, you will increase or decrease the pitch of the output sample, depending on the output rate selected. After you've created your modified file with SoX, rename it to the expected filename with <code>mv downSample_space2.wav space2.wav</code>. Make sure you complete this process for any sound file you plan to include in the emailMixer.config file.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100D1"><span class="atitle">The emailMixer.pl program</span></a></p>
+
+<p>Now that you have your environment in place, your sound effects selected and preprocessed, and your required Perl modules configured, let's look at the emailMixer.pl program.</p>
+
+<p>First up are the program parameters:</p>
+
+<br /><a name="N100E1"><b>Listing 2. Main program parameters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w
+# emailMixer.pl - create notification sound files based on keywords in e-mails
+use strict;
+use Mail::POP3Client;
+use IO::Socket::SSL;
+
+# required for Win32 usage only
+#use Win32::Sound;
+
+my $userName   = 'accountname@gmail.com';
+my $passWord   = 'password';
+my $mailHost   = 'pop.gmail.com';
+my $port     = '995';
+my $pop     = ""; # mail object
+my %kwHash    = (); # for matching words with sounds
+my @soundList  = (); # sounds to mix together
+my $cmd     = ""; # commands to run
+my $firstSound  = ""; # base sound to mix with 
+my $defaultSound = "notify.wav";
+my $msgHead   = ""; # headers from e-mail message
+my $msgBody   = ""; # body from e-mail message
+</pre></td></tr></table><br />
+
+<p>Make sure you uncomment the <code>Win32::Sound</code> line if you plan to run this program in a Win32 environment. Watch for the sound playing line at the end of the file as well, as you'll need to uncomment it also to play sounds on a Win32 machine. You'll need to update the account name and password sections, of course. Note that this code and environment description focuses on using a Gmail account for mail processing. The code here is not specific, though, and should work on any POP3 mailbox.</p>
+
+<p>The subroutines section begins next, with the <code>readKeyWordFile</code> section leading off:</p>
+
+<br /><a name="N100F9"><b>Listing 3. readKeyWordFile subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# readKeyWordFile reads keywords, match location and sound files from 
+# emailMixer.config. format is: message part _#_ word(s) _#_ sound file
+sub readKeyWordFile 
+{ 
+ open(KWFILE,"emailMixer.config") or die "no emailMixer file: $!";
+
+  while(&lt;KWFILE&gt;){
+
+   # ignore comment lines
+   if( !/^#/ ){
+    chomp($_);
+    my @arrLine = split "_#_";
+    $arrLine[0] =~ s/ //g;
+    $kwHash{ $arrLine[0] }{ $arrLine[1] } = $arrLine[2];
+   }#if not a comment line
+
+  }#for each line in file
+
+ close(KWFILE);
+
+}#readKeyWordFile
+</pre></td></tr></table><br />
+
+<p>The emailMixer.config file will contain the section, keywords, and sound effects specified to search when the program runs. The <code>readKeyWordFile</code> subroutine builds a simple hash of the contents of the emailMixer.config file for later searching, considering any lines that begin with <code>#</code> as comments.</p>
+
+<p>Next up is the <code>checkMail</code> subroutine:</p>
+
+<br /><a name="N10115"><b>Listing 4. checkMail subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#setup the mail connection to Gmail
+sub checkMail
+{ 
+ print "hmm checking \n";
+ $pop = new Mail::POP3Client( USER   =&gt; $userName,
+                PASSWORD =&gt; $passWord,
+                HOST   =&gt; $mailHost,
+                PORT   =&gt; $port,
+                USESSL  =&gt; 'true',
+                DEBUG  =&gt; 0,
+               );
+
+ die "no messages\n" if( $pop-&gt;Count() &lt; 1 );
+
+ $msgHead = $pop-&gt;Head(1);
+ $msgBody = $pop-&gt;Body(1);
+ $pop-&gt;Close();
+}#checkMail
+</pre></td></tr></table><br />
+
+<p>Using the Mail::POP3Client, this subroutine will download all new messages from the Gmail POP in-box. For our purposes, we will only use the contents of the first message, if one exists. After we store the contents of the headers and body in temporary variables, the <code>pop-&gt;Close()</code> command is issued to tell the Gmail servers that the mail has been retrieved. To set the retrieval or read status using a different program, comment out the <code>pop-&gt;Close()</code> line, and the message will stay in the in-box until removed. For more options on environment setup and methods for seamlessly integrating the emailMixer.pl program with your existing mail setup, see the "Environment Configuration" section.</p>
+
+<p>With the internal program environment subroutines in place, we can specify a simple keyword matching subroutine:</p>
+
+<br /><a name="N1012D"><b>Listing 5. matchWords subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# select the appropriate header file and look for matches
+sub matchWords
+{
+ my $locPart = $_[0];
+ my $locWords = $_[1];
+ my $msgString = "";
+
+ if( $locPart =~ /:/ )
+ {
+  # if the area for searching is a header
+  for( split '\n', $msgHead )
+  {
+   if( /^$locPart/i ){
+    $msgString = $_;
+    last;
+   }
+  }#for each line in the headers
+ }else
+ {
+  # if not searching a header, must be the body
+  $msgString = $msgBody;
+ }#if a header match
+
+ for my $checkWord ( split " ", $locWords )
+ {
+  $checkWord =~ s/ //g;
+  if( $msgString =~ /$checkWord/i )
+  {
+   return(1);
+  }#if from match
+
+ }#for each check word
+
+}#matchWords
+</pre></td></tr></table><br />
+
+<p>The <code>matchWords</code> subroutine takes two arguments: location to search, and words to search for. If the location to search is one of the headers in a typical message, we need to set the string to search <code>msgString</code> to the content of the header. Otherwise, the body must be checked for the specified string(s). For each word specified in the configuration file to search for in the specified location, return <code>1</code> to the main program to let it know a match was found. </p>
+
+<p>With our subroutines finished, we can move onto the main program. </p>
+
+<br /><a name="N10149"><b>Listing 6. Main program check and search</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# MAIN PROGRAM
+
+readKeyWordFile();
+checkMail();
+
+# for each part of the message speciified
+for my $msgPart( keys %kwHash )
+{ 
+ # for all the keywords for the part of the message specified
+ for my $keyWords ( keys %{ $kwHash{$msgPart} } )
+ { 
+  if( matchWords( $msgPart, $keyWords ) )
+  { 
+   push @soundList, $kwHash{$msgPart}{$keyWords};
+  }
+ }#for each key word listing
+}#for each message part
+</pre></td></tr></table><br />
+
+<p>After reading the initialization file, the presence of new e-mail is checked. If a message is found, the program continues checking each of the search locations for the specified word(s). If a match is found, the array of sounds to be combined is added to, based on the defined sound file from the configuration in emailMixer.config. </p>
+
+<p>Next up is the actual building of the sound file, and finally playing it out.</p>
+
+<br /><a name="N10159"><b>Listing 7. Main program sound build and play</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+if( $#soundList != -1 )
+{ 
+ $firstSound = $soundList[0];
+ my $count = 0;
+ shift(@soundList);
+ for my $sndFile ( @soundList )
+ { 
+  $cmd = qq{ soxmix $firstSound $sndFile out$count.wav };
+  $cmd = `$cmd`;
+  $firstSound = "out$count.wav";
+  $count++;
+ }
+}else
+{ 
+ $firstSound = $defaultSound;
+}#if sounds found
+
+# for Linux
+$cmd = `aplay $firstSound`;
+
+#for Win32
+#Win32::Sound::Play("$firstSound");
+</pre></td></tr></table><br />
+
+<p>If there was a match of any of the words to search for in the entire message, play the sound built based on those matches. You may wish to modify this behavior to always include your default notification sound and simply overlay your matching sound files. For our purposes, I felt it was better to provide an additional layer of differentiation separating the match/dissonance sounds completely. Assuming at least one match was found, the main program will then continuously overlay the matching sound files to build a single output file. For example, in the <code>for my $sndFile ( @soundList )</code> loop above, if the entire criteria specified (<code>IBM, developerWorks, nathan</code>) matches, the commands issued inside the loop will be what we see here.</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+soxmix glasses.wav sparcle.wav out0.wav
+soxmix space2.wav out0.wav out1.wav
+</pre></td></tr></table><br />
+
+<p>The final commands need to be modified to play back your generated sound file accurately. Make sure you choose the Win32 playback option if your machine is under the influence of Redmond.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10172"><span class="atitle">Environment configuration</span></a></p>
+
+<p>Now that you have an idea of how the program works, let's configure your environment for effective use of the emailMixer.pl program. </p>
+
+<p>One simple approach is to configure your Gmail account to archive every e-mail after it is downloaded by a POP client. This way, the emailMixer.pl program will download all new messages every time it is run, and Gmail will display the online read status under the All Mail view. You can then skip over the in-box view entirely and work only in the All Mail view as your in-box messages are monitored and processed by the emailMixer.pl program. Alternatively, you could set up a POP-only e-mail account for Gmail, where your messages are automatically forwarded from your main account to the POP-only account. Configure the POP-only account to automatically delete messages after accessed over POP. This will enable you to use your in-box on your main account the standard way and use the emailMixer.pl program to check the POP-only account's e-mail. </p>
+
+<p>If you prefer to download your e-mail from Gmail and work with it locally, consider running emailMixer.pl with the <code>pop-&gt;close</code> line commented out. This will tell the server that the messages were not downloaded entirely, which will then allow your standard message retrieval program, such as Thunderbird, to download the message in its entirety.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10185"><span class="atitle">Further examples</span></a></p>
+
+<p>As an end-to-end example, let's say you started a new job with a local university. You want all of your e-mail messages received from an .edu address to have a specific long-duration sound, with particular interest shown in the short- and medium-duration areas if they are regarding "account" and addressed to "Nathan." Use the following emailMixer.config file:</p>
+
+<br /><a name="N10192"><b>Listing 8. .edu example emailMixer.config file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+From: _#_ Nathan _#_ glasses.wav
+Subject: _#_ IBM _#_ sparcle.wav
+Body _#_ developerWorks _#_ space2.wav
+DefaultSound _#_ defaultSound _#_ notify.wav
+From: _#_ .edu _#_ space3.wav
+Body _#_ account _#_ laser.wav
+</pre></td></tr></table><br />
+
+<p>This will play a mix of the space3, laser, and glasses sounds when your paycheck-to-bank-account e-mail comes in.</p>
+
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="150"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N1019E"><b>Share this...</b></a><br />
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="135"><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21">
+
+<a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-audio/">
+<img alt="digg" border="0" height="10" src="//www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10"/>
+</a>
+</td><td>
+
+<a href="http://digg.com/submit?phase=2&amp;url=http://www.ibm.com/developerworks/opensource/library/os-audio/">Digg this story</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21"><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img alt="del.icio.us" border="0" height="10" src="//del.icio.us/static/img/delicious.small.gif" width="10"/></a>
+</td><td><a href="http://del.icio.us/post" onClick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;">Post to del.icio.us</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr><tr align="left" valign="top"><td width="21">
+
+<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img alt="Slashdot" border="0" height="16" src="//images.slashdot.org/favicon.ico" width="16"/></a> 
+
+
+</td><td>
+<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a>
+</td></tr><tr><td colspan="2">
+<img alt="" border="0" height="5" src="//www.ibm.com/i/c.gif" width="1"/>
+</td></tr></table>
+</p>
+</td></tr></table></td></tr></table>
+
+
+<p>Of course, the sound files used here and our configuration examples are just starting points. You can use your own sound files and configurations to go well beyond our humble examples. </p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Samples</th><td nowrap="nowrap">os-audio.zip</td><td align="right" nowrap="nowrap">171KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=188831&amp;filename=os-audio.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Check out <a href="http://sox.sourceforge.net">Sound eXchange (SoX)</a> at SourceForge.net.<br /><br /></li><li>
+Hear examples of what the e-mail mixer sounds like: <a href="http://nathanharrington.info/glasses_sparcle_space2.wav">Glasses, sparce, space2</a> and <a href="http://nathanharrington.info/glasses_laser_space3.wav">Glasses, laser, space3</a>.<br /><br /></li><li>
+Some of the sounds used in this article are from the <a href="http://www.openoffice.org/">OpenOffice</a> suite.<br /><br /></li><li>
+"<a href="http://www.ibm.com/developerworks/webservices/library/ws-xml-rpc/">Enable C++ applications for Web services using XML-RPC</a>" is a step-by-step guide to exposing C++ methods as services.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/architecture">Architecture zone</a> to get the resources you need to advance your skills in the architecture arena.<br /><br /></li><li>
+Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, be sure to check out <a href="http://www.ibm.com/developerworks/podcast/">developerWorks podcasts</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Get involved in the developerWorks community by participating in <a href="http://www.ibm.com/developerworks/blogs/">developerWorks blogs</a>.</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Make incoming e-mail play custom tunes" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="188831" name="ArticleID" type="hidden"/><input value="01232007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

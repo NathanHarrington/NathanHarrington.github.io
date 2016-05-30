@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Shake some sense into your Linux ThinkPad</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Place your computer on the leading edge of cathartic interfaces by modifying the kernel to reset your Linux laptop automatically when shaken during a kernel panic. Implement a shake-detection algorithm in the kernel and user space to perform automatic shutdowns and restarts when certain kinetic conditions are met." /><meta name="Description" content="Place your computer on the leading edge of cathartic interfaces by modifying the kernel to reset your Linux laptop automatically when shaken during a kernel panic. Implement a shake-detection algorithm in the kernel and user space to perform automatic shutdowns and restarts when certain kinetic conditions are met.f
+      " /><meta name="Keywords" content="hdaps, kernel, linux, open source, Nathan Harrington, tttosca, tttlca" /><meta name="DC.Date" scheme="iso8601" content="2006-11-07" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2006 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2006-11-07" /><meta name="Last update" content="07112006krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Place your computer on the leading edge of cathartic interfaces by modifying the kernel to reset your Linux laptop automatically when shaken during a kernel panic. Implement a shake-detection algorithm in the kernel and user space to perform automatic shutdowns and restarts when certain kinetic conditions are met."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-linuxthinkpad">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 172779 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1004C" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10071" class="left-nav-child">Kernel development setup</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1014B" class="left-nav-child">Testing your panicShake() kernel</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101A8" class="left-nav-child">User space shutdown and motion detection</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101DA" class="left-nav-child">Conclusion</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/linux/library.jsp">Linux technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct"> | </span><a href="http://www.ibm.com/developerworks/linux/" class="bctl">Linux</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Shake some sense into your Linux ThinkPad</h1><p id="subtitle"><em>Use open source software and accelerometer-enabled ThinkPads to listen for percussive impacts and shaking to kick-off user commands or a reset</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Shake some sense into your Linux ThinkPad">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 07 Nov  2006</p><blockquote>Place your computer on the leading edge of cathartic interfaces by modifying the kernel to reset your Linux&#174; laptop automatically when shaken during a kernel panic. Implement a shake-detection algorithm in the kernel and user space to perform automatic shutdowns and restarts when certain kinetic conditions are met.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>In 2003, IBM&#174; started selling ThinkPad laptop computers with integrated accelerometers and associated software for a commercial operating systems to protect the hard disks when the ThinkPad is dropped. Enterprising hackers from IBM and elsewhere have worked to develop modules for the Linux kernel to take advantage of these sensors. On-screen display orientation, desktop switching, even game control and real-time 3-D models of the tilt of the laptop are now available. </p>
+
+<p>In mid-2006, knock-based commands for Linux laptops became available with user-space Perl scripts (as opposed to C-based code buried in kernel space), allowing users to run arbitrary commands based on specific knock sequences. This article describes the process of modifying the Linux kernel to add an oft-demanded feature: feedback on physical input. When the Linux kernel panics, the user can shake the computer (or perform any number of other developer-configurable physical movements of the laptop), and the machine will reset.</p>
+
+<p>Also covered are methods for performing a normal shutdown in nonpanic mode. For example, if the user inadvertently places the computer in a laptop bag still turned on, we want the computer to detect a normal walking or driving motion and turn the computer off.</p>
+
+<p><a name="N1004C"><span class="atitle">Requirements</span></a></p>
+
+<p><a name="N10052"><span class="smalltitle">Hardware</span></a></p>
+
+<p>Many IBM ThinkPads manufactured in 2003 and later sport hdaps hardware. If you are unsure of your hardware configuration, check out the technical details on Lenovo's Web site. You need a ThinkPad for this code to function. Some MacBooks have the accelerometers and the same general methods available to access them through the kernel. However, the code here was not tested on Apple hardware and was developed and tested on two IBM ThinkPad T42p models. See <a href="#resources">Resources</a> for links on how to find ThinkPad hardware that will support your desire to get physical with your laptop.</p>
+
+<p><a name="N10060"><span class="smalltitle">Software</span></a></p>
+
+<p>This article assumes familiarity with the kernel build process, as well as experience with the inconsistencies among distributions when it comes to kernel compilation. For an introduction to the kernel build process, as well as some great examples on how to get started, see <a href="#resources">Resources</a>.</p>
+
+<p>As of kernel V2.6.15, the hdaps driver is included in the Linux kernel. Grab the latest kernel for the sake of simplicity. For ease of development and administration, this article was developed on Fedora Core V5. The following instructions used to set up the kernel build environment are specific to Fedora Core, but the general principles are applicable to any Linux distribution.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10071"><span class="atitle">Kernel development setup</span></a></p>
+
+<p><a name="N10077"><span class="smalltitle">Kernel configuration, compilation, and testing</span></a></p>
+
+<p>To modify the kernel, follow the instructions from the excellent release notes. Open a Web browser and start following the instructions in section 8.6: "Preparing for Kernel Development." When you get to section 2, you may have a problem with the second command: <code>su -c 'yumdownloader --source kernel'</code>. If the command does not pull down the kernel-2.6.15-1.2054_FC5.src.rpm package for you, use <code>wget</code> to get it with the command: <code>wget ftp://ftp.linux.ncsu.edu/pub/fedora/linux/core/5/source/SRPMS/kernel-2.6.15-1.2054_FC5.src.rpm</code>.</p>
+
+<p>When you get to step 5, select the basic i686 default config with the command: <code>cp configs/kernel-2.6.15-i686.config .config</code>. Make sure to change the EXTRAVERSION section in the makefile from <code>-prep</code> to <code>-1.2054_FC5</code>. Update the build configuration with <code>make oldconfig</code>. Install the kernel development modules, as well with the command <code>su -c "yum install kernel-devel"</code>. This will be used for compilation of our panic instigation module.</p>
+
+<p>We have now completed the relevant portions of the kernel configuration from the Fedora Core V5 Release Notes document. The remaining steps are standard to any kernel build process. I recommend building and installing your new kernel, modules, and RAM disk setup now to make sure things are working as expected. You can skip the following steps and head right to the kernel modification section if you are confident about your new kernel configuration. </p>
+
+<p>Build your new kernel with the <code>make</code> command. When the kernel is built successfully, copy it to the /boot directory with the command <code>su -c "cp ./arch/i386/boot/bzImage /boot/vmlinuz-2.6.15hdaps"</code>. You'll need to build your modules with the command <code>su -c "make modules_install"</code>. The final build step is to create a RAM disk for the hdaps kernel with the command <code>su -c "/sbin/mkinitrd hdapsInitrd.img 2.6.15-1.2054_FC5"</code>. Copy this new RAM disk to the boot area with the command <code>su -c "cp hdapsInitrd.img /boot/"</code>. As root, update the grub.conf file with the following lines: </p>
+
+<br /><a name="N100C2"><b>Listing 1. grub configuration</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+title Fedora Core (2.6.15hdaps)
+    root (hd0,0)
+    kernel /vmlinuz-2.6.15hdaps ro root=/dev/VolGroup00/LogVol00 rhgb quiet
+    initrd /hdapsInitrd.img
+</pre></td></tr></table><br />
+
+<p><a name="N100C8"><span class="smalltitle">Modification of panic.c and hdaps.c</span></a></p>
+
+<p>Now you are ready to start some shake-and-bake kernel hacking. Make sure you are in the ~/rpmbuild/BUILD/kernel-2.6.15/linux-2.6.15.i686 directory. The first priority is to include the hdaps module as a built-in component of the kernel, so it will be ready to provide for shake detection anywhere in the machine's run modes.</p>
+
+<p>Use the command <code>make menuconfig</code> and select <b>Device Drivers &gt; Hardware Monitoring Support</b>. Type a <code>Y</code> to include the Hardware Monitoring Support module since the hdaps module is dependent on it. Scroll to the bottom of the list and place another <code>Y</code> next to the IBM Hard Drive Active Protection System (hdaps) entry. Back out of the menus and save your configuration.</p>
+
+<p>Open the file drivers/hwmon/hdaps.c and add the following text to the includes section: <code>#include &lt;linux/reboot.h&gt;</code>. Also add the new subroutine below directly after the hdaps_read_pair subroutine: </p>
+
+<br /><a name="N100EE"><b>Listing 2. Full panicShake subroutine from hdaps.c</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+/*
+ * panicShake - reboot the machine if shaken
+ */
+extern void panicShake(void)
+{
+ int ret, x, y; // return value and x,y from hdaps
+ int int baseX = -5000; // off scale default values
+ int baseY = -5000;
+ int totalDev = 0; // running total of deviations from rest (shaking total)
+ int devThreshold = 4000; // larger threshold for more shaking
+ int dimShiftX = 150; // in case your users shake more in a certain dimension
+ int dimShiftY = 150;
+
+ while(1)
+ {
+  ret = hdaps_read_pair(HDAPS_PORT_XPOS, HDAPS_PORT_YPOS, &amp;x, &amp;y);
+  if (!ret)
+  {
+   if( x != 0 &amp;&amp; y != 0 )
+   {
+    // if its a successful read and not a zero read
+    if( baseX == -5000 )
+    {
+     baseX = x;
+     baseY = y;
+    }
+    if( abs(baseX - x) &gt; dimShiftX || abs(baseY - y) &gt; dimShiftY )
+    {
+     totalDev += abs(baseX - x);
+     totalDev += abs(baseY - y);
+    }
+    if( totalDev &gt; devThreshold )
+    {
+     printk(KERN_EMERG "ok, ok! you're shaking my substrate - restarting");
+     emergency_restart();
+    }
+   }//if not a zero value
+  }//if successful read of hdaps data
+
+ }//infinite while
+
+}//panicShake
+</pre></td></tr></table><br />
+
+<p>With our shake-detection routine in place, we need to call it upon system panic. Open the kernel/panic.c file and place a call to the <code>panicShake();</code> subroutine directly before the <code>panicBlink</code> conditional section. Issue a <code>make</code> command. Let's review the shake-detection code while your kernel is being rebuilt. First, we set up some variables:</p>
+
+<br /><a name="N10107"><b>Listing 3. panicShake variables</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+ int ret, x, y; // return value and x,y from hdaps
+ int baseX = -5000; // off scale default values
+ int baseY = -5000;
+ int totalDev = 0; // running total of deviations from rest (shaking total)
+ int devThreshold = 4000; // larger threshold for more shaking
+ int dimShiftX = 150; // in case your users shake more in a certain dimension
+ int dimShiftY = 150;
+ </pre></td></tr></table><br />
+
+<p>Of particular note is the deviation threshold parameter and the dimensional shift parameters. These may require tuning based on the unique characteristics of the motion you are trying to detect. For example, if you feel the urge to shake your computer like you were performing a basketball pass, try decreasing the <code>dimShiftX</code> parameter to more easily detect motions perpendicular to the screen of the computer. Conversely, if your shaking impulse instigates motions of a sawing-timber nature, consider decreasing the <code>dimShiftY</code> parameter to quickly pick up on shaking moments of frustration parallel to the screen and reset your computer before further damage can occur. </p>
+
+<p>The selections of <code>150</code> for dimensional parameters and <code>4000</code> for the total deviation are designed to acquire the typical shaking motions of an average user. For immediate response to inputs, try decreasing the dimensional shift parameters to <code>10</code> or less and a total deviation parameter of <code>10</code> or less. These values will cause other types of inputs to be immediately recognized, such as bashing the keyboard in frustration or smacking the display case in abject disgust.</p>
+
+<p>Next, we consider the infinite loop statement and conditionals.</p>
+
+<br /><a name="N10132"><b>Listing 4. panicShake hdaps read and base setup</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+ while(1)
+ {
+  ret = hdaps_read_pair(HDAPS_PORT_XPOS, HDAPS_PORT_YPOS, &amp;x, &amp;y);
+  if (!ret)
+  {
+   if( x != 0 &amp;&amp; y != 0 )
+   {
+    // if its a successful read and not a zero read
+    if( baseX == -5000 )
+    {
+     baseX = x;
+     baseY = y;
+    }
+</pre></td></tr></table><br />
+
+<p>The code works as follows: For the rest of time, read the current accelerometer readings from the hdaps sensor. Frequently, the read will be unsuccessful or both values will be equal to 0,0, which is unusable data. We need to avoid these spurious 0,0 readings, as about one out of every 10 readings at any orientation of the sensor will be 0,0 -- invalid data, indeed. If it's our first "successful" read, set the base parameters equal to the first x and y values. This will allow us to more robustly detect shaking or other movements if the panic occurred while the machine was on a nonflat surface, such as a person's knees.</p>
+
+<p>The remainder of the subroutine is the implementation of the simple shake-detection algorithm.</p>
+
+<br /><a name="N10142"><b>Listing 5. panicShake shake detection </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    if( abs(baseX - x) &gt; dimShiftX || abs(baseY - y) &gt; dimShiftY )
+    {
+     totalDev += abs(baseX - x);
+     totalDev += abs(baseY - y);
+     baseX = x;
+     baseY = y;
+    }
+    if( totalDev &gt; devThreshold )
+    {
+     printk(KERN_EMERG "ok, ok! you're shaking my substrate - restarting");
+     emergency_restart();
+    }
+   }//if not a zero value
+  }//if successful read of hdaps data
+
+ }//infinite while
+</pre></td></tr></table><br />
+
+<p>If the dimensional shift in either direction is greater than our previously set threshold, increment the total deviation by the amount moved in both directions. Then set the current base to the existing level of acceleration. This repeated reinitialization of the base values will require the user to continuously exceed the dimensional shift values to increment the total deviation detected. This is useful for allowing the user to move and store the ThinkPad in panic mode as they track down the systems administrator. Remove the reinitialization assignments if you want simply setting the ThinkPad on its side or tilting it and holding it there to trigger a restart.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1014B"><span class="atitle">Testing your panicShake() kernel</span></a></p>
+
+<p>To initiate a panic, we need to call the panic subroutine in the kernel. Create the following makefile: <code>obj-m := panicCall.o</code>, which will be used by the program panicCall.c on compilation:</p>
+
+<br /><a name="N1015C"><b>Listing 6. panicCall.c kernel module source</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+/*
+ * panicCall.c - Instigate a kernel panic
+ */
+#include &lt;linux/module.h&gt; /* Needed by all modules */
+#lincude &lt;linux/kernel.h&gt; /* Needed for KERN_INFO */
+
+static char *pMesgStr = "PANIC SHAKE AND BAKE";
+
+int init_module(void)
+{
+ printk(KERN_INFO,"panicCall module loaded\n");
+ panic(pMesgStr);
+ return(0);
+}
+
+void cleanup_module(void)
+{
+ printk(KERN_INFO,"panicCall module unloaded, beyond possible");
+}
+</pre></td></tr></table><br />
+
+<p>As root, compile the panicCall module with the command <code>make -C /lib/modules/$(uname -r)/build SUBDIRS=$PWD modules</code>. You now have a module you can call to trigger a panic with the command <code>insmod panicCall.ko</code>. Reboot if you haven't already (to activate your hdaps panic shake-enabled kernel) and run <code>insmod panicCall.ko</code>. You should see something similar to the following:</p>
+
+<br /><a name="N10175"><b>Listing 7. kernel panic stack strace </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+panicCall: module license 'unspecified' taints kernel.
+Kernel panic - not syncing: PANIC SHAKE AND BAKE ACTIVE
+ [&lt;c011a32e&gt;] panic+0x3e/0x174   [&lt;f8a97017&gt;] init_module+0xb/0xc [panicCall]
+ [&lt;c013050a&gt;] sys_init_module+0x1382/0x1514   [&lt;c0152413&gt;] do_sync_read+0xb8/0xf3
+ [&lt;c012a17f&gt;] autoremove_wake_function+0x0/0x2d   [&lt;c01c0672&gt;]
+ 	 _atomic_dec_and_lock+0x22/0x2c
+ [&lt;c0169c32&gt;] mntput_no_expire+0x11/0x6d   [&lt;c0102bc1&gt;] syscall_call+0x7/0xb
+</pre></td></tr></table><br />
+
+<p>Now pick up your computer and give it a good shake, and it will print out the "shaking substrate" message and perform a restart. If you're the sort who would rather not shake a potentially active disk drive, issue the following commands as root:</p>
+
+<br /><a name="N10182"><b>Listing 8. RAM disk creation, module copying</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+mkdir /tmp/ramdisk0
+mke2fs /dev/ram0
+mount /dev/ram0 /tmp/ramdisk0/
+cp /root/panicCall.ko /tmp/ramdisk0/
+cp /sbin/insmod /tmp/ramdisk0/
+</pre></td></tr></table><br />
+
+<p>You now have the two files you need to insert a module into the kernel located on a RAM disk. Update the <code>/etc/init.d/halt</code> script with the following section, directly below the <code>fsck check</code> section and directly above the <code>halt execute</code> section:</p>
+
+<br /><a name="N1019B"><b>Listing 9. modification of /etc/init.d/halt</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+echo "disks now mounted in readonly mode, spin down in 5 seconds";
+/sbin/hdparm -S 1 /dev/hda
+echo "spin down hda called, waiting 10 seconds";
+sleep 10
+echo "calling panic from ramdisk location";
+/tmp/ramdisk0/insmod /tmp/ramdisk0/panicCall.ko
+</pre></td></tr></table><br />
+
+<p>Execute the command <code>init 0</code> as root to send the machine into shutdown mode. Prior to the call for power off, the machine will load the panic instigator module into the kernel, and the shake detection routine will be called. If you listen to the hard disk as the system is shutting down, you can hear the distinct meatier-than-usual click, followed by the Doppler disk decrease as the arm is placed in the rest "stowage" position and the platters spun down. After about five more seconds, the panic module will be executed from RAM disk while the physical disk heads are still parked. Now you can shake your ThinkPad to your heart's content without concern for your disk's health.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101A8"><span class="atitle">User space shutdown and motion detection</span></a></p>
+
+<p>Many an IT administrator has yearned for the ability to know the physical history of hardware. With the same simple shake-detection algorithm above, a Perl script, and a monitoring policy, administrators will be better able to track the status of their hardware. For example, we will use the Perl script below to shut down the machine gracefully when shaken by the user. Modifications can be made easily to send an e-mail, flash the "ThinkLight," or play a sound file based on the user's manipulation of the ThinkPad.</p>
+
+<br /><a name="N101B5"><b>Listing 10. Perl script for shake detection, Part 1</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w 
+# shakeShutdown.pl - shutdown (or other command) when the computer is shaken
+use strict;
+my $file = "/sys/devices/platform/hdaps/position";
+my $baseX = -5000;
+my $baseY = -5000;
+my $totalDev = 0;
+if( @ARGV != 1 ){ die "specify a threshold value" }
+my $devThreshold = $ARGV[0];
+my $dimShiftX = 150;
+my $dimShiftY = 150;
+while(1)
+{
+ open(HD,"$file") or die "can't open file";
+  my $line = &lt;HD&gt;;
+  chomp($line);
+  $line =~ s/\(//g;
+  $line =~ s/\)//g;
+  $line =~ s/\,/ /g;
+  my( $x, $y ) = split " ", $line;
+</pre></td></tr></table><br />
+
+<p>As you can see, the initial program setup is nearly identical to the hdaps kernel code. The regular expressions and <code>split</code> commands simply change the x and y values from (5,4) to 5 and 4. The remainder of the program is also virtually identical:</p>
+
+<br /><a name="N101C6"><b>Listing 11. Perl script for shake detection, Part 2</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+  if( $x != 0 &gt;&gt; $y != 0 )
+  {
+   if( $baseX == -5000 )
+   {
+    $baseX = $x;
+    $baseY = $y;
+   }
+   if( abs($baseX - $x) &gt; $dimShiftX || abs($baseY - $y) &gt; $dimShiftY )
+   {
+    $totalDev += abs($baseX -$x);
+    $totalDev += abs($baseY -$y);
+    $baseX = $x;
+    $baseY = $y;
+   }
+   if( $totalDev &gt; $devThreshold )
+   {
+    print "threshold passed $totalDev\n";
+    my $res=`/sbin/shutdown -h 1`;
+   }
+  }
+ close(HD);
+}
+</pre></td></tr></table><br />
+
+<p>Note the <code>shutdown -h 1</code> command. This will give the user 60 seconds to change his ways and issue a shutdown abort. Change this command to run your favorite mailer, and you can let your systems administrator know when a user is abusing equipment. Log messages to the system log or sound the PC speaker for instant user feedback about getting physical. Run the script with the command <code>perl shakeShutdown.lp 1000</code>. The much-smaller deviation threshold is due to the decreased number of reads-per-time interval of the accelerometer compared with the number of reads-per-time interval in kernel space.</p>
+
+<p>Modifying the dimensional shift parameters and the deviation threshold can provide for additional useful monitoring of physical activities outside kernel space. For example, to acquire a "walking" behavior, set the dimensional shift parameters to around 20 and set the deviation threshold to around 5000. This will pick up about 63 dual-axis dimensional shifts, consistent with the laptop being running while in an over-the-shoulder typical laptop bag. After this long walk is detected (as opposed to a short walk between cube and conference), the machine will enter shutdown to prevent overheating while the airflow is confined in the carrying case. Modify the dimensional shift parameters to be highly sensitive, and every significant bump, drop, or shake can be recorded.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101DA"><span class="atitle">Conclusion</span></a></p>
+
+<p>With these simple algorithms for user space and kernel-level code, you now have the ability to detect, log, and respond to the full range of physical input from the user. With these code examples, you can do everything from modifying hard-drive performance parameters based on computed altitude from continuous acceleration to tracking the number of steps from your cubicle to the conference room and mail it to your space planner.</p>
+
+<br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+For more information about this topic, read "<a href="http://www.ibm.com/developerworks/library/l-knockage.html">Knock-based commands for your Linux laptop</a>."<br /><br /></li><li>
+Be sure to check out Kwan Love's <a href="http://www.digitalhermit.com/linux/Kernel-Build-HOWTO.html">Kernel Rebuild Guide</a>.<br /><br /></li><li>
+Watch the <a href="http://www.youtube.com/watch?v=6bVGPFLsMcM">shakeReset demonstration video</a> on YouTube or check it out on <a href="http://video.google.com/videoplay?docid=-2963649349919584054">Google video</a>.<br /><br /></li><li> 
+Get the raw <a href="http://nathanharrington.info/shakeReset_movMPEG4.mov">shakeReset</a> demonstration video at Google.<br /><br /></li><li>
+Learn more about <a href="http://mirrors.kernel.org/">Linux kernel download mirrors</a> for acquiring hdaps.<br /><br /></li><li>
+Check out the <a href="http://hdaps.sourceforge.net/">hdaps development</a> information on SourceForge.<br /><br /></li><li>
+<a href="http://www.thinkwiki.org/wiki/Hardware_Specifications">ThinkWiki</a> is a great source for IBM and Lenovo ThinkPad hardware information.<br /><br /></li><li>
+Find out about controlling games by checking out Mark Smith's <a href="http://www.almaden.ibm.com/cs/people/marksmith/sdl.html">SDL Modifications for Accelerometer Game Control</a>.<br /><br /></li><li>
+<a href="http://www.thinkwiki.org/wiki/HDAPS">ThinkWiki</a> also lists many applications of the hdaps interface.<br /><br /></li><li>
+See an example of how to access similar accelerometer-based information for the Apple hardware book by visiting <a href="http://www.kernelthread.com/software/ams2hid/">The Apple Sudden Motion Sensor</a>.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and webcasts</a>.<br /><br /></li><li>
+Visit <a href="http://ibmdw.safaribooksonline.com/">Safari Books Online</a> for a wealth of resources for open source technologies.<br /><br /></li><li>
+<a href="http://www.ibm.com/developerworks/podcast/">developerWorks podcasts</a> include interesting interviews and discussions for software developers.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+The <a href="http://fedora.redhat.com/">Fedora Core V5</a> distribution includes hdaps in the kernel.<br /><br /></li><li>
+Innovate your next open source development project with 
+<a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Get involved in the developerWorks community by participating in <a href="http://www.ibm.com/developerworks/blogs/">developerWorks blogs</a>.</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Shake some sense into your Linux ThinkPad" name="ArticleTitle" type="hidden"/><input value="Open source, Linux" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="172779" name="ArticleID" type="hidden"/><input value="11072006" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Explore relationships among Web pages visually</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="The Graphviz program from AT&amp;T Research and others is a fantastic tool for automating the visualization of complicated link sets. This article shows how to combine the Graphviz tool set with Web-page thumbnail generators to create new ways of visualizing any Web page's link structures. You can use these techniques and descriptions to refine your display logic, and create directed and undirected Graphviz charts to enhance your understanding of organizational, software, and other complex linked data sets." /><meta name="Description" content="The Graphviz program from AT&amp;T Research and others is a fantastic tool for automating the visualization of complicated link sets. This article shows how to combine the Graphviz tool set with Web-page thumbnail generators to create new ways of visualizing any Web page's link structures. You can use these techniques and descriptions to refine your display logic, and create directed and undirected Graphviz charts to enhance your understanding of organizational, software, and other complex linked data sets.f
+      " /><meta name="Keywords" content="Graphviz, Perl, Web site, visualization, khtml2png, Nathan Harrington, HTML::SimpleLinkExtor, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2007-05-15" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="Source" content="Based on v14 Template Generator, Template 14.0" /><meta name="DC.Rights" content="Copyright (c) 2007 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2007-05-15" /><meta name="Last update" content="22052007bianco@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('defaultHere');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "The Graphviz program from AT&amp;T Research and others is a fantastic tool for automating the visualization of complicated link sets. This article shows how to combine the Graphviz tool set with Web-page thumbnail generators to create new ways of visualizing any Web page's link structures. You can use these techniques and descriptions to refine your display logic, and create directed and undirected Graphviz charts to enhance your understanding of organizational, software, and other complex linked data sets."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-graphviz">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 219522 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1005A" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1007D" class="left-nav-child">Installation</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1009C" class="left-nav-child">General strategy, desired visualization</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100D4" class="left-nav-child">Web-page thumbnail generation</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100FB" class="left-nav-child">Undirected graph dot language-syntax generation</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1017A" class="left-nav-child">Conclusion, further examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Explore relationships among Web pages visually</h1><p id="subtitle"><em>Use HTML::SimpleLinkExtor, khtml2png, feh, and Graphviz to create new ways of visualizing any Web page's links</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Explore relationships among Web pages visually">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 15 May  2007</p><blockquote>The Graphviz program from AT&amp;T Research and others is a fantastic tool for automating the visualization of complicated link sets. This article shows how to combine the Graphviz tool set with Web-page thumbnail generators to create new ways of visualizing any Web page's link structures. You can use these techniques and descriptions to refine your display logic, and create directed and undirected Graphviz charts to enhance your understanding of organizational, software, and other complex linked data sets. </blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+            <p><a name="N1005A"><span class="atitle">Requirements</span></a></p>
+            <p><a name="N10060"><span class="smalltitle">Hardware</span></a></p>
+            <p>Any PC manufactured after 2000 should provide plenty of horsepower for compiling and running the code. If you intend to map a large number (more than 50) nodes, or rendering graphs with large Web-page thumbnails, make sure you have a gigahertz processor and multiple gigabytes of RAM. System configurations with lesser specifications will require long processing times when paging to disk is required.</p>
+            <p><a name="N10069"><span class="smalltitle">Software</span></a></p>
+
+            <p>You'll need Graphviz, of course, and the HTML::SimpleLinkExtor module from CPAN. If you're running on Linux&#174;, the khtml2png tool from Simon MacMullen can be used to generate automatic Web-page thumbnails. If you're on Windows&#174;, there are many options for generating Web-page thumbnails, but the selection of a tool for your environment is left to the reader wishing to evaluate the free and no-cost licenses available for Windows programs. You'll also do well to find a simple and fast image viewer, I recommend <i>feh</i> by Tom Gilbert. See <a href="#resources">Resources</a> for these tools.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1007D"><span class="atitle">Installation</span></a></p>
+            <p>If you are running on Windows, download and run the Graphviz installation package. Note the location of the installed binaries because you'll need to use these later during the rendering process. On Linux, use your favorite package manager or get the source and binaries directly from Graphviz.org.</p>
+
+            <p>You'll also need the HTML::SimpleExtor module by Brian Foy. Assuming you already have a functional Perl environment on Windows, you can download and install the package automatically with the command <code>ppm install HTML::SimpleLinkExtor</code>. For Linux, simply run <code>cpan -i HTML::SimpleLinkExtor</code>.</p>
+
+            <p>On Linux, you can also use the khtml2png program to quickly generate Web-page thumbnails. On this development system, which is running Fedora Core 3, V1.0.2 performs as expected. You may find you have to use other versions of the khtml2png tool based on the Qt and KDE libraries on your system. Check <a href="#resources">Resources</a> for a direct link to the kthml2png program. For Windows operators, check <a href="#resources">Resources</a> for various programs you can use to create Web-page thumbnails on Windows.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1009C"><span class="atitle">General strategy, desired visualization</span></a></p>
+            <p><a name="N100A2"><span class="smalltitle">What do we want to see?</span></a></p>
+            <p>One of the most difficult parts of developing a visualization is deciding what exactly you'd like to see. Through various strategies and some trial and error, this article decided on the following visualization: an undirected graph of Web-page thumbnails with the arrows between nodes having a thickness and color directly related to the number of links between pages. Sounds simple enough. Here's how it's done.</p>
+            <p><a name="N100AB"><span class="smalltitle">How do we represent it?</span></a></p>
+            <p>The first step in building our roughly defined graph is to acquire the number of links between interrelated Web pages. One of the easiest ways to accomplish this is with the HTML::SimpleLinkExtor module. Listing 1 shows the topLinks.pl program used to extract the top N links from the specified HTML file.</p>
+            <br /><a name="N100B8"><b>Listing 1. topLinks.pl  Print frequency count of links from an HTML page</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# topLinks.pl - print the top N links from an html file using SimpleLinkExtor
+use strict;
+use HTML::SimpleLinkExtor;
+
+die "usage: toplinks.pl &lt;html_file&gt; &lt;number&gt;" unless @ARGV == 2;
+
+my $extor = HTML::SimpleLinkExtor-&gt;new();
+$extor-&gt;parse_file("$ARGV[0]");
+
+my $maxLinks = $ARGV[1];
+my %linkHash = ();
+my @a_hrefs  = $extor-&gt;a;
+
+for my $link ( @a_hrefs )
+{
+  next unless  $link =~ /http/;  # only process http links
+  $link = substr($link,7);       # remove http://
+
+  # handle the triple slash prefix
+  $link = substr($link,1) unless substr($link,0,1) ne "/";
+  
+  # remove everything after slash
+  $link = substr($link,0,index($link,'/')) unless $link !~ /\//;
+
+  # remove all subdomains
+  $link = substr($link,index($link,".")+1) unless ($link =~ tr/\.//) == 1;
+
+  $linkHash{$link}++;
+
+}#for each link
+
+my $linkCount = 0;
+for my $key( sort {$linkHash{$b} &lt;=&gt;$linkHash{$a}} keys %linkHash )
+{
+  print "$key $linkHash{$key}\n";
+  last unless $linkCount &lt; $maxLinks-1;
+  $linkCount++;
+}
+</pre></td></tr></table><br />
+
+            <p>After setting up the variables and the usage information, the specified HTML file is processed by the SimpleLinkExtor module. The next for loop processes just the HTTP links only. The code then modifies all links to be of the form domain.tld. If the link is www.ibm.com/index.html, everything after the slash and before the first period is trimmed off. This will give us a frequency count of all domains linked to from the input HTML file. With this hash of domains with values of frequency counts, we sort the list by value and print out the first N links. Download the source HTML of your desired starting page as startPage.html and run the program with the command <code>perl topLinks.pl startPage.html 10 &gt; top10Links</code>.</p>
+            <p>For this example, we used slashdot.org/index.html as the HTML file, and the contents of
+  the top10Links file are shown in Listing 2. Note that your values will be different due to updates to the Slashdot.org page. We'll use this data as the input to our Graphviz dot language-generation program.</p>
+            <br /><a name="N100CE"><b>Listing 2. Frequency count of Slashdot.org main page links</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+slashdot.org 15
+ostg.com 6
+bfast.com 3
+blogs.com 3
+jhuapl.edu 3
+arstechnica.com 2
+doubleclick.net 2
+wikipedia.org 2
+wsj.com 2
+thinkgeek.com 2
+</pre></td></tr></table><br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100D4"><span class="atitle">Web-page thumbnail generation</span></a></p>
+
+            <p>If you are running on Linux, one of the easiest ways to generate Web-page thumbnails is the khtml2png program. Using it on the command line is straightforward for creating thumbnails even on pages that include Flash content and other embellishments. For our purposes, we want to give the Flash content enough time to load, so we will use the <code>--flash-delay</code> option. Consider the following one-liner to build Web-page thumbnails for each domain mentioned in the top10Links file.</p>
+            <br /><a name="N100E5"><b>Listing 3. Web-page thumbnail generation one-liner</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+cat top10Links  | \
+  perl -lane '$r=`./khtml2png --flash-delay 3 \
+  --scaled-width 200 --scaled-height 200 http://$F[1] thumbnails/$F[1].png`'
+</pre></td></tr></table><br />
+            <p>Note that the <code>\</code> characters are present for this article's formatting and need to be removed for this one-liner to work. Also note that the various thumbnails are placed in the thumbnails directory and have the filename domain_name.png &#8212; thumbnails/ostg.com.png, for example. This is important for ease of processing in the dot syntax-generation step described below.</p>
+
+            <p>If you are using Windows, there are many options for creating Web-page snapshots. Use one of the tools for Windows listed in <a href="#resources">Resources</a>.</p>
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100FB"><span class="atitle">Undirected graph dot language-syntax generation</span></a></p>
+            <p><a name="N10101"><span class="smalltitle">Building the dot file</span></a></p>
+            <p>Now that the Web-page thumbnails are in place, the generation of the graph description language can begin.</p>
+
+            <p>The basic Graphviz language syntax focuses on the concept of nodes and edges. We'll make use of the less-frequently used concepts of clustering and shapefiles, as well. For more detail about the Graphviz dot language and the amazing graph-generation capabilities of Graphviz, see <a href="#resources">Resources</a>. Listing 3 shows an example of the dot-language syntax necessary for creating the type of graph we want to produce:</p>
+            <br /><a name="N10115"><b>Listing 4. Example dot syntax file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+subgraph "cluster_jhuapl.edu" { label="jhuapl.edu"; labelloc="t"; "jhuapl.edu_icon"};
+
+"jhuapl.edu_icon" [label="", shape=box, 
+style=invis, shapefile="snapsSlash/jhuapl.edu.png"];
+
+edge [ color="#93ca36", arrowtail="normal", arrowsize="3", 
+arrowhead="none", style="setlinewidth(9)" ];
+
+"cluster_jhuapl.edu" -- "cluster_slashdot.org";
+</pre></td></tr></table><br />
+            <p>Each of the thumbnails nodes need to be placed along with the node label in a coherent manner. One of the easiest ways to do this is to create a subgraph and place both the image and the label inside the subgraph. Line 1 of Listing 4 defines a subgraph called cluster_jhuapl.edu. This cluster has a label at the top location and contains the node known as jhuapl.edu_icon. Line 4 defines the jhuapl.edu_icon node with the attributes of no label, an invisible bounding box, and an image as the appropriate Web-page thumbnail file. Line 5 proceeds with defining the attributes of the edge between the home node and the current node. With a light green color, a large arrow pointing at the linked-to node, and an enhanced thickness to emphasize the linkage. Line 7 specifies the linkage between the home node and the linked-to node. </p>
+            <p>The dot syntax language-building program shown below will process the various edge attributes automatically to emphasize the linkages and create the graph we defined loosely. Listing 5 shows the buildDot.pl program for generating undirected graphs.</p>
+            <br /><a name="N10125"><b>Listing 5. buildDot.pl  Generate dot-language undirected graph</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+                
+#!/usr/bin/perl -w
+# buildDot.pl - generate dot language undirected graph
+use strict;
+
+die "usage: buildDot.pl &lt;home_node&gt; &lt;thumbnail_dir&gt;" unless @ARGV == 2;
+my( $homeNode, $thumbsDir ) = @ARGV;
+
+print "graph g {\n";
+
+while(&lt;STDIN&gt;)
+{
+  my( $lineWidth, $nodeName ) = split;
+
+  # specify clusters
+  print qq(subgraph "cluster_$nodeName" );
+  print qq({ label="$nodeName"; labelloc="t"; "${nodeName}_icon"};\n);
+  print qq("${nodeName}_icon" [label="", shape=box, style=invis, );
+  print qq(shapefile="$thumbsDir/$nodeName.png"];\n);
+
+  # prevent recursive link
+  if( $nodeName =~ /$homeNode/ ){ print qq(\n); next }
+
+  # edge color classes, width emphasis
+  my $lineColor = "#000000";
+  if( $lineWidth &gt; 8 ){ $lineColor = "#ff9900" }
+  elsif( $lineWidth &gt; 5 ){ $lineColor = "#ca7836" }
+  elsif( $lineWidth &gt; 3 ){ $lineColor = "#cabb36" }
+  elsif( $lineWidth &gt; 2 ){ $lineColor = "#93ca36" }
+  $lineWidth *= 3;
+
+  # specify edge
+  print qq(edge [ color="$lineColor", arrowtail="normal", arrowsize="3", );
+  print qq(style="setlinewidth($lineWidth)" ];\n);
+
+  # specify linkage
+  print qq("cluster_$nodeName" -- "cluster_$homeNode";\n\n);
+
+}#while stdin
+
+print qq(}\n);
+</pre></td></tr></table><br />
+
+            <p>With the option check and usage information in place, the program specifies that this is an undirected graph with the <code>graph g{</code> line. We will use the link frequency count and domain names from Listing 2 as our <code>lineWidth</code> and node names, respectively. The first section inside the <code>read-from-stdin</code> loop prints out the cluster description, along with the node to display inside the cluster. The Web-page thumbnail directory specified on the command line is used to give each node the correct shapefile image.</p>
+            <p>In the next section, if the cluster and shapefile node that has just been printed is the home node, exit the main loop without writing edge or linkage information. This is to prevent self-referencing in the graph description. While the Graphviz parser for creating undirected graphs is smart enough to handle some of these self-references, we'll eliminate the possibility to ensure easier transition to other graphing algorithms if desired.</p>
+            <p>The final section creates a simple graduated coloring system using five intervals. If the link frequency count is small, make the line black; and if it is large, make it bright red. Link frequency counts somewhere in between are various shades of green and yellow, and all the edges have their thickness three times the link frequency count. After printing the full-edge descriptor, the linkage between the home node cluster and the current cluster is printed out.</p>
+            <p><a name="N10142"><span class="smalltitle">Building the graph</span></a></p>
+
+            <p>On Linux, generate the dot syntax graph file with the command <code>cat
+top10Links |perl buildDot.pl slashdot.org thumbnails &gt; dotFile.slash</code>. On Windows, the equivalent command is <code>type top10Links |perl buildDot.pl slashdot.org thumbnails &gt; dotFile.slash</code>
+            </p>
+            <table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+                <a name="N10156"><b>Please note: Figure 1</b></a><br />
+                <p>The arrow colors and line widths in this graphic may not correspond to the data presented in the listings above. Certain restrictions on graphic content are imposed at developerWorks, and it is hoped that the spirit if not the precision of the intended graphic is conveyed. Please check the downloads section for per-pixel correct examples.</p>
+            </td></tr></table></td></tr></table>
+
+            <p>You'll now be able to use the Graphviz program to do the actual graphing, and your
+  choice of rendering algorithms will greatly affect the output. Only one of the Graphviz
+  filters (fdp) is specifically for drawing undirected graphs, even though the others will
+  process the dotFile.slash syntax without error. Create your bitmapped output with the
+  command <code>fdp dotFile.slash -Tpng -o graph.png</code>. This command is the same on Linux and Windows. </p>
+            <p>Open the graph.png file in your favorite viewer, and you will see something like the graph shown in Figure 1.</p>
+            
+                <br /><a name="fig1"><b>Figure 1. Undirected graph output</b></a><br />
+                <img alt="Undirected graph output" height="591" src="graph_680x680.jpg" width="572"/>
+            <br />
+            <br />
+            <br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1017A"><span class="atitle">Conclusion, further examples</span></a></p>
+
+            <p>The logical steps and programs presented here give you a good start on creating Web-page linkage visualizations. Make sure to check out the links to the full Graphviz documentation in <a href="#resources">Resources</a>. You can read about creating clickable image maps for the nodes and the edges. Custom edge shapes, colors, and many other modifications to the graph syntax-generation steps are suitable for enhancing the visualizations. Consider modifying your script to show every page on your Web site, with bright red edges to represent the various 404 paths your visitors may follow. Graphviz, and its associated directed and undirected filters along with the text-processing power of Perl are a great combination for visualization creation.</p>
+        <br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample files</th><td nowrap="nowrap">webPageViz_0.2.zip</td><td align="right" nowrap="nowrap">48KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=219522&amp;filename=webPageViz_0.2.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Browse all the <a href="http://www.ibm.com/developerworks/views/opensource/libraryview.jsp">open source content</a> on developerWorks.<br /><br /></li><li>
+To listen to interesting interviews and discussions for software developers, check out <a href="http://www.ibm.com/developerworks/podcast/">developerWorks  podcasts</a>.<br /><br /></li><li>
+Stay current with developerWorks' <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">Technical events and webcasts</a>.<br /><br /></li><li>
+Check out upcoming conferences, trade shows, webcasts, and other <a href="http://www.ibm.com/developerworks/views/opensource/events.jsp">Events</a> around the world that are of interest to IBM open source developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Watch and learn about IBM and open source technologies and product functions with the no-cost <a href="http://www.ibm.com/developerworks/offers/lp/demos/">developerWorks On demand demos</a>.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+AT&amp;T Research created the <a href="http://www.graphviz.org/">Graphviz</a> graph visualization software.<br /><br /></li><li>
+SourceForge hosts the <a href="http://khtml2png.sourceforge.net/">khtml2png</a> Web-page thumbnail creator.<br /><br /></li><li>
+You can find Perl for Windows at <a href="http://www.activestate.com/">ActiveState</a>
+            <br /><br /></li><li>
+TopShareware.com hosts the  <a href="http://www.topshareware.com/Web-Page-Thumbnail-Generator-download-42937.htm">Web Page Thumbnail Generator 1.0.6</a> for Windows.<br /><br /></li><li>
+You can generate Web-page thumbnails online using <a href="http://www.webshotspro.com/">WebShots Pro</a>.<br /><br /></li><li>
+Another free Web-page thumbnail creator for Windows is <a href="http://www.thumbshots.org">Thumbshots</a>, a provider of Web preview technology.<br /><br /></li><li>
+Innovate your next open source development project with <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li><li>
+Download <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX01&amp;S_CMP=ART">IBM product evaluation versions</a>, and get your hands on application development tools and middleware products from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.</li></ul><br /><b>Discuss</b><br /><ul><li>
+Participate in <a href="http://www.ibm.com/developerworks/blogs">developerWorks blogs</a> and get involved in the developerWorks community.<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Explore relationships among Web pages visually" name="ArticleTitle" type="hidden"/><input value="Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="219522" name="ArticleID" type="hidden"/><input value="05152007" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>

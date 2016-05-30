@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Monitor your Linux computer with machine-generated music</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="Use Perl and FluidSynth to create a real-time musical composition of your system status. Learn how to integrate various system monitoring data into a harmony-producing, MIDI-controlled audio synthesis. Explore audible information methods and configurations to help you monitor and manage your computing environment." /><meta name="Description" content="Use Perl and FluidSynth to create a real-time musical composition of your system status. Learn how to integrate various system monitoring data into a harmony-producing, MIDI-controlled audio synthesis. Explore audible information methods and configurations to help you monitor and manage your computing environment.f
+      " /><meta name="Keywords" content="perl, fluidsynth, linux, open source, Nathan Harrington, chordStats, tttosca, tttlca" /><meta name="DC.Date" scheme="iso8601" content="2006-11-14" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2006 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2006-11-14" /><meta name="Last update" content="23022007krjones@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('opensourceart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Use Perl and FluidSynth to create a real-time musical composition of your system status. Learn how to integrate various system monitoring data into a harmony-producing, MIDI-controlled audio synthesis. Explore audible information methods and configurations to help you monitor and manage your computing environment."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/os-linuxmusic">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 174307 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10056" class="left-nav-child">Requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10088" class="left-nav-child">Example setup and configuration</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100BF" class="left-nav-child">The chordStats.pl program</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10179" class="left-nav-child">Modifying chordStats</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N101C5" class="left-nav-child">Conclusion</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Download</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/linux/library.jsp">Linux technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/opensource/">Open source</a><span class="bct"> | </span><a href="http://www.ibm.com/developerworks/linux/" class="bctl">Linux</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Monitor your Linux computer with machine-generated music</h1><p id="subtitle"><em>Use open source FluidSynth and Perl to create simple tonal compositions representing the status of various parameters in your Linux computer</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Monitor your Linux computer with machine-generated music">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 14 Nov  2006</p><blockquote>Use Perl and FluidSynth to create a real-time musical composition of your system status. Learn how to integrate various system monitoring data into a harmony-producing, MIDI-controlled audio synthesis. Explore audible information methods and configurations to help you monitor and manage your computing environment.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>There are many visually informative monitoring programs for assessing the health of your computer environment. Everything from simple text displays to real-time charts and 3-D colored graphs are available to help you diagnose issues with your personal, server, or network computing devices. <i>chordStats</i> adds a new channel of interface to your system monitoring setup -- information passed through tone, timbre, and harmony.</p>
+
+<p>Around 1998, Peep! The Network Auralizer was developed to provide an "ambient" audible environment to assist administrators in sensing a baseline and a perturbed state of their networks. Using sound effects played back according to certain events, administrators could immerse themselves in the normal sounds of their network (water rushing for general load, bird calls for network events, for example), and have an instant sense when something is amiss by the change in ambient sounds.</p>
+
+<p>chordStats produces a similar sound environment with the addition of tones, instrument sound characteristics, and harmony creation based on system load. In this article, we create a simple Perl script to send note events to FluidSynth, force the various system events to be interpreted as a part of a harmonious interval, and discuss future options for enhancing your musical monitoring environment.</p>
+
+<p><a name="N10056"><span class="atitle">Requirements</span></a></p>
+<p><a name="N1005C"><span class="smalltitle">Hardware</span></a></p>
+
+<p>This article was developed, in part, on an Intel&#174; Pentium&#174; 4 with 256 megabytes of RAM. Since FluidSynth MIDI software synthesis can be quite resource-intensive, don't try it on anything less than a Pentium III with 256 MB of RAM. You also need a sound card. For the purposes of this article, we assume the user does not have a hardware MIDI wave-table synthesizer in the sound card, and, therefore, a software synthesizer was used. If you have a hardware synthesizer in your sound card or want to use chordStats with external hardware, see <a href="#resources">Resources</a> for links to help you get started.</p>
+
+<p><a name="N1006E"><span class="smalltitle">Software</span></a></p>
+
+<p>A newer version (2.4 or later) of Linux&#174; is recommended, along with Perl and FluidSynth. See <a href="#resources">Resources</a> for the FluidSynth application. Also recommend are selected SoundFonts of your choice. An included SoundFont focusing on hammered instruments (tubular bells, piano, xylophone) is included with the <a href="#download">Downloads</a>. There are many sources of free SoundFonts on the Internet (see <a href="#resources">Resources</a>).</p>
+
+<p>We use the vmstat program for simple system status monitoring. Standard on many Linux distributions, vmstat provides three forms of CPU load, generalized disk blocks in and out, and the capability for monitoring many other system functions.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10088"><span class="atitle">Example setup and configuration</span></a></p>
+<p><a name="N1008E"><span class="smalltitle">FluidSynth setup and checkout</span></a></p>
+
+<p>After installing FluidSynth and downloading the example SoundFont, start the FluidSynth program with the command <code>fluidsynth Hammered_Instruments.sf2</code>. You will see output similar to the following:</p>
+
+<br /><a name="N100A0"><b>Listing 1. FluidSynth output</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+lash_open_socket: could not look up host 'localhost': \
+Servname not supported for ai_socktype
+lash_open_socket: could not connect to host 'localhost', service '14541'
+lash_comm_connect_to_server: could not create server connection
+lash_init: could not connect to server 'localhost' - disabling LASH
+lash_init: LASH_START_SERVER unset, not attempting to start server automatically
+fluidsynth: warning: Failed to pin the sample data to RAM; swapping is possible.
+ALSA lib timer_hw.c:269:(snd_timer_hw_open) \
+extended read is not supported (SNDRV_TIMER_IOCTL_TREAD)
+fluidsynth: warning: Requested a period size of 64, got 940 instead
+fluidsynth: ALSA driver: Using format s16, rw, interleaved
+FluidSynth version 1.0.7
+Copyright (C) 2000-2006 Peter Hanappe and others.
+Distributed under the LGPL license.
+SoundFont(R) is a registered trademark of E-mu Systems, Inc.
+
+Type 'help' for information on commands and 'help help' for help topics.
+
+&gt; 
+</pre></td></tr></table><br />
+
+<p>Don't worry about any of these warning messages. If you see the <code>&gt;</code> symbol, FluidSynth is ready to start generating sounds. Try using <code>noteon 5 77 100</code> to create a note in channel 5 with velocity 77 at volume level 100. If you can hear an electronic piano tone, you are ready to move on to the next step. Type <code>quit</code> or use <b>Ctrl+C</b> to exit FluidSynth. If the sound is unavailable or if you receive an error message, make sure your sound server has been started and that your mixer settings are correct.</p>
+
+<p>When sending multiple note events to FluidSynth, you may notice some choppiness in the sound -- almost like a skipping audio CD. Increase the number of audio buffers and the size of each buffer to ameliorate this problem with the command <code>fluidsynth Hammered_Instruments.sf2 -c10000 -z10000</code>. This will start FluidSynth with 10,000 audio buffers each of size 10,000 -- plenty of space to use to reduce the choppiness.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100BF"><span class="atitle">The chordStats.pl program</span></a></p>
+<p><a name="N100C5"><span class="smalltitle">General strategy</span></a></p>
+
+<p>The selection of tempo, timbre, chords, and note velocity blends art and science in a way that is far beyond the scope of this article. With simplicity of development and information delivery in mind, the primary characteristics of this program are a 1-Hz refresh and octave-based note scales. The vmstat program provides a simple interface to the basic system data, as well as creating a 1-Hz "heartbeat" with which to base the tempo upon. </p>
+
+<br /><a name="N100D3"><b>Listing 2. Main program parameters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+#!/usr/bin/perl -w 
+# chordStats.pl - create music based on system status
+use strict;
+   
+my $vmStatCmd = "vmstat 1"; # run vmstat every second
+my $totalPackets = 0;    # total of packets received and transmitted 
+my $lineCount = 0;      # count number of vmstat output lines 
+    
+my %fields = (); 
+my $count = 0;
+# the field headers in the vmstat output, useful for referring to them by name 
+for( split " ", "r b swpd free buff cache si so bi bo in cs us sy id wa" ){
+ $fields{$_} = $count;
+ $count++;
+}
+    
+# buffering output must be turned off because fluidsynth does not appear to 
+# accept buffered input from stdin
+$|=1;  
+</pre></td></tr></table><br />
+
+<p>At the beginning of the script, we choose <code>vmstat 1</code> as the command to be executed and read from every second. After setting up variables for the total number of packets to be recorded between reads and recording the number of lines read from the vmstat program, we move on to header definitions. The field headers <code>bi</code> (blocks in), <code>bo</code> (blocks out), and <code>us</code> (user CPU usage), are read from the vmstat program every second. The fields hash will allow referring to these data fields by name later in the program. Note the <code>$|=1</code> line. You will notice some difficult-to-diagnose behavior if you remove this line; suffering from buffering, indeed! </p>
+
+<br /><a name="N100F4"><b>Listing 3. Main program begin</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+# open the vmstat program to read from 
+open( INPIPE, "$vmStatCmd |" ) || die "can't read from vmstat";
+
+ # wait while the fluidsynth program opens
+ sleep(3);
+
+ while(my $statLine = &lt;INPIPE&gt; ){
+
+  # ignore the header display, and the fieldname display lines
+  if( $statLine !~ /\-\-\-\-/ &amp;&amp; $statLine !~ /swpd/ ){
+
+   # the first line of vmstat data is a recent average, ignore
+   if( $lineCount &gt; 2 ){
+</pre></td></tr></table><br />
+
+<p>The next section of code creates a pipe from the vmstat command, where the program will read data once per second. After waiting a few seconds for the FluidSynth program to activate, the processing of vmstat output can begin. The first three lines of the output will be ignored because they contain delimiters, header information, and recent averages, respectively.</p>
+
+<br /><a name="N10101"><b>Listing 4. Main program note processing</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+    # reset wavetable synthesis
+    if( $totalTime % 10 == 0 ){ print "reset\n" }
+    $totalTime ++;
+
+    my $note = "";
+    my @currLine = split " ", $statLine;
+
+    # user cpu usage
+    $note = $currLine[ $fields{us} ];
+    sendNote( $note, 14, 12, 96 );
+
+    # conglomerate disk i/o fields to one stat 
+    $note = $currLine[ $fields{bi} ] + $currLine[ $fields{bo} ];
+    if( $note &gt; 1000 ){ $note = 1000; }
+    $note = $note/10;
+    sendNote( $note, 8, 12, 96 );
+
+    # network throughput on eth0
+    $note = getNetworkStats();
+    sendNote( $note, 5, 12, 84 );
+
+  }#if not first 3 lines to ignore
+
+ }#if not a header line
+
+ $lineCount++;
+
+}#while reading the pipe
+
+close(INPIPE);
+</pre></td></tr></table><br />
+
+<p>If 10 seconds of time have passed, send a reset event to FluidSynth. This will clear any residual notes that are still processing, even if they have faded to an inaudible volume level. After variable initialization, the note corresponding to the <code>us</code> (user CPU usage) is activated with the <code>sendNote</code> command. Since the <code>us</code> field is always of a value 0-100, no additional processing is required. We simply use the <code>sendNote</code> subroutine to send the note velocity on channel 14 with a minimum velocity of 12 and a maximum of 96.</p>
+
+<p>Following the initial note event the <code>bi</code> (blocks in) and <code>bo</code> (blocks out) data fields from vmstat will be conglomerated into one field between 0 and 1,000. Note that these values are well suited the test machine's standard IDE disk setup. If you have a high -- or low -- throughput disk subsystem, you may need to modify the maximum value to more accurately represent the available bandwidth. As soon as the total disk usage has been scaled between 0 and 1,000, it is divided by 10 to acquire a 0-100 value. This value is then sent as the note velocity on a channel 8 with the usual minimum and maximum.</p>
+
+<p>The <code>getNetworkStats</code> section is slightly more complex, but as you can see, the data value is returned in the 0-100 range and sent off as another <code>noteon</code> event. Notice how the maximum value is 84 in this last note event. This is due to the SoundFont only creating audible notes on channel 5 from 0 to 84 in velocity. This may prove problematic to those musically inclined enough to detect a change in harmony at maximum utilization.</p>
+
+<p>After we wrap up our looping brackets and timing code, it's on to the subroutines.</p>
+
+<br /><a name="N10137"><b>Listing 5. sendNote subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub sendNote {
+
+ my( $noteVal, $noteChan, $min, $max ) = @_;
+
+ if( $noteVal &lt; $min ){
+
+  $noteVal = $min;
+
+ }else{
+
+  # divide it into twelve parts
+  $noteVal = sprintf( "%0.0f", $noteVal/12);
+
+  # reduce the note to 12 at the very least;
+  $noteVal = ($noteVal * 12);
+
+  if( $noteVal &gt; $max ) { $noteVal = $max }
+
+ }#if note is &gt; minimum
+
+ print "noteon $noteChan $noteVal 100\n";
+
+}#sendNote
+</pre></td></tr></table><br />
+
+<p>The <code>sendNote</code> subroutine takes a note velocity 0-100 in value and transforms that to the nearest 12-note step from the base note. In this case, our base note is 12, and all notes will use that as their <code>0</code> state. This provides a nice low frequency "throbbing" when the system is at low load personifying the sedentary state satisfyingly. All notes are printed at a volume level of 100 for simplicity's sake. Modifying the volume level according to other system factors could be an intuitive way to add information without adding notes or harmonial changes.</p>
+
+<br /><a name="N1014C"><b>Listing 6. getNetworkStats subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub getNetworkStats {
+
+ my $networkCmd = "/sbin/ifconfig eth0 | grep 'RX bytes'";
+ $networkCmd = `$networkCmd`;
+
+ my $rxBytes = 0;
+ my $txBytes = 0;
+
+ chomp($networkCmd);
+
+ for( $networkCmd ){
+  $rxBytes = substr($_, 19);
+  $rxBytes = substr($rxBytes,0,index($rxBytes," "));
+  $txBytes = substr($_, 52);
+  $txBytes = substr($txBytes,0,index($txBytes," "));
+  my $bothBytes = $rxBytes + $txBytes;
+
+  if( $totalPackets == 0 ){
+   $totalPackets = $bothBytes;
+  }else{
+   # find the difference between measurements, set maximum difference to
+   # 1Mbit, which works well for `saturated' on a 100Mbit/sec network
+   # reduce the value by a factor of 10000, which spreads the usage 
+   # nicely over 1-100 
+   my $diffRX = $bothBytes - $totalPackets;
+   if( $diffRX &gt; 1000000 ){ $diffRX = 1000000 }
+   $diffRX = ($diffRX / 10000);
+
+   $totalPackets = $bothBytes;
+   return( $diffRX );
+  }# if not first packet check
+
+ }# packet count check
+
+}#getNetworkStats
+</pre></td></tr></table><br />
+
+<p>The code is a simple if obtuse method of approximating the load on your Ethernet card. The output from the <code>/sbin/ifconfig/eth0</code> command lists a total of all packets received and transmitted. On the test machines, 100Mbit/sec network, anything more than 1 million transmitted or received packets is considered full saturation. This value is then scaled to a 0-100 note velocity and played as an electronic piano note.</p>
+
+<p><a name="N10159"><span class="smalltitle">Running chordStats </span></a></p>
+
+<p>The chordStats program will read the vmstat program from standard in, and write the note events -- unbuffered -- to FluidSynth's <code>stdin</code>. Start the chordStats program with the command <code>perl chordStats.pl |fluidsynth Hammered_Instruments.sf2 -c10000 -z10000 &gt;/dev/null</code>. Remember that the <code>-c</code> and <code>-z</code> parameters are for enlarged sound-buffering options and may need to be tuned further for your particular system. </p>
+
+<p>Now that you have the chordStats program running, try starting Mozilla. Note first the increase in CPU usage and disk I/O activity represented by the tubular bells and celesta. If you load a large page in Mozilla or download a file with <code>wget</code>, you will hear the electronic piano take a more strident tone as you saturate your network link.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10179"><span class="atitle">Modifying chordStats</span></a></p>
+
+<p>In addition to basic system load, chordStats can be easily modified to represent different aspects of your computing environment. Recall that <code>vmstat 1</code> generates a list of values every second. This is used to provide note values, as well as creating a basic tempo dictation. One simple way to modify chordStats is to replace the <code>vmstat</code> command with an event generator that refreshes faster. For example, the fastUpdate.pl program included with the code distribution archive will scan the free memory, current processes, and Ethernet interrupts every two-tenths of a second. To use the fast-update version, modify the chordStats.pl program with the following changes.</p>
+
+<p>Change the command from:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">my $vmStatCmd = "vmstat 1";</pre></td></tr></table><br />
+
+<p>to:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">my $vmStatCmd = "./fastUpdate.pl 0.2 "</pre></td></tr></table><br />
+
+<p>And change the header description area from:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">for( split " ", "r b swpd free buff cache si so bi bo in cs us sy id wa" ){</pre></td></tr></table><br />
+
+<p>to:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">for( split " ", "memFree ethInt proc" ){</pre></td></tr></table><br />
+
+<p>In the main program loop, there is no need for the code that ignores the header lines and the first two lines of input. You can remove those conditionals if you like. The output from the fastUpdate.pl script is already formatted in a 0-100 scale, so change the <code>sendNote</code> events from:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    # user cpu usage
+    $note = $currLine[ $fields{us} ];
+    sendNote( $note, 14, 12, 96 );
+
+    # conglomerate disk i/o fields to one stat 
+    $note = $currLine[ $fields{bi} ] + $currLine[ $fields{bo} ];
+    if( $note &gt; 1000 ){ $note = 1000; }
+    $note = $note/10;
+    sendNote( $note, 8, 12, 96 );
+
+    # network throughput on eth0
+    $note = getNetworkStats();
+    sendNote( $note, 5, 12, 84 );
+</pre></td></tr></table><br />
+
+<p>to:</p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+    $note = $currLine[ $fields{memFree} ];
+    sendNote( $note, 14, 48, 96 );
+
+    $note = $currLine[ $fields{ethInt} ];
+    sendNote( $note, 8, 48, 96 );
+
+    $note = $currLine[ $fields{proc} ];
+    sendNote( $note, 5, 48, 96 );
+</pre></td></tr></table><br />
+
+<p>Notice how the minimum values have been increased to 48 for this revision. This is to compensate for the peculiarities of the selected SoundFont (Electronic_Sounds.sf2). Run this updated version of chordStats with the command <code>perl chordStats.pl |fluidsynth Electronic_Sounds.sf2 -c10000 -z10000 &gt;/dev/null</code>, and you will have a nice 1960s sci-fi/B-movie soundtrack emanating from the speakers.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N101C5"><span class="atitle">Conclusion</span></a></p>
+
+<p>With this example, you can modify chordStats to play music based on any parameters of your choosing. Modify <code>fastUpdate</code> to read from the <code>strace</code> or <code>gprof</code> output, collate your build-process log files and monitor errors, or combine performance statistics from multiple machines and network devices into the note stream.</p>
+
+<p>For additional interest, try modifying the volume parameters based on additional data. For example, if the number of data packets is staying constant, but the number of interrupts is increasing, increase the volume of the network note to emphasize attention on that aspect. Try moving in thirds instead of whole octaves, or insert a rest when a large change in values is detected to emphasize the succeeding phrase.</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Download</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Source code</th><td nowrap="nowrap">chordStats-0.1.zip</td><td align="right" nowrap="nowrap">10MB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=174307&amp;filename=chordStats-0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Get the <a href="http://nathanharrington.info/gpMax_44100_d.wav">chordStats Hammered Instruments example</a>.<br /><br /></li><li>
+Check out the <a href="http://nathanharrington.info/sciFiExample1.wav">sci-fi/B-movie Electronica example</a>. <br /><br /></li><li>
+Learn about <a href="http://peep.sourceforge.net/intro.html">Peep! The Network Auralizer</a> at SourceForge.<br /><br /></li><li>
+An excellent resource for selecting and working with MIDI hardware and software <a href="http://www.cs.waikato.ac.nz/~marku/soundcards.html">Advanced PC sound cards for MIDI</a> on Linux.<br /><br /></li><li>
+Check out the SoundFonts and descriptions on <a href="http://www.hammersound.net/">HammerSound.net</a>.<br /><br /></li><li>
+A nice directory of many <a href="http://andrelouis.com/soundfonts/">free SoundFonts</a> is available on AndreLouis.com.<br /><br /></li><li>
+Visit the <a href="http://www.ibm.com/developerworks/linux/">developerWorks Linux zone</a> for more resources for Linux developers.<br /><br /></li><li>
+Visit the developerWorks <a href="http://www.ibm.com/developerworks/opensource">Open source zone</a> for extensive how-to information, tools, and project updates to help you develop with open source technologies and use them with IBM's products.<br /><br /></li><li>
+Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and webcasts</a>.<br /><br /></li><li>
+Visit <a href="http://ibmdw.safaribooksonline.com/">Safari Books Online</a> for a wealth of resources for open source technologies.<br /><br /></li><li>
+<a href="http://www.ibm.com/developerworks/podcast/">developerWorks podcasts</a> include interesting interviews and discussions for software developers.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+Download <a href="http://www.nongnu.org/fluid/">FluidSynth</a>.<br /><br /></li><li>
+Innovate your next open source development project with 
+<a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX44">IBM trial software</a>, available for download or on DVD.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Get involved in the developerWorks community by participating in <a href="http://www.ibm.com/developerworks/blogs/">developerWorks blogs</a>.</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource-locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Monitor your Linux computer with machine-generated music" name="ArticleTitle" type="hidden"/><input value="Open source, Linux" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="174307" name="ArticleID" type="hidden"/><input value="11142006" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>
