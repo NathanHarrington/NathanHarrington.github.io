@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Knock-based commands for your Linux laptop</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en-US" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<!-- <meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/> -->
+<meta name="Source" content="Based on v14 Template Generator, Template 14"/>
+<meta name="Abstract" content="For the first time, you can hit your computer and get a meaningful response! Using Linux and the Hard Drive Active Protection System (HDAPS) kernel drivers, you can access the embedded accelerometers on Lenovo (formerly IBM) ThinkPads, then process the accelerometer data to read specific sequences of 'knocking' events -- literally rapping on the laptop case with your knuckles -- and run commands based on those knocks. Double tap to lock the screen, and knock in your secret code to unlock. Tap the display lid once to move your mp3 player to the next track. The possibilities are endless." /><meta name="Description" content="For the first time, you can hit your computer and get a meaningful response! Using Linux and the Hard Drive Active Protection System (HDAPS) kernel drivers, you can access the embedded accelerometers on Lenovo (formerly IBM) ThinkPads, then process the accelerometer data to read specific sequences of 'knocking' events -- literally rapping on the laptop case with your knuckles -- and run commands based on those knocks. Double tap to lock the screen, and knock in your secret code to unlock. Tap the display lid once to move your mp3 player to the next track. The possibilities are endless.f
+      " /><meta name="Keywords" content="hard drive active protection system, hdaps, perl, linux, open source, Nathan Harrington, knockage, tttlca, tttosca" /><meta name="DC.Date" scheme="iso8601" content="2006-07-25" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="" /><meta name="DC.Rights" content="Copyright (c) 2006 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2006-07-25" /><meta name="Last update" content="02082006gemoore@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v14/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v14/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v14/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v14/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v14/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('linuxart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/searchcount.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "For the first time, you can hit your computer and get a meaningful response! Using Linux and the Hard Drive Active Protection System (HDAPS) kernel drivers, you can access the embedded accelerometers on Lenovo (formerly IBM) ThinkPads, then process the accelerometer data to read specific sequences of 'knocking' events -- literally rapping on the laptop case with your knuckles -- and run commands based on those knocks. Double tap to lock the screen, and knock in your secret code to unlock. Tap the display lid once to move your mp3 player to the next track. The possibilities are endless."; </script></head><BR><BR>This is an archived cached-text copy of the developerWorks article.  Please consider viewing the original article at: <a href="http://www-128.ibm.com/developerworks/library/l-knockage.html">IBM developerWorks</a><BR><BR><BR><BR><body><!--MASTHEAD_BEGIN--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="top">
+<td class="bbg" width="110"><a href="http://www.ibm.com/"><img alt="IBM&reg;" border="0" height="52" src="//www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+<td class="bbg"><img src="//www.ibm.com/i/c.gif" width="1" height="1" border="0" alt="" /></td>
+<td align="right"  class="mbbg" width="650">
+<table border="0" cellpadding="0" cellspacing="0" align="right" >
+<tr class="cty-tou">
+<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="//www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+<td align="left">
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="http://www.ibm.com/developerworks/country/">select</a><span class="spacer">]</span></td>
+<td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="left"><a class="ur-link" href="http://www.ibm.com/legal/">Terms of use</a></td>
+</tr>
+</table>
+</td>
+<td width="40">&nbsp;</td>
+</tr>
+<tr>
+<td class="cty-tou-border" height="1" colspan="2"><img src="//www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td>
+</tr>
+<tr>
+<td colspan="3"><img alt="" height="8" src="//www.ibm.com/i/c.gif" width="1"/></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center" colspan="2">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<form method="get" action="//www.ibm.com/developerworks/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/>
+<td width="18"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+<td align="right"><select id="sq" name="searchScope" class="input-local" size="1">
+<label for="sq"><option value="dW" selected>All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="eserver">&nbsp;&nbsp;IBM Systems</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="gridZ">&nbsp;&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="paZ">&nbsp;&nbsp;Power Architecture</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</label></select></td>
+<td width="7" align="right"><label for="q"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label>&nbsp;&nbsp;</td>
+<td align="right"><input class="input" id="q" maxlength="100" name="query" size="15" type="text" value=""/>
+</td>
+<td width="7">&nbsp;
+</td>
+<td width="90"><input alt="Search" name="Search" src="//www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+<!-- <td width="20">&nbsp;</td> -->
+</form>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="blbg" colspan="3">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/">Home</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/products/">Products</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/servicessolutions/">Services &amp; industry solutions</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/support/">Support &amp; downloads</a></td>
+<td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="masthead-mainlink" href="http://www.ibm.com/account/">My IBM</a></td>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script src="//www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script><!--MASTHEAD_END--><!-- CMA ID for this content is: 150021 --> <table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1006C" class="left-nav-child">Hardware requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1008B" class="left-nav-child">Software requirements</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100A1" class="left-nav-child">Creating a simple knocking sequence</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N100EC" class="left-nav-child">Locking and unlocking your screen using xscreensaver</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10134" class="left-nav-child">More examples</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10153" class="left-nav-child">The knockAge.pl code </a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1022F" class="left-nav-child">Caveats, security</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#download" class="left-nav-child">Downloads</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/linux/library.jsp">Linux technical library</a></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/opensource/library.jsp">Open source technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Commented out the include call in the dwmaster version of this file to prevent ajax calls
+     being made during article previews and testing.  Live site has uncommented copy of this file (jpp) -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/linux/">Linux</a><span class="bct"> | </span><a href="http://www.ibm.com/developerworks/opensource/" class="bctl">Open source</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Knock-based commands for your Linux laptop</h1><p id="subtitle"><em>Knock some sense into your computer with an HDAPS-aware kernel, an accelerometer-enabled laptop, and this Perl script</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/dn.gif"/></td><td width="122"><p><a href="#download" class="smallplainlink"><b>Sample code</b></a></p></td></tr></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- 11/28/07 refreshed by gem, per MOC --> 
+
+<!--<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">New forum features</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.ibm.com/developerworks/community/forum/?S_TACT=105AGX01&amp;S_CMP=LEAF" class="smallplainlink">Try private messaging, 
+read-tracking, and more
+</a>
+</p></td></tr></table></td></tr></table>--><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Intermediate</p><p><a href="#author">Nathan Harrington</a> (<a href="mailto:harrington.nathan@gmail.com?subject=Knock-based commands for your Linux laptop">harrington.nathan@gmail.com</a>), Programmer, IBM<br /></p><p> 25 Jul  2006</p><blockquote>For the first time, you can hit your computer and get a meaningful response! Using Linux&#174; and the Hard Drive Active Protection System (HDAPS) kernel drivers, you can access the embedded accelerometers on Lenovo (formerly IBM&#174;) ThinkPads, then process the accelerometer data to read specific sequences of "knocking" events -- literally rapping on the laptop case with your knuckles -- and run commands based on those knocks.  Double tap to lock the screen, and knock in your secret code to unlock. Tap the display lid once to move your mp3 player to the next track.  The possibilities are endless.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">
+<!--
+if (document.referrer&&document.referrer!="") { 
+   // document.write(document.referrer);
+   var q = document.referrer;
+   var engine = q;
+   var isG = engine.search(/google\.com/i);
+   var searchTerms;
+   //var searchTermsForDisplay;
+   if (isG != -1) { 
+	   var i = q.search(/q=/);
+	   var q2 = q.substring(i+2);
+	   var j = q2.search(/&/);
+	   j = (j == -1)?q2.length:j;
+	   searchTerms = q.substring(i+2,i+2+j);
+	   if (searchTerms.length != 0) {
+	       searchQuery(searchTerms);
+	       document.write("<div id=\"contents\"></div>");
+	   }
+   } 
+}
+//-->
+</script><!--END RESERVED FOR FUTURE USE INCLUDE FILES-->
+
+<p>In 2003, IBM began releasing ThinkPad laptop computers with integrated accelerometers and associated software
+
+to protect the hard disks when the unit is dropped.  Enterprising hackers from IBM and elsewhere have worked to develop modules for the Linux kernel to take advantage of these sensors.  On-screen display orientation, desktop switching, even game control and real-time 3D models of the tilt of the laptop are now available.  This article presents a new twist -- knock codes -- and a simple program to run commands when specific knock codes are detected.</p>
+
+<p>Using an updated Linux kernel with the HDAPS driver, you can use a simple program called knockAge to generate knock codes. You can also download and use a Perl script to customize your own knocking input environment. See the <a href="#download">Downloads</a> and <a href="#resources">Resources</a> sections at the bottom of this article for links, including links to see knockAge in action.</p>
+
+<p><a name="N1006C"><span class="atitle">Hardware requirements</span></a></p>
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N10074"><b>Easy does it</b></a><br />
+As you can see from watching the demonstration video (see the link in <a href="#resources">Resources</a>, below), the knocking action consists only of light taps with the knuckles. Although the ThinkPad's accelerometers are designed to protect it from accidental impact, too much force can damage it. So be careful out there.
+</td></tr></table></td></tr></table>
+
+<p>Many IBM (now Lenovo) ThinkPads manufactured in 2003 or later have the HDAPS hardware.  If you are unsure of your hardware configuration, check the technical details on Lenovo's Web site for your model. If you do not have a ThinkPad, this code will not function on your laptop.</p>
+
+<p>This article was written on an x86 architecture.  The code in this article was developed and tested on two different models of the ThinkPad T42p. See the <a href="#resources">Resources</a> section for links to ThinkPad hardware.</p>
+
+<p>If you have an Apple MacBook, you should have the accelerometers and the same general methods available to access them through the kernel. However, the code in this article is untested on Apple hardware.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1008B"><span class="atitle">Software requirements</span></a></p>
+
+<p>The HDAPS driver must be included in the kernel to enable access to the accelerometers. Attempts to patch my existing kernel were unsuccessful, so I recommend downloading the latest kernel from your favorite mirror. The newer kernel distributions come with the HDAPS drivers included.</p>
+
+<p>Fire up your kernel configurator of choice, and include the HDAPS drivers in your config. The HDAPS drivers are located under the <b>Device Drivers &gt; Hardware Monitoring Support &gt; IBM Hard Drive Active Protection System (hdaps)</b> option.  Further kernel configuration and installation instructions are beyond the scope of this article, but there are plenty of tutorials on the Web for detailed help; see the <a href="#resources">Resources</a> section for links to help you get started.</p>
+
+<p>This article was developed and tested on Kernel level 2.6.15.1.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100A1"><span class="atitle">Creating a simple knocking sequence</span></a></p>
+
+<p>Download the source code repository from the <a href="#downloads">Downloads</a> section and find the knockAge.pl script.  This is the main Perl program that allows you to create knock sequences as well as listen for specific knock sequences and run commands.  Let's go through the user-space usage and configuration of the knockAge.pl program, and then we'll review its functions.</p>
+
+<p>Run the knockAge.pl program using the following command:</p>
+
+<p><code>perl knockAge.pl -c</code></p>
+
+<p>This starts the Perl program listening for knock events and recording their temporal spacing for later use.  Once the program is running, impart some percussive impacts upon your laptop's case.  You won't need to physically move your ThinkPad for the knock event to register, although some slipping and sliding is likely if your ThinkPad is on a synthetic surface.  I recommend holding your ThinkPad on the left side near the hinge with your left hand while knocking with your right hand approximately three inches above the bottom right of the LCD panel on the side of the display frame.  Please see the demonstration video linked to in <a href="#downloads">Downloads</a> or <a href="#resources">Resources</a> for an example of creating a knock sequence.</p>
+
+<p>Experiment with different paces and strengths in your knocking to get a feel for the resolution of events that the knockAge program can capture.  This is important for creating more complex knocks.</p>
+
+<p>Your first actual trial knock should be simple, with 0.5 seconds between knocks for a "double tap." Run <code>perl knockAge.pl -c</code> again, and when you see "enter a knock sequence," firmly knock twice on the side of the LCD with one half second delay, then stop.  An automatic timeout will occur after 4 seconds (configurable), and your knocking sequence will be printed out similar to the following example:</p>
+
+<p><code>0 540031 _#_ (command here) _#_ &lt;comments here&gt;</code></p>
+
+<p>Let's dissect that line -- knock sequence, delimiter, command area, delimiter, and comment area.  Your next step is to copy this line into the default configuration file for the knockAge.pl program, {$HOME}/.knockFile, which is probably /home/&lt;username&gt;/.knockFile. Once you have created the .knockFile with the above knocking sequence line, you can modify the line to run a program.  Change the <code>(command here)</code> text to /bin/echo "double tap", and modify the comments area to something more descriptive, like so:</p>
+
+<p><code>0 540031 _#_ /bin/echo "double tap" _#_ Double tap event</code></p>
+
+<p>Now that you have modified the configuration file to print out a notification, run the knockAge script in daemon mode with the command:</p>
+
+<p><code>perl knockAge.pl</code></p>
+
+<p>The program will silently listen in the background for any of the events from the ~/.knockFile listing.  Try your double tap with the same temporal spacing, and you will see the text "double tap" printed to the screen.  If you want to see the functioning of the knockAge.pl script in more detail, run it in daemon mode with the command:</p>
+
+<p><code>perl knockAge.pl -v</code></p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N100EC"><span class="atitle">Locking and unlocking your screen using xscreensaver</span></a></p>
+
+<p><a name="N100F2"><span class="smalltitle">Creating a "password" sequence</span></a></p>
+
+<p>Run the knockAge.pl program in "create" mode with the command:</p>
+
+<p><code>perl knockAge.pl -c</code></p>
+
+<p>You now need to create an unlocking password sequence; I recommend something like "Shave and a Haircut."  Make sure you pick something that you can consistently perform accurately. Although you'll be able to modify the parameters that control the precision with which you need to enter your secret knock, it can still be very difficult to match the precise timing.  "Shave and a Haircut," in addition to provoking uncontrollable singing in animated rabbits, is a good mix between complexity and simplicity for a screensaver unlocking password. Here is an example knock sequence for "Shave and a Haircut":</p>
+
+<p><code>0 564025 1185795 621350 516038 960035 444421 _#_ /bin/echo "shave the haircut" _#_ two bits</code></p>
+
+<p>Before you move on to the next step, you should practice with the above command and the first double tap in your ~/.knockFile configuration file. This will help later when the screensaver is running and it is more difficult to detect if you are knocking correctly.</p>
+
+<p><a name="N1010B"><span class="smalltitle">Command configuration for xscreensaver</span></a></p>
+
+<p>The following setup assumes that you are logged into your window manager, and the xscreensaver program has been started by your userid.  For example, if you are running Fedora Core 4 and log in to KDE through gdm, xscreensaver is started automatically.  So, to activate it, change the double tap command from:</p>
+
+<p><code>/bin/echo "double tap"</code></p>
+
+<p>to:</p>
+
+<p><code>xscreensaver-command -activate &amp;</code></p>
+
+<p>Now, whenever the "double tap" event is recognized, the xscreensaver program will activate with whatever settings you have specified.  Once the screensaver is activated, you can unlock the screen by typing in your password if so configured.  What we really want to do, though, is impress our friends with the secret unlocking code to disable the screensaver.  So, replace the following command for the "secret password sequence" in your ~/.knockFile:</p>
+
+<p><code>/bin/echo "shave the haircut"</code></p>
+
+<p>with:</p>
+
+<p><code>killall xscreensaver ; nohup xscreensaver -nosplash &gt;/dev/null 2&gt;/dev/null  &amp;</code></p>
+
+<p>This command will kill all of the xscreensaver programs currently running, then restart the xscreensaver in the background.  Now you can repeatedly lock and unlock your computer's screensaver just by knocking on the side of the case. Is this faster or better in any way than setting up a custom key combination? Not really. Is it more secure or more convenient than Bluetooth proximity locking?  Probably not. Is it cooler?  Yep.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10134"><span class="atitle">More examples</span></a></p>
+
+<p>HDAPS sensors and the knockAge.pl program provide an additional user input device that you can use in unique ways. For example:</p>
+
+<ul>
+<li>If you plan on testing a new X config file on the plane, update the double tap entry to restart your good X server.  No more keyboard lockups forcing hard resets.</li>
+<li>Place the location of any shell script you like in the command area, and use a double tap to check your e-mail.</li>
+<li>Knock in the latest break beat from your rave mix, and have the ThinkLight blink out a secret Morse code location of the WWII-era gold storage facility in Kinakuta.</li>
+<li>Tap in Morse code to avoid keyloggers.</li>
+</ul>
+
+<p>See the <a href="#resources">Resources</a> section for some great examples of reading the "tilt" of the ThinkPad for games, display tools, and more.  Or skip right ahead and set the Threshold variable to 15 so when you drop kick your ThinkPad it will automatically reboot.
+</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10153"><span class="atitle">The knockAge.pl code </span></a></p>
+
+<p><a name="N10159"><span class="smalltitle">History and strategy</span></a></p>
+
+<p>The hdaps-gl.c code written by Jeff Molofee is the basis for the knockAge.pl code. Hdaps-gl.c is a great demonstration program of how the tilt sensor can be used to display information about the ThinkPad's orientation in real time.  The substantial differences here are the isolation of specific events in time to create a knock, along with the associated code to create and listen for a knock sequence.</p>
+
+<p><a name="N10162"><span class="smalltitle">Parameter configuration</span></a></p>
+<p>Let's start at the top of knockAge.pl with the timing and sensor-critical parameters:</p>
+
+<br /><a name="N1016E"><b>Listing 1. Main program parameters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require 'sys/syscall.ph';  # for subsecond timing
+
+my $option = $ARGV[0] || ""; # simple option handling
+
+# filename for hdaps sensor reads
+my $hdapsFN = "/sys/devices/platform/hdaps/position";
+
+
+my $UPDATE_THRESHOLD =   4;      # threshold of force that indicates a knock
+my $INTERVAL_THRESHOLD = 100000; # microseconds of time required between knock
+                                 # events
+my $SLEEP_INTERVAL =     0.01;   # time to pause between hdaps reads
+
+my $MAX_TIMEOUT_LENGTH = 4;      # maximum length in seconds of knock pattern
+                                 # length
+my $MAX_KNOCK_DEV =      100000; # maximum acceptable deviation between recorded
+                                 # pattern values and knocking values
+
+my $LISTEN_TIMEOUT =     2;      # timeout value in seconds between knock
+                                 # events when in listening mode
+</pre></td></tr></table><br />
+
+<p>These variables and their comments are relatively straightforward.  Their usage and configuration options are explained later in this article. The following is the remainder of the global variables and their descriptions.</p>
+
+<br /><a name="N1017A"><b>Listing 2. Knock pattern parameters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+my @baseKnocks = ();             # contains knock intervals currently entered
+my %knockHash = ();              # contains knock patterns, associated commands
+
+my $prevInterval =       0;      # previous interval of time
+my $knockCount =         0;      # current number of knocks detected
+
+my $restX = 0; # `resting' positiong of X axis accelerometer
+my $restY = 0; # `resting' positiong of Y axis accelerometer
+my $currX = 0; # current position of X axis accelerometer
+my $currY = 0; # current position of Y axis accelerometer
+my $lastX = 0; # most recent position of X axis accelerometer
+my $lastY = 0; # most recent position of Y axis accelerometer
+
+
+my $startTime = 0;  # to manage timeout intervals
+my $currTime  = 0;  # to manage timeout intervals
+my $timeOut   = 0;  # perpetual loop variable
+my $knockAge  = 0;  # count of knocks to cycle time interval
+</pre></td></tr></table><br />
+
+<p><a name="N10180"><span class="smalltitle">Subroutines</span></a></p>
+
+<p>First in our list of subroutines is a simple logic block to check if the accelerometer is available for reading:</p>
+
+<br /><a name="N1018C"><b>Listing 3. Check accelerometer subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub checkAccelerometer() {
+
+  my $ret;
+  $ret = readPosition ();
+  if( $ret ){
+    print "no accelerometer data available - tis bork ed\n";
+    exit(1);
+  }
+
+}#checkAccelerometer
+</pre></td></tr></table><br />
+
+<p>The hdaps-gl.c code from Jeff Molofee provides a great starting point for all of the code in knockAge.pl.  You can see the vestiges of his comments in the <code>readPosition</code> subroutine, below.  This subroutine simply opens the file, reads the current accelerometer data, closes the file, and returns the data without the <code>,</code> (comma) characters.</p>
+
+<br /><a name="N101A0"><b>Listing 4. readPosition subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+## comments from Jeff Molofee in hdaps-gl.c
+#* read_position - read the (x,y) position pair from hdaps.
+#*
+#* We open and close the file on every invocation, which is lame but due to
+#* several features of sysfs files:
+#*
+#*  (a) Sysfs files are seekable.
+#*  (b) Seeking to zero and then rereading does not seem to work.
+##
+sub readPosition() {
+
+  my ($posX, $posY) = "";
+  my $fd = open(FH," $hdapsFN");
+
+    while( &lt;FH&gt; ){
+      s/\(//g;
+      s/\)//g;
+      ($posX, $posY) = split ",";
+
+    }# while read
+
+  close(FH);
+
+  return( $posX, $posY );
+
+}#readPosition
+</pre></td></tr></table><br />
+
+<p><code>getEpochSeconds</code> and <code>getEpochMicroSeconds</code> provide detailed and precise information on the status of the knock patterns.</p>
+
+<br /><a name="N101B3"><b>Listing 5. Time splitters</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub getEpochMicroSeconds {
+
+  my $TIMEVAL_T = "LL";      # LL for microseconds
+  my $timeVal = pack($TIMEVAL_T, ());
+
+  syscall(&amp;SYS_gettimeofday, $timeVal, 0) != -1 or die "micro seconds: $!";
+  my @vals =  unpack( $TIMEVAL_T, $timeVal );
+  $timeVal = $vals[0] . $vals[1];
+  $timeVal = substr( $timeVal, 6);
+
+  my $padLen =  10 - length($timeVal);
+  $timeVal = $timeVal . "0" x $padLen;
+
+  return($timeVal);
+}#getEpochMicroSeconds
+
+
+sub getEpochSeconds {
+  my $TIMEVAL_T = "LL";      # LL for microseconds
+  my $start = pack($TIMEVAL_T, ());
+  syscall(&amp;SYS_gettimeofday, $start, 0) != -1 or die "seconds: $!";
+  return( (unpack($TIMEVAL_T, $start))[0] );
+}#getEpochSeconds
+</pre></td></tr></table><br />
+
+<p>Next up is the <code>knockListen</code> subroutine, the first five lines of which read the current accelerometer data values and adjust for the base value readings. The <code>checkKnock</code> variable is set to 1 if the accelerometer magnitude in either dimension is greater than the update threshold value. To adjust the program to only respond to intense knocking events or similar acceleration values, increase the update threshold.  For example, you could place your ThinkPad in your car and have it change your mp3 playlist only when hard acceleration (or deceleration!) is detected.</p>
+
+<p>If you knocked the laptop hard enough, and the update threshold has been passed, the <code>getEpochMicroSeconds</code> subroutine is called.  The <code>diffInterval</code> variable is then assigned to the duration between knock events. This value is used to compress many rapid acceleration readings greater than the update threshold into one event.  Without the interval threshold check, a single hard knock will register as multiple events as the accelerometer continues to issue high magnitudes for an extended time.  This behavior is incongruous with the user perception both in sight and touch.  A knock is a knock to us, but apparently not to the HDAPS.  If the interval threshold has been reached, the knock interval is recorded in the <code>baseKnocks</code> array, and the interval between knocks is reset.</p>
+
+<p>The careful modification of these variables will help tune the program to recognize your particular knocking style. Reduce the update threshold and increase the interval threshold to detect widely spaced soft knocks.  Mechanical knocking devices or specific knock methods may require lowering the interval threshold to recognize distinct knock events.</p>
+
+<br /><a name="N101D9"><b>Listing 6. knockListen subroutine</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub knockListen() {
+
+  my $checkKnock = 0;
+  ($currX, $currY) = readPosition();
+
+  $currX -= $restX;  # adjust for rest data state
+  $currY -= $restY;  # adjust for rest data state
+
+
+  # require a high threshold of acceleration to ignore non-events like
+  # bashing the enter key or hitting the side with the mouse
+  if( abs ($currX) &gt; $UPDATE_THRESHOLD) {
+    $checkKnock = 1;
+  }
+
+  if( abs ($currY) &gt; $UPDATE_THRESHOLD) {
+    $checkKnock = 1;
+  }
+
+
+  if( $checkKnock == 1 ){
+
+    my $currVal = getEpochMicroSeconds();
+    my $diffInterval = abs($prevInterval - $currVal);
+
+    # hard knock events can create continuous acceleration across a large time
+    # threshold.  requiring an elapsed time between knock events effectively
+    # reduces what appear as multiple events according to sleep_interval and
+    # update_threshold into a singular event.
+    if(  $diffInterval &gt; $INTERVAL_THRESHOLD ){
+
+      if( $knockCount == 0 ){ $diffInterval = 0 }
+
+      if( $option ){
+        print "Knock: $knockCount ## last: [$currVal] curr: [$prevInterval] ";
+        print "difference is: $diffInterval\n";
+      }
+
+      push @baseKnocks, $diffInterval;
+      $knockCount++;
+
+    }# if the difference interval is greater than the threshold
+
+    $prevInterval = $currVal;
+
+  }#if checkknock passed
+
+}#knockListen
+</pre></td></tr></table><br />
+
+<p>When a knock pattern is created, it is placed in the ~/.knockFile file, and read by the following subroutine</p>
+
+<br /><a name="N101E5"><b>Listing 7. Read knock file</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub readKnockFile {
+
+  open(KNCKFILE,"$ENV{HOME}/.knockFile") or die "no knock file: $!";
+
+    while(&lt;KNCKFILE&gt;){
+
+      if( !/^#/ ){
+
+        my @arrLine = split "_#_";
+        $knockHash{ $arrLine[0] }{ cmd }     = $arrLine[1];
+        $knockHash{ $arrLine[0] }{ comment } = $arrLine[2];
+
+      }#if not a comment line
+
+    }#for each line in file
+
+  close(KNCKFILE);
+
+}#readKnockFile
+</pre></td></tr></table><br />
+
+<p>When a knocking pattern is acquired by <code>knockListen</code>, it is compared to the existing knock patterns loaded from <code>readKnockFile</code>.  The <code>compareKnockSequences</code> subroutine below performs a simple difference check between the timings of the knocks.  Note that the differences between knocks is not compounded: missing the timing on many knocks by a small amount will not accumulate into a total match failure.</p>
+
+<p>The first comparison is between the number of knocks, as there is no point comparing a seven-knock sequence to a two-knock sequence. If the number of knocks matches an existing knock sequence from ~/.knockFile, and the difference between knocks is less than than the maximum knock deviation, the knock is a match. Maximum knock deviation is critical to allowing the matching of knock sequences with accuracy, not precision. You can increase the maximum knock deviation to allow you to be more liberal in your rhythmic timings, but be warned, this can cause erroneously matched patterns. For example, try increasing the maximum knock deviation from 100000 to 500000 microseconds.  This will allow your knock patterns to deviate as much as half a second before or after the expected time, and still cause a match.  This effectively means that "Shave and a Haircut" can match to "Mary Had a Little Lamb", so be wary of changing this parameter.</p>
+
+<p>If the full pattern is a match, the command specified in the ~/.knockFile is run, and the result printed out if verbose mode is enabled.  The next step is to exit the subroutine if no matches are found, or reset the recorded knocks if a match is made. The <code>compareKnockSequences</code> subroutine performs this step:</p>
+
+<br /><a name="N10207"><b>Listing 8. Compare knock sequences</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+sub compareKnockSequences {
+
+  my $countMatch = 0;  # record how many knocks matched
+
+  # for each knock sequence in the config file
+  for( keys %knockHash ){
+
+    # get the timings between knocks
+    my @confKnocks = split;
+
+    # if the count of knocks match
+    if( $knockCount eq @confKnocks ){
+
+      my $knockDiff = 0;
+      my $counter = 0;
+
+      for( $counter=0; $counter&lt;$knockCount; $counter++ ){
+
+        $knockDiff = abs($confKnocks[$counter] - $baseKnocks[$counter]);
+        my $knkStr = "k $counter b $baseKnocks[$counter] ".
+                     "c $confKnocks[$counter] d $knockDiff\n";
+
+        # if it's an exact match, increment the matching counter
+        if( $knockDiff &lt; $MAX_KNOCK_DEV ){
+
+          if( $option ){ print "MATCH $knkStr" }
+          $countMatch++;
+
+        # if the knocks don't match, move on to the next pattern in the list
+        }else{
+
+          if( $option ){ print "DISSONANCE $knkStr" }
+          last;
+
+        }# deviation check
+
+      }#for each knock
+
+    }#if number of knocks matches
+
+    # if the count of knocks is an exact match, run the command
+    if( $countMatch eq @confKnocks ){
+      my $cmd = system( $knockHash{"@confKnocks "}{ cmd } );
+      if( $option ){ print "$cmd\n" }
+      last;
+
+    # otherwise, make the count of matches zero, in order to not reset
+    }else{
+      $countMatch = 0;
+    }
+
+  }#for keys
+
+  # if the match count is zero, exit and don't reset variables so a longer
+  # knock sequence can be entered and checked
+  if( $countMatch == 0 ){ return() }
+
+  # if a match occurred, reset the variables so it won't match another pattern
+  $knockCount = 0;
+  @baseKnocks = ();
+
+}#compareKnockSequences
+</pre></td></tr></table><br />
+
+<p><a name="N1020D"><span class="smalltitle">Main program logic</span></a></p>
+
+<p>With the subroutines in place, the main program logic allows the user to create a knock sequence, or runs in daemon mode to listen for knocks and execute commands. The first section is executed when the user specifies option <code>-c</code>, for create mode. A simple timeout process is used to end the knock sequence.  Increase the maximum timeout length variable to permit pauses of more than four seconds between knocks.  If you leave the maximum timeout length at four, the program will end and print your currently entered knock sequence.</p>
+
+<br /><a name="N1021D"><b>Listing 9. Create sequence main logic</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+if( $option eq "-c" ){
+
+  print "create a knock pattern:\n";
+
+  $startTime = getEpochSeconds();  # reset time out start
+
+  while( $timeOut == 0 ){
+
+    $currTime = getEpochSeconds();
+
+    # check if there has not been a knock in a while
+    if( $currTime - $startTime &gt; $MAX_TIMEOUT_LENGTH ){
+
+      $timeOut = 1;  # exit the loop
+
+    }else{
+
+      # if a knock has been entered before timeout, reset timers so
+      # more knocks can be entered
+
+      if( $knockCount != $knockAge ){
+        $startTime = $currTime;   # reset timer for longer delay
+        $knockAge = $knockCount;  # synchronize knock counts
+      }# if a new knock came in
+
+    }# if timer not reached
+
+    knockListen();
+    select(undef, undef, undef, $SLEEP_INTERVAL);
+
+  }#timeOut =0
+
+  if( @baseKnocks ){
+    print "place the following line in $ENV{HOME}/.knockFile\n\n";
+    for( @baseKnocks ){ print "$_ " }
+    print "_#_ (command here) _#_ &lt;comments here&gt;\n\n";
+  }#if knocks entered
+</pre></td></tr></table><br />
+
+<p>Section two of the main logic listens for knocks in an infinite loop, sleeping for approximately one hundredth of a second in each loop.  A seconds-based timeout is also used in this loop to reset the knock sequences after sufficient delay.  Note that in this example, the knock listen timeout is for two seconds, whereas the maximum timeout length is four seconds.  This provides for a simple testing setup during the knock creation mode, and a fast resetting option for knock sequence listen mode.</p>
+
+<br /><a name="N10229"><b>Listing 10. Knock listen main code</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+}else{
+
+  # main code loop to listen for knocking and run commands
+  readKnockFile();
+
+  $startTime = getEpochSeconds();
+
+  while( $timeOut == 0 ){
+
+    $currTime = getEpochSeconds();
+
+    if( $currTime - $startTime &gt; $LISTEN_TIMEOUT ){
+
+      $knockCount = 0;
+      @baseKnocks = ();
+      $startTime = $currTime;
+      if( $option ){ print "listen timeout - resetting knocks \n" }
+
+    }else{
+
+      if( $knockCount != $knockAge ){
+        $startTime = $currTime;   # reset timer for longer delay
+        $knockAge = $knockCount;  # synchronize knock counts
+      }# if a new knock came in
+
+      compareKnockSequences();
+
+    }#if not reset timeout
+
+    knockListen();
+
+    select(undef, undef, undef, $SLEEP_INTERVAL);
+
+  }#main knock listen loop
+
+}# if create or listen for knocks
+</pre></td></tr></table><br />
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1022F"><span class="atitle">Caveats, security</span></a></p>
+
+<p>The knockAge program is well suited for providing an additional channel of user input for your system.  However, be wary of using knockAge to do anything requiring authentication on your system.  Yes, it can defeat key loggers sniffing for passwords, but there are many other variables associated with "knock authentication" suggesting that  usage in any serious context is premature at best.  The knock sequences are currently stored as 4-9 digit representations of the delay in microseconds in the ~/.knockFile.  It is comparatively easy to read this "password" file and simply try and match the knock pattern to gain access to this system.  One-way hashes could be used by eliminating some of the precision in the microseconds values, but this exercise is best left to readers  wanting to evaluate the risks on their own.</p>
+
+<p>Before deployment in any serious environment, studies should be done to determine whether users  have a sufficiently variable and precise knocking apparatus.  For example, do we have the spatio-temporal motor skills to create and consistently enter knocking passwords of acceptable strength?  Does the average human mind have the capability to intuitively work with knock sequences?  Or are we all going to use "Shave and a Haircut" as our password?</p>
+
+<br /><br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><span class="atitle"><a name="download">Downloads</a></span></p><table width="100%" class="data-table-1" cellspacing="0" cellpadding="0" border="0"><tr><th scope="col">Description</th><th scope="col">Name</th><th align="right" scope="col">Size</th><th scope="col">Download method</th></tr><tr><th class="tb-row" scope="row">Sample Perl scripts for this article</th><td nowrap="nowrap">knockAge-0.1.zip</td><td align="right" nowrap="nowrap">4KB</td><td nowrap="nowrap"><a class="fbox" href="http://www.ibm.com/developerworks/views/download.jsp?contentid=150021&amp;filename=knockAge-0.1.zip&amp;method=http&amp;locale=worldwide"><b>HTTP</b></a></td></tr><tr><th class="tb-row" scope="row">knockAge xscreensaver demo (QuickTime movie)</th><td nowrap="nowrap">knockAge_demo_xscreensaver.zip</td><td align="right" nowrap="nowrap">6319KB</td><td nowrap="nowrap"><a class="fbox" href="http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux/l-knockage/knockAge_demo_xscreensaver.zip"><b>HTTP</b></a></td></tr></table><table cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td colspan="5"><img alt="" width="12" height="12" border="0" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td><img alt="" height="16" width="16" src="//www.ibm.com/i/v14/icons/fw.gif"/></td><td><a class="fbox" href="/developerworks/library/whichmethod.html">Information about download methods</a></td><td><img alt="" height="1" width="50" src="//www.ibm.com/i/c.gif"/></td></tr></table><br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>
+Get the raw <a href="http://nathanharrington.info/knockAge_demo_xscreensaver.mov">knockAge demonstration video.</a>
+<br /><br /></li><li>
+Watch the <a href="http://www.youtube.com/watch?v=bvcKV3Tuc4g">youtube.com version of the same video</a>.
+<br /><br /></li><li>
+Check out the <a href="http://hdaps.sourceforge.net/">HDAPS development page</a> on SourceForge.
+<br /><br /></li><li>
+Find <a href="http://www.thinkwiki.org/wiki/Hardware_Specifications">ThinkPad hardware</a> information, including a site listing many various <a href="http://www.thinkwiki.org/wiki/HDAPS">applications of the HDAPS interface</a>, at ThinkWiki.
+<br /><br /></li><li>
+Read "<a href="http://www.almaden.ibm.com/cs/people/marksmith/sdl.html">SDL Accel: SDL Modifications for Accelerometer Game Control</a>," by IBM's Mark Smith, for an interesting application of HDAPS.  Also read Mark's earlier article, "<a href="http://www.almaden.ibm.com/cs/people/marksmith/tpaps.html">The ThinkPad APS Accelerometer Interface</a>."
+<br /><br /></li><li>
+Read "<a href="http://www.kernelthread.com/software/ams2hid/">The Apple Sudden Motion Sensor</a>," by IBM's Amit Singh, for an example of how to access similar accelerometer-based information on the MacBook.
+<br /><br /></li><li>
+In the <a href="http://www.ibm.com/developerworks/linux/">developerWorks Linux zone</a>, find more resources for Linux developers.
+<br /><br /></li><li>
+Stay current with <a href="http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX03&amp;S_CMP=art">developerWorks technical events and Webcasts</a>.
+</li></ul><br /><b>Get products and technologies</b><br /><ul><li>
+<a href="http://mirrors.kernel.org/">Get HDAPS</a> from your favorite Linux kernel download mirror.
+<br /><br /></li><li>
+<a href="http://www.ibm.com/developerworks/offers/sek/?S_TACT=105AGX03&amp;S_CMP=art">Order the SEK for Linux</a>, a two-DVD set containing the latest IBM trial software for Linux from DB2&#174;, Lotus&#174;, Rational&#174;, Tivoli&#174;, and WebSphere&#174;.
+<br /><br /></li><li>
+With <a href="http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX03&amp;S_CMP=art">IBM trial software</a>, available for download directly from developerWorks, build your next development project on Linux.
+<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li>
+Check out <a href="http://www.ibm.com/developerworks/blogs/">developerWorks
+blogs</a> and get involved in the <a href="http://www.ibm.com/developerworks/community">developerWorks community</a>.
+<br /><br /></li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p/></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Nathan Harrington is a programmer at IBM currently working with Linux and resource locating technologies.</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Knock-based commands for your Linux laptop" name="ArticleTitle" type="hidden"/><input value="Linux, Open source" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="150021" name="ArticleID" type="hidden"/><input value="07252006" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="harrington.nathan@gmail.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="Goal" name="Goal" type="radio"/>Yes</td><td><input value="No" id="Goal" name="Goal" type="radio"/>No</td><td><input value="Don't know" id="Goal" name="Goal" type="radio"/>Don't know</td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="60"><input value="1" id="Rating" name="Rating" type="radio"/>1</td><td align="left" width="60"><input value="2" id="Rating" name="Rating" type="radio"/>2</td><td align="left" width="60"><input value="3" id="Rating" name="Rating" type="radio"/>3</td><td align="left" width="60"><input value="4" id="Rating" name="Rating" type="radio"/>4</td><td align="left" width="63"><input value="5" id="Rating" name="Rating" type="radio"/>5</td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table><p class="greytext">IBM, DB2, Lotus, Rational, Tivoli, and WebSphere are trademarks of IBM Corporation in the United States, other countries, or both.  Linux is a trademark of Linus Torvalds in the United States, other countries, or both.
+  Other company, product, or service names may be 
+  trademarks or service marks of others.</p></td></tr></table><!--FOOTER_BEGIN--><br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="bbg" height="19">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="http://www.ibm.com/ibm/">About IBM</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/privacy/">Privacy</a></td>
+<td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a class="mainlink" href="http://www.ibm.com/contact/">Contact</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.8.xsl--></body></html>
