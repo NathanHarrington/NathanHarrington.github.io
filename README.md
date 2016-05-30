@@ -2,6 +2,8 @@ Nathan Harrington personal static site using pelican.
 
 ### Setup and configuration
 
+    Make sure you edit files in content/ not in the root.
+
     Clone this repository into:
     ~/projects/NathanHarrington.github.io
     
@@ -11,16 +13,17 @@ Nathan Harrington personal static site using pelican.
     export PATH=~/miniconda2/bin:$PATH
     conda create --name pelican_env pip
     source activate pelican_env
-    pip install pelican Markdown ghp-import
+    pip install pelican Markdown
     
     In one window, setup auto-reloader of content (but not .conf files)
     source activate pelican_env
     cd ~/projects/NathanHarrington.github.io
-    pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/ content
+    pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/
+        --output ./
     
     In a second window, setup the pelican webserver:
     source activate pelican_env
-    cd ~/projects/NathanHarrington.github.io/output
+    cd ~/projects/NathanHarrington.github.io
     python -m pelican.server
 
 
@@ -46,12 +49,12 @@ Nathan Harrington personal static site using pelican.
 
 ### Push to a github user page
 
+    Make sure you edit files in content/ not in the root!
+
     pelican --theme ../pelican-themes/personal-bootstrap3/ content
+            --output ./
+
+    (Test on local machine, verify everything looks fine)
+
     git commit -a -m "Documentation log message"
     git push origin master
-
-    pelican content -o output -s pelicanconf.py
-    ghp-import output
-    or is it?
-    ghp-import -p output
-    git push https://github.com/NathanHarrington/NathanHarrington.github.io gh-pages:master 

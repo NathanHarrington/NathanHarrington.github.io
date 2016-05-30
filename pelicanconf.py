@@ -57,13 +57,13 @@ DISPLAY_CATEGORIES_ON_MENU=False
 
 # Show the colorful banner image on all pages
 #BANNER = 'images/banner.png'
-BANNER_ALL_PAGES = True
+#BANNER_ALL_PAGES = True
 #BANNER_SUBTITLE = "banner sub"
 
 # don't show any of the right side info
 #HIDE_SIDEBAR=True
 
-#BOOTSTRAP_THEME="simplex"
+BOOTSTRAP_THEME="paper"
 
 #HIDE_SITENAME=True
-
+HIDE_SIDEBAR=False
