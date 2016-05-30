@@ -9,11 +9,13 @@ template: home_index
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4" style="vertical-align: middle;">
-            My name is Nathan Harrington. I live in Holly Springs, NC with my wife and our seven children. I work at Wasatch Photonics, where I develop software to help deliver spectroscopy and optical coherence tomography research systems. Most of this work is in Python.  I am passionate about efficiency, achievement and team work. I enjoy user interface design, exploration and photography.
-        </div>
-        <div class="col-md-4">
-           <img style="width: 200px; float: right;" src="/images/NathanHarrington_Image.jpg"> 
+        <div class="col-md-8">
+            <div class="col-md-4" style="vertical-align: middle;">
+                My name is Nathan Harrington. I live in Holly Springs, NC with my wife and our seven children. I work at Wasatch Photonics, where I develop software to help deliver spectroscopy and optical coherence tomography research systems. Most of this work is in Python.  I am passionate about efficiency, achievement and team work. I enjoy user interface design, exploration and photography.
+            </div>
+            <div class="col-md-4">
+                <img style="width: 200px;" src="/images/NathanHarrington_Image.jpg"> 
+            </div>
         </div>
     </div>
 </div>
@@ -27,7 +29,7 @@ template: home_index
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="col-md-3">
                 <div style="text-align:center">
                     <a href="http://github.com/WasatchPhotonics/LineGrab">LineGrab</a>
@@ -62,46 +64,6 @@ template: home_index
                 </div>
             </div>
         </div> <!--left side column-->
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div style="text-align:center">
-                <a href="http://github.com/WasatchPhotonics/LineGrab">LineGrab</a>
-            </div>
-            <div style="text-align:center">
-                <a href="http://github.com/WasatchPhotonics/LineGrab"><img src="/images/linegrab_thumb.gif"></img>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div style="text-align:center">
-                <a href="https://picasaweb.google.com/100412424991063551562">Portraits</a>
-            </div>
-            <div style="text-align:center">
-                <a href="https://picasaweb.google.com/100412424991063551562"><img src="/images/Elise_Harrington_Portrait_01_thumb.jpg"></img></a>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div style="text-align:center">
-                <a href="https://github.com/WasatchPhotonics/FastPM100">FastPM100</a>
-            </div>
-            <div style="text-align:center">
-                <a href="https://github.com/WasatchPhotonics/FastPM100"><img src="/images/fastpm100_thumb.gif"></img></a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div style="text-align:center">
-                <a href="https://github.com/WasatchPhotonics/CookBook">CookBook</a>
-            </div>
-            <div style="text-align:center">
-                <a
-                href="https://github.com/WasatchPhotonics/CookBook"><img src="/images/cookbook_thumb.png"></img></a>
-            </div>
-        </div>
     </div>
 </div>
 
