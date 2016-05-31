@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>FastPM100 - High speed acquisition and visualization of ThorLabs PM100 power meter readings - Nathan Harrington</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html">
+
+        <meta name="author" content="Nathan Harrington" />
+        <meta name="description" content="Visualize much higher speed laser power meter readings than the ThorLabs Optical power meter software. Use zmq and multiple visualization modes to show instantaneous and long term laser power meter trends. This is used at Wasatch Photonics for laser output power stability of our laser can diodes. It&#39;s also useful …" />
+
+        <meta property="og:site_name" content="Nathan Harrington" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="FastPM100 - High speed acquisition and visualization of ThorLabs PM100 power meter readings"/>
+        <meta property="og:url" content="/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html"/>
+        <meta property="og:description" content="Visualize much higher speed laser power meter readings than the ThorLabs Optical power meter software. Use zmq and multiple visualization modes to show instantaneous and long term laser power meter trends. This is used at Wasatch Photonics for laser output power stability of our laser can diodes. It&#39;s also useful …"/>
+        <meta property="article:published_time" content="2016-03-21" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:author" content="Nathan Harrington" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.paper.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Nathan Harrington            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="/category/articles.html">Articles</a>
+                        </li>
+                        <li >
+                            <a href="/category/patents.html">Patents</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-03-21T00:00:00+01:00"> Mon 21 March 2016</time>
+    </span>
+
+
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="https://github.com/WasatchPhotonics/FastPM100"><img alt="FastPM100" src="/images/wasatch-images/fastpm100_thumbnail.gif" /></a></p>
+<p>Visualize much higher speed laser power meter readings than the <a href="https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=PM100x">ThorLabs
+Optical power
+meter</a> software. Use <a href="http://zeromq.org">zmq</a> and multiple visualization modes
+to show instantaneous and long term laser power meter trends. This is
+used at <a href="http://wasatchphotonics.com">Wasatch Photonics</a> for laser output power stability of our laser
+can diodes. </p>
+<p>It's also useful for power on visualizations of the various mode hops
+and other instabilities as the laser transitions through various
+temperatures and feedback loops.</p>
+<p>We use this in concert with a
+<a href="https://github.com/WasatchPhotonics/BoardTester">BoardTester</a> script to create a long term
+data logging setup that also permits high resolution instantaneous
+visualization.</p>
+<p>FastPM100 is one of the first applications that uses the
+<a href="https://github.com/WasatchPhotonics/PySideApp">PySideApp</a>
+starter project. This is essential for high speed visualization and
+lag-free hardware acquisitions.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/NathanHarrington"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/harringtonnathan"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://plus.google.com/100412424991063551562"><i class="fa fa-google-plus-square fa-lg"></i> google-plus</a></li>
+              </ul>
+            </li>
+
+
+
+
+
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Nathan Harrington
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
