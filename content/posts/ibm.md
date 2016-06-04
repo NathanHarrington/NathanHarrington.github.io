@@ -1,8 +1,8 @@
 Title: IBM History
 Date:  2009-03-01
 Category: articles
+thumbnail_image: /images/ibm-images/wearableBBC_full.jpg
 
-[![FastPM100](/images/ibm-images/wearableBBC_full.jpg =100x100)](https://github.com/WasatchPhotonics/FastPM100)
 
 My first opportunity with [IBM](http://www.ibm.com) came as a Co-Op through [R.I.T](http://www.rit.edu) with the
 Personal Computing Division Executive Briefing Center in Research

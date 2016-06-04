@@ -5,7 +5,7 @@ template: developerworks
 devworks_link: http://www-128.ibm.com/developerworks/library/
 shortname: os-78414-firefox-flash
 
-Flash players and o ther embedded applications in Firefox require their
+Flash players and other embedded applications in Firefox require their
 own hooks for keyboard and mouse input. For years, Flash has grabbed
 Firefox keypresses, which stops people from using the keybo ard for
 navigation, creating new tabs, or even exiting the Flash focus. Learn
