@@ -1,5 +1,6 @@
 Title: FastPM100 - High speed acquisition and visualization of ThorLabs PM100 power meter readings 
 Date: 2016-03-21
+Summary: Test line for summary
 Category: articles
 
 [![FastPM100](/images/wasatch-images/fastpm100_thumbnail.gif)](https://github.com/WasatchPhotonics/FastPM100)
