@@ -68,3 +68,6 @@ BOOTSTRAP_THEME="paper"
 
 #HIDE_SITENAME=True
 HIDE_SIDEBAR=False
+
+ARTICLE_URL = 'posts/{slug}.html'
+ARTICLE_SAVE_AS = 'posts/{slug}.html'
