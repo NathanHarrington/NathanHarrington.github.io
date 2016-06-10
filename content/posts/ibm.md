@@ -1,15 +1,8 @@
 Title: IBM History
 Date:  2009-03-01
 Category: articles
+tags: ibm
 thumbnail_image: /images/ibm-images/wearableBBC_full.jpg
-
-
-<style>
-.spaced_rows {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-</style>
 
 
 <div class="container">

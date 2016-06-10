@@ -58,3 +58,9 @@ Nathan Harrington personal static site using pelican.
 
     git commit -a -m "Documentation log message"
     git push origin master
+
+
+### Convert an animated gif into a smaller animated gif
+
+    convert source.gif -coalesce temp.gif
+    convert -resize 100% temp.gif -resize 15% small.gif

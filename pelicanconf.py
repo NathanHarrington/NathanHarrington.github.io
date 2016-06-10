@@ -64,7 +64,7 @@ ARTICLE_EXCLUDES = ["files/cached_developerworks_html"]
 # don't show any of the right side info
 #HIDE_SIDEBAR=True
 
-BOOTSTRAP_THEME="paper"
+#BOOTSTRAP_THEME="paper"
 
 #HIDE_SITENAME=True
 HIDE_SIDEBAR=False

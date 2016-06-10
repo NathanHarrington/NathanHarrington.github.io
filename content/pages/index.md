@@ -5,8 +5,6 @@ save_as: index.html
 status: hidden
 
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -19,6 +17,7 @@ status: hidden
         </div>
     </div>
 </div>
+
 
 
 <div class="container">
