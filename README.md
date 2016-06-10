@@ -49,12 +49,17 @@ Nathan Harrington personal static site using pelican.
 
 ### Push to a github user page
 
-    Make sure you edit files in content/ not in the root!
+    Make sure you edit files in content/posts/ not in posts/ !
 
     pelican --theme ../pelican-themes/personal-bootstrap3/ content
             --output ./
 
     (Test on local machine, verify everything looks fine)
+
+    Add all of the new files for a post:
+    git add content/posts/*
+    git add content/images/*
+    git add posts/*
 
     git commit -a -m "Documentation log message"
     git push origin master
