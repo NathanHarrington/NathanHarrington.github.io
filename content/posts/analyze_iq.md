@@ -16,3 +16,6 @@ spectrometers, write out in xml format for use in AnalyzeIQ.
 This uses AnalyzeIQ's stdin/stdout interface, which is more than
 sufficient for multiple acquisitions per second. Pleasingly
 straightforward to integrate and test.
+
+Available on
+[GitHub](https://github.com/WasatchPhotonics/WasatchAnalyzeIQ)

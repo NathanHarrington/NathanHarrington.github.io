@@ -16,3 +16,6 @@ tracking system. This was the first system created as part of
 the microwave/cookbook update. Uses travis and coveralls for
 continuous integration testing. Deployed on a [Digital Ocean
 Droplet](https://www.digitalocean.com/)
+
+Available on
+[GitHub](https://github.com/WasatchPhotonics/CalibrationReport)

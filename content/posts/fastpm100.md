@@ -24,3 +24,5 @@ FastPM100 is one of the first applications that uses the
 [PySideApp](https://github.com/WasatchPhotonics/PySideApp)
 starter project. This is essential for high speed visualization and
 lag-free hardware acquisitions.
+
+Available on [GitHub](https://github.com/WasatchPhotonics/FastPM100)

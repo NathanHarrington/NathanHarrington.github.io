@@ -15,3 +15,4 @@ tracking system. Requires the apparently defunct
 project with the [wasatch
 fork](https://github.com/WasatchPhotonics/pyqrnative) to compile on linux.
 
+Available on [GitHub](https://github.com/WasatchPhotonics/StickerCode)
