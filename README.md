@@ -60,6 +60,10 @@ Nathan Harrington personal static site using pelican.
     git add content/posts/*
     git add content/images/*
     git add posts/*
+    git add images/* 
+    git add tags/* 
+    (essentially anything in root, if you are disciplined, you should be
+    able to do git add ./ )
 
     git commit -a -m "Documentation log message"
     git push origin master
