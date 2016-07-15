@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Nathan Harrington - patents</title><link href="nathanharrington.info/" rel="alternate"></link><link href="nathanharrington.info/feeds/patents.atom.xml" rel="self"></link><id>nathanharrington.info/</id><updated>2014-12-23T00:00:00-05:00</updated><entry><title>Vector Space Lightweight Directory Access Protocol Data Search</title><link href="nathanharrington.info/posts/vector-space-lightweight-directory-access-protocol-data-search.html" rel="alternate"></link><published>2014-12-23T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2014-12-23:nathanharrington.info/posts/vector-space-lightweight-directory-access-protocol-data-search.html</id><summary type="html">&lt;p&gt;A computer-implemented method, apparatus, and computer program product
+for performing a search for data. In one embodiment, the process
+    converts each character of the search query into a phonetic variant
+    to form an inflected search query. The process then identifies a set
+    of inflected data fields of a vector space library satisfying the
+    inflected search query. &lt;/p&gt;</summary></entry><entry><title>Beyond Field-of-View Tracked Object Positional Indicators</title><link href="nathanharrington.info/posts/beyond-field-of-view-tracked-object-positional-indicators.html" rel="alternate"></link><published>2013-11-19T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-11-19:nathanharrington.info/posts/beyond-field-of-view-tracked-object-positional-indicators.html</id><summary type="html">&lt;p&gt;A system and method for implementing beyond field-of-view tracked object
+positional indicators for television event directors and camera
+operators. The present invention includes a camera having a
+field-of-view. The camera tracks an off-screen object. A coordinate
+manager blends an on-screen indication of distance that the object is
+away from said field-of-view. The camera is positioned to avoid the
+object in the field-of-view. &lt;/p&gt;</summary></entry><entry><title>Automatic announcer voice removal from a sporting event</title><link href="nathanharrington.info/posts/automatic-announcer-voice-removal-from-a-sporting-event.html" rel="alternate"></link><published>2013-08-20T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-08-20:nathanharrington.info/posts/automatic-announcer-voice-removal-from-a-sporting-event.html</id><summary type="html">&lt;p&gt;A sound processing circuit divides an audio input signal of a televised
+sporting event into multiple audio segments. The audio input signal
+includes crowd noise and announcer commentary. If an audio segment does
+not exceed a pre-defined amplitude threshold, a voice removal utility
+adds the audio segment to a recent crowd noise library and stores the
+segment in an output buffer. If the amplitude of a segment exceeds the
+threshold, the utility adds the segment to a recent announcer voice
+library. The sound processing circuit generates an attenuated version of
+the segment and blends the attenuated version with one or more mixed
+segments from the recent crowd noise library. The voice removal utility
+stores the attenuated and blended segment in the output buffer and
+outputs one or more audio segments from the buffer in a chronological
+order. &lt;/p&gt;</summary></entry><entry><title>Visualization interface of continuous waveform multi-speaker identification</title><link href="nathanharrington.info/posts/visualization-interface-of-continuous-waveform-multi-speaker-identification.html" rel="alternate"></link><published>2013-01-01T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-01-01:nathanharrington.info/posts/visualization-interface-of-continuous-waveform-multi-speaker-identification.html</id><summary type="html">&lt;p&gt;The programming instructions are operable to create a voiceprint from
+the current waveform if the current waveform is of a human voice.
+Furthermore, the programming instructions are operable to determine one
+of whether a match exists between the voiceprint and one library
+waveform of one or more library waveforms, whether a correlation exists
+between the voiceprint and a number of library waveforms of the one or
+more library waveforms and whether the voiceprint is unique.
+Additionally, the programming instructions are operable to transcribe
+the current waveform into text and provide a match indication display
+(MID) indicating an association between the current waveform and the one
+or more library waveforms based on the determining.&lt;/p&gt;</summary></entry><entry><title>Reducing multipath signal degradation effects in a wireless transmission system</title><link href="nathanharrington.info/posts/reducing-multipath-signal-degradation-effects-in-a-wireless-transmission-system.html" rel="alternate"></link><published>2012-06-26T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-06-26:nathanharrington.info/posts/reducing-multipath-signal-degradation-effects-in-a-wireless-transmission-system.html</id><summary type="html">&lt;p&gt;A transmitter transmits a signal to a receiver along a transmission
+path. The respective positions of the transmitter and the receiver are
+determined, and notice is received that a moving vehicle is proximate to
+the transmission path. Responsive to such notice, the moving vehicle
+position is determined, and such position is used with the transmitter
+and receiver positions to determine whether the moving vehicle is
+located between the transmitter and receiver positions. The calculated
+time delay is then used to provide a corrective signal component, which
+is employed to reduce degradation of the first component. &lt;/p&gt;</summary></entry><entry><title>Upper troposphere and lower stratosphere wind direction, speed and turbidity monitoring using digital imaging and motion tracking</title><link href="nathanharrington.info/posts/upper-troposphere-and-lower-stratosphere-wind-direction-speed-and-turbidity-monitoring-using-digital-imaging-and-motion-tracking.html" rel="alternate"></link><published>2012-05-08T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-05-08:nathanharrington.info/posts/upper-troposphere-and-lower-stratosphere-wind-direction-speed-and-turbidity-monitoring-using-digital-imaging-and-motion-tracking.html</id><summary type="html">&lt;p&gt;The visible sky is monitored by a set of cameras for contrails produced
+by a high-altitude aircraft. In response to identifying a contrail, the
+contrail is tracked across the field of view of the camera. Contrail
+data generated when the contrail is identified and during the tracking
+of the contrail is stored. The contrail data describes characteristics
+of the contrail including the spread of the contrail and the movement of
+the contrail across the field of view of the camera. Coordinates of the
+high-altitude aircraft are determined and compared with the contrail
+data to identify wind conditions. &lt;/p&gt;</summary></entry><entry><title>Hybrid ultrasonic and radio frequency identification system and method</title><link href="nathanharrington.info/posts/hybrid-ultrasonic-and-radio-frequency-identification-system-and-method.html" rel="alternate"></link><published>2012-03-20T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-03-20:nathanharrington.info/posts/hybrid-ultrasonic-and-radio-frequency-identification-system-and-method.html</id><summary type="html">&lt;p&gt;A radio frequency identification system and method includes a tag reader
+and radio frequency identification tag. The tag reader includes an
+ultrasonic transducer capable of transmitting tones at selected
+ultrasonic frequencies and a radio transmitter capable of transmitting
+signals at selected radio frequencies. The tag reader includes a radio
+receiver capable of receiving signals at selected radio frequencies. The
+tag reader determines if a received radio frequency signal is modulated
+at a selected ultrasonic frequency. The radio frequency identification
+tag includes an array of combination resonator/reflectors. Each
+combination resonator/reflector of the array includes an ultrasonic
+resonator coupled to a radio reflector. Each resonator/reflector of the
+array is tuned to a unique pair of selected ultrasonic frequencies and
+selected radio frequencies. &lt;/p&gt;</summary></entry><entry><title>Autonomously Configuring Information Systems to Support</title><link href="nathanharrington.info/posts/autonomously-configuring-information-systems-to-support.html" rel="alternate"></link><published>2011-05-24T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-05-24:nathanharrington.info/posts/autonomously-configuring-information-systems-to-support.html</id><summary type="html">&lt;p&gt;The Mission SoulPad may autonomously detect and configure components of
+the information system (e.g., displays, sensors, emitters, transceivers)
+to support the defined objectives of the Mission SoulPad. The Mission
+SoulPad may also identify malfunctioning components of the information
+system needing repair or replacement. Entire sensor and information
+display suites may be transitioned simply by moving the Mission SoulPad
+between available information systems. This ensures that mission
+critical information is consistently available regardless of the type of
+system the Mission SoulPad is connected to. &lt;/p&gt;</summary></entry><entry><title>Automatically generating precipitation proximity notifications</title><link href="nathanharrington.info/posts/automatically-generating-precipitation-proximity-notifications.html" rel="alternate"></link><published>2011-05-07T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-05-07:nathanharrington.info/posts/automatically-generating-precipitation-proximity-notifications.html</id><summary type="html">&lt;p&gt;A method and system for automatically generating a notification of a
+status of precipitation being received by a user-defined detection zone
+within a geographic area. An image of the geographic area is received.
+The image includes pixels associated with the detection zone. Each pixel
+is associated with a sub-area of the detection zone. Characteristics
+(e.g., colors) of the pixels are obtained. The characteristics indicate
+intensities of precipitation being received by sub-areas of the
+detection zone.&lt;/p&gt;</summary></entry><entry><title>Method and system for vehicle mounted infrared wavelength information displays for traffic camera viewers</title><link href="nathanharrington.info/posts/method-and-system-for-vehicle-mounted-infrared-wavelength-information-displays-for-traffic-camera-viewers.html" rel="alternate"></link><published>2011-01-18T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-01-18:nathanharrington.info/posts/method-and-system-for-vehicle-mounted-infrared-wavelength-information-displays-for-traffic-camera-viewers.html</id><summary type="html">&lt;p&gt;Systems and methods for vehicle mounted infrared wavelength information
+displays for traffic camera viewers are disclosed. A method includes
+obtaining vehicle positioning data associated with at least one vehicle
+and, based upon the vehicle positioning data, selectively emitting
+infrared wavelength light from a set of a plurality of light emitting
+diodes (LEDs) arranged on exterior surfaces of the at least one vehicle.&lt;/p&gt;</summary></entry><entry><title>Protecting electronic devices from percussive impacts</title><link href="nathanharrington.info/posts/protecting-electronic-devices-from-percussive-impacts.html" rel="alternate"></link><published>2011-01-04T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-01-04:nathanharrington.info/posts/protecting-electronic-devices-from-percussive-impacts.html</id><summary type="html">&lt;p&gt;A system and method detects low grade physical motions of an electronic
+device, such as a laptop computer, and takes protective measures if the
+physical motions match a pre-specified physical motion pattern. The
+pre-specified physical motion pattern may have been selected as a
+pattern which, if left alone, could cause cumulative damage to the
+electronic device. Alternatively, the pre-specified motion pattern may
+have been selected as a pattern which tended to indicate that more
+aggressive and abrupt movements would be forthcoming. The system and
+method further detects sustained motion (such as in a laptop bag) such
+that the laptop may shut-off so that the laptop does not overheat or get
+damaged. &lt;/p&gt;</summary></entry><entry><title>Method and system for improving driver safety and situational awareness</title><link href="nathanharrington.info/posts/method-and-system-for-improving-driver-safety-and-situational-awareness.html" rel="alternate"></link><published>2010-04-06T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2010-04-06:nathanharrington.info/posts/method-and-system-for-improving-driver-safety-and-situational-awareness.html</id><summary type="html">&lt;p&gt;A method for enhancing driver safety through body position monitoring
+with remote sensors, and furnishing feedback in response to vehicle
+motion, driver activities, and external driving conditions. &lt;/p&gt;</summary></entry><entry><title>Automotive collision detection through passive radio analysis</title><link href="nathanharrington.info/posts/automotive-collision-detection-through-passive-radio-analysis.html" rel="alternate"></link><published>2009-06-09T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2009-06-09:nathanharrington.info/posts/automotive-collision-detection-through-passive-radio-analysis.html</id><summary type="html">&lt;p&gt;The present invention discloses a vehicular collision alert system which
+receives signals from devices commonly associated with vehicular use.
+The direction of the received signals is determined, and a heading of
+the signal source is also determined and compared with the present
+location and heading of the vehicle If the comparison indicates a
+sufficient chance of a collision, and alert is generated to notify the
+driver of the vehicle of the potential collision. &lt;/p&gt;</summary></entry></feed>

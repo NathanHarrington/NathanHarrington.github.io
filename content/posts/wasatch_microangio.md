@@ -1,11 +1,10 @@
-Title: MicroAngio 
+Title: MicroAngio - Demonstration interface for the MicroAngio UX project.
 Date:  2016-05-19
 Category: articles
 Tags: wasatch photonics
 thumbnail_image: /images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-38-26.png
 
 
-Demonstration interface for the MicroAngio UX project.
 
 
 Clickable, navigatable demonstration of the new user experience design

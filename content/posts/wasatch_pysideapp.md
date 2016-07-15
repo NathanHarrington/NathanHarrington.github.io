@@ -1,11 +1,9 @@
-Title: PySideApp
+Title: PySideApp -  Minimal application demonstrating core features for deployable applications
 Date:  2016-04-26
 Category: articles
 Tags: wasatch photonics
 
 
-Minimal application demonstrating core features for deployable
-applications
 
 
 What I always wished I had the time to develop earlier. Multiprocessing

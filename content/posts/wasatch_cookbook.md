@@ -1,11 +1,9 @@
-Title: CookBook
+Title: CookBook - Web application to display Wasatch Photonics device information and calibration reports.
 Date:  2016-04-13
 Category: articles
 Tags: wasatch photonics
 thumbnail_image: /images/wasatch-images/cookbook_thumbnail.png
 
-Web application to display Wasatch Photonics device information and
-calibration reports.
 
 
 Allows for the easy communication of device specific information to the

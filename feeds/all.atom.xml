@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Nathan Harrington</title><link href="nathanharrington.info/" rel="alternate"></link><link href="nathanharrington.info/feeds/all.atom.xml" rel="self"></link><id>nathanharrington.info/</id><updated>2016-05-19T00:00:00-04:00</updated><entry><title>MicroAngio</title><link href="nathanharrington.info/posts/microangio.html" rel="alternate"></link><published>2016-05-19T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-05-19:nathanharrington.info/posts/microangio.html</id><summary type="html">&lt;p&gt;Demonstration interface for the MicroAngio UX project.&lt;/p&gt;
+&lt;p&gt;Clickable, navigatable demonstration of the new user experience design
+for OCT Angiography. No actual OCT processing is included. See the
+screenshots below for more detail. One of the primary goals of this
+system was to create a 'live' demo for faster iteration of design
+concepts. This demo was based on the &lt;a href="https://github.com/WasatchPhotonics/PySideApp"&gt;PySideApp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Uses QT Designer (Qt4), and various styles, layouts and layering to get
+the desired effects, with much better portability than previous
+iterations. The
+&lt;a href="http://github.com/WasatchPhotonics/BlueGraph"&gt;BlueGraph&lt;/a&gt; techniques,
+for example, were heavily influenced by GraphicsView systems with
+layered SVG controls, that had embedded PNGs. This was fast, and
+would let you do various graphics effects, at the expense of
+development time.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/wasatch-images/microangio_screenshots/Screenshot_2016-04-28_09-37-53.png"&gt;&lt;img alt="RAW Capture" src="/images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-37-53.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/wasatch-images/microangio_screenshots/Screenshot_2016-04-28_09-38-11.png"&gt;&lt;img alt="RAW Setup" src="/images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-38-11.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/wasatch-images/microangio_screenshots/Screenshot_2016-04-28_09-38-16.png"&gt;&lt;img alt="OCT Capture" src="/images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-38-16.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/wasatch-images/microangio_screenshots/Screenshot_2016-04-28_09-38-22.png"&gt;&lt;img alt="Angio Setup" src="/images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-38-22.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/wasatch-images/microangio_screenshots/Screenshot_2016-04-28_09-38-26.png"&gt;&lt;img alt="Angio Capture" src="/images/wasatch-images/microangio_screenshots/thumbnails/Screenshot_2016-04-28_09-38-26.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/MicroAngio"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>BoardTester - collect data with automated hardware power cycling</title><link href="nathanharrington.info/posts/boardtester-collect-data-with-automated-hardware-power-cycling.html" rel="alternate"></link><published>2016-05-11T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-05-11:nathanharrington.info/posts/boardtester-collect-data-with-automated-hardware-power-cycling.html</id><summary type="html">&lt;p&gt;Use the techniques from
+&lt;a href="https://github.com/WasatchPhotonics/Phidgeter"&gt;Phidgeter&lt;/a&gt; and the
+&lt;a href="https://github.com/WasatchPhotonics/Barbecue"&gt;Barbecue&lt;/a&gt; in an automated
+fashion. Perform thousands of power cycle events, and isolate issues
+with various software configurations and power requirements.&lt;/p&gt;
+&lt;p&gt;This tool is used at &lt;a href="http://wasatchphotonics.com"&gt;Wasatch&lt;/a&gt; for analysis
+of various hardware configurations on Optical Coherence Tomography
+systems.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/BoardTester"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>PySideApp</title><link href="nathanharrington.info/posts/pysideapp.html" rel="alternate"></link><published>2016-04-26T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-04-26:nathanharrington.info/posts/pysideapp.html</id><summary type="html">&lt;p&gt;Minimal application demonstrating core features for deployable
+applications&lt;/p&gt;
+&lt;p&gt;What I always wished I had the time to develop earlier. Multiprocessing
+that is tested. Log setups that spawn processes and all messages go to
+the same file. MVC architecture with separately tested components. &lt;/p&gt;
+&lt;p&gt;Fully automated application builds on windows, including
+the installer. This is the basis for a wide range of next generation app
+for Wasatch photonics, including:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/WasatchPhotonics/MicroAngio"&gt;MicroAngio UX Demo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/WasatchPhotonics/FastPM100"&gt;FastPM100&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;AutoFallOff (in progress)&lt;/p&gt;
+&lt;p&gt;Dash4 - The next revision of the &lt;a href="http://devices.wasatchphotonics.com/"&gt;Dash spectrometer control&lt;/a&gt; software.&lt;/p&gt;
+&lt;p&gt;This application is designed to meet one of Wasatch's primary use cases:
+rapid acquisition of data from devices, with visualization.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/PySideApp"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>CookBook</title><link href="nathanharrington.info/posts/cookbook.html" rel="alternate"></link><published>2016-04-13T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-04-13:nathanharrington.info/posts/cookbook.html</id><summary type="html">&lt;p&gt;Web application to display Wasatch Photonics device information and
+calibration reports.&lt;/p&gt;
+&lt;p&gt;Allows for the easy communication of device specific information to the
+customer, regardless of location. Previous integration systems used
+dropbox, google, or baidu. These are frequently banned by IT departments
+or entire geographical networks. The CookBook is a fully tested web
+application designed to get around these limitations. It's also
+specifically designed to address the Wasatch Photonics workflow. Uses
+the &lt;a href="http://peterhudec.github.io/authomatic/"&gt;Authomatic&lt;/a&gt; library for
+oauth with Google apps for business. This allows authenticated users to
+create entries, post updated content, etc. External users have
+unrestricted access to the device information, drastically simplifying
+their remote support requirements.&lt;/p&gt;
+&lt;p&gt;Full source code and implementation instructions available on: &lt;a href="http://github.com/WasatchPhotonics/CookBook"&gt;Github&lt;/a&gt;.&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>WasatchUSB - bare bones USB communication with wasatch devices</title><link href="nathanharrington.info/posts/wasatchusb-bare-bones-usb-communication-with-wasatch-devices.html" rel="alternate"></link><published>2016-04-08T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-04-08:nathanharrington.info/posts/wasatchusb-bare-bones-usb-communication-with-wasatch-devices.html</id><summary type="html">&lt;p&gt;USB cameras and devices from Wasatch Photonics&lt;/p&gt;
+&lt;p&gt;This module is intended to provide the absolute bare-minimum, pure
+python communication with a StrokerARMUSB board. These tests include
+communication with a Phidgets relay device, to place the device in a
+known power state. At Wasatch, we use this for verification of
+protocol functional specifications during development of new firmware
+versions.&lt;/p&gt;
+&lt;p&gt;This includes Windows LibUsb INF drivers, as well as configuration
+instructions and udev rules for access on Linux.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/WasatchUSB"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>FastPM100 - High speed acquisition and visualization of ThorLabs PM100 power meter readings</title><link href="nathanharrington.info/posts/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html" rel="alternate"></link><published>2016-03-21T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-03-21:nathanharrington.info/posts/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html</id><summary type="html">&lt;p&gt;Visualize much higher speed laser power meter readings than the &lt;a href="https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=PM100x"&gt;ThorLabs
+Optical power
+meter&lt;/a&gt; software. Use &lt;a href="http://zeromq.org"&gt;zmq&lt;/a&gt; and multiple visualization modes
+to show instantaneous and long term laser power meter trends. This is
+used at &lt;a href="http://wasatchphotonics.com"&gt;Wasatch Photonics&lt;/a&gt; for laser output power stability of our laser
+can diodes. &lt;/p&gt;
+&lt;p&gt;It's also useful for power on visualizations of the various mode hops
+and other instabilities as the laser transitions through various
+temperatures and feedback loops.&lt;/p&gt;
+&lt;p&gt;We use this in concert with a
+&lt;a href="https://github.com/WasatchPhotonics/BoardTester"&gt;BoardTester&lt;/a&gt; script to create a long term
+data logging setup that also permits high resolution instantaneous
+visualization.&lt;/p&gt;
+&lt;p&gt;FastPM100 is one of the first applications that uses the
+&lt;a href="https://github.com/WasatchPhotonics/PySideApp"&gt;PySideApp&lt;/a&gt;
+starter project. This is essential for high speed visualization and
+lag-free hardware acquisitions.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/FastPM100"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Phidgeter - logging and convenience functions for Phidgets</title><link href="nathanharrington.info/posts/phidgeter-logging-and-convenience-functions-for-phidgets.html" rel="alternate"></link><published>2016-02-08T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-02-08:nathanharrington.info/posts/phidgeter-logging-and-convenience-functions-for-phidgets.html</id><summary type="html">&lt;p&gt;&lt;a href="http://www.phidgets.com/products.php?category=9"&gt;Phidgets&lt;/a&gt; are truly exceptional. Actual out of the box usefulness with
+their &lt;a href="http://www.phidgets.com/docs/Software_Overview"&gt;software&lt;/a&gt;. The python interface can be difficult to use when
+compared to other API's. Phidgeter provides logging, network, display
+and convenience functions for Phidgets. Use it with
+&lt;a href="https://github.com/WasatchPhotonics/BlueGraph"&gt;BlueGraph&lt;/a&gt; for example,
+for more straightforward data visualization.&lt;/p&gt;
+&lt;p&gt;Here's some examples with Phidgeter:&lt;/p&gt;
+&lt;p&gt;from phidgeter import relay&lt;/p&gt;
+&lt;p&gt;phd_relay = relay.Relay()
+phd_relay.one_toggle()&lt;/p&gt;
+&lt;p&gt;Emit data from a Phidget IR sensor on the command line:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;phidgeter.temperature&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;IRSensor&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;ir_temp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;IRSensor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;ir_temp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open_phidget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;ir_temp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_temperature&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/Phidgeter"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>i3locksvg - branded unlock screens on linux</title><link href="nathanharrington.info/posts/i3locksvg-branded-unlock-screens-on-linux.html" rel="alternate"></link><published>2016-01-18T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-01-18:nathanharrington.info/posts/i3locksvg-branded-unlock-screens-on-linux.html</id><summary type="html">&lt;p&gt;i3lock has many variations, including
+&lt;a href="https://github.com/meskarune/i3lock-fancy"&gt;i3lock-fancy&lt;/a&gt;, the supporting
+scripts on
+&lt;a href="https://github.com/guimeira/i3lock-fancy-multimonitor"&gt;i3lock-fancy-multimonitor&lt;/a&gt;
+and many others.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ravinrabbid/i3lock-svg"&gt;i3lock-svg&lt;/a&gt; gives you something truly unique. The ability to fully
+customize the unlock characterizations. This is used on wasatch
+photonics to create the custom lock screen you see above on linux
+systems. Makes quite an impression on customers.&lt;/p&gt;
+&lt;p&gt;Check out the wasatch and other branches of the &lt;a href="https://github.com/WasatchPhotonics/i3lock-svg"&gt;GitHub Fork&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>WasatchCameraLink - Bare bones communication with DALSA sapera</title><link href="nathanharrington.info/posts/wasatchcameralink-bare-bones-communication-with-dalsa-sapera.html" rel="alternate"></link><published>2016-01-04T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2016-01-04:nathanharrington.info/posts/wasatchcameralink-bare-bones-communication-with-dalsa-sapera.html</id><summary type="html">&lt;p&gt;CameraLink communication with &lt;a href="http://wasatchphotonics.com/product-category/optical-coherence-tomography/cobra-oct-spectrometer/"&gt;Wasatch
+devices&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Currently supported cameras with &lt;a href="https://www.teledynedalsa.com/imaging/products/fg/OR-X1C0-XLB00/"&gt;DALSA
+framegrabbers&lt;/a&gt; include:&lt;/p&gt;
+&lt;p&gt;Wasatch Photonics Cobra series with &lt;a href="http://www.awaiba.com/product/dragster-family-overview/"&gt;Awaiba
+sensors&lt;/a&gt;
+Wasatch Photonics Cobra series with OPTO sensors
+&lt;a href="http://www.baslerweb.com/en/products/cameras/line-scan-cameras/sprint/spl2048-70km"&gt;Sprint
+Basler&lt;/a&gt;
+In development cameras, all through DALSA framegrabbers:&lt;/p&gt;
+&lt;p&gt;DALSA
+&lt;a href="http://www.teledynedalsa.com/imaging/products/cameras/line-scan/spyder3/S3-24-02K40/"&gt;Spyder&lt;/a&gt;
+Sensors Unlimited
+&lt;a href="http://www.teledynedalsa.com/imaging/products/cameras/line-scan/spyder3/S3-24-02K40/"&gt;GL2048&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This uses a barebones version of the C# GrabConsole program from the
+&lt;a href="https://www.teledynedalsa.com/imaging/products/software/sapera/lt/"&gt;DALSA Sapera SDK&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/WasatchCameraLink"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>bluegraph - high speed graphing and logging with guiqwt and zmq. SVG blueness in pyqt</title><link href="nathanharrington.info/posts/bluegraph-high-speed-graphing-and-logging-with-guiqwt-and-zmq-svg-blueness-in-pyqt.html" rel="alternate"></link><published>2015-12-11T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-12-11:nathanharrington.info/posts/bluegraph-high-speed-graphing-and-logging-with-guiqwt-and-zmq-svg-blueness-in-pyqt.html</id><summary type="html">&lt;p&gt;This is a rewrite of the old 'ExtendedTest' interface. You can see a demonstration of this interface as part of Wasatch Photonics &lt;a href="https://drive.google.com/file/d/0B9a4-za84QgLX202TWpqMVJvalU/view?usp=sharing"&gt;Long Term Laser Test&lt;/a&gt; setup shown below.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://drive.google.com/file/d/0B9a4-za84QgLX202TWpqMVJvalU/view?           usp=sharing"&gt;&lt;img alt="Long Term Laser Test" src="/images/wasatch-images/wasatch_long_term_laser_test.png" /&gt;&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;Also used as part of the Wasatch Photonics
+&lt;a href="https://drive.google.com/file/d/0B9a4-za84QgLbVl5cUtsY3M0UFk/view?usp=sharing"&gt;Griddle&lt;/a&gt;
+spectrometer quality verification system.
+&lt;a href="https://drive.google.com/file/d/0B9a4-za84QgLbVl5cUtsY3M0UFk/view?usp=sharing"&gt;&lt;img alt="Griddle" src="/images/wasatch-images/wasatch_griddle_demo.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Check the details on &lt;a href="https://github.com/WasatchPhotonics/BlueGraph"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>LineGrab - Visualize single lines of data from a variety of cameras.</title><link href="nathanharrington.info/posts/linegrab-visualize-single-lines-of-data-from-a-variety-of-cameras.html" rel="alternate"></link><published>2015-11-19T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-19:nathanharrington.info/posts/linegrab-visualize-single-lines-of-data-from-a-variety-of-cameras.html</id><summary type="html">&lt;p&gt;Manufacturing and alignment of spectrometers requires line scan
+visualization of camera output. Many vendors provide bare-bones or 
+non existent line graphs. LineGrab uses a variety of communication
+techniques to provide full-screen line graph visualizations. These
+are critical for the precise alignment of spectrometers.
+See the &lt;a href="https://github.com/nharringtonwasatch/WasatchCameraLink"&gt;WasatchCameraLink&lt;/a&gt;
+repository for a list of currently supported cameras.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/LineGrab"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>Barbecue line scan camera tester</title><link href="nathanharrington.info/posts/barbecue-line-scan-camera-tester.html" rel="alternate"></link><published>2015-11-12T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-12:nathanharrington.info/posts/barbecue-line-scan-camera-tester.html</id><summary type="html">&lt;p&gt;Use a &lt;a href="https://www.teledynedalsa.com/imaging/products/fg/OR-X1C0-XLB00/"&gt;DALSA
+framegrabber&lt;/a&gt; and Wasatch Photonics &lt;a href="http://wasatchphotonics.com/product-category/optical-coherence-tomography/cobra-oct-spectrometer/"&gt;Cobra&lt;/a&gt; series of
+spectrometer to collect data on every gain and offset setting.
+Provide a portable csv data format and heatmap visualizations with 
+cross-sections.&lt;/p&gt;
+&lt;p&gt;Uses &lt;a href="https://pythonhosted.org/guiqwt/"&gt;guiqwt&lt;/a&gt; and includes a custom build environment and instructions for
+&lt;a href="http://pythonxynews.blogspot.com/"&gt;python xy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/Barbecue"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>LuminanceLabel - Animated overlay and on-screen luminance measurements</title><link href="nathanharrington.info/posts/luminancelabel-animated-overlay-and-on-screen-luminance-measurements.html" rel="alternate"></link><published>2015-11-12T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-12:nathanharrington.info/posts/luminancelabel-animated-overlay-and-on-screen-luminance-measurements.html</id><summary type="html">&lt;p&gt;Demonstration video on &lt;a href="https://youtu.be/9qmNLBNOKwY"&gt;youtube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Uses PyQt to place a transparent overlay on the screen, takes a
+screenshot and processes the area underneath the overlay designator.
+Luminance values are computed and displayed on the label, and written to
+stdout.&lt;/p&gt;
+&lt;p&gt;This is used for evaluting the displayed imagery at multiple frames per
+second for imaging software.&lt;/p&gt;
+&lt;p&gt;Includes tests with QtTest that establish a window, then create an
+overlay window for known luminance values.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/LuminanceLabel"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>PDFExploder - Web service to create thumbnail views of PDF documents</title><link href="nathanharrington.info/posts/pdfexploder-web-service-to-create-thumbnail-views-of-pdf-documents.html" rel="alternate"></link><published>2015-11-12T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-12:nathanharrington.info/posts/pdfexploder-web-service-to-create-thumbnail-views-of-pdf-documents.html</id><summary type="html">&lt;p&gt;Display a responsive web form. With the pdf uploaded by the user,
+generate a variety of exploded page view thumbnails like those shown
+below. Store the pdf and thumbnail links forever with permanent links.
+Live demo at http://waspho.com:8082&lt;/p&gt;
+&lt;p&gt;Written using &lt;a href="http://www.pylonsproject.org/"&gt;Pyramid&lt;/a&gt; and
+&lt;a href="https://github.com/Pylons/deform"&gt;deform&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/PDFExploder"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>QR Sticker Code generator for QL-700</title><link href="nathanharrington.info/posts/qr-sticker-code-generator-for-ql-700.html" rel="alternate"></link><published>2015-11-11T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-11:nathanharrington.info/posts/qr-sticker-code-generator-for-ql-700.html</id><summary type="html">&lt;p&gt;Web service to create qr codes, short links and &lt;a href="http://www.brother-usa.com/LabelPrinter/ModelDetail/23/ql700/Overview"&gt;QL-700&lt;/a&gt; shaped
+stickers for device serialization .
+Live demo available at &lt;a href="http://waspho.com:8083/"&gt;waspho.com&lt;/a&gt;.
+This is used by the &lt;a href="http://waspho.com"&gt;CookBook&lt;/a&gt; spectrometer
+tracking system. Requires the apparently defunct
+&lt;a href="https://github.com/b45ch1/pyqrnative"&gt;PyQRNative&lt;/a&gt;
+project with the &lt;a href="https://github.com/WasatchPhotonics/pyqrnative"&gt;wasatch
+fork&lt;/a&gt; to compile on linux.&lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/StickerCode"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>Calibration Report Generator</title><link href="nathanharrington.info/posts/calibration-report-generator.html" rel="alternate"></link><published>2015-11-09T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-11-09:nathanharrington.info/posts/calibration-report-generator.html</id><summary type="html">&lt;p&gt;Web service to create calibration reports for wasatch photonics
+spectrometers. Use a responsive web form to accept a serial
+number, calibration coefficients and (optional) product imagery.
+Create a PDF document and graphical thumbnail, store forever.&lt;/p&gt;
+&lt;p&gt;Live demo available at &lt;a href="http://waspho.com:8081/"&gt;waspho.com&lt;/a&gt;.
+This is used by the &lt;a href="http://waspho.com"&gt;CookBook&lt;/a&gt; spectrometer
+tracking system. This was the first system created as part of
+the microwave/cookbook update. Uses travis and coveralls for
+continuous integration testing. Deployed on a &lt;a href="https://www.digitalocean.com/"&gt;Digital Ocean
+Droplet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Available on
+&lt;a href="https://github.com/WasatchPhotonics/CalibrationReport"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>AnalyzeIQ with Wasatch Photonics</title><link href="nathanharrington.info/posts/analyzeiq-with-wasatch-photonics.html" rel="alternate"></link><published>2015-09-03T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-09-03:nathanharrington.info/posts/analyzeiq-with-wasatch-photonics.html</id><summary type="html">&lt;p&gt;A custom interface for &lt;a href="https://www.analyzeiq.com/Products/Analyze-IQ-Lab.html"&gt;AnalyzeIQ Lab&lt;/a&gt; that will collect data from Wasatch Photonics devices.
+Analyze IQ is a third party chemometrics solution that can
+also be used on
+&lt;a href="http://oceanoptics.com/product-category/ventana-series/"&gt;Ventana&lt;/a&gt; devices from &lt;a href="http://oceanoptics.com/product/analyze-iq-chemistry-software/"&gt;Ocean
+Optics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Acquires data from Wasatch Photonics
+spectrometers, write out in xml format for use in AnalyzeIQ.
+This uses AnalyzeIQ's stdin/stdout interface, which is more than
+sufficient for multiple acquisitions per second. Pleasingly
+straightforward to integrate and test.&lt;/p&gt;
+&lt;p&gt;Available on
+&lt;a href="https://github.com/WasatchPhotonics/WasatchAnalyzeIQ"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>Adapteva Parallella Screener (The Foreman)</title><link href="nathanharrington.info/posts/adapteva-parallella-screener-the-foreman.html" rel="alternate"></link><published>2015-08-17T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2015-08-17:nathanharrington.info/posts/adapteva-parallella-screener-the-foreman.html</id><summary type="html">&lt;p&gt;Wasatch Photonics uses &lt;a href="http://www.adapteva.com/parallella/"&gt;Adapteva Parallella&lt;/a&gt; SKU P1601-DK03's as
+an embedded linux system. Core capabilities required include a
+USB bus that is available at least 83% of the time on boot up. A
+&lt;a href="https://github.com/WasatchPhotonics/Foreman"&gt;screener&lt;/a&gt; was created to allow us to find the incoming Parallella
+boards that meet this level of usb availability. This setup
+consists of 4 Parallella DC adapters connected to a Phidgets
+software controlled relay. This relay turns on the devices for
+35 seconds, issues a 'lsusb' command on each device, and stores
+the status of the usb availability. The device is then turned
+off for 75 seconds, then the process is repeated. &lt;/p&gt;
+&lt;p&gt;Available on &lt;a href="https://github.com/WasatchPhotonics/Foreman"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The forum post is really a great reminder of what not to do when
+documenting a problem: &lt;a href="https://parallella.org/forums/viewtopic.php?f=50&amp;amp;t=1650&amp;amp;start=40#p13290"&gt;USB
+Issues&lt;/a&gt; You can't just present the data and expect any change. Remember that just because the data is there doesn't mean people will actually read the post, or make any changes.&lt;/p&gt;
+&lt;p&gt;Use this tool to summarize the data into readable graphs:
+&lt;img src="/images/wasatch-images/foreman_screenshot.png"/&gt;&lt;/p&gt;</summary><category term="wasatch photonics"></category></entry><entry><title>Vector Space Lightweight Directory Access Protocol Data Search</title><link href="nathanharrington.info/posts/vector-space-lightweight-directory-access-protocol-data-search.html" rel="alternate"></link><published>2014-12-23T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2014-12-23:nathanharrington.info/posts/vector-space-lightweight-directory-access-protocol-data-search.html</id><summary type="html">&lt;p&gt;A computer-implemented method, apparatus, and computer program product
+for performing a search for data. In one embodiment, the process
+    converts each character of the search query into a phonetic variant
+    to form an inflected search query. The process then identifies a set
+    of inflected data fields of a vector space library satisfying the
+    inflected search query. &lt;/p&gt;</summary></entry><entry><title>Beyond Field-of-View Tracked Object Positional Indicators</title><link href="nathanharrington.info/posts/beyond-field-of-view-tracked-object-positional-indicators.html" rel="alternate"></link><published>2013-11-19T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-11-19:nathanharrington.info/posts/beyond-field-of-view-tracked-object-positional-indicators.html</id><summary type="html">&lt;p&gt;A system and method for implementing beyond field-of-view tracked object
+positional indicators for television event directors and camera
+operators. The present invention includes a camera having a
+field-of-view. The camera tracks an off-screen object. A coordinate
+manager blends an on-screen indication of distance that the object is
+away from said field-of-view. The camera is positioned to avoid the
+object in the field-of-view. &lt;/p&gt;</summary></entry><entry><title>Automatic announcer voice removal from a sporting event</title><link href="nathanharrington.info/posts/automatic-announcer-voice-removal-from-a-sporting-event.html" rel="alternate"></link><published>2013-08-20T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-08-20:nathanharrington.info/posts/automatic-announcer-voice-removal-from-a-sporting-event.html</id><summary type="html">&lt;p&gt;A sound processing circuit divides an audio input signal of a televised
+sporting event into multiple audio segments. The audio input signal
+includes crowd noise and announcer commentary. If an audio segment does
+not exceed a pre-defined amplitude threshold, a voice removal utility
+adds the audio segment to a recent crowd noise library and stores the
+segment in an output buffer. If the amplitude of a segment exceeds the
+threshold, the utility adds the segment to a recent announcer voice
+library. The sound processing circuit generates an attenuated version of
+the segment and blends the attenuated version with one or more mixed
+segments from the recent crowd noise library. The voice removal utility
+stores the attenuated and blended segment in the output buffer and
+outputs one or more audio segments from the buffer in a chronological
+order. &lt;/p&gt;</summary></entry><entry><title>Visualization interface of continuous waveform multi-speaker identification</title><link href="nathanharrington.info/posts/visualization-interface-of-continuous-waveform-multi-speaker-identification.html" rel="alternate"></link><published>2013-01-01T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2013-01-01:nathanharrington.info/posts/visualization-interface-of-continuous-waveform-multi-speaker-identification.html</id><summary type="html">&lt;p&gt;The programming instructions are operable to create a voiceprint from
+the current waveform if the current waveform is of a human voice.
+Furthermore, the programming instructions are operable to determine one
+of whether a match exists between the voiceprint and one library
+waveform of one or more library waveforms, whether a correlation exists
+between the voiceprint and a number of library waveforms of the one or
+more library waveforms and whether the voiceprint is unique.
+Additionally, the programming instructions are operable to transcribe
+the current waveform into text and provide a match indication display
+(MID) indicating an association between the current waveform and the one
+or more library waveforms based on the determining.&lt;/p&gt;</summary></entry><entry><title>Reducing multipath signal degradation effects in a wireless transmission system</title><link href="nathanharrington.info/posts/reducing-multipath-signal-degradation-effects-in-a-wireless-transmission-system.html" rel="alternate"></link><published>2012-06-26T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-06-26:nathanharrington.info/posts/reducing-multipath-signal-degradation-effects-in-a-wireless-transmission-system.html</id><summary type="html">&lt;p&gt;A transmitter transmits a signal to a receiver along a transmission
+path. The respective positions of the transmitter and the receiver are
+determined, and notice is received that a moving vehicle is proximate to
+the transmission path. Responsive to such notice, the moving vehicle
+position is determined, and such position is used with the transmitter
+and receiver positions to determine whether the moving vehicle is
+located between the transmitter and receiver positions. The calculated
+time delay is then used to provide a corrective signal component, which
+is employed to reduce degradation of the first component. &lt;/p&gt;</summary></entry><entry><title>Upper troposphere and lower stratosphere wind direction, speed and turbidity monitoring using digital imaging and motion tracking</title><link href="nathanharrington.info/posts/upper-troposphere-and-lower-stratosphere-wind-direction-speed-and-turbidity-monitoring-using-digital-imaging-and-motion-tracking.html" rel="alternate"></link><published>2012-05-08T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-05-08:nathanharrington.info/posts/upper-troposphere-and-lower-stratosphere-wind-direction-speed-and-turbidity-monitoring-using-digital-imaging-and-motion-tracking.html</id><summary type="html">&lt;p&gt;The visible sky is monitored by a set of cameras for contrails produced
+by a high-altitude aircraft. In response to identifying a contrail, the
+contrail is tracked across the field of view of the camera. Contrail
+data generated when the contrail is identified and during the tracking
+of the contrail is stored. The contrail data describes characteristics
+of the contrail including the spread of the contrail and the movement of
+the contrail across the field of view of the camera. Coordinates of the
+high-altitude aircraft are determined and compared with the contrail
+data to identify wind conditions. &lt;/p&gt;</summary></entry><entry><title>Hybrid ultrasonic and radio frequency identification system and method</title><link href="nathanharrington.info/posts/hybrid-ultrasonic-and-radio-frequency-identification-system-and-method.html" rel="alternate"></link><published>2012-03-20T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2012-03-20:nathanharrington.info/posts/hybrid-ultrasonic-and-radio-frequency-identification-system-and-method.html</id><summary type="html">&lt;p&gt;A radio frequency identification system and method includes a tag reader
+and radio frequency identification tag. The tag reader includes an
+ultrasonic transducer capable of transmitting tones at selected
+ultrasonic frequencies and a radio transmitter capable of transmitting
+signals at selected radio frequencies. The tag reader includes a radio
+receiver capable of receiving signals at selected radio frequencies. The
+tag reader determines if a received radio frequency signal is modulated
+at a selected ultrasonic frequency. The radio frequency identification
+tag includes an array of combination resonator/reflectors. Each
+combination resonator/reflector of the array includes an ultrasonic
+resonator coupled to a radio reflector. Each resonator/reflector of the
+array is tuned to a unique pair of selected ultrasonic frequencies and
+selected radio frequencies. &lt;/p&gt;</summary></entry><entry><title>Autonomously Configuring Information Systems to Support</title><link href="nathanharrington.info/posts/autonomously-configuring-information-systems-to-support.html" rel="alternate"></link><published>2011-05-24T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-05-24:nathanharrington.info/posts/autonomously-configuring-information-systems-to-support.html</id><summary type="html">&lt;p&gt;The Mission SoulPad may autonomously detect and configure components of
+the information system (e.g., displays, sensors, emitters, transceivers)
+to support the defined objectives of the Mission SoulPad. The Mission
+SoulPad may also identify malfunctioning components of the information
+system needing repair or replacement. Entire sensor and information
+display suites may be transitioned simply by moving the Mission SoulPad
+between available information systems. This ensures that mission
+critical information is consistently available regardless of the type of
+system the Mission SoulPad is connected to. &lt;/p&gt;</summary></entry><entry><title>Automatically generating precipitation proximity notifications</title><link href="nathanharrington.info/posts/automatically-generating-precipitation-proximity-notifications.html" rel="alternate"></link><published>2011-05-07T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-05-07:nathanharrington.info/posts/automatically-generating-precipitation-proximity-notifications.html</id><summary type="html">&lt;p&gt;A method and system for automatically generating a notification of a
+status of precipitation being received by a user-defined detection zone
+within a geographic area. An image of the geographic area is received.
+The image includes pixels associated with the detection zone. Each pixel
+is associated with a sub-area of the detection zone. Characteristics
+(e.g., colors) of the pixels are obtained. The characteristics indicate
+intensities of precipitation being received by sub-areas of the
+detection zone.&lt;/p&gt;</summary></entry><entry><title>Method and system for vehicle mounted infrared wavelength information displays for traffic camera viewers</title><link href="nathanharrington.info/posts/method-and-system-for-vehicle-mounted-infrared-wavelength-information-displays-for-traffic-camera-viewers.html" rel="alternate"></link><published>2011-01-18T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-01-18:nathanharrington.info/posts/method-and-system-for-vehicle-mounted-infrared-wavelength-information-displays-for-traffic-camera-viewers.html</id><summary type="html">&lt;p&gt;Systems and methods for vehicle mounted infrared wavelength information
+displays for traffic camera viewers are disclosed. A method includes
+obtaining vehicle positioning data associated with at least one vehicle
+and, based upon the vehicle positioning data, selectively emitting
+infrared wavelength light from a set of a plurality of light emitting
+diodes (LEDs) arranged on exterior surfaces of the at least one vehicle.&lt;/p&gt;</summary></entry><entry><title>Protecting electronic devices from percussive impacts</title><link href="nathanharrington.info/posts/protecting-electronic-devices-from-percussive-impacts.html" rel="alternate"></link><published>2011-01-04T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2011-01-04:nathanharrington.info/posts/protecting-electronic-devices-from-percussive-impacts.html</id><summary type="html">&lt;p&gt;A system and method detects low grade physical motions of an electronic
+device, such as a laptop computer, and takes protective measures if the
+physical motions match a pre-specified physical motion pattern. The
+pre-specified physical motion pattern may have been selected as a
+pattern which, if left alone, could cause cumulative damage to the
+electronic device. Alternatively, the pre-specified motion pattern may
+have been selected as a pattern which tended to indicate that more
+aggressive and abrupt movements would be forthcoming. The system and
+method further detects sustained motion (such as in a laptop bag) such
+that the laptop may shut-off so that the laptop does not overheat or get
+damaged. &lt;/p&gt;</summary></entry><entry><title>Method and system for improving driver safety and situational awareness</title><link href="nathanharrington.info/posts/method-and-system-for-improving-driver-safety-and-situational-awareness.html" rel="alternate"></link><published>2010-04-06T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2010-04-06:nathanharrington.info/posts/method-and-system-for-improving-driver-safety-and-situational-awareness.html</id><summary type="html">&lt;p&gt;A method for enhancing driver safety through body position monitoring
+with remote sensors, and furnishing feedback in response to vehicle
+motion, driver activities, and external driving conditions. &lt;/p&gt;</summary></entry><entry><title>Automotive collision detection through passive radio analysis</title><link href="nathanharrington.info/posts/automotive-collision-detection-through-passive-radio-analysis.html" rel="alternate"></link><published>2009-06-09T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2009-06-09:nathanharrington.info/posts/automotive-collision-detection-through-passive-radio-analysis.html</id><summary type="html">&lt;p&gt;The present invention discloses a vehicular collision alert system which
+receives signals from devices commonly associated with vehicular use.
+The direction of the received signals is determined, and a heading of
+the signal source is also determined and compared with the present
+location and heading of the vehicle If the comparison indicates a
+sufficient chance of a collision, and alert is generated to notify the
+driver of the vehicle of the potential collision. &lt;/p&gt;</summary></entry><entry><title>IBM History</title><link href="nathanharrington.info/posts/ibm-history.html" rel="alternate"></link><published>2009-03-01T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2009-03-01:nathanharrington.info/posts/ibm-history.html</id><summary type="html">&lt;div class="container"&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            My first opportunity with &lt;a href="http://www.ibm.com"&gt;IBM&lt;/a&gt; came as a Co-Op through &lt;a href="http://www.rit.edu"&gt;R.I.T&lt;/a&gt; with the
+            Personal Computing Division Executive Briefing Center in Research
+            Triangle Park. This was a fantastic opportunity where I helped
+            administer PC's and Laptops representing all of IBM's consumer grade
+            hardware. In addition to technical support, I had the opportunity to
+            demonstrate the Wearable PC to customers. (Photo credit: BBC), more
+            coverage at the
+            &lt;a href="http://news.bbc.co.uk/2/hi/science/nature/538072.stm"&gt;BBC&lt;/a&gt; and &lt;a href="http://domino.research.ibm.com/library/cyberdig.nsf/0/122b8399b43ea4348525701c0073005a?OpenDocument&amp;Highlight=0,RC23622"&gt;IBM Research&lt;/a&gt;. This was a great working experience
+            with &lt;a href="https://www.linkedin.com/in/david-laubscher-36639a2?"&gt;David Laubscher&lt;/a&gt;, &lt;a href="https://www.linkedin.com/in/jeffrey-walls-1ba0797?"&gt;Jeff Walls&lt;/a&gt;, &lt;a href="https://www.linkedin.com/in/doug-baldwin-54019a?"&gt;Doug Baldwin&lt;/a&gt; and many others.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            After the co-op and graduation from R.I.T. I began work with IBM as a
+            full time 'regular' employee with Global Services. I worked closely with
+            &lt;a href="https://www.linkedin.com/in/levandos?"&gt;Andrew Levandoski&lt;/a&gt; doing Java programming. Among other projects, I worked
+            on adding multi-threaded support to a data processing application.
+
+            As part of the Customer Database team, I helped manage the batch
+            processing data identification, matching and cleansing systems. This
+            role focused on managing the Trillium software system on
+            &lt;a
+            href="http://www-03.ibm.com/systems/power/software/aix/"&gt;AIX&lt;/a&gt;
+
+        &lt;/div&gt;
+
+&lt;p&gt;&lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px" src="/images/ibm-images/fftool-screenshot.jpg"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            Managing tens of gigabytes of customer data in a flat
+            file format with the existing tools was inadequate, so I created the
+            'Flat File Tool', which is useful for managing and visualizing large
+            plain text files with no line delimiters. You can read more about the
+            fftool program at &lt;a href="http://fftool.sourceforge.net/"&gt;SourceForge&lt;/a&gt;
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px" src="/images/ibm-images/SametimePlus_logo_110.jpg"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            After a few months at IBM, I began work on an instant
+            messaging client using the
+            &lt;a href="http://www-03.ibm.com/software/products/en/ibmsame"&gt;Sametime&lt;/a&gt; SDK. I wanted many of the features
+            available in other clients, but IBM's internal feature release schedule
+            was not as fast as expected. I used my experiences with Windows
+            Application development in college and at TM Technology to create
+            Sametime Plus. As of March 2009, it still has features not available in
+            the internal IBM Sametime client.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            There was a distinct need for a hardware and software environment local
+            to our administrators instead of in &lt;a href="https://www.google.com/maps/place/IBM+Ehningen/@48.6502964,8.9364503,2062m/data=!3m1!1e3!4m8!1m2!2m1!1sibm+ehningen+data+center!3m4!1s0x0000000000000000:0x3b35d9ef4bbf614c!8m2!3d48.6519571!4d8.9467496"&gt;Ehningen,
+            Germany&lt;/a&gt;. I created some
+            specifications and acquired IBM-surplus AIX "medium-big iron" for faster
+            processing of data. This project involved the setup of
+            &lt;a href="http://www.coworthtechnologies.com/products/ibm/system-p/rs-6000/ibm-rs-6000-s80"&gt;7017-S80&lt;/a&gt;'s and
+            terabytes of storage in a raised floor data center environment.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            Setting up systems, applications and database connections with the data
+            quality analysis team gave me unique exposure to IBM's internal customer
+            data. Beyond the challenges of duplication, entity relationship
+            modelling and analysis methods, there were significant data quality
+            issues. I worked with Enya Garcia and Alex Jankowsky to address many of
+            these data quality issues. We created business rules, worked with the
+            data custodians for each geography, and created actionable reports and a
+            web application. IBM'ers worldwide could fix their own mis-entering of
+            data, from typographical errors to business rule violations and
+            placeholder entries. Moreover, violations could be tracked from an
+            individual to mid management and corporate head level, leading to much
+            greater visibility of data quality issues.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            Visualizing terabytes of data can be a significant challenge. To address
+            some of these issues I used surplus systems to create a minimalist
+            'display wall' of 9 monitors. This led to the beginnings of many IBM
+            &lt;a href="http://www.ibm.com/developerworks/opensource/library?sort_by=&amp;amp;show_abstract=true&amp;amp;show_all=&amp;amp;search_flag=&amp;amp;contentarea_by=All+Zones&amp;amp;search_by=nathan+harrington&amp;amp;topic_by=-1&amp;amp;industry_by=-1&amp;amp;type_by=All+Types&amp;amp;ibm-search=Search"&gt;developerWorks articles&lt;/a&gt;.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            Various steps in the &lt;a href="https://www.trilliumsoftware.com/"&gt;Trillium&lt;/a&gt; Batch process respond well to simple
+            parallelization, as their is no shared data between the records. I used
+            surplus systems gathered from the data center environment and custom
+            Perl scripts to automatically divide the processed data amongst servers.
+            Each server would run the parser process on its data, and send the
+            information back to the central processing server. This simple approach
+            reduced the processing time linearly - the more servers you add the
+            faster the overall process.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            An organization as large as IBM exposes the employee to a wide variety
+            of bureaucratic and logistic issues. I worked on various projects in the
+            data center to address these needs. Mapping the locations of people
+            within buildings and creating automatic reporting structure graphs were
+            created for the broader IBM community.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px"
+            src="/images/ibm-images/watchPad_thumbnail0.png"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            In addition to world class consumer grade hardware and
+            software, IBM has access to some of the worlds most interesting device
+            prototypes. I contacted IBM Research and asked for access to the
+            WatchPad prototype. &lt;a href="https://in.linkedin.com/in/m-t-raghunath-a98600"&gt;M. T.
+            Raghunath&lt;/a&gt;  and
+            &lt;a href="http://researcher.watson.ibm.com/researcher/view.php?person=us-chandras"&gt;Chandrasekhar
+            Narayanaswami&lt;/a&gt; were a fantastic help getting
+            me up and running with the IBM WatchPad environment. Working with this
+            hardware was a unique learning experience, which you can read more about
+            on the WatchPad page. I also had experience with the IBM &lt;a href="http://archive.linuxgizmos.com/device-profile-cdl-paron-secure-pda/"&gt;Tetra&lt;/a&gt; smart
+            phone, which included a fingerprint reader and lightweight Linux
+            environment.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px"
+            src="/images/ibm-images/soulPad_thumbnail0.png"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            After working on the IBM WatchPad, Chandra approached me to
+            consider helping out with the IBM SoulPad. This was another great
+            opportunity to work on a Linux software stack that represented the
+            leading edge of virtualization. you can read more about my experiences
+            with this project on the SoulPad page.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            Exposure with management through the success of these and other projects
+            led to my involvement with a wide variety of groups within IBM. Among
+            these were the EBI Innovation Team, Autonomic Technology Cohorts, NC
+            Green Team, and the IGS Invention Development team.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px"
+            src="/images/ibm-images/resourceLocator_thumbnail0.png"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            Addressing a sales idea from Derrick Brown
+            led to the Resource Locator project, and the many successes and awards
+            it produced for the Resource Locator team.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-2"&gt;
+            &lt;img width="200px"
+            src="/images/ibm-images/blueberry_thumbnail0.png"/&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            Expanding on the procedural and technical success
+            of the Resource Locator project was the goal of the BlueBerry enterprise
+            data search application. Click the link above for further details
+            including what a 120+ laptop processing cluster looks like.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            During this time I also worked as a System Administrator for the Central
+            Customer Master System project. In this role I configured and
+            administered dozens of systems in diverse geographical locations for a
+            multi-national team supporting test and development efforts across
+            multiple platforms. I also did a little J2EE development to support
+            features in various releases for the project.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            Over the past three years, I have written 38 IBM developerWorks
+            articles, completed patent applications for innovations in 19 different
+            areas, and participated in multiple podcast interviews with Scott
+            Laningham. You can read more about these projects and their associated
+            Awards and Recognition from IBM.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+            The successes within IBM described above and on other pages led me to
+            begin the "Innovation that Matters - for your career and your bank
+            account" talk to various organizations within IBM. This presentation was
+            unique in that it would be more than someone just reading slides to you.
+            I'd go through the pages of the Presentation, and tailor the spoken
+            component to the audience. Using some of the tools described on these
+            pages, I would give specific examples of innovation for the organization
+            and individuals of that organization based on the corporate goals and
+            personal skill sets of the listeners.
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;div class="row spaced_rows"&gt;
+        &lt;div class="col-md-8"&gt;
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+&lt;/div&gt;&lt;!-- container --&gt;&lt;/p&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-2"&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-8"&gt;
+        &lt;/div&gt; &lt;!--left side column--&gt;
+    &lt;/div&gt;&lt;!-- row --&gt;
+&lt;/div&gt;
+
+&lt;!-- container --&gt;</summary><category term="ibm"></category></entry><entry><title>Social-networking open source visualization aids</title><link href="nathanharrington.info/posts/social-networking-open-source-visualization-aids.html" rel="alternate"></link><published>2009-01-06T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2009-01-06:nathanharrington.info/posts/social-networking-open-source-visualization-aids.html</id><summary type="html">&lt;p&gt;Social-networking data analysis can help you understand content,
+connections, and opportunities for your personal and business
+associations. This article presents tools and code to extract key
+components of your social network using the Twitter API to chart,
+geolocate, and visualize your social-networking data. Local cached text.
+IBM developerWorks &lt;a href="/files/podcasts/feature-010609.mp3"&gt;Podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott Laningham&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>How to ungrab Firefox hotkeys from Flash players</title><link href="nathanharrington.info/posts/how-to-ungrab-firefox-hotkeys-from-flash-players.html" rel="alternate"></link><published>2008-12-16T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-12-16:nathanharrington.info/posts/how-to-ungrab-firefox-hotkeys-from-flash-players.html</id><summary type="html">&lt;p&gt;Flash players and other embedded applications in Firefox require their
+own hooks for keyboard and mouse input. For years, Flash has grabbed
+Firefox keypresses, which stops people from using the keybo ard for
+navigation, creating new tabs, or even exiting the Flash focus. Learn
+how to creat e a Perl program that communicates with a Firefox extension
+and cnee to restore your keyboard functionality. &lt;/p&gt;</summary></entry><entry><title>Expand your user-authentication options with mouse dynamics</title><link href="nathanharrington.info/posts/expand-your-user-authentication-options-with-mouse-dynamics.html" rel="alternate"></link><published>2008-11-25T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-11-25:nathanharrington.info/posts/expand-your-user-authentication-options-with-mouse-dynamics.html</id><summary type="html">&lt;p&gt;Use Perl, cnee, and
+custom algorithms to measure how specific users move the mouse and click
+buttons. In this article, we discuss how mouse-click hold times, or a
+combination of keyboard and mouse activity can enable new levels of
+access-requirements obfuscation. Learn how to apply the open source
+tools cnee and Perl in applications to measure the characteristic
+attributes of how users manipulate the mouse.&lt;/p&gt;</summary></entry><entry><title>Reduce your PC's power consumption through smart activity monitors</title><link href="nathanharrington.info/posts/reduce-your-pcs-power-consumption-through-smart-activity-monitors.html" rel="alternate"></link><published>2008-11-04T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-11-04:nathanharrington.info/posts/reduce-your-pcs-power-consumption-through-smart-activity-monitors.html</id><summary type="html">&lt;p&gt;Monitor application usage, system attributes, and user activity to more
+effectively use the power-management systems of your laptop or desktop
+computer. This article provides tools and code to build on existing
+power-saving measures by monitoring your application-usage patterns. Use
+the techniques presented here to change your power settings based on the
+application in focus, user activity, and general system performance.
+Local cached text. IBM developerWorks
+&lt;a href="/files/podcasts/feature-110408.mp3"&gt;podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott
+Laningham&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Shut down idle computers on your network automatically</title><link href="nathanharrington.info/posts/shut-down-idle-computers-on-your-network-automatically.html" rel="alternate"></link><published>2008-10-21T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-10-21:nathanharrington.info/posts/shut-down-idle-computers-on-your-network-automatically.html</id><summary type="html">&lt;p&gt;Recent pushes for "green" technology focus mostly on talk, with little
+action for the typical home- or small-office environment. Many users
+leave their systems online continuously through laziness or ignorance,
+resulting in a significant source of power consumption, as well as an
+additional vector for malware propagation. The tools and code presented
+here allow you to find those inactive systems and securely start the
+shutdown process. With a Linux® box monitoring your network connections
+using Argus and some custom Perl code, any system that supports Perl can
+be set to be remotely shut down when a centralized set of inactivity
+rules are met.&lt;/p&gt;</summary></entry><entry><title>Rotate images in online mapping applications in Firefox</title><link href="nathanharrington.info/posts/rotate-images-in-online-mapping-applications-in-firefox.html" rel="alternate"></link><published>2008-10-14T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-10-14:nathanharrington.info/posts/rotate-images-in-online-mapping-applications-in-firefox.html</id><summary type="html">&lt;p&gt;Most online mapping applications assume that the desired
+view is always north at the top of the image. This article presents
+tools and code that show how to replace the map image with an inverted
+copy, where south is at the top. Using a Firefox extension and the
+Imager Perl module, each tile that comprises the full image is
+extracted, rotated, and placed back in the image at the appropriate
+spot.&lt;/p&gt;</summary></entry><entry><title>Create a continuous keystroke-dynamics monitor with Perl and xev</title><link href="nathanharrington.info/posts/create-a-continuous-keystroke-dynamics-monitor-with-perl-and-xev.html" rel="alternate"></link><published>2008-10-07T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-10-07:nathanharrington.info/posts/create-a-continuous-keystroke-dynamics-monitor-with-perl-and-xev.html</id><summary type="html">&lt;p&gt;Keystroke dynamics is a relatively new field that enables identification
+of individuals through statistical analysis of their typing patterns.
+Previously published articles on developerWorks have shown how to
+integrate the concept of keystroke dynamics into your applications, as
+well as a real-world example of modifying Gnome Display Manager (GDM) to
+require a correct password and a "correctly typed" password. This
+article presents tools and code allowing you to move beyond a single
+application of keystroke dynamics, and monitor your entire X Window
+System environment continuously for characteristic patterns of the
+typist.&lt;/p&gt;</summary></entry><entry><title>Creating altitude attribute-enhanced image overlay maps in Google Earth</title><link href="nathanharrington.info/posts/creating-altitude-attribute-enhanced-image-overlay-maps-in-google-earth.html" rel="alternate"></link><published>2008-09-23T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-09-23:nathanharrington.info/posts/creating-altitude-attribute-enhanced-image-overlay-maps-in-google-earth.html</id><summary type="html">&lt;p&gt;Recent applications have greatly increased the ease of development and
+ubiquity of 2-D maps. Tools like Microsoft® Live Search Maps and Google
+Maps offer a wealth of tools for enhancing these single-plane maps, but
+often ignore altitude as the third dimension of information. This
+article presents tools and code to allow you to extract height
+information based on pixel colors, and apply that height information
+across the mapping context. The end result is a third dimension of data,
+showing more information in the same space and opening up new methods of
+visualization for your map users. &lt;/p&gt;</summary></entry><entry><title>Improve focus tracking indicators across multiple monitors</title><link href="nathanharrington.info/posts/improve-focus-tracking-indicators-across-multiple-monitors.html" rel="alternate"></link><published>2008-09-09T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-09-09:nathanharrington.info/posts/improve-focus-tracking-indicators-across-multiple-monitors.html</id><summary type="html">&lt;p&gt;Unlike traditional single-screen setups, multi-screen display systems require
+special consideration for user interfaces (UIs). This article presents
+tools and code designed to address the acquisition and change of input
+focus across multiple displays. By enhancing existing X Window System
+focus information using Ghosd displays and the Synergy debug-level
+output, multi-screen users can know precisely where their input focus is
+even on displays 4200x3150 pixels and larger.&lt;/p&gt;</summary></entry><entry><title>Create time-availability maps with Perl and Google Earth</title><link href="nathanharrington.info/posts/create-time-availability-maps-with-perl-and-google-earth.html" rel="alternate"></link><published>2008-08-26T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-08-26:nathanharrington.info/posts/create-time-availability-maps-with-perl-and-google-earth.html</id><summary type="html">&lt;p&gt;Time-availability maps provide a listing of who is most likely to be
+available for a certain hour in a certain location. Find out how to use
+Google Earth and a log of your communications to map and identify the
+time and place when availabilities match.  Featured in
+an IBM developerWorks &lt;a href="/files/podcasts/feature-082608.mp3"&gt;podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott Laningham&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Beef up the Find command in Firefox</title><link href="nathanharrington.info/posts/beef-up-the-find-command-in-firefox.html" rel="alternate"></link><published>2008-08-12T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-08-12:nathanharrington.info/posts/beef-up-the-find-command-in-firefox.html</id><summary type="html">&lt;p&gt;The Find command in Firefox locates
+the user-specified text in the body of a Web page. The command is an
+easy-to-use tool that works well enough for most users most of the time.
+Sometimes, however, a more powerful Find-like tool would make locating
+text easier. This article shows how to build a tool that isolates
+relevant text in Web pages faster by detecting the presence and absence
+of nearby words. &lt;/p&gt;</summary></entry><entry><title>Integrate encryption into Google Calendar with Firefox extensions</title><link href="nathanharrington.info/posts/integrate-encryption-into-google-calendar-with-firefox-extensions.html" rel="alternate"></link><published>2008-07-15T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-07-15:nathanharrington.info/posts/integrate-encryption-into-google-calendar-with-firefox-extensions.html</id><summary type="html">&lt;p&gt;Provide basic encryption support for user data in one of the most
+popular online calendar applications. Building on the incredible
+flexibility of Firefox extensions and the Gnu Privacy Guard, this
+article shows you how to store only encrypted event descriptions in
+Google's Calendar application, while displaying a plain text version to
+anyone with the appropriate decryption keys.
+&lt;a href="yro.slashdot.org/yro/08/07/20/1955243.shtml"&gt;Slashdotted&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Visualizing time-dependent data with distortion portals</title><link href="nathanharrington.info/posts/visualizing-time-dependent-data-with-distortion-portals.html" rel="alternate"></link><published>2008-06-11T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-06-11:nathanharrington.info/posts/visualizing-time-dependent-data-with-distortion-portals.html</id><summary type="html">&lt;p&gt;Create an
+SDL-enabled application that allows you to create distortion portals in
+sequential image frames to explore the relationship of data sets through
+time. This article demonstrates code and techniques to create "animated
+distortion portals" in the data to provide time-dependent visualizations
+of various parts of the image. Additionally, certain aspects of the code
+are presented that allow for effective visualization on slower-computing
+platforms without sacrificing usefulness.  Demonstration &lt;a href="https://www.youtube.com/watch?v=ot60Us-9jfY"&gt;video&lt;/a&gt; at youtube.com&lt;/p&gt;</summary></entry><entry><title>Add multitouch gesture support to a TouchPad-equipped laptop.</title><link href="nathanharrington.info/posts/add-multitouch-gesture-support-to-a-touchpad-equipped-laptop.html" rel="alternate"></link><published>2008-06-03T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-06-03:nathanharrington.info/posts/add-multitouch-gesture-support-to-a-touchpad-equipped-laptop.html</id><summary type="html">&lt;p&gt;Implement swipe and pinch gestures for Linux
+applications by analyzing tools and code needed to add some of this new
+gesture support on older Linux-enabled hardware. Building on the output
+of the synclient program, the Perl code presented here allows you to
+assign specific application functions to "Three-Finger Swipe," as well
+as Open- and Close-Pinch gestures.  Demonstration
+video at &lt;a href="https://www.youtube.com/watch?v=AUNjmpgEWBA"&gt;youtube&lt;/a&gt; Comments on digg (gone). Writeup at hackszine (yep, also gone) and &lt;a href="http://lwn.net/Articles/285377/"&gt;lwn.net&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Identify speakers with sndpeek</title><link href="nathanharrington.info/posts/identify-speakers-with-sndpeek.html" rel="alternate"></link><published>2008-04-15T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-04-15:nathanharrington.info/posts/identify-speakers-with-sndpeek.html</id><summary type="html">&lt;p&gt;Identify speakers with sndpeek, Use sndpeek and custom algorithms to
+match voices to a pre-recorded library. Create applications to let you
+know who is speaking in teleconferences, podcasts, and live media
+events. Build basic assistance programs to help the hearing-impaired
+identify speakers in a bandwidth-limited context.  Demonstration video at &lt;a href="https://www.youtube.com/watch?v=KRtBKmNUjug"&gt;youtube&lt;/a&gt;.com&lt;/p&gt;</summary></entry><entry><title>Identify and verify users based on how they type</title><link href="nathanharrington.info/posts/identify-and-verify-users-based-on-how-they-type.html" rel="alternate"></link><published>2008-03-18T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-03-18:nathanharrington.info/posts/identify-and-verify-users-based-on-how-they-type.html</id><summary type="html">&lt;p&gt;Modify the GNOME Display Manager (GDM) to support user verification through
+keystroke-dynamics processing. Create and store a one-way encrypted hash
+of your keystroke patterns when entering your user name. Add code to GDM
+to read current keystroke patterns and permit a user to log in when the
+characteristics are a match.  &lt;a href="https://developers.slashdot.org/story/08/04/04/169229/identify-and-verify-users-based-on-how-they-type"&gt;Slashdot
+discussion&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>ThinkPad aerobics: Rotate and shake your laptop to control applications.</title><link href="nathanharrington.info/posts/thinkpad-aerobics-rotate-and-shake-your-laptop-to-control-applications.html" rel="alternate"></link><published>2008-03-11T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-03-11:nathanharrington.info/posts/thinkpad-aerobics-rotate-and-shake-your-laptop-to-control-applications.html</id><summary type="html">&lt;p&gt;Use synthetic X Window System events and embedded accelerometers to
+control applications by the movement of a laptop computer. Translate
+gestures, such as shaking, into mode-switching commands with detection
+algorithms to interact with applications in new ways. Develop tools to
+help build the next generation of interfaces that use accelerometers,
+such as applications for laptops and iPhones. 
+&lt;a href="https://www.youtube.com/watch?v=SIYNjl4wWKM"&gt;Demonstration video&lt;/a&gt; at youtube.com&lt;/p&gt;</summary></entry><entry><title>Take your ThinkPad out for a walk to create wireless site surveys.</title><link href="nathanharrington.info/posts/take-your-thinkpad-out-for-a-walk-to-create-wireless-site-surveys.html" rel="alternate"></link><published>2008-02-12T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2008-02-12:nathanharrington.info/posts/take-your-thinkpad-out-for-a-walk-to-create-wireless-site-surveys.html</id><summary type="html">&lt;p&gt;Use
+the accelerometer embedded in a ThinkPad to record your movements while
+monitoring your network connectivity. Use custom algorithms to extract
+footstep features from the recorded data, then automatically plot signal
+strengths on a floor-plan map to determine the best areas of coverage.&lt;/p&gt;</summary></entry><entry><title>Expand your text entry options with keystroke dynamics</title><link href="nathanharrington.info/posts/expand-your-text-entry-options-with-keystroke-dynamics.html" rel="alternate"></link><published>2007-12-04T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-12-04:nathanharrington.info/posts/expand-your-text-entry-options-with-keystroke-dynamics.html</id><summary type="html">&lt;p&gt;Measure the
+total time of entry and verify the time between keystrokes to help
+authenticate a user regardless of the data being entered. Require
+nonprintable characters, such as backspace and break, in the password to
+enable new levels of password obfuscation. Learn how to apply the open
+source tools xev and Perl in keystroke dynamics to measure the
+more-subtle characteristics of human-computer interaction. &lt;/p&gt;</summary></entry><entry><title>Create automated verbal conversation annotations</title><link href="nathanharrington.info/posts/create-automated-verbal-conversation-annotations.html" rel="alternate"></link><published>2007-11-13T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-11-13:nathanharrington.info/posts/create-automated-verbal-conversation-annotations.html</id><summary type="html">&lt;p&gt;Use the open source
+Sphinx-4 speech-recognition package to capture letters and numbers from
+spoken conversations in near real time to create notes. Employ a custom
+Sphinx-4 dictionary file to extract likely matches to spoken letters and
+numbers. Process the text for higher order values such as phone numbers
+and acronyms, and create a meeting annotator through search-engine
+lookups and local databases.&lt;/p&gt;</summary></entry><entry><title>Search structured LDAP data with a vector-space engine.</title><link href="nathanharrington.info/posts/search-structured-ldap-data-with-a-vector-space-engine.html" rel="alternate"></link><published>2007-09-18T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-09-18:nathanharrington.info/posts/search-structured-ldap-data-with-a-vector-space-engine.html</id><summary type="html">&lt;p&gt;Use Perl and a
+vector-space search engine to search and display records from your
+Lightweight Directory Access Protocol (LDAP) database. Use inflected
+letters and numbers to create a useful vector space from structured LDAP
+data. Compensate for typographical and spelling errors automatically
+while showing the most appropriate match for any query entered.
+&lt;a href="/files/podcasts/twodw102307.mp3"&gt;IBM developerWorks podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott Laningham&lt;/a&gt;. &lt;/p&gt;</summary></entry><entry><title>Make your 404 pages smarter with metaphone matching.</title><link href="nathanharrington.info/posts/make-your-404-pages-smarter-with-metaphone-matching.html" rel="alternate"></link><published>2007-08-28T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-08-28:nathanharrington.info/posts/make-your-404-pages-smarter-with-metaphone-matching.html</id><summary type="html">&lt;p&gt;Create your own 404 error-message handler to provide useful links and
+redirects for the contents of your site. Use metaphone matching and a
+simple weighted score file to make typographical, spelling, and bad-link
+redirect suggestions. Customize the suggestions based solely on your Web
+site's content and preferred redirection locations. Catch multiple
+errors in incoming URL requests and process them for corrections in
+directory, script, and HTML page names.&lt;/p&gt;</summary></entry><entry><title>Map people, places and relationships inside a building.</title><link href="nathanharrington.info/posts/map-people-places-and-relationships-inside-a-building.html" rel="alternate"></link><published>2007-08-14T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-08-14:nathanharrington.info/posts/map-people-places-and-relationships-inside-a-building.html</id><summary type="html">&lt;p&gt;Google and
+MapQuest do a great job of creating maps of the outside world on the
+fly. But what about our workspaces? This article shows how to define and
+map places and people inside a building. Search, track, and plot
+individual cubicles, rooms, employees, or assets. Graph the location of
+individuals or groups of employees based on job function, or track
+unused office space visually.&lt;/p&gt;</summary></entry><entry><title>Precipitation proximity alerts using WSR-88D radar data.</title><link href="nathanharrington.info/posts/precipitation-proximity-alerts-using-wsr-88d-radar-data.html" rel="alternate"></link><published>2007-06-05T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-06-05:nathanharrington.info/posts/precipitation-proximity-alerts-using-wsr-88d-radar-data.html</id><summary type="html">&lt;p&gt;Traditional
+weather reports will give notice of vague forecasts and severe weather
+alerts in your general area. The code and tools presented in this
+article will allow you to create precise detection zones so you can
+receive a page, SMS, or e-mail a few minutes before a precipitation
+event is likely to occur at the monitored location. Use GD and Perl for
+image processing of the NOAA WSR-88D radar data to create your own
+precipitation alerts for precise areas. Choose your notification method
+and let users know when the rain will begin and when it will clear.&lt;/p&gt;</summary></entry><entry><title>Explore relationships among web pages visually</title><link href="nathanharrington.info/posts/explore-relationships-among-web-pages-visually.html" rel="alternate"></link><published>2007-05-15T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-05-15:nathanharrington.info/posts/explore-relationships-among-web-pages-visually.html</id><summary type="html">&lt;p&gt;Explore relationships among Web pages visually, The Graphviz program
+from AT&amp;amp;T Research and others is a fantastic tool for automating the
+visualization of complicated link sets. This article shows how to
+combine the Graphviz tool set with Web-page thumbnail generators to
+create new ways of visualizing any Web page's link structures. You can
+use these techniques and descriptions to refine your display logic, and
+create directed and undirected Graphviz charts to enhance your
+understanding of organizational, software, and other complex linked data
+sets.&lt;/p&gt;</summary></entry><entry><title>Create custom data charting tools using Perl and GD</title><link href="nathanharrington.info/posts/create-custom-data-charting-tools-using-perl-and-gd.html" rel="alternate"></link><published>2007-04-24T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-04-24:nathanharrington.info/posts/create-custom-data-charting-tools-using-perl-and-gd.html</id><summary type="html">&lt;p&gt;Create custom data charting tools using Perl and GD, Create
+professional-looking charts for data visualization using Perl and GD.
+Move beyond standard pie charts to incorporate annotations, indicators,
+and layering for enhanced informational delivery. &lt;/p&gt;</summary></entry><entry><title>Custom cartographics with CAIDA's plot-latlong</title><link href="nathanharrington.info/posts/custom-cartographics-with-caidas-plot-latlong.html" rel="alternate"></link><published>2007-04-10T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-04-10:nathanharrington.info/posts/custom-cartographics-with-caidas-plot-latlong.html</id><summary type="html">&lt;p&gt;Using world and custom U.S. maps, Perl, GD, and the Cooperative
+Association for Internet Data Analysis (CAIDA) plot-latlong tool, this
+article demonstrates how to create your own effective data
+visualizations in the spirit of Google maps and the U.S. national atlas. &lt;/p&gt;</summary></entry><entry><title>User Perl and a regular-expression generation to search and display LDAP data (part 2)</title><link href="nathanharrington.info/posts/user-perl-and-a-regular-expression-generation-to-search-and-display-ldap-data-part-2.html" rel="alternate"></link><published>2007-03-20T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-03-20:nathanharrington.info/posts/user-perl-and-a-regular-expression-generation-to-search-and-display-ldap-data-part-2.html</id><summary type="html">&lt;p&gt;Use Perl and a regular-expression generator to search for and display
+LDAP database records (part 2), Learn how to add a scoring system to the
+search engine described in Part 1 of this "LDAP search engines" series.
+Develop your own metaphone-matching techniques for spelling corrections,
+query. IBM developerWorks &lt;a href="/files/podcasts/twodw032007.mp3"&gt;podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott
+Laningham&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>User Perl and a regular-expression generation to search and display LDAP data (part 1)</title><link href="nathanharrington.info/posts/user-perl-and-a-regular-expression-generation-to-search-and-display-ldap-data-part-1.html" rel="alternate"></link><published>2007-02-20T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-02-20:nathanharrington.info/posts/user-perl-and-a-regular-expression-generation-to-search-and-display-ldap-data-part-1.html</id><summary type="html">&lt;p&gt;Use Perl and a regular-expression generator to search for and display
+LDAP database records (part 1), Find out how to use Perl and a
+regular-expression generator to search and display records from your
+Lightweight Directory Access Protocol (LDAP) database using simple
+keyword-type searches. Search and process your LDAP data without knowing
+precisely which field the data is in or how it is formatted. Part 2 of
+this "LDAP search engines" series introduces scoring and metaphone
+suggestions to the code. IBM developerWorks
+&lt;a href="/files/podcasts/twodw032007.mp3"&gt;podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott
+Laningham&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Create fancy on-screen displays with Ghosd and Perl</title><link href="nathanharrington.info/posts/create-fancy-on-screen-displays-with-ghosd-and-perl.html" rel="alternate"></link><published>2007-02-13T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-02-13:nathanharrington.info/posts/create-fancy-on-screen-displays-with-ghosd-and-perl.html</id><summary type="html">&lt;p&gt;Let system events kick off on-screen alerts displaying text and images,
+Use Perl, Ghosd, and some network programming to display on-screen
+overlays of text and graphics based on messages from your local system
+and remote computers. Define custom images, font sizes, and colors to
+convey information integrated with your desktop. &lt;/p&gt;</summary></entry><entry><title>Make incoming e-mail play custom tunes</title><link href="nathanharrington.info/posts/make-incoming-e-mail-play-custom-tunes.html" rel="alternate"></link><published>2007-01-23T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-01-23:nathanharrington.info/posts/make-incoming-e-mail-play-custom-tunes.html</id><summary type="html">&lt;p&gt;Use SoX, and a Perl script to do simple keyword matching and create
+sound files played back upon receipt of e-mail. No more simple ding to
+indicate the arrival of an e-mail regardless of recipient, sender, or
+subject. You can now hear a ding-bang-whoosh signifying an e-mail from
+your manager, or a bell-squawk-chirp to let you know your bank statement
+is available. Local cached text. Audio example with glasses, sparcle,
+space2.Another example with glasses, laser, space3. &lt;/p&gt;</summary></entry><entry><title>Control your computer with tones and patterns</title><link href="nathanharrington.info/posts/control-your-computer-with-tones-and-patterns.html" rel="alternate"></link><published>2007-01-09T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2007-01-09:nathanharrington.info/posts/control-your-computer-with-tones-and-patterns.html</id><summary type="html">&lt;p&gt;Use Linux or Microsoft Windows, the open source sndpeek program,and a
+simple Perl script to read specific sequences of tonal events -
+literally whistling, humming, or singing at your computer -- and run
+commands based on those tones.  Give your computer a short low whistle
+to check your e-mail or unlock your your screensaver with the opening
+bars of Beethoven's Fifth Symphony. Whistle while you work for higher
+efficiency. &lt;/p&gt;
+&lt;p&gt;O'Reilly Radar Release 2.0 &lt;a href="http://radar.oreilly.com/2007/06/are-we-magicians.html"&gt;'magic'&lt;/a&gt; link.&lt;/p&gt;
+&lt;p&gt;Coverage and comments from &lt;a href="http://lifehacker.com/271755/whistle-to-control-your-computer"&gt;Lifehacker&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;Interesting implementation example at: &lt;a href="http://www.perlmonks.org/?node_id=594335"&gt;perlmonks.org&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;Demonstation video of raising and lowering windows on &lt;a href="https://www.youtube.com/watch?v=R1gkdILzA_s"&gt;youtube&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;IBM developerWorks &lt;a href="/files/podcasts/twodw-1-9-07.mp3"&gt;podcast&lt;/a&gt; with &lt;a href="http://scottlaningham.com"&gt;Scott Laningham&lt;/a&gt;. &lt;/p&gt;</summary></entry><entry><title>Monitor your computing environment with machine generated music</title><link href="nathanharrington.info/posts/monitor-your-computing-environment-with-machine-generated-music.html" rel="alternate"></link><published>2006-11-14T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-11-14:nathanharrington.info/posts/monitor-your-computing-environment-with-machine-generated-music.html</id><summary type="html">&lt;p&gt;Monitor your computing environment with machine generated music, Use
+Perl and fluidsynth to create a real-time musical composition of your
+system status. Learn how to integrate various system monitoring data
+into a harmony producing, midi controlled audio synthesis. Explore
+audible information methods and configurations to help you monitor and
+manage your computing environment. Local cached text Audio example with
+&lt;a href="/files/audio/gpMax_44100_d.wav"&gt;Hammered Instruments&lt;/a&gt; (think dulcimer, not intoxicated saxophone),
+another example with &lt;a href="/files/audio/sciFiExample1.wav"&gt;Electronic Sounds&lt;/a&gt;, and another with &lt;a href="/files/audio/orchExample1.wav"&gt;Simple Orchestral instruments&lt;/a&gt;.
+&lt;a href="https://slashdot.org/story/06/11/15/1628216/monitor-a-linux-box-with-machine-generated-music"&gt;Slashdot&lt;/a&gt; discussion.&lt;/p&gt;</summary></entry><entry><title>Frustration communication for your linux laptop</title><link href="nathanharrington.info/posts/frustration-communication-for-your-linux-laptop.html" rel="alternate"></link><published>2006-11-07T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-11-07:nathanharrington.info/posts/frustration-communication-for-your-linux-laptop.html</id><summary type="html">&lt;p&gt;Frustration communication for your linux laptop, Modify the kernel to
+automatically reset your linux laptop when shaken during a kernel panic.
+Implement a shake detection algorithm in the kernel and user space to
+perform automatic shutdowns and restarts when certain kinetic conditions
+are met. Place your computer on the leading edge of cathartic
+interfaces. Video on &lt;a href="https://www.youtube.com/watch?v=6bVGPFLsMcM"&gt;youtube&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Create mosaic movies with Perl, ImageMagick and MPlayer</title><link href="nathanharrington.info/posts/create-mosaic-movies-with-perl-imagemagick-and-mplayer.html" rel="alternate"></link><published>2006-07-11T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-07-11:nathanharrington.info/posts/create-mosaic-movies-with-perl-imagemagick-and-mplayer.html</id><summary type="html">&lt;p&gt;Movie mosaics with Perl, ImageMagick and mplayer, building on the photo
+mosaic article above, use Perl, ImageMagick and mplayer to create photo
+mosaic movies.&lt;/p&gt;</summary></entry><entry><title>Knock based commands for linux laptops</title><link href="nathanharrington.info/posts/knock-based-commands-for-linux-laptops.html" rel="alternate"></link><published>2006-06-25T00:00:00-04:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-06-25:nathanharrington.info/posts/knock-based-commands-for-linux-laptops.html</id><summary type="html">&lt;p&gt;For the first time, you can hit your computer and get a meaningful
+response! Using Linux and the Hard Drive Active Protection System
+(HDAPS) kernel drivers, you can access the embedded accelerometers on
+IBM and Lenovo ThinkPads, then process the accelerometer data to read
+specific sequences of "knocking" events -- literally rapping on the
+laptop case with your knuckles - and run commands based on those knocks.
+Give your computer a double tap to lock the screen, and knock in your
+secret code to unlock. Tap the display lid once to move your mp3 player
+to the next track -- the possibilities are endless.&lt;/p&gt;
+&lt;p&gt;IBM developerWorks &lt;a href="/files/podcasts/twodw-7-26-06.mp3" title="Podcast"&gt;Podcast&lt;/a&gt; with &lt;a href="https://scottlaningham.com/" title="Scott Laningham"&gt;Scott Langingham&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On &lt;a href="https://www.youtube.com/watch?v=bvcKV3Tuc4g" title="youtube"&gt;Youtube&lt;/a&gt;. News article on &lt;a href="https://www.newscientist.com/article/dn9650-opportunity-knocks-for-novel-laptop-control/" title="newscientist.com"&gt;New Scientist&lt;/a&gt;. &lt;a href="https://slashdot.org/story/06/07/30/1710201/knock-some-commands-into-your-laptop" title="Slashdot discussion"&gt;Slashdot
+discussion&lt;/a&gt; if only for the e.a. poe homage. Among the Top 10
+IT stores of the week at
+&lt;a href="http://www.cio.com/article/2445176/staff-management/top-10-it-stories-of-the-week--aol-cuts-jobs--ibm-and-amd--net-neutrality.html" title="cio.com"&gt;cio.com&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Distributed multihead support with Linux and Xdmx</title><link href="nathanharrington.info/posts/distributed-multihead-support-with-linux-and-xdmx.html" rel="alternate"></link><published>2006-03-28T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-03-28:nathanharrington.info/posts/distributed-multihead-support-with-linux-and-xdmx.html</id><summary type="html">&lt;p&gt;Learn about the tools available to develop your own multiscreen
+configuration and physical layout to enhance your computing experience.
+You can use Linux® and Xdmx to create one contiguous desktop across
+multiple display devices attached to separate computers. Combine your
+available laptop and desktop computers running Linux to create one large
+display for enhanced productivity. Explore large-scale display-wall
+setups and the creation of multihead setups without purchasing graphics
+cards.&lt;/p&gt;</summary></entry><entry><title>Create Mosaic images with Perl and ImageMagick</title><link href="nathanharrington.info/posts/create-mosaic-images-with-perl-and-imagemagick.html" rel="alternate"></link><published>2006-01-24T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-01-24:nathanharrington.info/posts/create-mosaic-images-with-perl-and-imagemagick.html</id><summary type="html">&lt;p&gt;Photo mosaics with Perl and ImageMagick, use simple Perl scripts to
+automate the image manipulation, text creation, and compositing of
+arbitrary mosaic images. Learn how to use ImageMagick, GD, and The Gimp
+to create your own mosaic images suitable for static display and dynamic
+content. Explore the capabilities of ImageMagick and open source
+graphical editing tools. &lt;/p&gt;</summary></entry><entry><title>Real time visual effects</title><link href="nathanharrington.info/posts/real-time-visual-effects.html" rel="alternate"></link><published>2006-01-17T00:00:00-05:00</published><author><name>Nathan Harrington</name></author><id>tag:,2006-01-17:nathanharrington.info/posts/real-time-visual-effects.html</id><summary type="html">&lt;p&gt;Use EffecTV and Simple DirectMedia Layer (SDL) to create your own
+real-time visual effects on live video. Learn how to integrate geometric
+primitives, bitmap image loading, and simple motion tracking to create
+your own games, leading-edge user interfaces, or immersive environments.
+Explore the EffecTV and SDL architectures, and learn how to harness the
+power of open source video processing on Linux.  Future versions to be
+published here shortly include more advanced manipulations of the video
+input to make interesting games.  version 0.1 is a simple "ball falling
+down the screen game" where you have to jump around and duck and dodge.
+versions 0.2 adds shrinking of your image on the video screen, and
+occlusion of your head with funny images.&lt;/p&gt;</summary></entry></feed>
