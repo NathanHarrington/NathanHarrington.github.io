@@ -11,5 +11,5 @@ Wasatch. Provide a series of time, effort and control metrics for
 finding the most efficient mechanisms to move forward.
 
 This page is the meta description of the effort. The actual work log
-will be recorded in the [Wasatch Timeline](/pages/wasatch-work-log-timeline.html)
+will be recorded in the [Wasatch Timeline](/pages/wasatch_work_log_timeline.html)
 
