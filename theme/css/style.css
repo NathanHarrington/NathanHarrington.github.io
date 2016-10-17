@@ -221,9 +221,3 @@ figure.floatcenter, .align-center {
         font-size: 16px;
     }
 }
-
-/* custom spacing of components */
-.spaced_rows {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}

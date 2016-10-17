@@ -40,6 +40,13 @@ STATIC_PATHS = ['images', 'files', 'extra/robots.txt',
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/favicon-16.ico': {'path': 'favicon-16.ico'},
+    'extra/favicon-32.ico': {'path': 'favicon-32.ico'},
+    'extra/favicon-64.ico': {'path': 'favicon-64.ico'},
+    'extra/favicon-96.ico': {'path': 'favicon-96.ico'},
+    'extra/favicon-128.ico': {'path': 'favicon-128.ico'},
+    'extra/favicon-160.ico': {'path': 'favicon-160.ico'},
+    'extra/favicon-192.ico': {'path': 'favicon-192.ico'},
 }
 
 # Blogroll
