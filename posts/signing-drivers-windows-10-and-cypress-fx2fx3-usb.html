@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>Articles by Nathan Harrington - Nathan Harrington</title>
+    <title>Signing Drivers - Windows 10 and Cypress FX2/FX3 USB - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,15 +32,21 @@
 
 
 
+<link rel="canonical" href="/posts/signing-drivers-windows-10-and-cypress-fx2fx3-usb.html">
 
         <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="wasatch photonics" />
+        <meta name="description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Signing Drivers - Windows 10 and Cypress FX2/FX3 USB"/>
+        <meta property="og:url" content="/posts/signing-drivers-windows-10-and-cypress-fx2fx3-usb.html"/>
+        <meta property="og:description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to ..."/>
+        <meta property="article:published_time" content="2016-10-17" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="wasatch photonics" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -74,7 +80,7 @@ Nathan Harrington            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/articles.html">Articles</a>
                         </li>
                         <li >
@@ -93,94 +99,95 @@ Nathan Harrington            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h4><a href="/posts/distributed-multihead-support-with-linux-and-xdmx.html">Distributed multihead support with Linux and Xdmx</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/distributed-multihead-support-with-linux-and-xdmx.html">
-                                        <img src="/images/developerworks-images/os-mltihed_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Learn about the tools available to develop your own multiscreen
-configuration and physical layout to enhance your computing experience.
-You can use Linux® and Xdmx to create one contiguous desktop across
-multiple display devices attached to separate computers. Combine your
-available laptop and desktop computers running Linux to create one ...</p>
-                            </div>
-                        </div>
-                    </div>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-10-17T00:00:00-04:00"> Mon 17 October 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/wasatch-photonics.html">wasatch photonics</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
-
-            <hr/>
-            <article>
-                <h4><a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">Create Mosaic images with Perl and ImageMagick</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">
-                                        <img src="/images/developerworks-images/os-mosaic_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Photo mosaics with Perl and ImageMagick, use simple Perl scripts to
-automate the image manipulation, text creation, and compositing of
-arbitrary mosaic images. Learn how to use ImageMagick, GD, and The Gimp
-to create your own mosaic images suitable for static display and dynamic
-content. Explore the capabilities of ImageMagick ...</p>
-                            </div>
-                        </div>
+                    <div style="padding-bottom:20px">
+                        <img src="/images/wasatch-images/win8_unsigned_inf.png"></img>
                     </div>
-                </div>
-            </article>
+                <p>2016-09-14 16:53 signed windows 10 drivers:</p>
+<p>The best resource for this process is clearly David Graysons <a href="http://www.davidegrayson.com/signing/">Practical
+Windows Code and Driver Signing</a></p>
+<p>Here are the refined points in that article for aparticular use case: Windows 7 and greater.  Installing a driver package without loading a kernel module.</p>
+<hr />
+<ol>
+<li>
+<p>Go to <a href="https://www.globalsign.com/en/code-signing-certificate/">GlobalSign</a>. Use their challenging interface to sign up for the "Code Signing" product. This costs about $219. Do this first as they then have to "verify your identity". For <a href="http://wasatchphotonics.com">Wasatch Photonics</a>, this meant calling us on the phone and telling us that we needed to provide more documentation that we were a real company. This is after I pointed them to the our <a href="https://www.sosnc.gov/Search/filings/9737537">NC official records</a> showing our phone number. I had to suggest we would move to a competitor certificate service provider before things started to progress. After this is complete, download the .pfx file into the same directory as the drivers to sign. This is the most difficult and time consuming part of the process.</p>
+</li>
+<li>
+<p>Download and install the <a href="https://developer.microsoft.com/en-us/windows/hardware/windows-driver-kit">Windows Driver
+   Kit</a></p>
+</li>
+<li>
+<p>Use your INF files of choice. We modified the provided <a href="http://www.cypress.com/knowledge-base-article/drivers-ez-usb-fx1-fx2lp-and-fx3-kba94413">Cypress FX2/FX3
+   Drivers</a>. </p>
+</li>
+<li>
+<p>Modify the INF files to include your custom Vendor ID and Product ID:</p>
+<p>%VID_04B4&amp;PID_1000.DeviceDesc%=CyUsb3, USB\VID_04B4&amp;PID_1000</p>
+</li>
+<li>
+<p>Convert the modified INF file into a CAT file:</p>
+<blockquote>
+<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\inf2cat"  <br />
+   /v  <br />
+   /driver:%~dp0  <br />
+   /os:XP_X86,Vista_X86,Vista_X64,7_X86,7_X64,8_X86,8_X64,6_3_X86,6_3_X64,10_X86,10_X64    </p>
+</blockquote>
+</li>
+<li>
+<p>From David's instructions: "Be sure to install GlobalSign's R1-R3 cross-certificate on the computer that will be making signatures."  This means download the r1cross.cer right click it and select "install certificate", then accept all the defaults.</p>
+</li>
+<li>
+<p>Then run the command to actually sign the drivers:</p>
+<blockquote>
+<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool"<br />
+  sign<br />
+  /v<br />
+  /f <your pfx file><br />
+  /p <password> <br />
+  /n "Wasatch Photonics" <br />
+  /fd sha1 <br />
+  /tr http://timestamp.globalsign.com/?signature=sha2 <br />
+  /td sha256 <br />
+  cyusb3.cat  </p>
+</blockquote>
+</li>
+<li>
+<p>Then copy the signed files (minus the PFX key and instructions) to the
+INF_DRIVERS folder distributed as part of the installer build. And
+example below is included for InnoSetup</p>
+<blockquote>
+<p>Filename: "pnputil"; Parameters: "-i -a <br />
+  ""{app}\stroker_drivers\Win10\cyusb3.inf"" "; <br />
+  StatusMsg: "Installing WP drivers (this may take a few seconds) ..."; <br />
+  Flags: runhidden<br />
+</p>
+</blockquote>
+</li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
-            <hr/>
-            <article>
-                <h4><a href="/posts/real-time-visual-effects.html">Real time visual effects</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/real-time-visual-effects.html">
-                                        <img src="/images/developerworks-images/os-viseffects_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Use EffecTV and Simple DirectMedia Layer (SDL) to create your own
-real-time visual effects on live video. Learn how to integrate geometric
-primitives, bitmap image loading, and simple motion tracking to create
-your own games, leading-edge user interfaces, or immersive environments.
-Explore the EffecTV and SDL architectures, and learn how ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <hr/>
-
-        <ul class="pagination">
-                <li class="prev"><a href="/author/nathan-harrington7.html">&laquo;</a>
-                </li>
-                    <li class=""><a
-                            href="/author/nathan-harrington.html">1</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington2.html">2</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington3.html">3</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington4.html">4</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington5.html">5</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington6.html">6</a></li>
-                    <li class=""><a
-                            href="/author/nathan-harrington7.html">7</a></li>
-                    <li class="active"><a
-                            href="/author/nathan-harrington8.html">8</a></li>
-                <li class="next disabled"><a href="#">&raquo;</a></li>
-        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
