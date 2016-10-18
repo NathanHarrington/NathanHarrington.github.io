@@ -4,6 +4,23 @@ Category: articles
 tags: ibm
 thumbnail_image: /images/ibm-images/wearableBBC_full.jpg
 
+<div class="container">
+    <div class="row spaced_rows">
+        <div class="col-md-8">
+            Highlights from 8 years at IBM:
+            <ul>
+            <li>35 articles demonstrating new technologies</li>
+            <li>13 patents from RFID to cloud management</li>
+            <li>14 IBM Thanks peer recognition awards</li>
+            <li>IBM Thinkplace Innovator Award</li>
+            <li>38 IBM Bravo/Ovation awards</li>
+            <li>IBM Bravo award for technical achievement</li>
+            <li>19 Invention achievement awards, 5 patent plateau awards</li>
+            <li>Selection to the Early Career Conference</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row spaced_rows">
