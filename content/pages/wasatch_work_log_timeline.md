@@ -4,9 +4,14 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
-2016-10-20 06:26
+2016-10-21 06:38
 
-2016-10-20
+2016-10-20 06:26 ISO IT requirements consideration. Test computer
+resource realignment. Setup of asana task project tracking structure.
+Review of new postiion candidates. 830 Product updates. Debug and test
+of SVISNIR-00002 with Transmission software project.
+
+2016-10-20 17:02
 
 2016-10-19 06:27 Transmission setup and coordination for SVIS_0002
 recovery at HQ. 401k review and documentation. Printer fixes. OBP
