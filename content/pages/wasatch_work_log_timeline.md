@@ -4,7 +4,14 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
-2016-10-21 06:38
+2016-10-24 09:01 06:38 
+
+2016-10-21 06:38 Detailed setup and training with Asana progress
+dashboard. Split of milestones and individual components. Preparation
+for google sheet integration and display on company dashboard.
+Compensation and work on github outage. 
+
+2016-10-21 16:32 
 
 2016-10-20 06:26 ISO IT requirements consideration. Test computer
 resource realignment. Setup of asana task project tracking structure.
