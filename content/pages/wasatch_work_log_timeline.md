@@ -4,11 +4,31 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-10-27 08:28
+
+2016-10-26 06:37 Asana project tracking integration demo meeting.
+Detailed setup and evaluation of upgrades to customer stray light
+tracking systems. MTI discussion and recovery of detector options for
+drop in replacement.
+
+2016-10-26 16:41
+
 2016-10-25 06:26 Investigation into msvcr100.dll missing after appveyor
 build install. Merge of AutoFallOff back up the chain into a deployable
-application with no missing dependencies.
+application with no missing dependencies. Spectroscopy training.
+Recreation of fully deployable application from appveyor with
+environment required mkl_avx.dll from system in innosetup instead of
+direct tracking. Training on customer stray light detection systems.
 
-2016-10-24 06:38 
+2016-10-25 16:35
+
+2016-10-24 06:38 Createion of placeholder Dash conversion project. Reset
+of computational environments to support simultaneous virtualization
+testing. Continued task population and forecasting integration with
+asana dashboard for Dash development. VPN Support and configuration.
+Backup power system identification and recovery.
+
+2016-10-24 16:30
 
 2016-10-21 06:38 Detailed setup and training with Asana progress
 dashboard. Split of milestones and individual components. Preparation
