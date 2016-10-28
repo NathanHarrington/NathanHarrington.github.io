@@ -4,7 +4,15 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
-2016-10-27 08:28
+2016-10-28 10:12
+
+2016-10-27 08:28 Gource visualization of source code repositories.
+SSD integration and kernel update failure correction for W530. Pysideapp
+roll back of changes for appveyor support scripts and msvcr include
+cleanup. MTI product recovery for inventory. Remote supoprt of software
+locations for customers. (sick day)
+
+2016-10-27 16:30
 
 2016-10-26 06:37 Asana project tracking integration demo meeting.
 Detailed setup and evaluation of upgrades to customer stray light
