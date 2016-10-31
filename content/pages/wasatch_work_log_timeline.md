@@ -4,7 +4,31 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
-2016-10-28 10:12
+2016-10-28 10:12 mac preparation of dash integration. Full project
+rebuild of dash from pysideapp basics. Recovery of test and integration
+badges and auto build capability for pysideapp, autofalloff, and Dash
+
+    4c6bffc first layer of layout updates
+    ddd748a rebuild check
+    24d24bd resources specified
+    ae6a970 realignment of filesystem
+    a1ccc27 cleanup
+    4dfb32b structure files
+    fc36978 cleanup
+    fe30fbe tracking of generated files
+    4046fcd compensation for pyside-uic failure
+    e66318d asset segmentation
+    8ab5a06 asset segmentation
+    4674f16 detailed testing instructions
+    f3e3bf4 corrected badges
+    a2816d0 badgets
+    f4b9a41 build check
+    6144f4e setup file
+    414b100 manual conversion structure
+    ddf4da1 cleanup
+
+
+2016-10-28 16:30
 
 2016-10-27 08:28 Gource visualization of source code repositories.
 SSD integration and kernel update failure correction for W530. Pysideapp
