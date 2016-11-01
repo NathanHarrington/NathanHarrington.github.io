@@ -4,6 +4,22 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-10-31 07:19 detailed mac integration plan for milestone support.
+Full nested layout tests of qt designer with new dash integration. Start
+of software test platform recovery plan and integration into
+production. Beginning of ME addition interview process. VPN setup and
+zemax remote support. Transmission integration steps
+
+    3386581 manual addition of hardware capture
+    8bbb5e9 recovery of resources
+    8fdaff0 scroll bars by default with deep named nesting and resource
+    correction
+    78e6984 names for all hsd components
+    3621325 start of hardware setup display details
+    3d5a711 scroll area embedded reverse order for hardware setup
+
+2016-10-31 16:30
+
 2016-10-28 10:12 mac preparation of dash integration. Full project
 rebuild of dash from pysideapp basics. Recovery of test and integration
 badges and auto build capability for pysideapp, autofalloff, and Dash
