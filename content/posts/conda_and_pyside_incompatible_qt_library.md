@@ -2,7 +2,6 @@ Title: conda, pyside and incompatible QT libraries
 Date:  2016-10-27
 Category: articles
 Tags: wasatch photonics
-thumbnail_image: /images/wasatch-images/dash_gource.gif
 
 Design a UI in Qt Designer on Linux. Commit it github, move to a windows
 system for testing. Now you get the message:
