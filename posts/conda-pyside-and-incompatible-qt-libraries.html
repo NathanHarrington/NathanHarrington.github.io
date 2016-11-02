@@ -156,6 +156,29 @@ python setup.py develop
 ./scripts/rebuild_resources.sh                                                                 
 py.test
 </pre></div>
+
+
+<p>Alternatively, run the following environment commands on linux and
+windows to get appropriate build environments including SVG.</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/WasatchPhotonics/Dash
+
+conda create --name conda_dash_pyside_specified pyside=1.2.0
+
+source activate conda_dash_pyside_specified
+
+conda install numpy pillow pytest pyqtgraph pytest-cov
+
+python setup.py develop
+
+conda remove pyside
+
+pip install pyside==1.2.4
+# wheel install on windows, wait a long time on linux
+
+./scripts/rebuild_resources.sh
+
+py.test
+</pre></div>
             </div>
             <!-- /.entry-content -->
         </article>
