@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>articles - Nathan Harrington</title>
+    <title>conda, pyside and incompatible QT libraries - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,16 +32,21 @@
 
 
 
+<link rel="canonical" href="/posts/conda-pyside-and-incompatible-qt-libraries.html">
 
-    <meta name="author" content="Nathan Harrington" />
-    <meta name="keywords" content="articles" />
+        <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="wasatch photonics" />
+        <meta name="description" content="Design a UI in Qt Designer on Linux. Commit it github, move to a windows system for testing. Now you get the message: Cannot mix incompatible Qt library (version 0x40807) with this library (version 0x40804) What this means is that you included SVG files in one of your resource .qrc ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="conda, pyside and incompatible QT libraries"/>
+        <meta property="og:url" content="/posts/conda-pyside-and-incompatible-qt-libraries.html"/>
+        <meta property="og:description" content="Design a UI in Qt Designer on Linux. Commit it github, move to a windows system for testing. Now you get the message: Cannot mix incompatible Qt library (version 0x40807) with this library (version 0x40804) What this means is that you included SVG files in one of your resource .qrc ..."/>
+        <meta property="article:published_time" content="2016-10-27" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="wasatch photonics" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -94,70 +99,71 @@ Nathan Harrington            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h4><a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">Create Mosaic images with Perl and ImageMagick</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">
-                                        <img src="/images/developerworks-images/os-mosaic_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Photo mosaics with Perl and ImageMagick, use simple Perl scripts to
-automate the image manipulation, text creation, and compositing of
-arbitrary mosaic images. Learn how to use ImageMagick, GD, and The Gimp
-to create your own mosaic images suitable for static display and dynamic
-content. Explore the capabilities of ImageMagick ...</p>
-                            </div>
-                        </div>
-                    </div>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-10-27T00:00:00-04:00"> Thu 27 October 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/wasatch-photonics.html">wasatch photonics</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
-
-            <hr/>
-            <article>
-                <h4><a href="/posts/real-time-visual-effects.html">Real time visual effects</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/real-time-visual-effects.html">
-                                        <img src="/images/developerworks-images/os-viseffects_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Use EffecTV and Simple DirectMedia Layer (SDL) to create your own
-real-time visual effects on live video. Learn how to integrate geometric
-primitives, bitmap image loading, and simple motion tracking to create
-your own games, leading-edge user interfaces, or immersive environments.
-Explore the EffecTV and SDL architectures, and learn how ...</p>
-                            </div>
-                        </div>
+                    <div style="padding-bottom:20px">
+                        <img src="/images/wasatch-images/dash_gource.gif"></img>
                     </div>
-                </div>
-            </article>
+                <p>Design a UI in Qt Designer on Linux. Commit it github, move to a windows
+system for testing. Now you get the message:</p>
+<div class="highlight"><pre><span></span>Cannot mix incompatible Qt library (version 0x40807) with this library
+(version 0x40804)
+</pre></div>
 
-            <hr/>
 
-        <ul class="pagination">
-                <li class="prev"><a href="/category/articles6.html">&laquo;</a>
-                </li>
-                    <li class=""><a
-                            href="/category/articles.html">1</a></li>
-                    <li class=""><a
-                            href="/category/articles2.html">2</a></li>
-                    <li class=""><a
-                            href="/category/articles3.html">3</a></li>
-                    <li class=""><a
-                            href="/category/articles4.html">4</a></li>
-                    <li class=""><a
-                            href="/category/articles5.html">5</a></li>
-                    <li class=""><a
-                            href="/category/articles6.html">6</a></li>
-                    <li class="active"><a
-                            href="/category/articles7.html">7</a></li>
-                <li class="next disabled"><a href="#">&raquo;</a></li>
-        </ul>
+<p>What this means is that you included SVG files in one of your resource
+.qrc's. They look fine in QT Designer on both Linux and Windows.  When
+you attempt to run the application, it fails with the error message
+above.  Only on windows though. And only after creating the project on a
+Linux machine. </p>
+<p>To fix this, aim to more closely match the environment configurations on
+both Linux and windows. The approach below will give you SVG and PNG
+support on Linux, but PNG support only on windows.</p>
+<p>Windows setup:</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/WasatchPhotonics/Dash
+conda create --name conda_dash_pyside_specified pyside=1.2.0
+source activate conda_dash_pyside_specified
+conda install numpy pillow pytest pyqtgraph pytest-cov                                    
+python setup.py develop                                                                        
+./scripts/rebuild_resources.sh                                                                 
+py.test
+</pre></div>
+
+
+<p>Linux setup:</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/WasatchPhotonics/Dash
+conda create --name conda_dash_pyside_specified pyside=1.2.0
+source activate conda_dash_pyside_specified
+conda install numpy pillow pytest pyqtgraph pytest-cov                                    
+conda remove pyside
+pip install pyside==1.2.0
+python setup.py develop                                                                        
+./scripts/rebuild_resources.sh                                                                 
+py.test
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

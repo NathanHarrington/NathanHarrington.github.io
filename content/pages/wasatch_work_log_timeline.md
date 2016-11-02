@@ -4,6 +4,19 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-01 07:06 prep, setup and review of ME interview. Detailed
+evaluation and environment match of svg-utilization in python setup for
+windows and linux cross platform variations. Evaluated back through
+wheel builds, build from sources for versions 1.2.0, 1.2.1 and 1.2.4.
+Established baseline functionality for png iconagraphy only
+
+    04248f5 package list comparisons
+    020f5ee png only resource file
+    cb0c86c rebuilt on windows
+    8573c3c resources file
+
+2016-11-02 17:54 
+
 2016-10-31 07:19 detailed mac integration plan for milestone support.
 Full nested layout tests of qt designer with new dash integration. Start
 of software test platform recovery plan and integration into
