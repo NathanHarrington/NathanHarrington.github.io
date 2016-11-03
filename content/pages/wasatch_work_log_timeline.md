@@ -4,6 +4,25 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+
+2016-11-02 07:15 second set of ME prep, setup and ME interview.  Staff
+meetings. Setup and integration of full build on minimal system with
+appveyor and matching virtualbox win10 development environment with svg
+support. Established baseline procedures for new system development all
+the way through svg inclusion, qt designer cross platform development,
+and completed applications with included libraries.
+
+    841a280 with svg and uifile from windows designer
+    ...
+    76c686a corrected travis, add appveyor
+    54e4e06 travis update
+    0b7f47e updated environment in readme
+    ...
+    65ef3dd rebuild instruction and uic rcc in conda
+
+
+2016-11-02 18:47
+
 2016-11-01 07:06 prep, setup and review of ME interview. Detailed
 evaluation and environment match of svg-utilization in python setup for
 windows and linux cross platform variations. Evaluated back through
