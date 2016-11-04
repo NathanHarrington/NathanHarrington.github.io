@@ -4,6 +4,25 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-03 07:13 Detailed progress review meeting. Environment
+distraction reduction plans. Matched replication of autofalloff
+pyqtgraph and numpy appveyor configuration with new dash codebase.
+Segmentation of Win10 Dash3 and Win10 Dash4 virtual machine development
+environments. Communication and sprints, plans, and focus.
+
+    7070fed environment typo fixes
+    0590a2a mkl_avx in appvyeor conda env
+    42dd55d conda install cle4anup in appvyeor
+    373f3cb different order of appveyor install
+    fb535a4 pyside with no python version at install
+    88ac8d8 with conda list and pip freeze
+    51fa6df init restore
+    3f262c8 direct copy match of autofalloff appveyor
+    987fcc3 built with pyqtgraph included
+    fe75d2e documentation updates
+    77bf625 designer installation notes
+
+2016-11-03 16:35
 
 2016-11-02 07:15 second set of ME prep, setup and ME interview.  Staff
 meetings. Setup and integration of full build on minimal system with
