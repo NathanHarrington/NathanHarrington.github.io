@@ -4,6 +4,17 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-08 06:47 long term timing and visualization setup. Triple
+visualizer for windows 10, and 7 in place. Built version of Dash
+straight from appveyor installer on virgin systems in virtualization.
+Investigation of testing as a service providers. Noise reduction and
+interruption compensation options and long term plans.
+
+    50dcd74 full screen auto timer updates
+    547df15 autofalloff typo
+
+2016-11-08 16:30
+
 2016-11-07 06:45 UPS system installation for networking and servers.
 Manufacturing meeting and notes. Setup of Dash long term testing system
 and virtualization with W530 laptop. rclone encrypted backup recovery
