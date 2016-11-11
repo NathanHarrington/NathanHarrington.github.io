@@ -4,6 +4,25 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-10 06:56 Execution of linode ssd mitigation plan for cookbook 
+failure issues at digital ocean. Start of server replication and outage
+monitoring setup. Noise isolation options and evaluation. Tracking of
+long term Dash stability metrics. Transition to longer nomenclature
+scheme. Testing with runtime generated widgets for saving components.
+Refinement of user interface complexity. Practice with deeply nested
+widget options
+
+2016-11-10 16:30
+
+2016-11-09 06:19 Remote support of incorrect board level documentation
+for FX2 vs. ARM customer development. Detailed evaluation of namespace
+testing issues and long term repurcusssions for Dash inteface. Tested
+with various nesting methods and custom widget development schemes.
+Research into common mechanisms for deeply nested widget interfaces in
+QT.
+
+2016-11-09 16:30
+
 2016-11-08 06:47 long term timing and visualization setup. Triple
 visualizer for windows 10, and 7 in place. Built version of Dash
 straight from appveyor installer on virgin systems in virtualization.
