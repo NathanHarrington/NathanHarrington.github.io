@@ -4,6 +4,13 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-14 06:38 Manufacturing meeting and notes. Segfault on
+environment reconfiguration onto zenbook with hiDpi display. Various
+debugging tests with strace and valgrind for isolation. Start of
+sytlesheet integration and read from file.
+
+2016-11-14 17:00
+
 2016-11-11 06:41 Deeply nested name space alterations. Start of complete
 build through hardware setup and capture. Full integration and
 commitment to current build process on appveyor. Linkage and detaile
