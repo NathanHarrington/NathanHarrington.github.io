@@ -4,6 +4,48 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-16 06:38 bi-weekly engineering update meeting. postfix system
+management emails for root and non-root accounts. self assesments,
+mustard tree inventory search. User account management, suspension of
+report indicated users. Full linkage checks and border layout
+experiements for hardware capture portion of interface. Simulated and
+multi-component data.
+
+    0a0ea84 second level border removed on hardware capture details
+    62bb9db geometry on command line
+    24ba70f deep naming, through hardware capture details layout
+    55027bc image view included
+    5405d1d hard border investigation
+    d3d88af hard border investigation
+    3bd7bfb partial way through hardware setup details layout conversion
+    55ba8fe defined devices.qrc location, hardware capture layouts
+
+2016-11-16 16:44
+
+
+2016-11-15 06:33 creation of uptime monitor trackers on cookbook
+replication system at linode. full reload of database and environment
+setup. change of firewall rules and prerequisites updates for cookbook
+instructions. will come back in two weeks to validate. Removal of lambda
+calls to address segfaults on application exits. Re-insertion of test
+driven concepts for interface components.
+
+    123c529 include stylesheets at runtime
+    ead80ea updated initial state, start of hardware capture realtime graphs
+    968ad6e control correct close
+    643231c lambda removed, no more segfaults, now trying to get test
+    control windows to exit after single tests
+    b97f7b5 with lambda enabled
+    9d91a7c back to seg fault and core dump
+    6940773 restore of debug log print in devices
+    799f24d files are important
+    399bc06 toggle through buttons in operations with style sheets changing
+    f8bc117 through basic load css testing in styles
+    65077e5 start of styles testing group
+    aca863b populate stylesheets- segfault was in empty function return
+
+2016-11-15 16:30
+
 2016-11-14 06:38 Manufacturing meeting and notes. Segfault on
 environment reconfiguration onto zenbook with hiDpi display. Various
 debugging tests with strace and valgrind for isolation. Start of
