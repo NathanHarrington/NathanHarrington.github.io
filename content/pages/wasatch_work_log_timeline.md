@@ -4,6 +4,28 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-17 06:48 Interview of ME candidate. Summary of notes and review
+meeting with team. Sprint demo debug issues with a pure windows
+installation on actual hardware compared to virutal machine. Traced down
+to mkl_avx2 and other appveyor custom-build files. Setup virtual machine
+to verify installation build differentiations. Continued full
+development through hardware capture and setup.
+
+    0ff19b1 with minimum height
+    b34ac5d updated instructions
+    81f2efb pre-local merge
+    38c1ac2 rebuilt to merge
+    e5d7ac6 mkl_p4m3.dll and mkl_p4.dll
+    7c8ac08 mkl_avx2.dll on appveyor
+    aa18d55 appveyor non windowed
+    cc3e7cb temporary removal of windowed parameter for debug
+    0d16cec through basic hardware setup, updating iconagraphy for buttons
+    and resources
+    55a6f74 placehodler iamgery
+    9662f45 hide interface from design time
+
+2016-11-17 05:15
+
 2016-11-16 06:38 bi-weekly engineering update meeting. postfix system
 management emails for root and non-root accounts. self assesments,
 mustard tree inventory search. User account management, suspension of
