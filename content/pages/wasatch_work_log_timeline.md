@@ -4,6 +4,25 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-18 06:13 research and location of chevelle product documentation
+and actual specifications and availablility. reconfiguration of
+remotetest system to support remote system access and portability.
+Isolation and correction of build compatability issues 32bit python vs.
+64bit python. Put mechanisms in place to force 32bit python in
+documentation and build environments. Updated iconagraphy names, setup
+for second long term iteration pass on virtualization tester.
+
+    133deab Merge branch 'winmaster'
+    d1578fe designer updates, uic imagery name correction
+    0186885 uic and designer imagery updates
+    a1dd7cb matching 32bit build instructions
+    ae9014c files renamed
+    1daf2a7 restoration of expected startup states
+    4f28096 building updates
+    a22f238 documentation notes, example data
+
+2016-11-18 16:30
+
 2016-11-17 06:48 Interview of ME candidate. Summary of notes and review
 meeting with team. Sprint demo debug issues with a pure windows
 installation on actual hardware compared to virutal machine. Traced down
@@ -24,7 +43,7 @@ development through hardware capture and setup.
     55a6f74 placehodler iamgery
     9662f45 hide interface from design time
 
-2016-11-17 05:15
+2016-11-17 17:15
 
 2016-11-16 06:38 bi-weekly engineering update meeting. postfix system
 management emails for root and non-root accounts. self assesments,
