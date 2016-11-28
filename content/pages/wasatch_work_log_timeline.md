@@ -4,6 +4,24 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-20 06:42
+remote software diagnosis and support for Layne Bradley at UGA -
+addressed with driver signature enforcement disabling. Project planning
+for Dash releases to coincide with hard dates. Detailed setup and long
+term testing of newest build deploy level for inter-vacation testing
+
+    6700dd0 change right side control layout to have consistent width
+    with left side saved data area
+    da4dd83 upand down icons
+    c7dd0bd upand down icons
+    6c90b6c hardware setup by defaul
+    d5b7be6 simulated temperatures
+    249ee6e simulated temperatures
+    236793c Merge branch 'winmaster'
+    2da0999 corrected build ordering
+
+2016-11-21 16:30
+
 2016-11-18 06:13 research and location of chevelle product documentation
 and actual specifications and availablility. reconfiguration of
 remotetest system to support remote system access and portability.
