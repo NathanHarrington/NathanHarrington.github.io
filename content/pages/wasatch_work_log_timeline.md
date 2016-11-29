@@ -4,6 +4,24 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-28 06:32 manufacturing meeting notes, setup of OCT sample
+storage area, review of power management options for failed UPS. Find
+headshots and email. Raman graph layout and placeholders. Addition of
+setup and capture navigational signals. Default geometry changes,
+expansion of css loading of runtime components. Multi-os verificationa
+nd spacing consistencies.
+
+    434b24f base level graph placeholders
+    c7e29f7 baseline raman capture placeholder graphs
+    7b313be through raman capture layout
+    096e031 techniques in utils
+    ...
+    d13afbe raman setup layout tests with saved area iconagraphy
+    dc8d6df adding controls to setup catpure
+    657486d partial raman setup capture
+
+2016-11-28 16:33
+
 2016-11-20 06:42
 remote software diagnosis and support for Layne Bradley at UGA -
 addressed with driver signature enforcement disabling. Project planning
