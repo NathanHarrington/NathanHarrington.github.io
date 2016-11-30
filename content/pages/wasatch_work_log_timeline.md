@@ -4,6 +4,22 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-29 06:50 it asset system review and investigation. Setup of
+meeting and communications with customer visit. Debug and testing of csv
+dictreader failure in sub-process on windows. Switch to raw csv
+processing with context for simulated raman data. Layout of raman
+controls and line plots for raman setup screen.
+
+    47f690a with raw file load instead of dictreader which was causing a
+        multiprocess exit inhibit
+    56392be simulated raman data
+    0c36f41 simulated raman data
+    0cb1dd6 layout of raman capture controls
+    8cfaf6f control to defaults for test passing
+
+
+2016-11-29 18:13
+
 2016-11-28 06:32 manufacturing meeting notes, setup of OCT sample
 storage area, review of power management options for failed UPS. Find
 headshots and email. Raman graph layout and placeholders. Addition of
