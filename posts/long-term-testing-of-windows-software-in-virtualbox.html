@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>articles - Nathan Harrington</title>
+    <title>Long term testing of windows software in virtualbox - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,16 +32,21 @@
 
 
 
+<link rel="canonical" href="/posts/long-term-testing-of-windows-software-in-virtualbox.html">
 
-    <meta name="author" content="Nathan Harrington" />
-    <meta name="keywords" content="articles" />
+        <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="wasatch photonics" />
+        <meta name="description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating 3 separate machines ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Long term testing of windows software in virtualbox"/>
+        <meta property="og:url" content="/posts/long-term-testing-of-windows-software-in-virtualbox.html"/>
+        <meta property="og:description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating 3 separate machines ..."/>
+        <meta property="article:published_time" content="2016-12-01" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="wasatch photonics" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -94,114 +99,70 @@ Nathan Harrington            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h4><a href="/posts/knock-based-commands-for-linux-laptops.html">Knock based commands for linux laptops</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/knock-based-commands-for-linux-laptops.html">
-                                        <img src="/images/developerworks-images/l-knockage_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>For the first time, you can hit your computer and get a meaningful
-response! Using Linux and the Hard Drive Active Protection System
-(HDAPS) kernel drivers, you can access the embedded accelerometers on
-IBM and Lenovo ThinkPads, then process the accelerometer data to read
-specific sequences of "knocking" events -- literally ...</p>
-                            </div>
-                        </div>
-                    </div>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-12-01T00:00:00-05:00"> Thu 01 December 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/wasatch-photonics.html">wasatch photonics</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
+                <p>Requirements: Ensure that the software is stable.</p>
+<p>Specifically, run the software for weeks, verify that the RAM, CPU and
+disk usage behaves predictably. Ensure there are no crashes. Prevent
+windows from invalidating the process by rebooting due to windows
+updates.</p>
+<p>The steps below were followed for creating 3 separate machines running
+rolling deployments of builds from appveyor for the Dash development
+builds. </p>
+<p>The flowchart on this page:
+<a href="https://technet.microsoft.com/en-us/library/dd981009.aspx">TechNet Licensing</a>
+mentions a 120 day grace period. Make sure you add a reminder to rebuild
+the virtual machines from scratch every 100 days.</p>
+<p>Procedure: High memory host computer running Fedora Core 24.</p>
+<p>Guest OS installations of Windows 7 and Windows 10
+Start each guest OS, make sure it updates a few times.
+Set it to auto login.
+Install <a href="https://www.rainmeter.net/">rainmeter</a>
+Use the <a href="http://bonsewswesa.deviantart.com/art/Visual-Chunk-1-7-643176812">Visual
+Chunk</a> skin.
+Place the controls for:
+    SysStats one drive, no power
+    All uptime, rca, tbt, 24hour</p>
+<p>In the guest OS, Disable all network adapters.
+Install the virtualbox guest additions</p>
+<p>Create a shared folder on the host os (Downloads), and call it
+dash-downloads for the guest.</p>
+<p>Mount the guest addition with:</p>
+<div class="highlight"><pre><span></span>net srv x: \\vboxsrv\dash-downloads
+</pre></div>
 
-            <hr/>
-            <article>
-                <h4><a href="/posts/distributed-multihead-support-with-linux-and-xdmx.html">Distributed multihead support with Linux and Xdmx</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/distributed-multihead-support-with-linux-and-xdmx.html">
-                                        <img src="/images/developerworks-images/os-mltihed_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Learn about the tools available to develop your own multiscreen
-configuration and physical layout to enhance your computing experience.
-You can use Linux® and Xdmx to create one contiguous desktop across
-multiple display devices attached to separate computers. Combine your
-available laptop and desktop computers running Linux to create one ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
 
-            <hr/>
-            <article>
-                <h4><a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">Create Mosaic images with Perl and ImageMagick</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/create-mosaic-images-with-perl-and-imagemagick.html">
-                                        <img src="/images/developerworks-images/os-mosaic_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Photo mosaics with Perl and ImageMagick, use simple Perl scripts to
-automate the image manipulation, text creation, and compositing of
-arbitrary mosaic images. Learn how to use ImageMagick, GD, and The Gimp
-to create your own mosaic images suitable for static display and dynamic
-content. Explore the capabilities of ImageMagick ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
+<p>On the Host Os, download the most recent version to that folder.
+Manually run the installer on each guest os.
+Start the Dash program.
+Position it so the rainmeter visual chunk statistics can be seen at all
+times.</p>
+<p>Every day, record the eyeball-averaged readings from the rainmeter
+display on each guest OS. This is rough, but what you are looking for
+here is a lack of dramatic changes.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
-            <hr/>
-            <article>
-                <h4><a href="/posts/real-time-visual-effects.html">Real time visual effects</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/real-time-visual-effects.html">
-                                        <img src="/images/developerworks-images/os-viseffects_thumbnail.png"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Use EffecTV and Simple DirectMedia Layer (SDL) to create your own
-real-time visual effects on live video. Learn how to integrate geometric
-primitives, bitmap image loading, and simple motion tracking to create
-your own games, leading-edge user interfaces, or immersive environments.
-Explore the EffecTV and SDL architectures, and learn how ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <hr/>
-
-        <ul class="pagination">
-                <li class="prev"><a href="/category/articles6.html">&laquo;</a>
-                </li>
-                    <li class=""><a
-                            href="/category/articles.html">1</a></li>
-                    <li class=""><a
-                            href="/category/articles2.html">2</a></li>
-                    <li class=""><a
-                            href="/category/articles3.html">3</a></li>
-                    <li class=""><a
-                            href="/category/articles4.html">4</a></li>
-                    <li class=""><a
-                            href="/category/articles5.html">5</a></li>
-                    <li class=""><a
-                            href="/category/articles6.html">6</a></li>
-                    <li class="active"><a
-                            href="/category/articles7.html">7</a></li>
-                <li class="next disabled"><a href="#">&raquo;</a></li>
-        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
