@@ -4,6 +4,18 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-11-30 06:58 review demo requirements for photonics west, Detailed
+demo meeting with screenthos. transformation of raman testing platform.
+Investigation of web power switch reset mechanisms. Milestone updates
+for next dash demo. Selection and ordering of new testing computer
+components. Initiation of new test schedule to meet PW requirements.
+
+    acceef5 slight interface mods
+    40fa949 new hardware capture layout
+    2c93fe7 raman capture by default
+
+2016-11-30 17:00
+
 2016-11-29 06:50 it asset system review and investigation. Setup of
 meeting and communications with customer visit. Debug and testing of csv
 dictreader failure in sub-process on windows. Switch to raw csv
