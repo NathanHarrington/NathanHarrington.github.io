@@ -145,8 +145,18 @@ Place the controls for:
 Install the virtualbox guest additions</p>
 <p>Create a shared folder on the host os (Downloads), and call it
 dash-downloads for the guest.</p>
-<p>Mount the guest addition with:</p>
-<div class="highlight"><pre><span></span>net srv x: \\vboxsrv\dash-downloads
+<p>Mount the guest addition manually with:</p>
+<div class="highlight"><pre><span></span>net use x: \\vboxsrv\dash-downloads
+</pre></div>
+
+
+<p>Alternatively, set it to automount in the host os.</p>
+<p>This particular software package is designed to run at a minimum
+resolution of 1024x768 maximized. Edit the screen resolution of the
+guest OS, and then enable scaled mode to make sure the application and
+the rainmeter measurements are both visible:</p>
+<p>On the Host OS:</p>
+<div class="highlight"><pre><span></span>VBoxManage.exe setextradata &quot;VM-Name&quot; CustomVideoMode1 1280x1024x32
 </pre></div>
 
 
@@ -155,6 +165,10 @@ Manually run the installer on each guest os.
 Start the Dash program.
 Position it so the rainmeter visual chunk statistics can be seen at all
 times.</p>
+<p>Make sure to disable the network adapters on windows 10 to prevent
+windows update from running. Using the shared folder approach should
+make the data transfer portion sufficiently fast to inhibit any windows
+update process from starting.</p>
 <p>Every day, record the eyeball-averaged readings from the rainmeter
 display on each guest OS. This is rough, but what you are looking for
 here is a lack of dramatic changes.</p>

@@ -4,8 +4,32 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-01 06:34 addition of logging tab. removal of tabwidget which has
+unsupported hide tab functionality in pyside. Tests to uncover various
+issues with adding a handler to signal the qt interface for new log
+entries. Settled on a pygtail implementation with custom stackedwidget
+control with tab widget sytled buttons. This gets around the repaint
+events of signals triggered from a handler added to a logging module
+that has other subprocess handlers. Continued refinment of long term
+power cycling tests.
+
+    e371efc test correction
+    8b9bc0e recover of log queue variable
+    0b5c9d7 bare switch between hardware and logging simulated tabs
+    156f848 pygtail integration in appveyor and travis and setup.py
+    b950da7 pygtail integration to text edit control
+    1bd65b1 pygtail
+    1e9d346 showing inhibit of qt interface when logging post subprocess
+    setup
+    0ad10f8 display log text crash
+    2fffb02 various attempts at signal logging
+    8a3777e removal of pyside-unsupported qtabwidget, addition of custom
+    button solution layout
+
+2016-12-01 16:30
+
 2016-11-30 06:58 review demo requirements for photonics west, Detailed
-demo meeting with screenthos. transformation of raman testing platform.
+demo meeting with screenshots. transformation of raman testing platform.
 Investigation of web power switch reset mechanisms. Milestone updates
 for next dash demo. Selection and ordering of new testing computer
 components. Initiation of new test schedule to meet PW requirements.
