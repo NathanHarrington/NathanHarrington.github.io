@@ -4,6 +4,19 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-02 06:31 attempting to decipher 401k puzzle, update historical
+software to support new serial numbers.  Setup of new Dash long term
+executable checks, validation of virtualization setup. Desk reconfigure
+for simultaneous tests and support
+
+e7f14e9 exception handling in css styler
+2a32bb3 faded gray on disconnect
+0cb345f grayed graphs, stopping
+68e61d4 bare bones init file read simulator for connections tatus
+75dd852 lower requirements for system simulation speeds
+
+2016-12-02 16:30
+
 2016-12-01 06:34 addition of logging tab. removal of tabwidget which has
 unsupported hide tab functionality in pyside. Tests to uncover various
 issues with adding a handler to signal the qt interface for new log
@@ -11,7 +24,7 @@ entries. Settled on a pygtail implementation with custom stackedwidget
 control with tab widget sytled buttons. This gets around the repaint
 events of signals triggered from a handler added to a logging module
 that has other subprocess handlers. Continued refinment of long term
-power cycling tests.
+power cycling tests and hardware setups.
 
     e371efc test correction
     8b9bc0e recover of log queue variable
