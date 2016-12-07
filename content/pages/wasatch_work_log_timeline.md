@@ -4,6 +4,28 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-06 06:42 identification and removal of algorithm storage. Year
+review plan, plumbing issue recovery.  Search for comptabile fonts for
+the multiprocessing demonstration tests. Specification of data
+structures and api's for controlling multiple devices with
+multiprocessing and wasatchusb with libusb drivers, finish power control
+with web power switch.
+
+    195a60f style recovery
+
+2016-12-06 16:15
+
+
+2016-12-05 06:38 production meeting. adding of send routing rules
+inhibit to prevent name conflicts. Dash runtime error on windows 7
+investigation. Configuration parser, ini file of Dash simulated device
+control. Testing of simulation script and demo, project planning.
+
+    a2973d4 restoration of default startup
+    50ba7a9 name cleanup
+
+2016-12-06 16:30
+
 2016-12-02 06:31 attempting to decipher 401k puzzle, update historical
 software to support new serial numbers.  Setup of new Dash long term
 executable checks, validation of virtualization setup. Desk reconfigure
