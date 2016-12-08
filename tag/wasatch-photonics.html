@@ -95,6 +95,34 @@ Nathan Harrington            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h4><a href="/posts/pyinstaller-and-filenames-requiring-py-extensions-on-appveyor.html">Pyinstaller and filenames requiring .py extensions, on appveyor</a></h4>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="summary"><p>With a code base that builds with pyinstaller on a Windows 10 Home
+system, and on appveyor. For example:</p>
+<p><a href="https://github.com/WasatchPhotonics/Dash/tree/75dd8525541cc5f55a73bce91884628324e2776b">Dash 75dd852554</a></p>
+<p>Run a pyinstaller script like:</p>
+<div class="highlight"><pre><span></span>pyinstaller 
+    --distpath=scripts/built-dist 
+    --workpath=scripts/work-path 
+    --noconfirm 
+    --clean 
+    --icon dash/assets/uic_qrc/images/DashIcon.ico 
+    --specpath scripts 
+    scripts/Dash.py
+</pre></div>
+
+
+<p>On Windows 10 ...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <hr/>
+            <article>
                 <h4><a href="/posts/long-term-testing-of-windows-software-in-virtualbox.html">Long term testing of windows software in virtualbox</a></h4>
                 <div class="container-fluid">
                     <div class="row">
@@ -283,24 +311,6 @@ customer, regardless of location. Previous integration systems used
 dropbox, google, or baidu. These are frequently banned by IT departments
 or entire geographical networks. The CookBook is a fully tested web
 application designed to get around these limitations. It's ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <hr/>
-            <article>
-                <h4><a href="/posts/wasatchusb-bare-bones-usb-communication-with-wasatch-devices.html">WasatchUSB - bare bones USB communication with wasatch devices</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="summary"><p>USB cameras and devices from Wasatch Photonics</p>
-<p>This module is intended to provide the absolute bare-minimum, pure
-python communication with a StrokerARMUSB board. These tests include
-communication with a Phidgets relay device, to place the device in a
-known power state. At Wasatch, we use this for verification of
-protocol ...</p>
                             </div>
                         </div>
                     </div>
