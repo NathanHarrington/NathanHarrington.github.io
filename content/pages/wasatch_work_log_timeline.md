@@ -4,6 +4,22 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-07 07:12 pw booth review, setup of testing systems for dark current rma
+validation. Dash runtime error after 2 days investigation on windows 10
+and windows 7. Rebuild of appveyor configuration to isolate build flaw
+and executable non-inclusion. Setup of secondary virtualization system .
+Validation of appveyor vs. local system build differences.  Log-level
+default to INFO, setup on executable for linux and windows.
+
+    f701cc6 no tests, just build
+    24dcd37 dash.py renamed in appveyor builds
+    664aaf6 corrected log level required for windows tests
+    398dbbe default log level INFO, runtime assignment
+
+2016-12-07 16:34
+
+
+
 2016-12-06 06:42 identification and removal of algorithm storage. Year
 review plan, plumbing issue recovery.  Search for comptabile fonts for
 the multiprocessing demonstration tests. Specification of data
