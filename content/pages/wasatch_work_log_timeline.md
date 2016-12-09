@@ -4,6 +4,20 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-08 06:24 vtt 1000 manual discovery, it support, processing
+shipments. Mid-milestone demo of simulatd plug, unplug of device in
+dash. Determination of valid and invalid firmware configurations on test
+hardware. Recovery and documentation of Dash.py vs. Dash with no suffix
+build issue on appveyor machine. Log level case management on command
+line
+
+    c2f61a1 recovery of dash.py for pyinstaller
+    aea97ec tests recovered in appveyor
+    bc936d9 case management of log level on command line
+    858c389 log level in controller
+
+2016-12-08 16:31
+
 2016-12-07 07:12 pw booth review, setup of testing systems for dark current rma
 validation. Dash runtime error after 2 days investigation on windows 10
 and windows 7. Rebuild of appveyor configuration to isolate build flaw
@@ -17,7 +31,6 @@ default to INFO, setup on executable for linux and windows.
     398dbbe default log level INFO, runtime assignment
 
 2016-12-07 16:34
-
 
 
 2016-12-06 06:42 identification and removal of algorithm storage. Year
