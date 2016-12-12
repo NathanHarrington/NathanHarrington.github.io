@@ -4,6 +4,19 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-09 07:07 performance review, scheduling updates, detailed
+processing and review of algorithm removal from it systems.
+Investigation into cigna healthcare changes. Website down detection.
+Startup page setting on command line. Start with laser communication and
+command and control queues in multiprocessing simulator. Correction of
+delay and non-exit with terminate and join in sub processes.
+
+    afa808c shallow copy
+    890f1d9 non increasing copy of data
+    d99ce88 startup setting command line
+    ac7779e laser with record setting reading and writing
+    fedaefc strip down of older simulatespectra test cases
+
 2016-12-08 06:24 vtt 1000 manual discovery, it support, processing
 shipments. Mid-milestone demo of simulatd plug, unplug of device in
 dash. Determination of valid and invalid firmware configurations on test
