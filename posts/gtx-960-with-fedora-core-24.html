@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>Authors - Nathan Harrington</title>
+    <title>GTX 960 with Fedora Core 24 - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,15 +32,19 @@
 
 
 
+<link rel="canonical" href="/posts/gtx-960-with-fedora-core-24.html">
 
         <meta name="author" content="Nathan Harrington" />
+        <meta name="description" content="Use an Nvidia Geforce GTX 960 with Fedora Core 24. There are alot of useful guides: If Not True Then False Unixmen RPMFusion Here are the exact steps followed to use the nvidia card: Go to the Nvidia Drivers page. Select the appropriate product, operating system etc. These steps use ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="GTX 960 with Fedora Core 24"/>
+        <meta property="og:url" content="/posts/gtx-960-with-fedora-core-24.html"/>
+        <meta property="og:description" content="Use an Nvidia Geforce GTX 960 with Fedora Core 24. There are alot of useful guides: If Not True Then False Unixmen RPMFusion Here are the exact steps followed to use the nvidia card: Go to the Nvidia Drivers page. Select the appropriate product, operating system etc. These steps use ..."/>
+        <meta property="article:published_time" content="2016-12-12" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -74,7 +78,7 @@ Nathan Harrington            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/articles.html">Articles</a>
                         </li>
                         <li >
@@ -93,8 +97,57 @@ Nathan Harrington            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <h1>Authors on Nathan Harrington</h1>
-        <li><a href="/author/nathan-harrington.html">Nathan Harrington</a> (79)</li>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-12-12T00:00:00-05:00"> Mon 12 December 2016</time>
+    </span>
+
+
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Use an Nvidia Geforce GTX 960 with Fedora Core 24.</p>
+<p>There are alot of useful guides:</p>
+<p><a href="https://www.if-not-true-then-false.com/2015/fedora-nvidia-guide/">If Not True Then False</a>
+<a href="https://www.unixmen.com/install-nvidia-drivers-fedora-24/">Unixmen</a>
+<a href="https://rpmfusion.org/Howto/nVidia">RPMFusion</a></p>
+<p>Here are the exact steps followed to use the nvidia card:</p>
+<p>Go to the <a href="http://www.nvidia.com/Download/Find.aspx?lang=en-us">Nvidia Drivers</a> page.</p>
+<p>Select the appropriate product, operating system etc. These steps use:</p>
+<p>NVIDIA-Linux-x86_64-375.20.run 375.20 (November 18, 2016) </p>
+<div class="highlight"><pre><span></span>sudo dnf -y update
+#(20 minutes later...)
+reboot
+
+dnf install kernel-devel kernel-headers
+dnf install gcc dkms acpid
+
+echo &#39;blacklist nouveau&#39; &gt;&gt; /etc/modprobe.d/disable-nouveau.conf
+echo &#39;nouveau modeset=0&#39; &gt;&gt; /etc/modprobe.d/disable-nouveau.conf
+
+dnf install xorg-x11-drv-nvidia akmod-nvidia &quot;kernel-devel-uname-r == $(uname -r)&quot;
+dnf update -y
+
+
+chmod +x NVIDIA-Linux-x86_64-375.20.run
+./NVIDIA-Linux-x86_64-375.20.run
+# (Accept defaults)
+reboot
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
