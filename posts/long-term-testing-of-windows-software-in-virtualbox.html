@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="wasatch photonics" />
-        <meta name="description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating 3 separate machines ..." />
+        <meta name="description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating multiple machines running ..." />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Long term testing of windows software in virtualbox"/>
         <meta property="og:url" content="/posts/long-term-testing-of-windows-software-in-virtualbox.html"/>
-        <meta property="og:description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating 3 separate machines ..."/>
+        <meta property="og:description" content="Requirements: Ensure that the software is stable. Specifically, run the software for weeks, verify that the RAM, CPU and disk usage behaves predictably. Ensure there are no crashes. Prevent windows from invalidating the process by rebooting due to windows updates. The steps below were followed for creating multiple machines running ..."/>
         <meta property="article:published_time" content="2016-12-01" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="wasatch photonics" />
@@ -119,59 +119,64 @@ Nathan Harrington            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
+                    <div style="padding-bottom:20px">
+                        <img src="/images/wasatch-images/dash_software_test_thumbnail.jpg"></img>
+                    </div>
                 <p>Requirements: Ensure that the software is stable.</p>
 <p>Specifically, run the software for weeks, verify that the RAM, CPU and
 disk usage behaves predictably. Ensure there are no crashes. Prevent
 windows from invalidating the process by rebooting due to windows
 updates.</p>
-<p>The steps below were followed for creating 3 separate machines running
+<p>The steps below were followed for creating multiple machines running
 rolling deployments of builds from appveyor for the Dash development
-builds. </p>
+testing. </p>
 <p>The flowchart on this page:
 <a href="https://technet.microsoft.com/en-us/library/dd981009.aspx">TechNet Licensing</a>
 mentions a 120 day grace period. Make sure you add a reminder to rebuild
 the virtual machines from scratch every 100 days.</p>
 <p>Procedure: High memory host computer running Fedora Core 24.</p>
-<p>Guest OS installations of Windows 7 and Windows 10
-Start each guest OS, make sure it updates a few times.
-Set it to auto login.
-Install <a href="https://www.rainmeter.net/">rainmeter</a>
-Use the <a href="http://bonsewswesa.deviantart.com/art/Visual-Chunk-1-7-643176812">Visual
-Chunk</a> skin.
-Place the controls for:
-    SysStats one drive, no power
-    All uptime, rca, tbt, 24hour</p>
-<p>In the guest OS, Disable all network adapters.
-Install the virtualbox guest additions</p>
-<p>Create a shared folder on the host os (Downloads), and call it
-dash-downloads for the guest.</p>
-<p>Mount the guest addition manually with:</p>
-<div class="highlight"><pre><span></span>net use x: \\vboxsrv\dash-downloads
-</pre></div>
-
-
-<p>Alternatively, set it to automount in the host os.</p>
-<p>This particular software package is designed to run at a minimum
-resolution of 1024x768 maximized. Edit the screen resolution of the
-guest OS, and then enable scaled mode to make sure the application and
-the rainmeter measurements are both visible:</p>
+<p>Guest OS installations of Windows 10, using default parameters in
+VirtualBox. These systems were built with a NAT network and 2GB RAM
+each.</p>
+<p>Start each guest OS, make sure it updates a few times.
+Set it to auto login.</p>
 <p>On the Host OS:</p>
-<div class="highlight"><pre><span></span>VBoxManage.exe setextradata &quot;VM-Name&quot; CustomVideoMode1 1280x1024x32
+<div class="highlight"><pre><span></span>VBoxManage.exe setextradata &quot;VM-Name&quot; CustomVideoMode1 1920x1080x32
 </pre></div>
 
 
-<p>On the Host Os, download the most recent version to that folder.
-Manually run the installer on each guest os.
-Start the Dash program.
-Position it so the rainmeter visual chunk statistics can be seen at all
-times.</p>
-<p>Make sure to disable the network adapters on windows 10 to prevent
-windows update from running. Using the shared folder approach should
-make the data transfer portion sufficiently fast to inhibit any windows
-update process from starting.</p>
+<p>On the Guest OS:</p>
+<div class="highlight"><pre><span></span><span class="n">Open</span> <span class="n">network</span> <span class="n">adapter</span> <span class="n">properties</span><span class="p">,</span> <span class="n">change</span> <span class="n">the</span> <span class="n">IpV4</span> <span class="n">TCP</span> <span class="n">settings</span> <span class="n">to</span>
+<span class="n">have</span> <span class="n">the</span> <span class="n">DNS</span> <span class="n">point</span> <span class="n">to</span> <span class="mf">10.10.10.10</span><span class="p">.</span> <span class="n">This</span> <span class="n">way</span> <span class="n">numerically</span> <span class="n">addressed</span>
+<span class="n">network</span> <span class="n">locations</span> <span class="n">will</span> <span class="n">still</span> <span class="n">function</span><span class="p">,</span> <span class="n">but</span> <span class="n">windows</span> <span class="n">update</span> <span class="n">will</span> <span class="n">not</span>
+<span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">reach</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">servers</span><span class="p">.</span> <span class="n">This</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">permit</span> <span class="n">mapping</span> <span class="n">of</span>
+<span class="n">local</span> <span class="n">samba</span> <span class="n">shared</span> <span class="n">where</span> <span class="n">the</span> <span class="n">rolling</span> <span class="n">builds</span> <span class="n">are</span> <span class="n">stored</span><span class="p">.</span>
+
+<span class="n">Map</span> <span class="n">the</span> <span class="n">network</span> <span class="n">drive</span> <span class="n">by</span> <span class="n">IP</span> <span class="n">address</span><span class="p">.</span>
+
+<span class="n">Install</span> <span class="p">[</span><span class="n">rainmeter</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.rainmeter.net/)</span>
+<span class="n">Use</span> <span class="n">the</span> <span class="p">[</span><span class="n">Visual</span>
+<span class="n">Chunk</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//bonsewswesa.deviantart.com/art/Visual-Chunk-1-7-643176812) skin.</span>
+<span class="n">Place</span> <span class="n">the</span> <span class="n">controls</span> <span class="k">for</span><span class="o">:</span>
+    <span class="n">SysStats</span> <span class="n">one</span> <span class="n">drive</span><span class="p">,</span> <span class="n">no</span> <span class="n">power</span>
+    <span class="n">All</span> <span class="n">uptime</span><span class="p">,</span> <span class="n">rca</span><span class="p">,</span> <span class="n">tbt</span><span class="p">,</span> <span class="mi">24</span><span class="n">hour</span>
+
+    <span class="n">Set</span> <span class="n">both</span> <span class="n">control</span> <span class="n">groups</span> <span class="n">to</span> <span class="n">Position</span><span class="o">-&gt;</span><span class="n">Stay</span> <span class="n">Topmost</span>
+
+<span class="s">&quot;Choose when to turn off the screen&quot;</span> <span class="o">-&gt;</span> <span class="n">Never</span>
+
+<span class="n">Change</span> <span class="n">the</span> <span class="n">display</span> <span class="n">resolution</span> <span class="n">to</span> <span class="mi">1920</span><span class="n">x1080</span>
+</pre></div>
+
+
+<p>Do not use this 'root image'. Make clones of this image. Do not
+re-initialize the MAC address of each adapter, or you will have to
+change the DNS entry for each virtual machine as described above.</p>
 <p>Every day, record the eyeball-averaged readings from the rainmeter
 display on each guest OS. This is rough, but what you are looking for
 here is a lack of dramatic changes.</p>
+<p>What does that look like at Wasatch?</p>
+<p><img alt="Dash Software Test" src="/images/wasatch-images/dash_software_test.jpg" /></p>
             </div>
             <!-- /.entry-content -->
         </article>

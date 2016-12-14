@@ -4,6 +4,18 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-13 holiday party + rest of day. Basic simulation with
+integration time and laser control linkage in mains. Reset of
+virtualization setups to have base system with full hd, non-dns resolved
+network connections for windows update inhibit. Simulated temperatures
+and noise margins representative of integration time changes.
+
+    3fd3562 hardware capture updates with live simulation data
+    ...
+    77c4e5f tests of 1-10k integration change
+
+2016-12-13 16:30
+
 2016-12-12 07:00 receive and process shipments for loading dock, front
 area. Update documentation for more efficient processing. website
 maintenance rule clarification. Setup of dual monitor configuration for
