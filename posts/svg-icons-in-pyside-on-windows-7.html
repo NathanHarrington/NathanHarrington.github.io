@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>Authors - Nathan Harrington</title>
+    <title>SVG icons in PySide on Windows 7 - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,15 +32,21 @@
 
 
 
+<link rel="canonical" href="/posts/svg-icons-in-pyside-on-windows-7.html">
 
         <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="wasatch photonics" />
+        <meta name="description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="SVG icons in PySide on Windows 7"/>
+        <meta property="og:url" content="/posts/svg-icons-in-pyside-on-windows-7.html"/>
+        <meta property="og:description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application ..."/>
+        <meta property="article:published_time" content="2016-12-20" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="wasatch photonics" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -74,7 +80,7 @@ Nathan Harrington            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/articles.html">Articles</a>
                         </li>
                         <li >
@@ -93,8 +99,58 @@ Nathan Harrington            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <h1>Authors on Nathan Harrington</h1>
-        <li><a href="/author/nathan-harrington.html">Nathan Harrington</a> (80)</li>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-12-20T00:00:00-05:00"> Tue 20 December 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/wasatch-photonics.html">wasatch photonics</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Your application icons look great. They are saved in .svg format, loaded
+into Qt Designer, and distributed with pyinstaller as resource files.</p>
+<p>Except on windows 7.</p>
+<p>No error messages, no crashes, no information on why the icons are missing. </p>
+<p>The issue is the included qsvg4.dll distributed with the application by
+pyinstaller. It appears to be the wrong file.</p>
+<p>On your development windows machine, you see the following qsvg4.dll
+files:</p>
+<p><img alt="qsvg4.dll Locations" src="/images/wasatch-images/qsvg4_locations.png" /></p>
+<p>Not all 22KB files are the same. Look at the file sizes in detail:</p>
+<p><img alt="qsvg4.dll sizes" src="/images/wasatch-images/qsvg4_sizes.png" /></p>
+<p>You must use the 22,016KB version in the runtime distributable. No
+amount of pyinstaller machinations, includes, or path updates seem to
+make this possible. You must overwrite the pyinstaller included file at
+the location:</p>
+<div class="highlight"><pre><span></span>&lt;program files&gt;\&lt;application name&gt;\qt4_plugins\imageformats\
+</pre></div>
+
+
+<p>With the qsvg4.dll file that is 22,016KB in size. In
+<a href="http://github.com/WasatchPhotonics/Dash">Dash</a>, this is done by a
+directive in the InnoSetup installation file, after the application has
+been installed. When using appveyor, make sure the environment names
+match precisely, as you are hard-coding file locations such as:</p>
+<div class="highlight"><pre><span></span><span class="nt">Source</span><span class="o">:</span> <span class="s2">&quot;C:\Miniconda\envs\conda_dash\Library\plugins\imageformats\qsvg4.dll&quot;</span><span class="o">;</span> <span class="err">\</span>
+<span class="nt">DestDir</span><span class="o">:</span> <span class="s2">&quot;{app}\dash\qt4_plugins\imageformats&quot;</span><span class="o">;</span> <span class="nt">Flags</span><span class="o">:</span> <span class="nt">recursesubdirs</span> <span class="nt">ignoreversion</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
