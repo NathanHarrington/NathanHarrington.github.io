@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="wasatch photonics" />
-        <meta name="description" content="With a development machine all setup for communicating in python with pyusb and libusb on Windows 10. The signed drivers are available, the device is communicating on the build machine. Building the installer on the development machine also is succesful. Redistributing the installer built on the development machine delivers the ..." />
+        <meta name="description" content="With a development machine all set up for communicating in python with pyusb and libusb on Windows 10. The signed drivers are available, the device is communicating on the build machine. Building the installer on the development machine also is successful. Redistributing the installer built on the development machine delivers ..." />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="LibUsb backends using pyinstaller and appveyor"/>
         <meta property="og:url" content="/posts/libusb-backends-using-pyinstaller-and-appveyor.html"/>
-        <meta property="og:description" content="With a development machine all setup for communicating in python with pyusb and libusb on Windows 10. The signed drivers are available, the device is communicating on the build machine. Building the installer on the development machine also is succesful. Redistributing the installer built on the development machine delivers the ..."/>
+        <meta property="og:description" content="With a development machine all set up for communicating in python with pyusb and libusb on Windows 10. The signed drivers are available, the device is communicating on the build machine. Building the installer on the development machine also is successful. Redistributing the installer built on the development machine delivers ..."/>
         <meta property="article:published_time" content="2016-12-21" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="wasatch photonics" />
@@ -119,14 +119,16 @@ Nathan Harrington            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>With a development machine all setup for communicating in python with
+                <p>With a development machine all set up for communicating in python with
 pyusb and libusb on Windows 10. The signed drivers are available, the
 device is communicating on the build machine. Building the installer on
-the development machine also is succesful. Redistributing the installer
+the development machine also is successful. Redistributing the installer
 built on the development machine delivers the expected experience.</p>
-<p>The problem is when building on AppVeyor. PyInstaller builds an exe.
-InnoSetup builds a distributable installer. The installer is succesful,
-when running, you'll see the message:</p>
+<p>The problem is when building on a <a href="http://www.appveyor.com">Continuous
+Integration</a> environment. PyInstaller
+builds an exe.  InnoSetup builds a distributable installer. The
+installer is succesful. Then when running the installed application,
+you'll see the message:</p>
 <div class="highlight"><pre><span></span>Traceback (most recent call last):
   ...
   File &quot;site-packages\usb\legacy.py&quot;, line 353, in busses
