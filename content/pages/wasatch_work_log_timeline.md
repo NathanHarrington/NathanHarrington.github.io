@@ -4,6 +4,9 @@ Category: About
 save_as: pages/wasatch_work_log_timeline.html
 status: hidden
 
+2016-12-14 Start of new work log schedule. Now about demonstrating
+results instead of documenting efforts.
+
 2016-12-13 holiday party + rest of day. Basic simulation with
 integration time and laser control linkage in mains. Reset of
 virtualization setups to have base system with full hd, non-dns resolved
