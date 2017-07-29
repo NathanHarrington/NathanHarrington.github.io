@@ -54,7 +54,7 @@ Nathan Harrington personal static site using pelican.
     pelican --theme ../pelican-themes/personal-bootstrap3/ content
             --output ./
 
-    (Test on local machine, verify everything looks fine)
+    (Test on localhost:8000, verify everything looks fine)
 
     Add all of the new files for a post:
     git add content/posts/*
