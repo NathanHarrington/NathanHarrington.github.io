@@ -1,71 +1,57 @@
-Title: conda, pyside and incompatible QT libraries
-Date:  2016-10-27
+Title: Innosetup and manifest files for HiDPI displays
+Date:  2017-08-21
 Category: articles
 Tags: wasatch photonics
 
-Design a UI in Qt Designer on Linux. Commit it github, move to a windows
-system for testing. Now you get the message:
+Use PySide 1.2 and Python 2.7. Deploy to various HiDPI displays for
+testing.
+
+You may see text that is either clipped, too large, or too small. 
+Everything looks fine on Linux, but on Windows with the default scaling
+for HiDPI displays (125%), it can look like this:
+
+[![Fat font issue](/images/wasatch-images/fat_font_issue.png)](/images/wasatch-images/fat_font_issue.png)
 
 
-    Cannot mix incompatible Qt library (version 0x40807) with this library
-    (version 0x40804)
+You'll want it to look like this:
+
+[![Fixed Fat font
+issue](/images/wasatch-images/fixed_fat_font_issue.png)](/images/wasatch-images/fixed_fat_font_issue.png)
 
 
-
-What this means is that you included SVG files in one of your resource
-.qrc's. They look fine in QT Designer on both Linux and Windows.  When
-you attempt to run the application, it fails with the error message
-above.  Only on windows though. And only after creating the project on a
-Linux machine. 
-
-To fix this, aim to more closely match the environment configurations on
-both Linux and windows. The approach below will give you SVG and PNG
-support on Linux, but PNG support only on windows.
-
-Windows setup:
-
-    git clone https://github.com/WasatchPhotonics/Dash
-    conda create --name conda_dash_pyside_specified pyside=1.2.0
-    source activate conda_dash_pyside_specified
-    conda install numpy pillow pytest pyqtgraph pytest-cov                                    
-    python setup.py develop                                                                        
-    ./scripts/rebuild_resources.sh                                                                 
-    py.test 
+The solution is to modify your innosetup configuration to modify the
+registry:
 
 
-Linux setup:
-
-    git clone https://github.com/WasatchPhotonics/Dash
-    conda create --name conda_dash_pyside_specified pyside=1.2.0
-    source activate conda_dash_pyside_specified
-    conda install numpy pillow pytest pyqtgraph pytest-cov                                    
-    conda remove pyside
-    pip install pyside==1.2.0
-    python setup.py develop                                                                        
-    ./scripts/rebuild_resources.sh                                                                 
-    py.test 
-                                                                                                    
-
-Alternatively, run the following environment commands on linux and
-windows to get appropriate build environments including SVG.
+    [Registry]
+    ; PySide/PyQt 4.x does not support HiDPI displays. This mitigation
+    ; approach turns on system-wide preference for external manifest, then
+    ; installs a custom manifest file
+    Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide"; ValueType: dword; ValueName: "PreferExternalManifest"; ValueData: "1"; check: IsWin64;
+    Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide"; ValueType: dword; ValueName: "PreferExternalManifest"; ValueData: "1"; check: "not IsWin64";
 
 
-    git clone https://github.com/WasatchPhotonics/Dash
+Then copy the manifest file:
 
-    conda create --name conda_dash_pyside_specified pyside=1.2.0
 
-    source activate conda_dash_pyside_specified
+    [Files]
+    ...
+    ; Manifest file for HiDPI mitigation - see above
+    Source: "support_files\Enlighten.exe.manifest"; DestDir: "{app}\Enlighten\"; Flags: recursesubdirs ignoreversion
+    ...
+                                       
+ 
 
-    conda install numpy pillow pytest pyqtgraph pytest-cov                                    
+All is well, except when running the application post install in
+InnoSetup. 
 
-    python setup.py develop                                                                        
+If you run post install you will see the application run with the
+wrong HiDPI configuration, but if you run after the
+installer has terminated, the application looks correct.
 
-    conda remove pyside
+The temporary fix is to disable running post install, and depend on the
+user to complete the install then run the application manually.
 
-    pip install pyside==1.2.4
-    # wheel install on windows, wait a long time on linux
-
-    ./scripts/rebuild_resources.sh                                                                 
-
-    py.test 
-
+Do you have a solution for this? If so, please update the
+[PySideApp](https://github.com/WasatchPhotonics/PySideApp)
+demonstration application.
