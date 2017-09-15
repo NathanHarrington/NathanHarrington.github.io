@@ -4,6 +4,40 @@ Category: articles
 Tags: business model canvas
 
 
+One pager:
+
+The search for software value propositions customers can't resist,
+embedded in profitable and scalable business models.
+
+How are we going to do that? The business model canvas.
+
+What will be the result?
+A new idea shaped by the business model canvas that is profitable and
+will compliment the processes currently in place to run the business.
+Target date is 20171231. Profitability in this context includes letters
+of intent or (preferrably) actual transactions.
+
+What are you tactics used to achieve this:
+Perform the research, incorporation, execution cycle for each stage.
+
+First stage: program overview (everything on this one page)
+
+Second stage: What was done, what we know now.
+    This includes the top level business model canvas
+
+Stage 3: Meta-BMC - what makes a good business model canvas?
+
+Stage 4: Value propositions
+
+Stage 5: Customer segments
+
+Stage 6: Customer discovery and product market fit
+
+Stage 7: Test assumptions, Gather data, gain insights, repeat
+
+
+
+
 2017-09-15 07:34 first half of what we know now card stack from
 education through strategy took 25 minutes for initial pass memorization
 second half in 13 minutes
