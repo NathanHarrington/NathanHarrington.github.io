@@ -1,4 +1,4 @@
-Title: Hello!
+Title: Nathan Harrington - About
 Date: 2016-05-01
 Category: About
 save_as: index.html
