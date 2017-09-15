@@ -20,9 +20,9 @@ of intent or (preferrably) actual transactions.
 What are you tactics used to achieve this:
 Perform the research, incorporation, execution cycle for each stage.
 
-First stage: program overview (everything on this one page)
+Stage 1: program overview (everything on this one page)
 
-Second stage: What was done, what we know now.
+Stage 2: What was done, what we know now.
     This includes the top level business model canvas
 
 Stage 3: Meta-BMC - what makes a good business model canvas?
