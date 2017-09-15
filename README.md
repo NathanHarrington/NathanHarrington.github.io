@@ -9,6 +9,8 @@ Nathan Harrington personal static site using pelican.
     
     Clone the pelican-themes fork:
     git clone https://github.com/NathanHarrington/pelican-themes ~/projects/pelican-themes
+    cd ~/projects/pelican-themes
+    git checkout personal-bootstrap3
 
     export PATH=~/miniconda2/bin:$PATH
     conda create --name pelican_env pip
