@@ -4,15 +4,16 @@ Category: articles
 Tags: business model canvas
 
 
-Second stage: What used to be done, what we now know, and the top level
-of the business model canvas.
+## What used to be done, what we now know, and the top level of the business model canvas.
+
 
 
 Research of known effective materials:
+-------------------------------------
 
-Udacity course: How to Build a Startup
-Lesson 1:
-https://classroom.udacity.com/courses/ep245/lessons/48743167/concepts/487500570923
+Udacity course: [How to Build a Startup](https://classroom.udacity.com/courses/ep245)
+
+Lesson 1: [Before you get started](https://classroom.udacity.com/courses/ep245/lessons/48743167/concepts/487500570923)
 
 Lesson 2:
 https://classroom.udacity.com/courses/ep245/lessons/48696636/concepts/487540090923
@@ -20,15 +21,15 @@ https://classroom.udacity.com/courses/ep245/lessons/48696636/concepts/4875400909
 Lesson 3:
 https://classroom.udacity.com/courses/ep245/lessons/48722304/concepts/487162750923
 
-Lean startup by Eric Ries
-http://theleanstartup.com/book
+[Lean startup](http://theleanstartup.com/book) by Eric Ries
+
+-----------
+
+## Incorporation:
 
 
-Incorporation:
-
-Split into three card decks. Card deck one:
-
------------------- What used to be done? -------------------
+#### Card deck one of three: What used to be done?
+```
 Why are you here?
 What does it take to go from an idea to a business?
 
@@ -73,10 +74,11 @@ No processes to manage customer risk.
 ##### Organization #####
 Functional organizations from day 1. Silos for marketing, sales and
 engineering because that's the way large companies were structured.
+```
 
+#### Card deck two of three: What we now know
 
-Card deck two:
------------------- What we now know -----------------------
+```
 ##### Education #####
 We now know something we didn't know before, the right way to build
 startups.
@@ -120,10 +122,11 @@ Founder -> Get out of the building
 
 Startups are not a smaller version of a large company
 Startups do search, large companies focus on execution
+```
 
 
-Card deck three: 
--------------------- Top level of business model canvas: -------------
+#### Card deck three of three: Top level of business model canvas
+```
 What is a business model?
 How a company creates value for itself while delivering products or
 services for customers.
@@ -168,10 +171,11 @@ business model work?
 
 9. Costs
 What are the costs to operate the business model?
+```
 
 
 
-Execution:
+## Execution:
 
 
 
