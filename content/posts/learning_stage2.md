@@ -191,6 +191,12 @@ First and second half of "What used to be done" card stack took
 approximately 1.5 hours spread over a 7 hour interval with many
 interruptions.
 
+During this process, it is possible to augment the memorization by
+writing the cards out. By presenting the front of the cards and then
+typing the contents in the text file. This approach can facilitate
+memorization where speaking out loud is distracting to others.
+
+
 
 First half of "what we now know" card stack from education through
 strategy took 25 minutes for initial pass memorization.  Second half in
