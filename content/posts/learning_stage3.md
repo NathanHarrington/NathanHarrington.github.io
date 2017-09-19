@@ -46,8 +46,14 @@ Make sure to view the entire canvas here - there are sticky notes
 
 ## Meta Business Model Canvas
 The business model canvas is just one tool.
-It has a place in the continuum of wide angle and narrowly focused
+It has a place in the continuum of broad view and narrowly focused
 resources for modelling businesses.
+
+The business model canvas is shaped by four areas:
+Left is industry forces, Top is key trends, right is market forces,
+bottom is macro-economic trends 
+
+Zooming in gives us customer development and agile engineering.
 
 A good business model canvas stays within it's boundaries.
 
@@ -57,19 +63,9 @@ Used corporately as shared language to have better strategic conversations.
 
 Individually used to structure your thinking.
 
-The business model canvas is shaped by four areas:
-Market Forces, Key Trends, Industry Forces and Macro-Economic trends
-
-Left is industry forces, Top is key trends, right is market forces,
-bottom is macro-economic trends 
-
-The canvas is just a tool in the chain of
-understanding for the business. Zooming in gives us customer development
-and agile engineering.
 
 ## What makes a good business model canvas?
 
-What are the components?
 Coarse grained visual indicators:
 A large rectangle, suitable for the environment and the participants.
 [24" x 36" Heavyweight poster board](
@@ -80,79 +76,60 @@ http://www.officedepot.com/a/products/877664/Post-it-Pop-Up-Notes-3/)
 [Black only, standard sharpie](
 http://www.officedepot.com/a/products/203349/Sharpie-Permanent-Fine-Point-Markers-Black/)
 
-Use sticky notes, no writing on the canvas allowed.
-Your guesses are probably wrong.
+Ground rules for physical and virtual canvases:
+Don't write on the canvas. 
+Keep things flexible with mobile ideas on stickys.
+Move things on and off the canvas.
+Include text and imagery on each sticky.
+
+Do not use a white board, as it will encourage writing on the canvas
+directly, diluting it's effectiveness.
 
 As we find insights, we will change the canvas by moving stickys off or
 adding new ones.
 
-Use blue painters tape to attach the canvas to the wall. Do not use a
-white board to even draw the canvas, as it will have it's effectiveness
-diluted by writing on the canvas directly.
-
-Ground rules:
-Don't write on the canvas. 
-Keep things flexible with mobile ideas. 
-Move things on and off the canvas
 
 One idea per sticky
 Don't make bullet points on stickys. 
 Use two sticky notes to describe two different concepts. 
-    Like physical store sales and  your companys website.
-This allows you to play around with the elements of your business model. 
-It's supposed to be dynamic. It's supposed to include play.
+    Like physical store sales and your companys web-store.
 
-Notice the business model canvas PDF has very short descriptions and
-iconography. Each description is on one line, and it has simple
-iconagraphy. It does not include the full list of questions that let you
-populate the canvas.
+It is supposed to be dynamic.
+This approach allows you to play with the elements of the business model
+    to gain understanding.
 
-Whatever tool you use, whether the google doc template or the business
-model canvas fiddle, follow the same concepts of what makes a good
-business model canvas.
+Use these same concepts for physical and virtual canvases
+
+Whether a paper on the wall or the business model canvas fiddle, follow
+the same concepts of what makes a good business model canvas.
 
 
+## Execution:
 
------ See the 'learn to draw' section for details on how to communicate
-visually for developing artists. ----
+Print out many of the business model canvases, then draw your
+iconagraphy and start populating based on the questions at the current
+level. Don't worry about perfection, but do start with a real value
+proposition you want to test. Do focus on meeting the standards of the
+tool. That is, don't dig deep into the business model canvas book or the
+value proposition detailed questions yet. Stay focused on just the
+highest level for right now, then stage 4 and 5 will allow you to get
+hyper focused when you are ready.
 
+Here is a [simple SVG business model
+canvas](../images/learning/business_model_canvas_template.svg) created in inkscape. It will
+not print correctly from inkscape, but looks close enough when printed
+from Firefox on linux to a HP OfficeJet PRO X576DW MFP.
 
-There is deep value in hand drawing iconagraphy as well to provide that
-text+visualization communication method. The icons provided seem
-ill-suited for hand re-creation. Searching for a set of line drawings
-that you can learn to help with this communication.
+------------------------------------------
+Lessons learned:
 
-You don't need a set of sophisticated imagery and a skilled hand at
-communicating any concept. You do need to have just the iconagraphy
-practiced for the components of the business model canvas so you can
-demonstrate the value of imagery. Spend time praticing outline drawn
-versions of the iconagraphy from the strategyzer business model canvas. 
+Meta-BMC cards took 10 minutes for straight through memorization
+What makes a good BMC cards to 27 minutes for straight through
+memorization
 
-why is this required? Because the strategyzer Key Activities icon is:
+It's so powerful. It's so encouragingly effective. Actually went through
+this research, incorporation stages, and I am transformed through the
+study and knowledge. Now for the execution part. Now to make a business
+model canvas according to the known effective execution materials from
+the Steve Blank resources:
 
-
-And that takes a long time and unusual skill to hand draw.
-An easier image to draw in the real life context of people waiting and
-watching is:
-
-
-See the image below for the full outline imagery to practice:
-
-
-Core concepts from the [creativeblog guide](
-http://www.creativebloq.com/illustration/how-draw-basic-shapes-31619534) that seem to immediately improve line drawing quality:
-
->Draw with the arm, not with the fingers.
->Position the utensil like writing, but move the arm, don't articulate
->the joints of the phalanges.
->Pull the utensil.
-
->Pre-visualize: pinpoint your start point, imagine the end point.
->Pull your mark along the imagined path removing the pencil once it
->reaches the end point.
-
-
-All that seems needed for this juncture is a basic level of skill and
-knowledge of what to draw. Don't try and make it up during the BMC
-generation, know ahead of time a series of line drawings that you have
-practiced. Starting for now with the imagery above.

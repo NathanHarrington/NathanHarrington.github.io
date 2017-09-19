@@ -34,24 +34,3 @@ Stage 5: Customer segments
 Stage 6: Customer discovery and product market fit
 
 Stage 7: Test assumptions, Gather data, gain insights, repeat
-
-
-
-
-Starting stage 3: Meta-bmc. What makes a good business model canvas 
-
-Immersion:
-
-Udacity course:
-https://classroom.udacity.com/courses/ep245/lessons/48726358/concepts/483919610923
-
-Strategyzer resources:
-the-business-model-canvas-instruction-manual.pdf
-the-business-model-design-space-card-deck.pdf
-designing-crystal-clear-business-model-canvases.pdf
-the-business-model-canvas.pdf
-
-Google docs business model canvas
-https://docs.google.com/drawings/d/102mOZQmMxs0CslmNsPZ5KCNQwAIh9rh4baYgT0VWNAA/template/preview?usp=drive_web
-
-
