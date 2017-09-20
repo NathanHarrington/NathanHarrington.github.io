@@ -1,5 +1,5 @@
 Title: Stage Two: What used to be done, what we now know.
-Date:  2017-09-15
+Date:  2017-09-16
 Category: articles
 Tags: business model canvas
 
@@ -174,14 +174,9 @@ What are the costs to operate the business model?
 
 
 ## Execution:
-
-
-
-
-
 -------------------------------------------------------------------------
-Lessons learned:
 
+Lessons learned:
 
 Metrics on memorization:
 

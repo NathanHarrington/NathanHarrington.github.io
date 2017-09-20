@@ -4,8 +4,9 @@ Category: articles
 Tags: business model canvas
 
 
-One pager:
+**Page 1 of 1 card deck:**
 
+```
 The search for software value propositions customers can't resist,
 embedded in profitable and scalable business models.
 
@@ -34,3 +35,4 @@ Stage 5: Customer segments
 Stage 6: Customer discovery and product market fit
 
 Stage 7: Test assumptions, Gather data, gain insights, repeat
+```

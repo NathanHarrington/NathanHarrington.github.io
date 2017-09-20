@@ -1,14 +1,13 @@
 Title: Stage Three: Meta-Business Model Canvas.
-Date:  2017-09-15
+Date:  2017-09-17
 Category: articles
 Tags: business model canvas
 
 
-## Third Stage: Meta-BMC - what makes a good business model canvas?
+Third Stage: Meta-BMC - what makes a good business model canvas?
 
 
-Research of known effective materials:
--------------------------------------
+**Research of known effective materials:**
 
 Udacity course: How to Build a Startup, Lesson 4: [Business Models and Customer Development](
 https://classroom.udacity.com/courses/ep245/lessons/48726358/concepts/483919610923)
@@ -44,7 +43,11 @@ Make sure to view the entire canvas here - there are sticky notes
 [Business Model Canvas "Fiddle"](https://bmfiddle.com/f/#/)
 
 
-## Meta Business Model Canvas
+-----------
+
+#### Incorporation:
+**Card deck one of two: Meta Business Model Canvas**
+```
 The business model canvas is just one tool.
 It has a place in the continuum of broad view and narrowly focused
 resources for modelling businesses.
@@ -62,10 +65,10 @@ Sketch out new business ideas or visualize existing businesses.
 Used corporately as shared language to have better strategic conversations.
 
 Individually used to structure your thinking.
+```
 
-
-## What makes a good business model canvas?
-
+** Card deck two of two: What makes a good business model canvas?**
+```
 Coarse grained visual indicators:
 A large rectangle, suitable for the environment and the participants.
 [24" x 36" Heavyweight poster board](
@@ -102,9 +105,10 @@ Use these same concepts for physical and virtual canvases
 
 Whether a paper on the wall or the business model canvas fiddle, follow
 the same concepts of what makes a good business model canvas.
-
+```
 
 ## Execution:
+-------------------------------------------------------------------------
 
 Print out many of the business model canvases, then draw your
 iconagraphy and start populating based on the questions at the current
