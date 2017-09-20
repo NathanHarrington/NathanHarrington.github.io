@@ -66,6 +66,13 @@ Used corporately as shared language to have better strategic conversations.
 
 Individually used to structure your thinking.
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_front.jpg)](/images/learning/learning_meta_bmc_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_back.jpg)](/images/learning/learning_meta_bmc_card_deck_back.jpg)
+
+
+
 
 ** Card deck two of two: What makes a good business model canvas?**
 ```
@@ -106,9 +113,14 @@ Use these same concepts for physical and virtual canvases
 Whether a paper on the wall or the business model canvas fiddle, follow
 the same concepts of what makes a good business model canvas.
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_what_makes_a_good_bmc_card_deck_front.jpg)](/images/learning/learning_what_makes_a_good_bmc_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_what_makes_a_good_bmc_card_deck_back.jpg)](/images/learning/learning_what_makes_a_good_bmc_card_deck_back.jpg)
 
-## Execution:
+
 -------------------------------------------------------------------------
+## Execution:
 
 Print out many of the business model canvases, then draw your
 iconagraphy and start populating based on the questions at the current
@@ -136,4 +148,10 @@ this research, incorporation stages, and I am transformed through the
 study and knowledge. Now for the execution part. Now to make a business
 model canvas according to the known effective execution materials from
 the Steve Blank resources:
+
+
+**Example canvases**
+[![Example one]
+(/images/learning/thumbnails/Large_canvas_example_one.jpg)](/images/learning/Large_canvas_example_one.jpg)
+[![Example two](/images/learning/thumbnails/Large_canvas_example_two.jpg)](/images/learning/Large_canvas_example_two.jpg)
 
