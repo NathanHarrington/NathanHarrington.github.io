@@ -36,3 +36,9 @@ Stage 6: Customer discovery and product market fit
 
 Stage 7: Test assumptions, Gather data, gain insights, repeat
 ```
+
+** Card Deck Images**
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_front.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_back.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_back.jpg)

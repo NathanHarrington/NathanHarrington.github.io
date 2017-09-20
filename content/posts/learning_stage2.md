@@ -74,7 +74,13 @@ No processes to manage customer risk.
 Functional organizations from day 1. Silos for marketing, sales and
 engineering because that's the way large companies were structured.
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_front.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_back.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_back.jpg)
 
+
+---------------------------
 **Card deck two of three: What we now know**
 
 ```
@@ -122,7 +128,13 @@ Founder -> Get out of the building
 Startups are not a smaller version of a large company
 Startups do search, large companies focus on execution
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_what_we_now_know_card_deck_front.jpg)](/images/learning/learning_what_we_now_know_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_what_we_now_know_card_deck_back.jpg)](/images/learning/learning_what_we_now_know_card_deck_back.jpg)
 
+
+------------------------------
 **Card deck three of three: Top level of business model canvas**
 ```
 What is a business model?
@@ -171,10 +183,15 @@ business model work?
 What are the costs to operate the business model?
 ```
 
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_top_level_bmc_card_deck_front.jpg)](/images/learning/learning_top_level_bmc_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_top_level_bmc_card_deck_back.jpg)](/images/learning/learning_top_level_bmc_card_deck_back.jpg)
 
 
-## Execution:
+
 -------------------------------------------------------------------------
+## Execution:
 
 Lessons learned:
 
@@ -235,3 +252,4 @@ are photographed front and back in order of memorization. If you lose a
 card stack or they get out of order, consult the images here for
 recreation of how the content of the text above is split into card
 stacks.
+
