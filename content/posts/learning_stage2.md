@@ -4,12 +4,11 @@ Category: articles
 Tags: business model canvas
 
 
-## What used to be done, what we now know, and the top level of the business model canvas.
+What used to be done, what we now know, and the top level of the business model canvas.
 
 
 
-Research of known effective materials:
--------------------------------------
+**Research of known effective materials:**
 
 Udacity course: [How to Build a Startup](https://classroom.udacity.com/courses/ep245)
 
@@ -25,10 +24,10 @@ https://classroom.udacity.com/courses/ep245/lessons/48722304/concepts/4871627509
 
 -----------
 
-## Incorporation:
+#### Incorporation:
 
 
-#### Card deck one of three: What used to be done?
+**Card deck one of three: What used to be done?**
 ```
 Why are you here?
 What does it take to go from an idea to a business?
@@ -76,7 +75,7 @@ Functional organizations from day 1. Silos for marketing, sales and
 engineering because that's the way large companies were structured.
 ```
 
-#### Card deck two of three: What we now know
+**Card deck two of three: What we now know**
 
 ```
 ##### Education #####
@@ -124,8 +123,7 @@ Startups are not a smaller version of a large company
 Startups do search, large companies focus on execution
 ```
 
-
-#### Card deck three of three: Top level of business model canvas
+**Card deck three of three: Top level of business model canvas**
 ```
 What is a business model?
 How a company creates value for itself while delivering products or

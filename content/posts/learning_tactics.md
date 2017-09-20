@@ -4,7 +4,8 @@ Category: articles
 Tags: business model canvas
 
 
-What are you tactics used to achieve this:
+What are your tactics used to achieve this?
+
 Perform the research, incorporation, execution cycle for each stage.
 
 Research:
