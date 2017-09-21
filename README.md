@@ -20,8 +20,7 @@ Nathan Harrington personal static site using pelican.
     In one window, setup auto-reloader of content (but not .conf files)
     source activate pelican_env
     cd ~/projects/NathanHarrington.github.io
-    pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/
-        --output ./
+    pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/ --output ./
     
     In a second window, setup the pelican webserver:
     source activate pelican_env

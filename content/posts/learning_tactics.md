@@ -8,6 +8,7 @@ What are your tactics used to achieve this?
 
 Perform the research, incorporation, execution cycle for each stage.
 
+```
 Research:
 
     Stay focused on the strategies from the known effective materials.
@@ -39,11 +40,18 @@ Execution:
     Use the tactics from the known effective materials.
     Perform the key activities for the current stage.
 
+```
+** Card Deck Images**
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_research_incorporation_execution_card_deck_front.jpg)](/images/learning/learning_research_incorporation_execution_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_research_incorporation_execution_card_deck_back.jpg)](/images/learning/learning_research_incorporation_execution_card_deck_back.jpg)
+
 
 Resources for the mind gym:
-The Way of the Seal, by Mark Divine page 30
-https://www.amazon.com/Way-SEAL-Think-Warrior-Succeed/dp/1621451097
+[The Way of the Seal](https://www.amazon.co, by Mark Divine page
+30m/Way-SEAL-Think-Warrior-Succeed/dp/1621451097), by Mark Divine page 30
 
-SealFIT blog entry:
-https://sealfit.com/sealfit-blog-visualizing-success-part-3-plus-a-peak-performance-exercise/
+[SealFIT blog]
+entry:(https://sealfit.com/sealfit-blog-visualizing-success-part-3-plus-a-peak-performance-exercise/)
 
