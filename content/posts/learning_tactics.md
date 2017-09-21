@@ -43,15 +43,12 @@ Execution:
 ```
 ** Card Deck Images**
 [![Front of Card
-Deck](/images/learning/thumbnails/learning_research_incorporation_execution_card_deck_front.jpg)](/images/learning/learning_research_incorporation_execution_card_deck_front.jpg)
+Deck](/images/learning/thumbnails/learning_res_inc_exc_card_deck_front.jpg)](/images/learning/learning_res_inc_exc_card_deck_front.jpg)
 [![Back of Card
-Deck](/images/learning/thumbnails/learning_research_incorporation_execution_card_deck_back.jpg)](/images/learning/learning_research_incorporation_execution_card_deck_back.jpg)
+Deck](/images/learning/thumbnails/learning_res_inc_exc_card_deck_back.jpg)](/images/learning/learning_res_inc_exc_card_deck_back.jpg)
 
 
-Resources for the mind gym:
-[The Way of the Seal](https://www.amazon.co, by Mark Divine page
-30m/Way-SEAL-Think-Warrior-Succeed/dp/1621451097), by Mark Divine page 30
+Resources for the mind gym: [The Way of the Seal](https://www.amazon.com/Way-SEAL-Think-Warrior-Succeed/dp/1621451097), by Mark Divine page 30
 
-[SealFIT blog]
-entry:(https://sealfit.com/sealfit-blog-visualizing-success-part-3-plus-a-peak-performance-exercise/)
+[SealFIT blog](https://sealfit.com/sealfit-blog-visualizing-success-part-3-plus-a-peak-performance-exercise/)
 
