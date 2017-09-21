@@ -4,10 +4,8 @@ Category: articles
 Tags: business model canvas
 
 
-## Learn to draw for communication
-
-There is deep value in hand drawing iconagraphy as well to provide that
-text+visualization communication method. The icons provided by
+There is deep value in hand drawing iconagraphy to provide the text
+*and* visualization communication method. The icons provided by
 strategyzer and others seem ill-suited for hand re-creation by
 developing artists.
 
@@ -20,18 +18,26 @@ canvas.
 
 Why is this required? Because the strategyzer Key Activities icon is:
 
+![Key Activities Icon](/images/learning/test.jpg)
 
-And that takes a long time and unusual skill to hand draw.
-An easier image to draw in the real life context of people waiting and
-watching is:
+
+And that shading in of the negative image around the check mark takes
+long time and unusual skill to hand draw.  An easier image to draw in
+the real life context of people waiting and watching is the simple check
+mark underneath.
 
 
 See the image below for the full outline imagery to practice:
 
+[![Key Activities
+Icon](/images/learning/thumbnails/learning_bmc_line_icons.jpg)](/images/learning/learning_bmc_line_icons.jpg)
 
-Follow the core concepts from the [creativebloq guide](
+
+
+
+When practicing, follow the core concepts from the [creativebloq guide](
 http://www.creativebloq.com/illustration/how-draw-basic-shapes-31619534)
-that immediately imporve the quality and repeatability of the line
+that immediately improve the quality and repeatability of the line
 drawings:
 
 >Draw with the arm, not with the fingers.
