@@ -18,11 +18,11 @@ canvas.
 
 Why is this required? Because the strategyzer Key Activities icon is:
 
-![Key Activities Icon](/images/learning/test.jpg)
+![Key Activities Icon](/images/learning/learning_key_activities.jpg)
 
 
 And that shading in of the negative image around the check mark takes
-long time and unusual skill to hand draw.  An easier image to draw in
+a long time and unusual skill to hand draw.  An easier image to draw in
 the real life context of people waiting and watching is the simple check
 mark underneath.
 
@@ -32,6 +32,11 @@ See the image below for the full outline imagery to practice:
 [![Key Activities
 Icon](/images/learning/thumbnails/learning_bmc_line_icons.jpg)](/images/learning/learning_bmc_line_icons.jpg)
 
+
+And here is a link for the vertically listed business model canvas
+components with space to practice the line drawings. Print this out from
+firefox [BMC Vertical for line
+art](/images/learning/business_model_canvas_top_to_bottom.png)
 
 
 

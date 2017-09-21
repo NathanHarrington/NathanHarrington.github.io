@@ -14,11 +14,10 @@ Udacity course: [How to Build a Startup](https://classroom.udacity.com/courses/e
 
 Lesson 1: [Before you get started](https://classroom.udacity.com/courses/ep245/lessons/48743167/concepts/487500570923)
 
-Lesson 2:
-https://classroom.udacity.com/courses/ep245/lessons/48696636/concepts/487540090923
+Lesson 2: [What we now know](
+https://classroom.udacity.com/courses/ep245/lessons/48696636/concepts/487540090923)
 
-Lesson 3:
-https://classroom.udacity.com/courses/ep245/lessons/48722304/concepts/487162750923
+Lesson 3: [Business Models and Customer Development](https://classroom.udacity.com/courses/ep245/lessons/48722304/concepts/487162750923)
 
 [Lean startup](http://theleanstartup.com/book) by Eric Ries
 

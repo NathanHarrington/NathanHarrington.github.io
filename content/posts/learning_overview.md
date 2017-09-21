@@ -1,5 +1,5 @@
 Title: Notes on transformational learning
-Date:  2017-09-15
+Date:  2017-09-14
 Category: articles
 Tags: business model canvas
 

@@ -78,13 +78,8 @@ Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_back.jpg)](/images
 ```
 Coarse grained visual indicators:
 A large rectangle, suitable for the environment and the participants.
-[24" x 36" Heavyweight poster board](
-http://www.officedepot.com/a/products/978039/Office-Depot-Brand-Heavyweight-Poster-Board/)
-
-[Regular size 3x3" post it notes](
-http://www.officedepot.com/a/products/877664/Post-it-Pop-Up-Notes-3/)
-[Black only, standard sharpie](
-http://www.officedepot.com/a/products/203349/Sharpie-Permanent-Fine-Point-Markers-Black/)
+Regular size 3x3" post it notes
+Black only, standard sharpie
 
 Ground rules for physical and virtual canvases:
 Don't write on the canvas. 
@@ -128,8 +123,17 @@ level. Don't worry about perfection, but do start with a real value
 proposition you want to test. Do focus on meeting the standards of the
 tool. That is, don't dig deep into the business model canvas book or the
 value proposition detailed questions yet. Stay focused on just the
-highest level for right now, then stage 4 and 5 will allow you to get
-hyper focused when you are ready.
+highest level for right now, then stage 4 and 5 of the program overview
+will allow you to get hyper focused when you are ready.
+
+Specifically, as you develop business model canvases, don't get
+distracted by the detailed components of what makes a key partner for
+example. Just answer the top level questions:
+"What key partners and suppliers are neccessary to make the busines
+model work?"
+and
+"Who are your customers, and why would they buy?"
+
 
 Here is a [simple SVG business model
 canvas](../images/learning/business_model_canvas_template.svg) created in inkscape. It will
@@ -148,6 +152,18 @@ this research, incorporation stages, and I am transformed through the
 study and knowledge. Now for the execution part. Now to make a business
 model canvas according to the known effective execution materials from
 the Steve Blank resources:
+
+Links to the exact materials used:
+
+A large rectangle, suitable for the environment and the participants:
+
+[24" x 36" Heavyweight poster board](
+http://www.officedepot.com/a/products/978039/Office-Depot-Brand-Heavyweight-Poster-Board/)
+
+[Regular size 3x3" post it notes]( http://www.officedepot.com/a/products/877664/Post-it-Pop-Up-Notes-3/)
+
+[Black only, standard sharpie](
+http://www.officedepot.com/a/products/203349/Sharpie-Permanent-Fine-Point-Markers-Black/)
 
 
 **Example canvases**
