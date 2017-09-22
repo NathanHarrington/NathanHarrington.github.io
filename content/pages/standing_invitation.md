@@ -7,7 +7,7 @@ harrington.nathan@gmail.com  I will reply to virtually anything you send
 me.
 
 If you happen to be in the Central North Carolina, USA area, I would
-also love to meet up. Just send me an email. The first coffe (or Donut)
+also love to meet up. Just send me an email. The first coffee (or pizza)
 is on me!
 
 I got the idea for this invitation from [Michael
