@@ -7,6 +7,21 @@ Tags: business model canvas
 Fourth Stage: Value Propositions
 
 
+Udacity course: How to Build a Startup, Lesson 5: [Value Propositions](https://classroom.udacity.com/courses/ep245/lessons/48745133/concepts/482999050923)
+
+1. Hypothesis Or Guesses
+5. Hypothesis testing
+
+
+Strategyzer: [Business model canvas instruction manual](
+https://assets.strategyzer.com/assets/resources/the-business-model-canvas-instruction-manual.pdf)
+
+Strategyzer: [Designing crystal clear business model canvases](
+https://assets.strategyzer.com/assets/resources/designing-crystal-clear-business-model-canvases.pdf)
+
+Strategyzer: [Business model design space card deck](
+https://assets.strategyzer.com/assets/resources/the-business-model-design-space-card-deck.pdf)
+
 **Research of known effective materials:**
 
 Udacity course: How to Build a Startup, Lesson 4: [Business Models and Customer Development](

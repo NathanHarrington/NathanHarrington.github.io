@@ -92,19 +92,19 @@ Make the images smaller with:
 Add the following set of line drawn images to the resources area of the
 bmfiddle:
 
-[![channels](/images/learning/bmfiddle_icons/thumbnails/channels.svg)](/images/learning/bmfiddle_icons/channels.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/costs.svg)](/images/learning/bmfiddle_icons/costs.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_relationships.svg)](/images/learning/bmfiddle_icons/customer_relationships.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_segments.svg)](/images/learning/bmfiddle_icons/customer_segments.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_activities.svg)](/images/learning/bmfiddle_icons/key_activities.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_partners.svg)](/images/learning/bmfiddle_icons/key_partners.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_resources.svg)](/images/learning/bmfiddle_icons/key_resources.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/revenue_streams.svg)](/images/learning/bmfiddle_icons/revenue_streams.svg)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/value_proposition.svg)](/images/learning/bmfiddle_icons/value_proposition.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/channels.png)](/images/learning/bmfiddle_icons/channels.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/costs.png)](/images/learning/bmfiddle_icons/costs.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_relationships.png)](/images/learning/bmfiddle_icons/customer_relationships.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_segments.png)](/images/learning/bmfiddle_icons/customer_segments.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_activities.png)](/images/learning/bmfiddle_icons/key_activities.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_partners.png)](/images/learning/bmfiddle_icons/key_partners.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_resources.png)](/images/learning/bmfiddle_icons/key_resources.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/revenue_streams.png)](/images/learning/bmfiddle_icons/revenue_streams.png)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/value_proposition.png)](/images/learning/bmfiddle_icons/value_proposition.png)
 
 
 You can use the sketch tool, but it will not have a transparent
-background.
+background. 
 
 
 
@@ -126,4 +126,24 @@ Take a snapshot first.
 when in doubt, just hit that snapshot button
 Move stickies on and off to the stack, or maybe the archive. Never
 delete them.
+
+
+I finally get it. I was just playing at efficiency before. Now I truly
+see what a liberation it is. Specificaly with the 4HWW concepts and
+travel. I'm just getting ready to go to a panthers game for a single
+sunday. Truly preparing for that forces you to eliminate and focus on
+what is actually essential. My purpose is to create, organize and give
+away businesses. Everything else literally gets in the way and should be
+eliminated. 
+
+That's the frustration I used to see in myself and I see now in others,
+especially the children. Immersion in the mundane leads to a cycle of
+hate you can't escape. You do small, simple things to increase your
+comfort level instead of grow. You break down and watch 5 hours of tv a
+day instead of trying to do anything. 
+
+The opposite is you put in the work when you are ready to do the work.
+And you control the rest of the inputs so they don't blow up the work.
+
+
 
