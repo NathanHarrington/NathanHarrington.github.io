@@ -97,6 +97,34 @@ Nathan Harrington            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h4><a href="/posts/pyinstaller-and-filenames-requiring-py-extensions-on-appveyor.html">Pyinstaller and filenames requiring .py extensions, on appveyor</a></h4>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="summary"><p>With a code base that builds with pyinstaller on a Windows 10 Home
+system, and on appveyor. For example:</p>
+<p><a href="https://github.com/WasatchPhotonics/Dash/tree/75dd8525541cc5f55a73bce91884628324e2776b">Dash 75dd852554</a></p>
+<p>Run a pyinstaller script like:</p>
+<div class="highlight"><pre><span></span>pyinstaller 
+    --distpath=scripts/built-dist 
+    --workpath=scripts/work-path 
+    --noconfirm 
+    --clean 
+    --icon dash/assets/uic_qrc/images/DashIcon.ico 
+    --specpath scripts 
+    scripts/Dash.py
+</pre></div>
+
+
+<p>On Windows 10 …</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <hr/>
+            <article>
                 <h4><a href="/posts/long-term-testing-of-windows-software-in-virtualbox.html">Long term testing of windows software in virtualbox</a></h4>
                 <div class="container-fluid">
                     <div class="row">
@@ -111,7 +139,7 @@ Nathan Harrington            </a>
 disk usage behaves predictably. Ensure there are no crashes. Prevent
 windows from invalidating the process by rebooting due to windows
 updates.</p>
-<p>The steps below were followed for creating multiple machines running ...</p>
+<p>The steps below were followed for creating multiple machines running …</p>
                             </div>
                         </div>
                     </div>
@@ -134,7 +162,7 @@ development visualizations. Here's the workflow for demonstrating the
 collaboration over years, without some of the default details. The
 commands below are designed to produce the visualizations to show
 collaboration and general activity levels, as well as produce animated
-gifs and smaller sets of ...</p>
+gifs and smaller sets of imagery …</p>
                             </div>
                         </div>
                     </div>
@@ -156,10 +184,10 @@ gifs and smaller sets of ...</p>
 <p>The best resource for this process is clearly David Graysons <a href="http://www.davidegrayson.com/signing/">Practical
 Windows Code and Driver Signing</a></p>
 <p>Here are the refined points in that article for aparticular use case: Windows 7 and greater.  Installing a driver package without loading a kernel module.</p>
-<hr />
+<hr>
 <ol>
 <li>
-<p>Go to ...</p></li></ol>
+<p>Go to …</p></li></ol>
                             </div>
                         </div>
                     </div>
@@ -181,7 +209,7 @@ Windows Code and Driver Signing</a></p>
 Wasatch. Provide a series of time, effort and control metrics for
 finding the most efficient mechanisms to move forward.</p>
 <p>This page is the meta description of the effort. The actual work log
-will be recorded ...</p>
+will be recorded …</p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +231,7 @@ will be recorded ...</p>
 for OCT Angiography. No actual OCT processing is included. See the
 screenshots below for more detail. One of the primary goals of this
 system was to create a 'live' demo for faster iteration of design
-concepts. This demo was based on ...</p>
+concepts. This demo was based on …</p>
                             </div>
                         </div>
                     </div>
@@ -246,7 +274,7 @@ systems.</p>
 that is tested. Log setups that spawn processes and all messages go to
 the same file. MVC architecture with separately tested components. </p>
 <p>Fully automated application builds on windows, including
-the installer. This is the basis for a wide ...</p>
+the installer. This is the basis for a wide …</p>
                             </div>
                         </div>
                     </div>
@@ -268,7 +296,7 @@ the installer. This is the basis for a wide ...</p>
 customer, regardless of location. Previous integration systems used
 dropbox, google, or baidu. These are frequently banned by IT departments
 or entire geographical networks. The CookBook is a fully tested web
-application designed to get around these limitations. It's ...</p>
+application designed to get around these limitations. It's also …</p>
                             </div>
                         </div>
                     </div>
@@ -286,31 +314,7 @@ application designed to get around these limitations. It's ...</p>
 python communication with a StrokerARMUSB board. These tests include
 communication with a Phidgets relay device, to place the device in a
 known power state. At Wasatch, we use this for verification of
-protocol ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <hr/>
-            <article>
-                <h4><a href="/posts/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html">FastPM100 - High speed acquisition and visualization of ThorLabs PM100 power meter readings</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                                <div class="col-md-4">
-                                    <a href="/posts/fastpm100-high-speed-acquisition-and-visualization-of-thorlabs-pm100-power-meter-readings.html">
-                                        <img width="200px" src="/images/wasatch-images/fastpm100_thumbnail.gif"></img>
-                                    </a>
-                                </div>
-                        <div class="col-md-8">
-                            <div class="summary"><p>Visualize much higher speed laser power meter readings than the <a href="https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=PM100x">ThorLabs
-Optical power
-meter</a> software. Use <a href="http://zeromq.org">zmq</a> and multiple visualization modes
-to show instantaneous and long term laser power meter trends. This is
-used at <a href="http://wasatchphotonics.com">Wasatch Photonics</a> for laser output power stability of our laser
-can diodes. </p>
-<p>It's also ...</p>
+protocol …</p>
                             </div>
                         </div>
                     </div>

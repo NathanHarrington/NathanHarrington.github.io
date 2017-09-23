@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="wasatch photonics" />
-        <meta name="description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application ..." />
+        <meta name="description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application …" />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="SVG icons in PySide on Windows 7"/>
         <meta property="og:url" content="/posts/svg-icons-in-pyside-on-windows-7.html"/>
-        <meta property="og:description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application ..."/>
+        <meta property="og:description" content="Your application icons look great. They are saved in .svg format, loaded into Qt Designer, and distributed with pyinstaller as resource files. Except on windows 7. No error messages, no crashes, no information on why the icons are missing. The issue is the included qsvg4.dll distributed with the application …"/>
         <meta property="article:published_time" content="2016-12-20" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="wasatch photonics" />
@@ -113,9 +113,9 @@ into Qt Designer, and distributed with pyinstaller as resource files.</p>
 pyinstaller. It appears to be the wrong file.</p>
 <p>On your development windows machine, you see the following qsvg4.dll
 files:</p>
-<p><img alt="qsvg4.dll Locations" src="/images/wasatch-images/qsvg4_locations.png" /></p>
+<p><img alt="qsvg4.dll Locations" src="/images/wasatch-images/qsvg4_locations.png"></p>
 <p>Not all 22KB files are the same. Look at the file sizes in detail:</p>
-<p><img alt="qsvg4.dll sizes" src="/images/wasatch-images/qsvg4_sizes.png" /></p>
+<p><img alt="qsvg4.dll sizes" src="/images/wasatch-images/qsvg4_sizes.png"></p>
 <p>You must use the 22,016KB version in the runtime distributable. No
 amount of pyinstaller machinations, includes, or path updates seem to
 make this possible. You must overwrite the pyinstaller included file at
