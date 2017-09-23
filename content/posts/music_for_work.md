@@ -78,6 +78,11 @@ Select music from mpsyt by configuring the columns. You're looking
 for a minimum of 100k views, with at least a 4 to 1 like to dislike
 ratio.
 
+More ideas for finding music non-vocal broad spectrum music. Fadex is
+almost perfet in what you are looking for. Look up their web presence
+and check for entries on their spotify favorites, playlists, and punch
+those names into playlists on mpsyt. 
+
 ## Brown noise + Pink noise
 
 Alternatively or additionally if required, add in brown (low
