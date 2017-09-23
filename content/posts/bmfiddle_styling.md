@@ -89,7 +89,19 @@ should look like this:
 Make the images smaller with:
 .item-asset img.scale-with-grid {
 
-Add the following set of line drawn images at 100x100 png/svg library
+Add the following set of line drawn images to the resources area of the
+bmfiddle:
+
+[![channels](/images/learning/bmfiddle_icons/thumbnails/channels.svg)](/images/learning/bmfiddle_icons/channels.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/costs.svg)](/images/learning/bmfiddle_icons/costs.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_relationships.svg)](/images/learning/bmfiddle_icons/customer_relationships.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_segments.svg)](/images/learning/bmfiddle_icons/customer_segments.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_activities.svg)](/images/learning/bmfiddle_icons/key_activities.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_partners.svg)](/images/learning/bmfiddle_icons/key_partners.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/key_resources.svg)](/images/learning/bmfiddle_icons/key_resources.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/revenue_streams.svg)](/images/learning/bmfiddle_icons/revenue_streams.svg)
+[![channels](/images/learning/bmfiddle_icons/thumbnails/value_proposition.svg)](/images/learning/bmfiddle_icons/value_proposition.svg)
+
 
 You can use the sketch tool, but it will not have a transparent
 background.
