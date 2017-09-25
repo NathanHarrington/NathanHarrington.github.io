@@ -54,10 +54,14 @@ Save the fiddle. It should now look like this:
 
 [![BMfiddle step1](/images/learning/thumbnails/bmfiddle_step1.png)](/images/learning/bmfiddle_step1.png)
 
+Or, use the bmfiddle.com template here: [Business Model Generation with
+Clarity](https://bmfiddle.com/f/#/M7bw6)
+
 
 To eliminate more of the visual distractions, add the 'stylish' plugin
 to firefox. Click the extension icon, then write new style-> for
-bmfiddle.com. Add the contents of the box below:
+bmfiddle.com. Add the contents of the box below, or click here for the
+user style [bmfiddle clarity](https://goo.gl/oLuFte)
 
 ```
 @namespace url(http://www.w3.org/1999/xhtml);
@@ -75,6 +79,8 @@ bmfiddle.com. Add the contents of the box below:
     /* hide the count of stickys in the lower right */
     .block .count {color: #ffffff;}
 
+    /* make icons small on the canvas */
+    .item-asset img.scale-with-grid { max-width: 20%; }
 }
 ```
 
@@ -86,25 +92,59 @@ should look like this:
 [![BMfiddle step2](/images/learning/thumbnails/bmfiddle_step2.png)](/images/learning/bmfiddle_step2.png)
 
 
-Make the images smaller with:
-.item-asset img.scale-with-grid {
 
 Add the following set of line drawn images to the resources area of the
 bmfiddle:
 
 [![channels](/images/learning/bmfiddle_icons/thumbnails/channels.png)](/images/learning/bmfiddle_icons/channels.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/costs.png)](/images/learning/bmfiddle_icons/costs.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_relationships.png)](/images/learning/bmfiddle_icons/customer_relationships.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/customer_segments.png)](/images/learning/bmfiddle_icons/customer_segments.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_activities.png)](/images/learning/bmfiddle_icons/key_activities.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_partners.png)](/images/learning/bmfiddle_icons/key_partners.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/key_resources.png)](/images/learning/bmfiddle_icons/key_resources.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/revenue_streams.png)](/images/learning/bmfiddle_icons/revenue_streams.png)
-[![channels](/images/learning/bmfiddle_icons/thumbnails/value_proposition.png)](/images/learning/bmfiddle_icons/value_proposition.png)
+[![costs](/images/learning/bmfiddle_icons/thumbnails/costs.png)](/images/learning/bmfiddle_icons/costs.png)
+[![customer relationships](/images/learning/bmfiddle_icons/thumbnails/customer_relationships.png)](/images/learning/bmfiddle_icons/customer_relationships.png)
+[![customer segments](/images/learning/bmfiddle_icons/thumbnails/customer_segments.png)](/images/learning/bmfiddle_icons/customer_segments.png)
+[![key activities](/images/learning/bmfiddle_icons/thumbnails/key_activities.png)](/images/learning/bmfiddle_icons/key_activities.png)
+[![key partners](/images/learning/bmfiddle_icons/thumbnails/key_partners.png)](/images/learning/bmfiddle_icons/key_partners.png)
+[![key resources](/images/learning/bmfiddle_icons/thumbnails/key_resources.png)](/images/learning/bmfiddle_icons/key_resources.png)
+[![revenue streams](/images/learning/bmfiddle_icons/thumbnails/revenue_streams.png)](/images/learning/bmfiddle_icons/revenue_streams.png)
+[![value propositions](/images/learning/bmfiddle_icons/thumbnails/value_proposition.png)](/images/learning/bmfiddle_icons/value_proposition.png)
+
+If you're making your own icons, remember to create or verify the icons
+as SVG's with a transparent background. Save them in the bmfiddle_icons
+directory, then run the convert_svg_to_png.sh script, which will create
+the transparent png thumbnails. These are what will be uploaded to the
+resources area on bmfiddle.
 
 
-You can use the sketch tool, but it will not have a transparent
-background. 
+```
+#!/bin/bash
+# convert_svg_to_png.sh
+for i in *.svg
+do
+convert -background none "$i" "${i%svg}png"
+done
+
+# Now convert them to thumbnails
+for i in *.png
+do
+convert -resize 50x50 "$i" "thumbnails/$i"
+done
+```
+
+The icons below are extracted from the
+[uniicons](https://dribbble.com/shots/2266356-Uniicons-free) pack.
+
+
+
+The easiest way to get these into the canvas resources are is to e-mail
+them to <canvas_id>@canvas.bmfiddle.com from the address used to create your
+bmfiddle.com account. On linux, this can look like:
+
+```
+
+mutt <canvas_id>@canvas.bmfiddle.com -s "PNGs" $( printf -- '-a %q ' *.png ) 
+
+```
+
+You can use the sketch tool on bmfiddle, but it will not have a
+transparent background. 
 
 
 
@@ -118,7 +158,7 @@ the tools up front, and have the disciplined flow in the future. The
 next disciplined flow will be:
 
 Log in to bmfiddle.com 
-Create the first draft of the canvas.
+Fork from the clarity canvas.
 Upload the imagery resources.
 
 Now for each update:
@@ -126,6 +166,13 @@ Take a snapshot first.
 when in doubt, just hit that snapshot button
 Move stickies on and off to the stack, or maybe the archive. Never
 delete them.
+
+
+The process above was used to create a bmfiddle.com canvas that looks
+like this:
+
+[![BMfiddle step3](/images/learning/thumbnails/bmfiddle_step3.png)](/images/learning/bmfiddle_step3.png)
+
 
 
 I finally get it. I was just playing at efficiency before. Now I truly
@@ -145,5 +192,5 @@ day instead of trying to do anything.
 The opposite is you put in the work when you are ready to do the work.
 And you control the rest of the inputs so they don't blow up the work.
 
-
-
+You literally work on one thing each and every day: whatever it takes to
+give you more freedom to meet your purpose and make your stand.
