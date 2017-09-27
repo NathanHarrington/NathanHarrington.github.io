@@ -30,6 +30,9 @@ Preview](https://assets.strategyzer.com/assets/resources/value-proposition-desig
 
 #### Incorporation:
 
+
+**Card deck 1 of 6 INTRO
+```
 Chapter 1. Value Proposition
 What product or service are you building, for who, and what does it
 solve for those people?
@@ -37,22 +40,20 @@ solve for those people?
 It's about satisfying a customer need, not just you thinking: "What a
 great idea".
 
-Chapter 4. Minimal Viable product
+Chapter 4. COMPONENTS
 
-What are the components of a value proposition?
 1. The features of your products and services.
 2. What gain are you creating for customers?
 3. What pain are you solving for them?
 
-What is the smallest possible feature set that solves these pains and
-creates gain for them.
+The goal is the smallest possible feature set that solves these pains
+and creates these gains for the customer. 
 
-The goal is to figure out what the MVP is.
-
+That is the Minimally Viable Product.
 
 Chapter 9. PRODUCT
 Which are part of your value proposition?
--manufacture goods, commodities product ...
+-manufactured goods, commodity product...
 
 Which intangible products are part?
 -copyrights, licenses...
@@ -72,19 +73,20 @@ Which core services are part of the value proposition?
 
 Which pre-sales or sales services?
 -help finding right solution, financing, free-delivery
-    services sometimes might seem to be ancillary but actually make your
-    products look better than your competitors.
 
 Which after-sales services?
 -free maintenance, disposal...
 
-what is it that your product features do?
+What is it that your product features do?
+```
 
 
+**Card deck 2 of 6 PAIN
+```
 PAIN KILLERS
 What are you going to reduce or eliminate for the customer?
 
-Chapter 12. PAIN KILLERS Hypothesis
+Chapter 12. PAIN Questions:
 Produce savings? Time, money, effort
 Feel better? Frustration, annoyance, headaches
 Fix solutions? New features, better, faster
@@ -93,62 +95,61 @@ Impact social consequences? wipe out negative social
     consequences or add to social status?
 Eliminate risk? Financial, social or technical risk 
 
-Chapter 13. PAIN KILLERS Problem or need
-Market sizes of needs are multiples of orders of magnitude more than
-problems. 
+Chapter 14. PAIN Importance
+Rank each pain according to its intensity and frequency
 
-Don't turn every problem into a neeed.
+```
 
-
-Chapter 14. PAIN KILLERS Ranking
-Rank each pain according to their intensity and frequency
-
-
+**Card deck 3 of 6 GAIN
+```
 GAIN CREATORS
 What are the benefits the customer expects, desires or is surprised by?
 
-Chapter 15. GAIN CREATORS Hypothesis
-Happy customers? Save time, save money, save effort?
-Better outcomes? Better quality, more/less
-Exceed current solutions? Features, performance, quality?
+Chapter 15. GAIN Questions
+Happy customers? Save time, save money, save effort 
+Better outcomes? Higher quality, more or less of something
+Exceed current solutions? Features, performance, quality 
 Job or life easier?
 Create positive consequences? Social (need), business (more sales)
 
-
-Chapter 16. GAIN CREATORS Ranking
+Chapter 16. GAIN Importance
 Rank each gain your product and services create according to its
 relevance to the customer.
+```
+
+
+**Card deck 4 of 6 MVP 
+```
+Chapter 19. MVP Definition
+The first instance of your product or service that is delivered to
+customers. 
+
+What is it that customers tell us that they will pay for or use
+right now.
+
+It is not a beta, tell customers it is the MVP.
+
 
 Chapter 17. MVP Physical
-Something that customers can touch and feel. 
-Always invest a day or two building something tangible.
+Always invest a day or two building a physical product mockup.
+Something that customers can see and touch.
 
-Chapter 18. MVP Webmovile
+Chapter 18. MVP Webmobile
 Build a "low fidelity" app or website to test the problem. 
 
-This helps you avoid building products that noone wants.
-
-It maximizes the learning per time spent.
-
-
-Chapter 19. MVP
-What product or service you are building your first instance that is
-delivered to customers. It is not an alpha or beta.
-
-What is it that customers will tell us that thay will pay for or use
-now.
-
-Not a beta, tell customers it's a MVP
+This helps you avoid building products no one wants.
 
 
 Chapter 21. The art of the MVP
 It's based on interaction and iteration and understanding customers
-needs and pains and gains.
+jobs, pains and gains.
 
-For new markets, don't ask about features, ask "What
-solutions are they using"  and "How do they spend their time?"
+For new markets, don't ask about features, ask "How do they spend their
+time?"
+```
 
-
+**Card deck 5 of 6 META-Value Prop
+```
 Chapter 22. COMMON MISTAKES
 
 It's just a feature of someones else's product
@@ -164,8 +165,6 @@ Competition:
 Technology / Market Insight:
     Why is the problem so hard to solve?
     Why is the service not being done by other people?
-        Keep asking that question to yourself and to the people you are
-        talking to.
 
 Market size:
     How big is this problem? 
@@ -182,7 +181,7 @@ Typically applies to hardware, clean tech and biotech.
 Market insight:
 Changes in how people work, live, interact and what they expect.
 
-They both need to solve pains and gains for the customer.
+Both forms need to solve pains and create gains for the customer.
 
 
 Chapter 25: TYPES
@@ -193,11 +192,12 @@ More efficient        lower cost     better distribution
 smaller               simpler        better bundling
 faster                               better branding
 
-The sweet spot in the middle that combines technology and market
-insights that makes for a killer value proposition
+combine technology and market insights for the sweet spot of value
+propositions.
+```
 
-
-EXAMPLES OF Value Proposition types:
+**Card deck 6 of 6 Examples
+```
 Technology Insights
 Ayasdi - topological analysis, solved previously unapproachable problems
 Inscopix - smaller fluorescence microscope - created new market
@@ -205,66 +205,27 @@ Inscopix - smaller fluorescence microscope - created new market
 Market insights
 Zynga - play more involved games - facebook distribution
 Twitter - micro-blog more than blog - solved a need
-zipcar - cars with flexibility - better physical distribution
 
 
-Chapter 26: JERSEYSQUARE
-
+JERSEYSQUARE
 Pains: cheaper way to wear jersey, eliminate risk of owning traded player
 Gain: provide alternative to purchasing counterfeit jersey
 Features: single place to rent sports jerseys
 MVP: website with rental and stock of jerseys 
 
-
-Chapter 27: EXAMPLES
 OmegaChem
-Pain: non-renewable petroleum derived feedstock for surfactant and
-lubricant industries
-
+Pain: non-renewable petroleum derived feedstock for surfactant industry
 Gains: Sustainable, bio-based replacement.
 Higher performance
-Improved cold temperature tolerance of detergents, lubricants
-
+Improved cold temperature tolerance of detergents
 Features:
 Bi-functional molecules
 Flexibility in chain length
-Flexibility in branching
-
-
-CanScan
-Pain: Does my patient have CTC's?  How agressive are they?
-
-Features:
-Capture and grow CTCs
-Video technology to characterize aggressiveness
-
-
-MammOptics
-Pains: Breast cancer diagnosis and deaths
-Mammography: 15-25% false negative rate, 25% false positive, requires
-x-ray radiation
-
-Features: Earlier detection, non-radiative
+MVP: chem-mix blue feedstock in 50-gal drums
+```
 
 
 
-We often end up making stuff nobody wants, despite our good ideas and
-good intentions. 
-
-Value proposition design eliminates the risk of working on products and
-services that don't matter to customers.
-
-We waste resources because we don't test our ideas, but write untested
-business plans with polished spread sheets that turn out to be flops.
-With value proposition design we eliminate wasting resources by testing
-our ideas cheaply when uncertainty is highest - at the beginning of a
-project.
-
-
-The search for a Value proposition involves the design and test
-iteratively for what customers really want. It allows you to manage the
-messy and nonlinear process and reduces risk by systematically applying
-tools and processes.
 
 
 
