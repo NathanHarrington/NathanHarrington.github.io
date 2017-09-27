@@ -30,62 +30,50 @@ Preview](https://assets.strategyzer.com/assets/resources/value-proposition-desig
 
 #### Incorporation:
 
+Chapter 1. Value Proposition
+What product or service are you building, for who, and what does it
+solve for those people?
+
 It's about satisfying a customer need, not just you thinking: "What a
-great idea"
+great idea".
 
-Works hand in hand with who your customers are.
-
-The relationship between the value proposition and customers is what
-makes startups succeed or fail.
-
-Those two boxes are called: Product market fit
-Visualize the canvas and think: Is what I am building needed or wanted
-on the customer side? The customer development process allows us to
-search without going out of business.
-
+Chapter 4. Minimal Viable product
 
 What are the components of a value proposition?
 1. The features of your products and services.
 2. What gain are you creating for customers?
 3. What pain are you solving for them?
 
-It's not just about your product. Look at all these features, and this
-is what they can do better and the problems we solve for them.
-
-Understand the minimal viable product. 
-
-what is the smallest possible feature set that solves these pains and
+What is the smallest possible feature set that solves these pains and
 creates gain for them.
 
-An interactive process because you cannot figure it out in your office.
-The default is I understand cusotmers problems and needs, don
-
-Real goal is what is the smallest thing you can build or develop that
-will get you sales and get out to market as quickly as possible.
-
-The goal of getting out of the building for value proposition
-hypothesis testing is Understand gains and pains so you can build the MVP.
+The goal is to figure out what the MVP is.
 
 
-PRODUCT
+Chapter 9. PRODUCT
 Which are part of your value proposition?
 -manufacture goods, commodities product ...
+
 Which intangible products are part?
 -copyrights, licenses...
+
 Which financial products?
 -financial guarantees, insurance policies...
+
 Which digital products?
 -mp3 files, ebooks....
 
 The product is the whole package of all the above
 
-SERVICES
+
+Chapter 10. SERVICES
 Which core services are part of the value proposition?
 -Consulting, a haircut, investment advice...
+
 Which pre-sales or sales services?
 -help finding right solution, financing, free-delivery
     services sometimes might seem to be ancillary but actually make your
-products look better than your competitors.
+    products look better than your competitors.
 
 Which after-sales services?
 -free maintenance, disposal...
@@ -93,160 +81,170 @@ Which after-sales services?
 what is it that your product features do?
 
 
-It's also about your PAIN KILLERS
-Reduce or eliminate wasted time, costs, negative  emotions, risks.
+PAIN KILLERS
+What are you going to reduce or eliminate for the customer?
 
+Chapter 12. PAIN KILLERS Hypothesis
 Produce savings? Time, money, effort
 Feel better? Frustration, annoyance, headaches
 Fix solutions? New features, better, faster
 End challenges? Easier, eliminate resistance?
 Impact social consequences? wipe out negative social
     consequences or add to social status?
-Eliminate risk? Financial, social or technical risk, or what can go very
-wrong?
+Eliminate risk? Financial, social or technical risk 
 
-There might be other things you are solving and taking away pain for
-customers. Be able to articulate, based on your interactions outside the
-building with customers, here's what they said and when I bounced our
-product off of them, they said, yeah, that solves our pain (and more
-importantly, is an important pain)
-
-Pain killers - problem or need?
-problems
-accounting
-word->google docs
-
-needs:
-entertainment
-communication
-
+Chapter 13. PAIN KILLERS Problem or need
 Market sizes of needs are multiples of orders of magnitude more than
 problems. 
 
 Don't turn every problem into a neeed.
 
-apple iphone took a communications device and made it a status symbol.
-transitioned from something that solved a problem: phone with integrated
-web browser, email. Into now something that people every year obsolete
-their own products because it's a need instead of a problem.
 
-Pain killers tactics - ranking
+Chapter 14. PAIN KILLERS Ranking
 Rank each pain according to their intensity and frequency
 
-A life saving pain, or I've lived with it for years and can live with it
-a few more years.
-Is it daily or hourly?
 
-Gain creators - how do they create the benefits the customer expects
-desires, or is surprised by?
+GAIN CREATORS
+What are the benefits the customer expects, desires or is surprised by?
 
+Chapter 15. GAIN CREATORS Hypothesis
 Happy customers? Save time, save money, save effort?
 Better outcomes? Better quality, more/less
 Exceed current solutions? Features, performance, quality?
 Job or life easier?
 Create positive consequences? Social (need), business (more sales)
 
-Start with hypothesis, only way to understand this is outside the
-building in front of lots of customers.
 
-Gain Creators - ranking
+Chapter 16. GAIN CREATORS Ranking
 Rank each gain your product and services create according to its
 relevance to the customer.
 
-First list is: you got it, gain and pain, i know this because it's my
-opinion or becaues i'm a domain expert. At the end of the day your
-business is not about your opinion. What you need to do is hear from the
-customers: Here's why it's relevant. something like: your product has
-this gain for me. Your product solves this intense pain for me. Not you
-telling them what gain and pain it solves. The customer telling you.
+Chapter 17. MVP Physical
+Something that customers can touch and feel. 
+Always invest a day or two building something tangible.
+
+Chapter 18. MVP Webmovile
+Build a "low fidelity" app or website to test the problem. 
+
+This helps you avoid building products that noone wants.
+
+It maximizes the learning per time spent.
 
 
-Second section for MVP
-mvp physical - fill these out from the udacity
-mvp webmobile
+Chapter 19. MVP
+What product or service you are building your first instance that is
+delivered to customers. It is not an alpha or beta.
 
-MVP what product/service you are building your first instance that is
-delivered to customers. It is not an alpha or beta
-Concept -> Dev -> Testing -> Launch
-( waterfal development)
+What is it that customers will tell us that thay will pay for or use
+now.
 
-                             Buggy/Unfinished product
-
-Not version 1.0 product spec
-Talk to customers first
-Try to understand what the minimum version of version 1.0
-What will they pay for or use now? Not a beta, tell customers it's a MVP
-
-the art of the mvp
+Not a beta, tell customers it's a MVP
 
 
-Value proposition common mistakes:
+Chapter 21. The art of the MVP
+It's based on interaction and iteration and understanding customers
+needs and pains and gains.
+
+For new markets, don't ask about features, ask "What
+solutions are they using"  and "How do they spend their time?"
+
+
+Chapter 22. COMMON MISTAKES
+
 It's just a feature of someones else's product
 "It's nice to have" instead of "got to have"
-    prioritize pains and gains
-    they won't let you leave unless they try the prototype
-
 Not enough customers care
 
 
-Value proposition questions:
-Competition: What do cusotmers do today? Make BMC's for the competitors
-Why is the problem so hard to solve?
-Why is the service not being done by other people?
-    Are you hallucinating or is it a breakthrough?
-    Keep asking that question to yourself and to the people you are
-        talking to?
-    Has any body done this? No - ask them why? You might get some
-        insight. If they say yeah 8 vendors tried it before: warning,
-        you might want to research why that happened.
+Chapter 23.  QUESTIONS:
+
+Competition:
+    What do customers do today? Make BMC's for the competition.
+
+Technology / Market Insight:
+    Why is the problem so hard to solve?
+    Why is the service not being done by other people?
+        Keep asking that question to yourself and to the people you are
+        talking to.
+
 Market size:
-    how big is this problem? 
+    How big is this problem? 
 
-How do you do it?
+Product:
+    How do you make it once you understand the customer needs?
 
 
-Startups have Technology and Market Insight
-Technology
-moore's law
-new scientific discoveries
-new algorithms
-Typically applies to hardware, clean tech and biotech
-Do you have some insight about technology and the pains and gains it can
-provide for customers.
+Chapter 24: TWO FORMS:
 
-Or do you have some insight about market or consumer behavior?
-Value chain disruption? Slash cost by 80%
-Govt regulation or deregulation going to change and make a new industry
-available in ways it never was before.
+Technology insight:
+Typically applies to hardware, clean tech and biotech.
+
+Market insight:
 Changes in how people work, live, interact and what they expect.
 
-they both need to solve pains and gains for the customer.
+They both need to solve pains and gains for the customer.
 
-Types of value propositions
+
+Chapter 25: TYPES
+
 Technology                              Market
 
 More efficient        lower cost     better distribution
 smaller               simpler        better bundling
 faster                               better branding
 
-sometimes sweet spot in the middle that combines technology and market
+The sweet spot in the middle that combines technology and market
 insights that makes for a killer value proposition
 
+
+EXAMPLES OF Value Proposition types:
 Technology Insights
-Ayasdi
+Ayasdi - topological analysis, solved previously unapproachable problems
+Inscopix - smaller fluorescence microscope - created new market
 
 Market insights
-Zynga
-Twitter
-zipcar
-
-Value proposition is three parts
-Features, MVP, pains and gains are all the value proposition
+Zynga - play more involved games - facebook distribution
+Twitter - micro-blog more than blog - solved a need
+zipcar - cars with flexibility - better physical distribution
 
 
-Remember, slow way down here - this is rest of your life come back to
-this and understand it deeply.
+Chapter 26: JERSEYSQUARE
 
+Pains: cheaper way to wear jersey, eliminate risk of owning traded player
+Gain: provide alternative to purchasing counterfeit jersey
+Features: single place to rent sports jerseys
+MVP: website with rental and stock of jerseys 
+
+
+Chapter 27: EXAMPLES
+OmegaChem
+Pain: non-renewable petroleum derived feedstock for surfactant and
+lubricant industries
+
+Gains: Sustainable, bio-based replacement.
+Higher performance
+Improved cold temperature tolerance of detergents, lubricants
+
+Features:
+Bi-functional molecules
+Flexibility in chain length
+Flexibility in branching
+
+
+CanScan
+Pain: Does my patient have CTC's?  How agressive are they?
+
+Features:
+Capture and grow CTCs
+Video technology to characterize aggressiveness
+
+
+MammOptics
+Pains: Breast cancer diagnosis and deaths
+Mammography: 15-25% false negative rate, 25% false positive, requires
+x-ray radiation
+
+Features: Earlier detection, non-radiative
 
 
 
