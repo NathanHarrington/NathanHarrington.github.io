@@ -30,8 +30,8 @@ Preview](https://assets.strategyzer.com/assets/resources/value-proposition-desig
 
 #### Incorporation:
 
+**Card deck 1 of 6 INTRO**
 
-**Card deck 1 of 6 INTRO
 ```
 Chapter 1. Value Proposition
 What product or service are you building, for who, and what does it
@@ -79,9 +79,18 @@ Which after-sales services?
 
 What is it that your product features do?
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_intro_card_deck_front.jpg)](/images/learning/learning_value_proposition_intro_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_intro_card_deck_back.jpg)](/images/learning/learning_value_proposition_intro_card_deck_back.jpg)
 
 
-**Card deck 2 of 6 PAIN
+
+
+
+
+--------------------------------------------------
+**Card deck 2 of 6 PAIN**
 ```
 PAIN KILLERS
 What are you going to reduce or eliminate for the customer?
@@ -99,8 +108,18 @@ Chapter 14. PAIN Importance
 Rank each pain according to its intensity and frequency
 
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_pain_card_deck_front.jpg)](/images/learning/learning_value_proposition_pain_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_pain_card_deck_back.jpg)](/images/learning/learning_value_proposition_pain_card_deck_back.jpg)
 
-**Card deck 3 of 6 GAIN
+
+
+
+
+
+--------------------------------------------------
+**Card deck 3 of 6 GAIN**
 ```
 GAIN CREATORS
 What are the benefits the customer expects, desires or is surprised by?
@@ -116,9 +135,14 @@ Chapter 16. GAIN Importance
 Rank each gain your product and services create according to its
 relevance to the customer.
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_gain_card_deck_front.jpg)](/images/learning/learning_value_proposition_gain_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_gain_card_deck_back.jpg)](/images/learning/learning_value_proposition_gain_card_deck_back.jpg)
 
 
-**Card deck 4 of 6 MVP 
+--------------------------------------------------
+**Card deck 4 of 6 MVP **
 ```
 Chapter 19. MVP Definition
 The first instance of your product or service that is delivered to
@@ -147,8 +171,13 @@ jobs, pains and gains.
 For new markets, don't ask about features, ask "How do they spend their
 time?"
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_mvp_card_deck_front.jpg)](/images/learning/learning_value_proposition_mvp_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_mvp_card_deck_back.jpg)](/images/learning/learning_value_proposition_mvp_card_deck_back.jpg)
 
-**Card deck 5 of 6 META-Value Prop
+--------------------------------------------------
+**Card deck 5 of 6 META-Value Prop**
 ```
 Chapter 22. COMMON MISTAKES
 
@@ -195,8 +224,13 @@ faster                               better branding
 combine technology and market insights for the sweet spot of value
 propositions.
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_meta_card_deck_front.jpg)](/images/learning/learning_value_proposition_meta_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_value_proposition_meta_card_deck_back.jpg)](/images/learning/learning_value_proposition_meta_card_deck_back.jpg)
 
-**Card deck 6 of 6 Examples
+--------------------------------------------------
+**Card deck 6 of 6 Examples**
 ```
 Technology Insights
 Ayasdi - topological analysis, solved previously unapproachable problems
@@ -223,20 +257,10 @@ Bi-functional molecules
 Flexibility in chain length
 MVP: chem-mix blue feedstock in 50-gal drums
 ```
-
-
-
-
-
-
-**Card deck one of X
-```
-```
 [![Front of Card
-Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_front.jpg)](/images/learning/learning_meta_bmc_card_deck_front.jpg)
+Deck](/images/learning/thumbnails/learning_value_proposition_examples_card_deck_front.jpg)](/images/learning/learning_value_proposition_examples_card_deck_front.jpg)
 [![Back of Card
-Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_back.jpg)](/images/learning/learning_meta_bmc_card_deck_back.jpg)
-
+Deck](/images/learning/thumbnails/learning_value_proposition_examples_card_deck_back.jpg)](/images/learning/learning_value_proposition_examples_card_deck_back.jpg)
 
 
 -------------------------------------------------------------------------
