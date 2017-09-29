@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="business model canvas" />
-        <meta name="description" content="Configure bmfiddle.com to match the goals of the business model canvas. The tools provided by bmfiddle.com are excellent. Based on earlier research, the following goals emerged: Fully digital business model canvas that uses the BMC correctly. Includes imagery + text in each sticky Business model canvas components with the …" />
+        <meta name="description" content="Configure bmfiddle.com to match the goals of the business model canvas. The tools provided by bmfiddle.com are excellent. Based on earlier research, the following goals emerged: Fully digital business model canvas that uses the BMC correctly. Includes imagery + text in each sticky Business model canvas components with the ..." />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="bmfiddle.com user interface modifications"/>
         <meta property="og:url" content="/posts/bmfiddlecom-user-interface-modifications.html"/>
-        <meta property="og:description" content="Configure bmfiddle.com to match the goals of the business model canvas. The tools provided by bmfiddle.com are excellent. Based on earlier research, the following goals emerged: Fully digital business model canvas that uses the BMC correctly. Includes imagery + text in each sticky Business model canvas components with the …"/>
+        <meta property="og:description" content="Configure bmfiddle.com to match the goals of the business model canvas. The tools provided by bmfiddle.com are excellent. Based on earlier research, the following goals emerged: Fully digital business model canvas that uses the BMC correctly. Includes imagery + text in each sticky Business model canvas components with the ..."/>
         <meta property="article:published_time" content="2017-09-23" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="business model canvas" />
@@ -83,12 +83,18 @@ Nathan Harrington            </a>
                          <li><a href="/pages/standing-invitation.html">
                              Standing Invitation
                           </a></li>
+                    <!-- custom link to blog roll/articles -->
+                    <li><a href="/category/articles.html">Blog</a></li>
+
+<!--
+Don't display categories on menu
                         <li class="active">
                             <a href="/category/articles.html">Articles</a>
                         </li>
                         <li >
                             <a href="/category/patents.html">Patents</a>
                         </li>
+-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
@@ -139,140 +145,140 @@ http://goo.gl/kjdfkjf</p>
 items.</p>
 <p>Keep all Labels and Metrics defaults</p>
 <p>Save the fiddle. It should now look like this:</p>
-<p><a href="/images/learning/bmfiddle_step1.png"><img alt="BMfiddle step1" src="/images/learning/thumbnails/bmfiddle_step1.png"></a></p>
+<p><a href="/images/learning/bmfiddle_step1.png"><img alt="BMfiddle step1" src="/images/learning/thumbnails/bmfiddle_step1.png" /></a></p>
 <p>Or, use the bmfiddle.com template here: <a href="https://bmfiddle.com/f/#/M7bw6">Business Model Generation with
 Clarity</a></p>
 <p>To eliminate more of the visual distractions, add the 'stylish' plugin
 to firefox. Click the extension icon, then write new style-&gt; for
 bmfiddle.com. Add the contents of the box below, or click here for the
 user style <a href="https://goo.gl/oLuFte">bmfiddle clarity</a></p>
-<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">namespace</span> <span class="nt">url</span><span class="o">(</span><span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">w3</span><span class="p">.</span><span class="nc">org</span><span class="o">/</span><span class="nt">1999</span><span class="o">/</span><span class="nt">xhtml</span><span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">@namespace</span> <span class="nt">url</span><span class="o">(</span><span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="nc">.w3.org</span><span class="o">/</span><span class="nt">1999</span><span class="o">/</span><span class="nt">xhtml</span><span class="o">)</span><span class="p">;</span>
 
-<span class="p">@</span><span class="k">-moz-document</span> <span class="nt">domain</span><span class="o">(</span><span class="s2">&quot;bmfiddle.com&quot;</span><span class="o">)</span> <span class="p">{</span>
+<span class="k">@-moz-document</span> <span class="nt">domain</span><span class="o">(</span><span class="s2">&quot;bmfiddle.com&quot;</span><span class="o">)</span> <span class="p">{</span>
 
     <span class="c">/* make text color white on white to eliminate the visually</span>
 <span class="c"> * distracting</span>
 <span class="c">    component numbers*/</span>
-    <span class="p">.</span><span class="nc">block</span> <span class="p">.</span><span class="nc">order</span> <span class="p">{</span> <span class="k">background-color</span><span class="p">:</span> <span class="mh">#ffffff</span><span class="p">;}</span>
+    <span class="nc">.block</span> <span class="nc">.order</span> <span class="p">{</span> <span class="nb">background-color</span><span class="o">:</span> <span class="m">#ffffff</span><span class="p">;}</span>
 
     <span class="c">/* hide all of the background iconagraphy */</span>
-    <span class="p">.</span><span class="nc">bg</span> <span class="p">{</span><span class="k">background-image</span><span class="p">:</span> <span class="kc">none</span><span class="p">;}</span>
+    <span class="nc">.bg</span> <span class="p">{</span><span class="nb">background-image</span><span class="o">:</span> <span class="nb">none</span><span class="p">;}</span>
 
     <span class="c">/* hide the count of stickys in the lower right */</span>
-    <span class="p">.</span><span class="nc">block</span> <span class="p">.</span><span class="nc">count</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="mh">#ffffff</span><span class="p">;}</span>
+    <span class="nc">.block</span> <span class="nc">.count</span> <span class="p">{</span><span class="nb">color</span><span class="o">:</span> <span class="m">#ffffff</span><span class="p">;}</span>
 
     <span class="c">/* make icons small on the canvas */</span>
-    <span class="p">.</span><span class="nc">item-asset</span> <span class="nt">img</span><span class="p">.</span><span class="nc">scale-with-grid</span> <span class="p">{</span> <span class="k">max-width</span><span class="p">:</span> <span class="mi">20</span><span class="kt">%</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nc">.item-asset</span> <span class="nt">img</span><span class="nc">.scale-with-grid</span> <span class="p">{</span> <span class="nb">max-width</span><span class="o">:</span> <span class="m">20%</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>Give the style the name of bmfiddle_clarity, then save. Now the canvas
 should look like this:</p>
-<p><a href="/images/learning/bmfiddle_step2.png"><img alt="BMfiddle step2" src="/images/learning/thumbnails/bmfiddle_step2.png"></a></p>
+<p><a href="/images/learning/bmfiddle_step2.png"><img alt="BMfiddle step2" src="/images/learning/thumbnails/bmfiddle_step2.png" /></a></p>
 <p>Add the following set of line drawn images to the resources area of the
 bmfiddle.  The icons below are extracted from the
 <a href="https://dribbble.com/shots/2266356-Uniicons-free">uniicons</a> pack.</p>
-<p><img alt="uniicons/path4502.png" src="/images/learning/bmfiddle_icons/uniicons/path4502.png">
-<img alt="uniicons/path4504.png" src="/images/learning/bmfiddle_icons/uniicons/path4504.png">
-<img alt="uniicons/path4506.png" src="/images/learning/bmfiddle_icons/uniicons/path4506.png">
-<img alt="uniicons/path4508.png" src="/images/learning/bmfiddle_icons/uniicons/path4508.png">
-<img alt="uniicons/path4510.png" src="/images/learning/bmfiddle_icons/uniicons/path4510.png">
-<img alt="uniicons/path4512.png" src="/images/learning/bmfiddle_icons/uniicons/path4512.png">
-<img alt="uniicons/path4514.png" src="/images/learning/bmfiddle_icons/uniicons/path4514.png">
-<img alt="uniicons/path4516.png" src="/images/learning/bmfiddle_icons/uniicons/path4516.png">
-<img alt="uniicons/path4518.png" src="/images/learning/bmfiddle_icons/uniicons/path4518.png">
-<img alt="uniicons/path4520.png" src="/images/learning/bmfiddle_icons/uniicons/path4520.png">
-<img alt="uniicons/path4522.png" src="/images/learning/bmfiddle_icons/uniicons/path4522.png">
-<img alt="uniicons/path4524.png" src="/images/learning/bmfiddle_icons/uniicons/path4524.png">
-<img alt="uniicons/path4526.png" src="/images/learning/bmfiddle_icons/uniicons/path4526.png">
-<img alt="uniicons/path4528.png" src="/images/learning/bmfiddle_icons/uniicons/path4528.png">
-<img alt="uniicons/path4530.png" src="/images/learning/bmfiddle_icons/uniicons/path4530.png">
-<img alt="uniicons/path4532.png" src="/images/learning/bmfiddle_icons/uniicons/path4532.png">
-<img alt="uniicons/path4534.png" src="/images/learning/bmfiddle_icons/uniicons/path4534.png">
-<img alt="uniicons/path4536.png" src="/images/learning/bmfiddle_icons/uniicons/path4536.png">
-<img alt="uniicons/path4538.png" src="/images/learning/bmfiddle_icons/uniicons/path4538.png">
-<img alt="uniicons/path4540.png" src="/images/learning/bmfiddle_icons/uniicons/path4540.png">
-<img alt="uniicons/path4542.png" src="/images/learning/bmfiddle_icons/uniicons/path4542.png">
-<img alt="uniicons/path4544.png" src="/images/learning/bmfiddle_icons/uniicons/path4544.png">
-<img alt="uniicons/path4546.png" src="/images/learning/bmfiddle_icons/uniicons/path4546.png">
-<img alt="uniicons/path4548.png" src="/images/learning/bmfiddle_icons/uniicons/path4548.png">
-<img alt="uniicons/path4550.png" src="/images/learning/bmfiddle_icons/uniicons/path4550.png">
-<img alt="uniicons/path4552.png" src="/images/learning/bmfiddle_icons/uniicons/path4552.png">
-<img alt="uniicons/path4554.png" src="/images/learning/bmfiddle_icons/uniicons/path4554.png">
-<img alt="uniicons/path4556.png" src="/images/learning/bmfiddle_icons/uniicons/path4556.png">
-<img alt="uniicons/path4558.png" src="/images/learning/bmfiddle_icons/uniicons/path4558.png">
-<img alt="uniicons/path4560.png" src="/images/learning/bmfiddle_icons/uniicons/path4560.png">
-<img alt="uniicons/path4562.png" src="/images/learning/bmfiddle_icons/uniicons/path4562.png">
-<img alt="uniicons/path4564.png" src="/images/learning/bmfiddle_icons/uniicons/path4564.png">
-<img alt="uniicons/path4566.png" src="/images/learning/bmfiddle_icons/uniicons/path4566.png">
-<img alt="uniicons/path4568.png" src="/images/learning/bmfiddle_icons/uniicons/path4568.png">
-<img alt="uniicons/path4570.png" src="/images/learning/bmfiddle_icons/uniicons/path4570.png">
-<img alt="uniicons/path4572.png" src="/images/learning/bmfiddle_icons/uniicons/path4572.png">
-<img alt="uniicons/path4574.png" src="/images/learning/bmfiddle_icons/uniicons/path4574.png">
-<img alt="uniicons/path4576.png" src="/images/learning/bmfiddle_icons/uniicons/path4576.png">
-<img alt="uniicons/path4578.png" src="/images/learning/bmfiddle_icons/uniicons/path4578.png">
-<img alt="uniicons/path4580.png" src="/images/learning/bmfiddle_icons/uniicons/path4580.png">
-<img alt="uniicons/path4582.png" src="/images/learning/bmfiddle_icons/uniicons/path4582.png">
-<img alt="uniicons/path4584.png" src="/images/learning/bmfiddle_icons/uniicons/path4584.png">
-<img alt="uniicons/path4586.png" src="/images/learning/bmfiddle_icons/uniicons/path4586.png">
-<img alt="uniicons/path4588.png" src="/images/learning/bmfiddle_icons/uniicons/path4588.png">
-<img alt="uniicons/path4590.png" src="/images/learning/bmfiddle_icons/uniicons/path4590.png">
-<img alt="uniicons/path4592.png" src="/images/learning/bmfiddle_icons/uniicons/path4592.png">
-<img alt="uniicons/path4594.png" src="/images/learning/bmfiddle_icons/uniicons/path4594.png">
-<img alt="uniicons/path4596.png" src="/images/learning/bmfiddle_icons/uniicons/path4596.png">
-<img alt="uniicons/path4598.png" src="/images/learning/bmfiddle_icons/uniicons/path4598.png">
-<img alt="uniicons/path4600.png" src="/images/learning/bmfiddle_icons/uniicons/path4600.png">
-<img alt="uniicons/path4602.png" src="/images/learning/bmfiddle_icons/uniicons/path4602.png">
-<img alt="uniicons/path4604.png" src="/images/learning/bmfiddle_icons/uniicons/path4604.png">
-<img alt="uniicons/path4606.png" src="/images/learning/bmfiddle_icons/uniicons/path4606.png">
-<img alt="uniicons/path4608.png" src="/images/learning/bmfiddle_icons/uniicons/path4608.png">
-<img alt="uniicons/path4610.png" src="/images/learning/bmfiddle_icons/uniicons/path4610.png">
-<img alt="uniicons/path4612.png" src="/images/learning/bmfiddle_icons/uniicons/path4612.png">
-<img alt="uniicons/path4614.png" src="/images/learning/bmfiddle_icons/uniicons/path4614.png">
-<img alt="uniicons/path4616.png" src="/images/learning/bmfiddle_icons/uniicons/path4616.png">
-<img alt="uniicons/path4618.png" src="/images/learning/bmfiddle_icons/uniicons/path4618.png">
-<img alt="uniicons/path4620.png" src="/images/learning/bmfiddle_icons/uniicons/path4620.png">
-<img alt="uniicons/path4622.png" src="/images/learning/bmfiddle_icons/uniicons/path4622.png">
-<img alt="uniicons/path4624.png" src="/images/learning/bmfiddle_icons/uniicons/path4624.png">
-<img alt="uniicons/path4626.png" src="/images/learning/bmfiddle_icons/uniicons/path4626.png">
-<img alt="uniicons/path4628.png" src="/images/learning/bmfiddle_icons/uniicons/path4628.png">
-<img alt="uniicons/path4630.png" src="/images/learning/bmfiddle_icons/uniicons/path4630.png">
-<img alt="uniicons/path4632.png" src="/images/learning/bmfiddle_icons/uniicons/path4632.png">
-<img alt="uniicons/path4634.png" src="/images/learning/bmfiddle_icons/uniicons/path4634.png">
-<img alt="uniicons/path4636.png" src="/images/learning/bmfiddle_icons/uniicons/path4636.png">
-<img alt="uniicons/path4638.png" src="/images/learning/bmfiddle_icons/uniicons/path4638.png">
-<img alt="uniicons/path4640.png" src="/images/learning/bmfiddle_icons/uniicons/path4640.png">
-<img alt="uniicons/path4642.png" src="/images/learning/bmfiddle_icons/uniicons/path4642.png">
-<img alt="uniicons/path4644.png" src="/images/learning/bmfiddle_icons/uniicons/path4644.png">
-<img alt="uniicons/path4646.png" src="/images/learning/bmfiddle_icons/uniicons/path4646.png">
-<img alt="uniicons/path4648.png" src="/images/learning/bmfiddle_icons/uniicons/path4648.png">
-<img alt="uniicons/path4650.png" src="/images/learning/bmfiddle_icons/uniicons/path4650.png">
-<img alt="uniicons/path4652.png" src="/images/learning/bmfiddle_icons/uniicons/path4652.png">
-<img alt="uniicons/path4654.png" src="/images/learning/bmfiddle_icons/uniicons/path4654.png">
-<img alt="uniicons/path4656.png" src="/images/learning/bmfiddle_icons/uniicons/path4656.png">
-<img alt="uniicons/path4658.png" src="/images/learning/bmfiddle_icons/uniicons/path4658.png">
-<img alt="uniicons/path4660.png" src="/images/learning/bmfiddle_icons/uniicons/path4660.png">
-<img alt="uniicons/path4662.png" src="/images/learning/bmfiddle_icons/uniicons/path4662.png">
-<img alt="uniicons/path4664.png" src="/images/learning/bmfiddle_icons/uniicons/path4664.png">
-<img alt="uniicons/path4666.png" src="/images/learning/bmfiddle_icons/uniicons/path4666.png">
-<img alt="uniicons/path4668.png" src="/images/learning/bmfiddle_icons/uniicons/path4668.png">
-<img alt="uniicons/path4670.png" src="/images/learning/bmfiddle_icons/uniicons/path4670.png">
-<img alt="uniicons/path4672.png" src="/images/learning/bmfiddle_icons/uniicons/path4672.png">
-<img alt="uniicons/path4674.png" src="/images/learning/bmfiddle_icons/uniicons/path4674.png">
-<img alt="uniicons/path4676.png" src="/images/learning/bmfiddle_icons/uniicons/path4676.png">
-<img alt="uniicons/path4678.png" src="/images/learning/bmfiddle_icons/uniicons/path4678.png">
-<img alt="uniicons/path4680.png" src="/images/learning/bmfiddle_icons/uniicons/path4680.png">
-<img alt="uniicons/path4682.png" src="/images/learning/bmfiddle_icons/uniicons/path4682.png">
-<img alt="uniicons/path4684.png" src="/images/learning/bmfiddle_icons/uniicons/path4684.png">
-<img alt="uniicons/path4686.png" src="/images/learning/bmfiddle_icons/uniicons/path4686.png">
-<img alt="uniicons/path4688.png" src="/images/learning/bmfiddle_icons/uniicons/path4688.png">
-<img alt="uniicons/path4690.png" src="/images/learning/bmfiddle_icons/uniicons/path4690.png">
-<img alt="uniicons/path4692.png" src="/images/learning/bmfiddle_icons/uniicons/path4692.png">
-<img alt="uniicons/path4694.png" src="/images/learning/bmfiddle_icons/uniicons/path4694.png">
-<img alt="uniicons/path4696.png" src="/images/learning/bmfiddle_icons/uniicons/path4696.png">
-<img alt="uniicons/path4698.png" src="/images/learning/bmfiddle_icons/uniicons/path4698.png">
-<img alt="uniicons/path4700.png" src="/images/learning/bmfiddle_icons/uniicons/path4700.png"></p>
+<p><img alt="uniicons/path4502.png" src="/images/learning/bmfiddle_icons/uniicons/path4502.png" />
+<img alt="uniicons/path4504.png" src="/images/learning/bmfiddle_icons/uniicons/path4504.png" />
+<img alt="uniicons/path4506.png" src="/images/learning/bmfiddle_icons/uniicons/path4506.png" />
+<img alt="uniicons/path4508.png" src="/images/learning/bmfiddle_icons/uniicons/path4508.png" />
+<img alt="uniicons/path4510.png" src="/images/learning/bmfiddle_icons/uniicons/path4510.png" />
+<img alt="uniicons/path4512.png" src="/images/learning/bmfiddle_icons/uniicons/path4512.png" />
+<img alt="uniicons/path4514.png" src="/images/learning/bmfiddle_icons/uniicons/path4514.png" />
+<img alt="uniicons/path4516.png" src="/images/learning/bmfiddle_icons/uniicons/path4516.png" />
+<img alt="uniicons/path4518.png" src="/images/learning/bmfiddle_icons/uniicons/path4518.png" />
+<img alt="uniicons/path4520.png" src="/images/learning/bmfiddle_icons/uniicons/path4520.png" />
+<img alt="uniicons/path4522.png" src="/images/learning/bmfiddle_icons/uniicons/path4522.png" />
+<img alt="uniicons/path4524.png" src="/images/learning/bmfiddle_icons/uniicons/path4524.png" />
+<img alt="uniicons/path4526.png" src="/images/learning/bmfiddle_icons/uniicons/path4526.png" />
+<img alt="uniicons/path4528.png" src="/images/learning/bmfiddle_icons/uniicons/path4528.png" />
+<img alt="uniicons/path4530.png" src="/images/learning/bmfiddle_icons/uniicons/path4530.png" />
+<img alt="uniicons/path4532.png" src="/images/learning/bmfiddle_icons/uniicons/path4532.png" />
+<img alt="uniicons/path4534.png" src="/images/learning/bmfiddle_icons/uniicons/path4534.png" />
+<img alt="uniicons/path4536.png" src="/images/learning/bmfiddle_icons/uniicons/path4536.png" />
+<img alt="uniicons/path4538.png" src="/images/learning/bmfiddle_icons/uniicons/path4538.png" />
+<img alt="uniicons/path4540.png" src="/images/learning/bmfiddle_icons/uniicons/path4540.png" />
+<img alt="uniicons/path4542.png" src="/images/learning/bmfiddle_icons/uniicons/path4542.png" />
+<img alt="uniicons/path4544.png" src="/images/learning/bmfiddle_icons/uniicons/path4544.png" />
+<img alt="uniicons/path4546.png" src="/images/learning/bmfiddle_icons/uniicons/path4546.png" />
+<img alt="uniicons/path4548.png" src="/images/learning/bmfiddle_icons/uniicons/path4548.png" />
+<img alt="uniicons/path4550.png" src="/images/learning/bmfiddle_icons/uniicons/path4550.png" />
+<img alt="uniicons/path4552.png" src="/images/learning/bmfiddle_icons/uniicons/path4552.png" />
+<img alt="uniicons/path4554.png" src="/images/learning/bmfiddle_icons/uniicons/path4554.png" />
+<img alt="uniicons/path4556.png" src="/images/learning/bmfiddle_icons/uniicons/path4556.png" />
+<img alt="uniicons/path4558.png" src="/images/learning/bmfiddle_icons/uniicons/path4558.png" />
+<img alt="uniicons/path4560.png" src="/images/learning/bmfiddle_icons/uniicons/path4560.png" />
+<img alt="uniicons/path4562.png" src="/images/learning/bmfiddle_icons/uniicons/path4562.png" />
+<img alt="uniicons/path4564.png" src="/images/learning/bmfiddle_icons/uniicons/path4564.png" />
+<img alt="uniicons/path4566.png" src="/images/learning/bmfiddle_icons/uniicons/path4566.png" />
+<img alt="uniicons/path4568.png" src="/images/learning/bmfiddle_icons/uniicons/path4568.png" />
+<img alt="uniicons/path4570.png" src="/images/learning/bmfiddle_icons/uniicons/path4570.png" />
+<img alt="uniicons/path4572.png" src="/images/learning/bmfiddle_icons/uniicons/path4572.png" />
+<img alt="uniicons/path4574.png" src="/images/learning/bmfiddle_icons/uniicons/path4574.png" />
+<img alt="uniicons/path4576.png" src="/images/learning/bmfiddle_icons/uniicons/path4576.png" />
+<img alt="uniicons/path4578.png" src="/images/learning/bmfiddle_icons/uniicons/path4578.png" />
+<img alt="uniicons/path4580.png" src="/images/learning/bmfiddle_icons/uniicons/path4580.png" />
+<img alt="uniicons/path4582.png" src="/images/learning/bmfiddle_icons/uniicons/path4582.png" />
+<img alt="uniicons/path4584.png" src="/images/learning/bmfiddle_icons/uniicons/path4584.png" />
+<img alt="uniicons/path4586.png" src="/images/learning/bmfiddle_icons/uniicons/path4586.png" />
+<img alt="uniicons/path4588.png" src="/images/learning/bmfiddle_icons/uniicons/path4588.png" />
+<img alt="uniicons/path4590.png" src="/images/learning/bmfiddle_icons/uniicons/path4590.png" />
+<img alt="uniicons/path4592.png" src="/images/learning/bmfiddle_icons/uniicons/path4592.png" />
+<img alt="uniicons/path4594.png" src="/images/learning/bmfiddle_icons/uniicons/path4594.png" />
+<img alt="uniicons/path4596.png" src="/images/learning/bmfiddle_icons/uniicons/path4596.png" />
+<img alt="uniicons/path4598.png" src="/images/learning/bmfiddle_icons/uniicons/path4598.png" />
+<img alt="uniicons/path4600.png" src="/images/learning/bmfiddle_icons/uniicons/path4600.png" />
+<img alt="uniicons/path4602.png" src="/images/learning/bmfiddle_icons/uniicons/path4602.png" />
+<img alt="uniicons/path4604.png" src="/images/learning/bmfiddle_icons/uniicons/path4604.png" />
+<img alt="uniicons/path4606.png" src="/images/learning/bmfiddle_icons/uniicons/path4606.png" />
+<img alt="uniicons/path4608.png" src="/images/learning/bmfiddle_icons/uniicons/path4608.png" />
+<img alt="uniicons/path4610.png" src="/images/learning/bmfiddle_icons/uniicons/path4610.png" />
+<img alt="uniicons/path4612.png" src="/images/learning/bmfiddle_icons/uniicons/path4612.png" />
+<img alt="uniicons/path4614.png" src="/images/learning/bmfiddle_icons/uniicons/path4614.png" />
+<img alt="uniicons/path4616.png" src="/images/learning/bmfiddle_icons/uniicons/path4616.png" />
+<img alt="uniicons/path4618.png" src="/images/learning/bmfiddle_icons/uniicons/path4618.png" />
+<img alt="uniicons/path4620.png" src="/images/learning/bmfiddle_icons/uniicons/path4620.png" />
+<img alt="uniicons/path4622.png" src="/images/learning/bmfiddle_icons/uniicons/path4622.png" />
+<img alt="uniicons/path4624.png" src="/images/learning/bmfiddle_icons/uniicons/path4624.png" />
+<img alt="uniicons/path4626.png" src="/images/learning/bmfiddle_icons/uniicons/path4626.png" />
+<img alt="uniicons/path4628.png" src="/images/learning/bmfiddle_icons/uniicons/path4628.png" />
+<img alt="uniicons/path4630.png" src="/images/learning/bmfiddle_icons/uniicons/path4630.png" />
+<img alt="uniicons/path4632.png" src="/images/learning/bmfiddle_icons/uniicons/path4632.png" />
+<img alt="uniicons/path4634.png" src="/images/learning/bmfiddle_icons/uniicons/path4634.png" />
+<img alt="uniicons/path4636.png" src="/images/learning/bmfiddle_icons/uniicons/path4636.png" />
+<img alt="uniicons/path4638.png" src="/images/learning/bmfiddle_icons/uniicons/path4638.png" />
+<img alt="uniicons/path4640.png" src="/images/learning/bmfiddle_icons/uniicons/path4640.png" />
+<img alt="uniicons/path4642.png" src="/images/learning/bmfiddle_icons/uniicons/path4642.png" />
+<img alt="uniicons/path4644.png" src="/images/learning/bmfiddle_icons/uniicons/path4644.png" />
+<img alt="uniicons/path4646.png" src="/images/learning/bmfiddle_icons/uniicons/path4646.png" />
+<img alt="uniicons/path4648.png" src="/images/learning/bmfiddle_icons/uniicons/path4648.png" />
+<img alt="uniicons/path4650.png" src="/images/learning/bmfiddle_icons/uniicons/path4650.png" />
+<img alt="uniicons/path4652.png" src="/images/learning/bmfiddle_icons/uniicons/path4652.png" />
+<img alt="uniicons/path4654.png" src="/images/learning/bmfiddle_icons/uniicons/path4654.png" />
+<img alt="uniicons/path4656.png" src="/images/learning/bmfiddle_icons/uniicons/path4656.png" />
+<img alt="uniicons/path4658.png" src="/images/learning/bmfiddle_icons/uniicons/path4658.png" />
+<img alt="uniicons/path4660.png" src="/images/learning/bmfiddle_icons/uniicons/path4660.png" />
+<img alt="uniicons/path4662.png" src="/images/learning/bmfiddle_icons/uniicons/path4662.png" />
+<img alt="uniicons/path4664.png" src="/images/learning/bmfiddle_icons/uniicons/path4664.png" />
+<img alt="uniicons/path4666.png" src="/images/learning/bmfiddle_icons/uniicons/path4666.png" />
+<img alt="uniicons/path4668.png" src="/images/learning/bmfiddle_icons/uniicons/path4668.png" />
+<img alt="uniicons/path4670.png" src="/images/learning/bmfiddle_icons/uniicons/path4670.png" />
+<img alt="uniicons/path4672.png" src="/images/learning/bmfiddle_icons/uniicons/path4672.png" />
+<img alt="uniicons/path4674.png" src="/images/learning/bmfiddle_icons/uniicons/path4674.png" />
+<img alt="uniicons/path4676.png" src="/images/learning/bmfiddle_icons/uniicons/path4676.png" />
+<img alt="uniicons/path4678.png" src="/images/learning/bmfiddle_icons/uniicons/path4678.png" />
+<img alt="uniicons/path4680.png" src="/images/learning/bmfiddle_icons/uniicons/path4680.png" />
+<img alt="uniicons/path4682.png" src="/images/learning/bmfiddle_icons/uniicons/path4682.png" />
+<img alt="uniicons/path4684.png" src="/images/learning/bmfiddle_icons/uniicons/path4684.png" />
+<img alt="uniicons/path4686.png" src="/images/learning/bmfiddle_icons/uniicons/path4686.png" />
+<img alt="uniicons/path4688.png" src="/images/learning/bmfiddle_icons/uniicons/path4688.png" />
+<img alt="uniicons/path4690.png" src="/images/learning/bmfiddle_icons/uniicons/path4690.png" />
+<img alt="uniicons/path4692.png" src="/images/learning/bmfiddle_icons/uniicons/path4692.png" />
+<img alt="uniicons/path4694.png" src="/images/learning/bmfiddle_icons/uniicons/path4694.png" />
+<img alt="uniicons/path4696.png" src="/images/learning/bmfiddle_icons/uniicons/path4696.png" />
+<img alt="uniicons/path4698.png" src="/images/learning/bmfiddle_icons/uniicons/path4698.png" />
+<img alt="uniicons/path4700.png" src="/images/learning/bmfiddle_icons/uniicons/path4700.png" /></p>
 <p>Download the full zip of the <a href="/images/learning/bmfiddle_icons/uniicons/bmfiddle_uniicons.zip">bmfiddle
 uniicons</a> pngs.</p>
 <p>The easiest way to get these into the canvas resources are is to e-mail
@@ -289,15 +295,15 @@ create or verify the icons as SVG's with a transparent background. Save
 them in the bmfiddle_icons directory, then run the convert_svg_to_png.sh
 script, which will create the transparent png thumbnails. These are what
 will be uploaded to the resources area on bmfiddle.</p>
-<p><a href="/images/learning/bmfiddle_icons/channels.png"><img alt="channels" src="/images/learning/bmfiddle_icons/thumbnails/channels.png"></a>
-<a href="/images/learning/bmfiddle_icons/costs.png"><img alt="costs" src="/images/learning/bmfiddle_icons/thumbnails/costs.png"></a>
-<a href="/images/learning/bmfiddle_icons/customer_relationships.png"><img alt="customer relationships" src="/images/learning/bmfiddle_icons/thumbnails/customer_relationships.png"></a>
-<a href="/images/learning/bmfiddle_icons/customer_segments.png"><img alt="customer segments" src="/images/learning/bmfiddle_icons/thumbnails/customer_segments.png"></a>
-<a href="/images/learning/bmfiddle_icons/key_activities.png"><img alt="key activities" src="/images/learning/bmfiddle_icons/thumbnails/key_activities.png"></a>
-<a href="/images/learning/bmfiddle_icons/key_partners.png"><img alt="key partners" src="/images/learning/bmfiddle_icons/thumbnails/key_partners.png"></a>
-<a href="/images/learning/bmfiddle_icons/key_resources.png"><img alt="key resources" src="/images/learning/bmfiddle_icons/thumbnails/key_resources.png"></a>
-<a href="/images/learning/bmfiddle_icons/revenue_streams.png"><img alt="revenue streams" src="/images/learning/bmfiddle_icons/thumbnails/revenue_streams.png"></a>
-<a href="/images/learning/bmfiddle_icons/value_proposition.png"><img alt="value propositions" src="/images/learning/bmfiddle_icons/thumbnails/value_proposition.png"></a></p>
+<p><a href="/images/learning/bmfiddle_icons/channels.png"><img alt="channels" src="/images/learning/bmfiddle_icons/thumbnails/channels.png" /></a>
+<a href="/images/learning/bmfiddle_icons/costs.png"><img alt="costs" src="/images/learning/bmfiddle_icons/thumbnails/costs.png" /></a>
+<a href="/images/learning/bmfiddle_icons/customer_relationships.png"><img alt="customer relationships" src="/images/learning/bmfiddle_icons/thumbnails/customer_relationships.png" /></a>
+<a href="/images/learning/bmfiddle_icons/customer_segments.png"><img alt="customer segments" src="/images/learning/bmfiddle_icons/thumbnails/customer_segments.png" /></a>
+<a href="/images/learning/bmfiddle_icons/key_activities.png"><img alt="key activities" src="/images/learning/bmfiddle_icons/thumbnails/key_activities.png" /></a>
+<a href="/images/learning/bmfiddle_icons/key_partners.png"><img alt="key partners" src="/images/learning/bmfiddle_icons/thumbnails/key_partners.png" /></a>
+<a href="/images/learning/bmfiddle_icons/key_resources.png"><img alt="key resources" src="/images/learning/bmfiddle_icons/thumbnails/key_resources.png" /></a>
+<a href="/images/learning/bmfiddle_icons/revenue_streams.png"><img alt="revenue streams" src="/images/learning/bmfiddle_icons/thumbnails/revenue_streams.png" /></a>
+<a href="/images/learning/bmfiddle_icons/value_proposition.png"><img alt="value propositions" src="/images/learning/bmfiddle_icons/thumbnails/value_proposition.png" /></a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -346,7 +352,7 @@ delete them.
 
 <p>The process above was used to create a bmfiddle.com canvas that looks
 like this:</p>
-<p><a href="/images/learning/bmfiddle_step3.png"><img alt="BMfiddle step3" src="/images/learning/thumbnails/bmfiddle_step3.png"></a></p>
+<p><a href="/images/learning/bmfiddle_step3.png"><img alt="BMfiddle step3" src="/images/learning/thumbnails/bmfiddle_step3.png" /></a></p>
                 <div class="panel">
                     <div class="panel-body">
 <footer class="post-info">
