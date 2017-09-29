@@ -25,3 +25,30 @@ changing goal. Creating, organizing and giving away businesses.
 
 Now how does task warrior help you do that?
 
+
+Task warrior provides a faster mechanims for writing notes.
+task add "read innovators dilemma"
+
+vs. 
+
+create draft in google mail web app, go to body, write "read innovators
+dilemma",
+
+create event in google calendar
+(pick an appropriate day based on arbitrary rules)
+add "read innovators dilemma" as the title, click save
+
+The lesson here is that it's really about the workflow first, then tool
+selection. You thought taskwarrior would fix the problems. What it does
+is help you elucidate what the problem is.
+
+For example:
+Phone call, sharing ideas, written on piece of paper.
+Come back next day, write them out as separate tasks like:
+task add "find anne mcgraf book"
+task add "research kellogg innovation forum"
+
+
+That is just the 'storage' component of this procedure. The second level
+procedure is you need a task management workflow, just like you have for
+email.

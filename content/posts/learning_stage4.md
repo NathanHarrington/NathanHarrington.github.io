@@ -266,4 +266,12 @@ Deck](/images/learning/thumbnails/learning_value_proposition_examples_card_deck_
 -------------------------------------------------------------------------
 ## Execution:
 
+Lessons learned:
 
+36 cards with about double the total content of any previous learning
+stage. Still took linear amounts of time to memorize when grouped into
+individual card decks. Re-merged with randomization for surprisingly no
+surprises of memorization and incorporation.
+
+Now making a new set of business model canvases for various problems I'm
+working on with these better value proposition ideas.
