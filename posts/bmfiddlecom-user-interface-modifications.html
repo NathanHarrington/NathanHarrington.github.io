@@ -289,6 +289,24 @@ mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs&quot; $( printf -- &#39
 </pre></div>
 
 
+<p>As of 2017-09-29 16:01, mailing these 100 files to bmfiddle will trigger
+them to be re-added at least 3 times, resulting in duplicates and
+confusion in the resources pane. Send them in groups of ten instead
+with:</p>
+<div class="highlight"><pre><span></span>cd uniicons/
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 1of10&quot; $( printf -- &#39;-a %q &#39; folder1/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 2of10&quot; $( printf -- &#39;-a %q &#39; folder2/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 3of10&quot; $( printf -- &#39;-a %q &#39; folder3/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 4of10&quot; $( printf -- &#39;-a %q &#39; folder4/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 5of10&quot; $( printf -- &#39;-a %q &#39; folder5/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 6of10&quot; $( printf -- &#39;-a %q &#39; folder6/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 7of10&quot; $( printf -- &#39;-a %q &#39; folder7/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 8of10&quot; $( printf -- &#39;-a %q &#39; folder8/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 9of10&quot; $( printf -- &#39;-a %q &#39; folder9/*.png ) 
+mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 10of10&quot; $( printf -- &#39;-a %q &#39; folder10/*.png ) 
+</pre></div>
+
+
 <p>You can use the sketch tool on bmfiddle, but it will not have a
 transparent background. </p>
 <p>If you're making your own icons like those shown below, remember to
