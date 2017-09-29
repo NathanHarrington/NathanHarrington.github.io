@@ -6,11 +6,17 @@ Tags: productivity
 The main problem is using google calendar and email as a task management system.
 
 Goals:
+
 1. Clear priorities
+
 2. Un-encumbering task list
+
 3. Zero data loss of written tasks.
+
 4. Single place where all tasks are stored
+
 5. Calendar is for scheduling events only.
+
 6. Email is for communication only
 
 
