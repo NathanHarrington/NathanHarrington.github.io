@@ -207,7 +207,7 @@ them to <canvas_id>@canvas.bmfiddle.com from the address used to create your
 bmfiddle.com account. On linux, this can look like:
 
 ```
-
+cd uniicons/
 mutt <canvas_id>@canvas.bmfiddle.com -s "PNGs" $( printf -- '-a %q ' *.png ) 
 
 ```
