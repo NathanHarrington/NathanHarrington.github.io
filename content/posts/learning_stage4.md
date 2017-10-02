@@ -271,7 +271,7 @@ Lessons learned:
 36 cards with about double the total content of any previous learning
 stage. Still took linear amounts of time to memorize when grouped into
 individual card decks. Re-merged with randomization for surprisingly no
-surprises of memorization and incorporation.
+impact to time required for memorization and incorporation.
 
 Now making a new set of business model canvases for various problems I'm
 working on with these better value proposition ideas.
@@ -291,3 +291,11 @@ mvp
 and build the rest of the bmc around that
 
 
+[![Example
+BMC](/images/learning/thumbnails/rain_bmc.png)](/images/learning/rain_bmc.png)
+[![Example
+BMC](/images/learning/thumbnails/noise_machine_app.png)](/images/learning/noise_machine_app.png)
+[![Example
+BMC](/images/learning/thumbnails/triangle_innovation.png)](/images/learning/triangle_innovation.png)
+[![Example
+BMC](/images/learning/thumbnails/data_science_matcher.png)](/images/learning/data_science_matcher.png)

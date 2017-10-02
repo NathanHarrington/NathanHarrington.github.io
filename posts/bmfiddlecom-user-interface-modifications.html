@@ -293,17 +293,23 @@ mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs&quot; $( printf -- &#39
 them to be re-added at least 3 times, resulting in duplicates and
 confusion in the resources pane. Send them in groups of ten instead
 with:</p>
-<div class="highlight"><pre><span></span>cd uniicons/
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 1of10&quot; $( printf -- &#39;-a %q &#39; folder1/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 2of10&quot; $( printf -- &#39;-a %q &#39; folder2/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 3of10&quot; $( printf -- &#39;-a %q &#39; folder3/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 4of10&quot; $( printf -- &#39;-a %q &#39; folder4/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 5of10&quot; $( printf -- &#39;-a %q &#39; folder5/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 6of10&quot; $( printf -- &#39;-a %q &#39; folder6/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 7of10&quot; $( printf -- &#39;-a %q &#39; folder7/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 8of10&quot; $( printf -- &#39;-a %q &#39; folder8/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 9of10&quot; $( printf -- &#39;-a %q &#39; folder9/*.png ) 
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs 10of10&quot; $( printf -- &#39;-a %q &#39; folder10/*.png ) 
+<div class="highlight"><pre><span></span><span class="x">if [[ </span><span class="p">$</span><span class="err">#</span><span class="x"> -eq 0 ]] ; then</span>
+<span class="x">    echo &#39;You must specify a bmfiddle CANVASID&#39;</span>
+<span class="x">    exit 0</span>
+<span class="x">fi</span>
+
+<span class="x">CANVASID=&quot;</span><span class="p">$</span><span class="x">1&quot;</span>
+
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 1of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder1/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 2of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder2/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 3of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder3/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 4of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder4/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 5of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder5/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 6of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder6/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 7of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder7/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 8of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder8/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 9of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder9/*.png</span> <span class="p">)</span><span class="x"></span>
+<span class="x">mutt </span><span class="p">$</span><span class="nv">CANVASID</span><span class="x">@canvas.bmfiddle.com -s &quot;PNGs 10of10&quot; </span><span class="p">$(</span> <span class="err">printf</span> <span class="err">--</span> <span class="s1">&#39;-a %q &#39;</span> <span class="err">folder10/*.png</span> <span class="p">)</span><span class="x"></span>
 </pre></div>
 
 
