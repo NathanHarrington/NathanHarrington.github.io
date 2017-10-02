@@ -48,76 +48,71 @@ The lesson here is that it's really about the workflow first, then tool
 selection. You thought taskwarrior would fix the problems. What it does
 is help you elucidate what the problem is.
 
+You don't want to get things done. You don't want to write down,
+classify and then track as much work as possible. You want to eliminate
+as much work as possible in order to focus on what you are here for.
+
+
 For example:
 Phone call, sharing ideas, written on piece of paper.
 Come back next day, write them out as separate tasks like:
 task add "find anne mcgraf book"
 task add "research kellogg innovation forum"
 
-
 That is just the 'storage' component of this procedure. The second level
 procedure is you need a task management workflow, just like you have for
 email.
 
-You don't want to get things done. You don't want to write down,
-classify and then track as much work as possible. You want to eliminate
-as much work as possible in order to focus on what you are here for.
+Start the day knowing what the single most important thing to work on
+is. Make sure your thought patterns are focused on the first most
+important thing to work on. This does not require task warrior. This
+should explicitly exclude all task management software. This is the
+next, key activity required to train in, to practice, to transform into.
 
-As you pay the bills this morning, think of how you can use task warrior
-to augment the elimination of work. Follow the bill paying process, yes,
-but eliminate at least one recurring task.
+Maybe it's business model canvas generation. Maybe it's spiritual
+development. Maybe it's learning a web framework. Whatever it is, do it
+and stay focused.
 
-## Pay someone to mow your lawn.
+If during this process you have an idea to capture, issue the command:
 
-This was arguably the single most transformative event in my day to day
-life I have ever done. It transformed an obligation into an opportunity.
-What else are you doing becuase you 'have to'? A workflow for mowing the
-lawn is something like:
+> task add "new activity to add"
 
-Is it Wednesday?
-Is it prime growing season?
-    Yes 
-        Was the lawn mowed within past 7 days?
-    No
-        Was the lawn mowed withing past 14 days?
+As the day progresses and energy wanes, begin the integration of task
+warrior. 
 
-Does the mower work?
-Is their fuel available?
+The main focus is the same, but you add in 5 minute intervals of other
+tasks in order to facilitate focus. This is the push through the most
+difficult mental times in order to achieve the long term goals.
 
-Does the trimmer work?
-Is their line available?
+If your task warrior list looks like this:
 
-Does the blower work?
-Are teh batteries charged?
+```
+ID Age  Project    Description                                                    Urg
+ 2 7d   stage_four Value proposition immersion                                    1.04
+ 1 7d              document structure customer discovery                          0.04
+ 3 6d              django tutorial continue                                       0.03
+ 4 4d              switch to sup insteads of mutt - use erp account for testing   0.02
+ 5 1h              find bmc discussion groups                                        0
+ 6 7min            encrypt backup disk                                               0
+ 7 7min            zenbook backup to backup disk                                     0
+ 8 7min            tapemonster backup to backup disk                                 0
+ 9 7min            zenbook, w541 and tapemonster txt fiels to an sd card and a       0
+                   usb disk, encrypted
+```
 
-Then budget out 2 hours of a day to prepare, mow, and cleanup.
+Set the initial item as active:
 
-This is really a small portion of the overall thought effort you were
-giving to this task. Externally it looks like 'mow the lawn'. Where you
-spend 2 hours on a Saturday or whatever day happens to work when it is
-not raining. When you dive down, you see that it's really 3-4 hours of
-total time per week. Moreover, the thought burden requires task
-switching and planning and physical presence.
+task 2 start
 
-Now it's you spend 150$ a month, and you never think about it. You come
-home and the lawn is mowed and you never have to worry about it. You
-can leave at any time. This is what you want task warrior to help with.
-This is what you want out of the bill paying procedure. What would you
-do if you never had to worry about money? You would create, organize and
-give away businesses.
+Then set the timer on the watch (not the phone!), for every 5 minutes.
+After the timer is up, switch to the next item on the task list, but
+leave the primary (task 2) as active. Reset the timer. After another
+five minutes, go back to the primary. Continue this cycle so the primary
+task is executed at 50% duty cycle.
 
-
-## Pay someone to pay your bills
-
-If you're not living month to month, if there is some margin, setup
-autopay. That will eliminate a huge portion. Then you digitize
-everything. If you never have to check the mail, you then have a
-non-physical presence required approach. Then to test you put some money
-in a separate account at a separate bank. You have one job every month,
-put X thousands for paying the bills in that account. You workflow the
-entire procedure, then you outsource it. Then you audit it once a week,
-then every two weeks, then every month, then you're bill paying
-requirements go from hours a week to minutes every month. Moreover, you
-brain is freed from the overhead.
+This provides an effective balance between long term goal work and lower
+level work. Both are important, but this ensures there is less liklihood
+of task saturation, and the fatigue is counteracted by the newness and
+shortness of other tasks.
 
 
