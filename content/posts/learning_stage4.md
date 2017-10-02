@@ -275,3 +275,19 @@ surprises of memorization and incorporation.
 
 Now making a new set of business model canvases for various problems I'm
 working on with these better value proposition ideas.
+
+The creation of these bmfiddles is showing many new frustrations and
+lack of clarity. Especially around the value propositions and customer
+segments - looking at others briefly from the udacity materials, then
+will recreate full BMC's for practice. Excellent - that instantly shows
+you were confused about what goes in the customer segment box. It's the
+persona, not the matching pains and gains. So execute a series of
+bmfiddles based on teh various ideas you are working on that include:
+1 pain solved for customer
+1 gain created for customer
+1 features for pain solved and/or gain created
+mvp
+
+and build the rest of the bmc around that
+
+
