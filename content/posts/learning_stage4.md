@@ -283,12 +283,11 @@ will recreate full BMC's for practice. Excellent - that instantly shows
 you were confused about what goes in the customer segment box. It's the
 persona, not the matching pains and gains. So execute a series of
 bmfiddles based on teh various ideas you are working on that include:
-1 pain solved for customer
-1 gain created for customer
-1 features for pain solved and/or gain created
-mvp
 
-and build the rest of the bmc around that
+1. A pain solved for customer
+2. A gain created for customer
+3. Features for pain solved and/or gain created
+4. mvp
 
 
 [![Example
