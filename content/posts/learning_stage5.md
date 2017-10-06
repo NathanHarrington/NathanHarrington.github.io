@@ -44,6 +44,8 @@ Pages 19-26
 
 #### Incorporation:
 
+**Card deck 1 of 6 Overview**
+```
 Customer segments
 GOAL: A deep understanding of the customer persona.
 
@@ -55,9 +57,18 @@ What gains are we providing?
 Provide answers to the questions:
 Who are they, why would they buy, why won't they buy. What do you need
 to say to them?
+```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_overview_card_deck_front.jpg)](/images/learning/learning_customer_segments_overview_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_overview_card_deck_back.jpg)](/images/learning/learning_customer_segments_overview_card_deck_back.jpg)
+
+--------------------------------------------------
 
 
 
+**Card deck 2 of 6 Jobs**
+```
 The tasks they are trying to perform. The problems they are trying to
 solve. Or the needs they are trying to satisfy.
 
@@ -84,8 +95,17 @@ Rank each job according to its significance to the customer
 
 What constraints and limitations are imposed on the job based on its
 context?
+```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_jobs_card_deck_front.jpg)](/images/learning/learning_customer_segments_jobs_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_jobs_card_deck_back.jpg)](/images/learning/learning_customer_segments_jobs_card_deck_back.jpg)
+
+--------------------------------------------------
 
 
+**Card deck 3 of 6 Pains**
+```
 Pains
 Anything that prevents your customers from getting a job done.
 Can annoy customers before, during and after trying to get a job done.
@@ -133,10 +153,19 @@ is better than
 Pain severity
 A customer pain can be extreme or moderate, similar to how jobs can be
 important or insignificant to the customer.
+```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_pain_card_deck_front.jpg)](/images/learning/learning_customer_segments_pain_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_pain_card_deck_back.jpg)](/images/learning/learning_customer_segments_pain_card_deck_back.jpg)
+
+--------------------------------------------------
 
 
 
 
+**Card deck 4 of 6 Gains**
+```
 Gains are benefits the customer expects, desires or would be surprised
 by. Gains include functional utility, social gains, positive emotions,
 and cost savings.
@@ -183,10 +212,18 @@ is better than
 Rank your gains
 A customer gain can feel essential or nice to have. Make sure you are
 focusing on the most important gains to the customer
+```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_gain_card_deck_front.jpg)](/images/learning/learning_customer_segments_gain_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_gain_card_deck_back.jpg)](/images/learning/learning_customer_segments_gain_card_deck_back.jpg)
+
+--------------------------------------------------
 
 
 
-Customer Persona
+**Card deck 4 of 6 Persona**
+```
 Not only do you know about the pains and gains of the customers, you
 specifically know who they are.  
 
@@ -213,25 +250,22 @@ use and the car they drive etc.
 Have a deep understanding of the customer and where your product fits.
 
 
-JerseySquare Persona
-
-Attribute       Gasol           Junior              Becky
-Age             32              15                  24
-Income          $65k            N/A                 $40K
-Demographics    White           White               White
-Type            Jersey Buyer    Social statement    social sports viewer
-Fan Type        avid            in-season           casual
-Class           middle          middle              middle
-Facebook Status single/compl.   single              in relationship
-rental type     subscription    subscription        pay per rental
-
 Who is the customer in relation to others?
 User->Influencer->Recommender->Decision Maker->Economic Buyer->Saboteur
 
 Teen         Friends            Dad            Parents
+```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_persona_card_deck_front.jpg)](/images/learning/learning_customer_segments_persona_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_persona_card_deck_back.jpg)](/images/learning/learning_customer_segments_persona_card_deck_back.jpg)
+
+--------------------------------------------------
 
 
 
+**Card deck 6 of 6 Examples**
+```
 Simple two sided google search summary
 Multiple customer segments
 Each has its own value proposition
@@ -262,16 +296,25 @@ phase 4 final product 3-4 weeks
 
 And our product fits right here and here's why
 
+JerseySquare Persona
 
-
-**Card deck **
+Attribute       Gasol           Junior              Becky
+Age             32              15                  24
+Income          $65k            N/A                 $40K
+Demographics    White           White               White
+Type            Jersey Buyer    Social statement    social sports viewer
+Fan Type        avid            in-season           casual
+Class           middle          middle              middle
+Facebook Status single/compl.   single              in relationship
+rental type     subscription    subscription        pay per rental
 ```
-```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_examples_card_deck_front.jpg)](/images/learning/learning_customer_segments_examples_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_customer_segments_examples_card_deck_back.jpg)](/images/learning/learning_customer_segments_examples_card_deck_back.jpg)
 
 --------------------------------------------------
-**Card deck **
-```
-```
+
 
 
 -------------------------------------------------------------------------
