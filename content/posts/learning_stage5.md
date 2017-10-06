@@ -30,9 +30,6 @@ questions](https://assets.strategyzer.com/assets/resources/customer-pains-trigge
 Strategyzer: [Customer jobs trigger
 questions](https://assets.strategyzer.com/assets/resources/customer-jobs-trigger-questions.pdf)
 
-Strategyzer: [A day in the life
-worksheet](https://assets.strategyzer.com/assets/resources/a-day-in-the-life-worksheet.pdf)
-
 Strategyzer: [Identify high value
 jobs](https://assets.strategyzer.com/assets/resources/identify-high-value-jobs.pdf)
 
@@ -47,52 +44,172 @@ Pages 19-26
 
 #### Incorporation:
 
-Customer segment definition:
+Customer segments definition:
 
-At the end - a deep understanding of the persona and archectype. Who are
-they, why would they buy, why won't they buy. What do you need to say to
-them?
+A deep understanding of the customer persona.
 
-If you spend your energy out of the building, it will make your company
-incredibly efficient at figuring out how to market and sell to them.
-
-What job are we getting done for the customer.
-
-
-What functional or social jobs
-What emotional jobs
-What problems or needs are we solving.
-What gains are we providign the customer
-What pains are we solving.
-
-
-
-
-Chapter 2.
-What is the customer segment trying to get done?
-    What functional or social jobs are getting done?
-    Does the customer want to perform or complete  a specific task?
-    Or solve a problem?
-    Or trying to look good?
-    Or gain power or status?
-
-Is it a problem or need?
-    What emotional jobs?
-    Look better
-    Feel good
-    Feel more secure
-
-What functional or social jobs are getting done?
+Persona starts with:
+What functional or social jobs?
 What emotional jobs?
-What basic needs are you helping your customers satisfy?
+What gains are we providing the customer?
+What pains are we solving?
 
-Chapter 3:
-RANK
+Provide answers to the questions:
+Who are they, why would they buy, why won't they buy. What do you need
+to say to them?
+
+
+
+A customer job could be the tasks they are trying to perform and
+complete, the problems they are trying to solve, or the needs they are
+trying to satisfy.
+
+Functional jobs
+Perform a specific task to solve a specific problem.
+Mow the lawn
+Eat healthy
+write a report
+
+Social jobs
+These jobs describe how customers want to be perceived by others
+Look good or gain power or status
+Look trendy
+Be seen as competent
+
+Personal/emotional jobs
+Customer seeks a specific emotional state
+Feel good or secure
+Seeking peace of mind regarding investments
+
+
 Rank each job according to its significance to the customer
 Crucial or trivial?
 At what frequency does it occur?
+
 Outline the context in which a job is done, that may impose constraints
 or limitations.
+
+
+Pains
+Anything that prevents your customers from getting a job done.
+Can annoy customers before, during and after trying to get a job done.
+Also can describe risks related to getting a job done badly or not at
+all.
+
+1. Cost
+Takes a lot of time, too much money, or requires substantial efforts?
+
+2. Feel bad
+What are their frustrations, annoyances, or things that give them a
+headache?
+
+3. Performance 
+What features are they missing? What performance issues annoy them or
+malfunctions do they cite?
+
+4. Challenges
+Do they understand how things work, have difficulties getting certain
+things done, or resist particular jobs for specific reasons?
+
+5. Social consequences
+Are they afraid of losing face, power, trust or status?
+
+6. Risks
+Financial, social, or technical risks. Or are they asking themselves what
+could go wrong?
+
+7. Anxiety
+What are their big issues, concerns and worries?
+
+8. Mistakes
+Are they using a solution the wrong way? What common mistakes do
+customers make?
+
+9. Barriers
+Are their upfront investment costs, a steep learning curve, or other
+obstacles preventing adoption?
+
+Make pains concrete
+"Waiting in line for 10 minutes is a waste" 
+is better than
+"Waiting in line is a waste"
+
+
+Pain severity
+A customer pain can be extreme or moderate, similar to how jobs can be
+important or insignificant to the customer.
+
+
+
+
+Gains are benefits the customer expects, desires or would be surprised
+by. Gains include functional utility, social gains, positive emotions,
+and cost savings.
+
+1. Savings
+Which time, money and effort reductions would they value. 
+
+2. Quality
+What would they wish more or less of? What quality levels do they
+expect?
+
+3. Existing features
+What specific performance do they expect? How can you improve those
+features?
+
+4. Easier
+A flatter learning curve, more services, or lower costs of ownership?
+
+5. Positive social consequences
+What increases their power or status? What makes them look good?
+
+6. Seeking most
+Are they searching for good design, guarantees, specific or more
+features?
+
+7. Feel better
+What do they aspire to achieve, or what would be a big relief to them?
+
+8. Measurements
+How does your customer gauge performance or cost? How do they measure
+success and failure?
+
+9. Obstacles
+What would increase the likelihood of adopting a solution?
+Lower cost, lower risk, more fun, better quality?
+
+
+Make gains concrete
+"Performs 10 minutes faster"
+is better than
+"Increased performance"
+
+
+Rank your gains
+A customer gain can feel essential or nice to have. Make sure you are
+focusing on the most important gains to the customer
+
+
+
+Customer Persona
+Not only do you know about the pains and gains of the customers, you
+specifically know who they are.  Know everything about those customers.
+
+Profile Components
+position or title
+demographics
+role
+discretionary budget
+motivations
+Role models
+
+Profile questions:
+Who are you?
+Who do you buy? 
+Where do you buy? 
+How much money do they have to spend?
+What matters to you?
+Who influences you?
 
 Day in the life
 Diagram what a customer does from when they get up and the products they
@@ -100,115 +217,8 @@ use and the car they drive etc.
 
 Have a deep understanding of the customer and where your product fits.
 
-On day one you are guessing, the objective is to fill in the day in the
-life.
 
-Chapter 4:
-customer gains
-Benefits the customer expects, desires or would be surprised by.
-
-Besides the jobs they want to get done, what do they want to gain by
-using your product or service.
-
-Which savings would make your customer happy?
-money, effort, time
-
-What outcomes do they expect and what would go beyond their
-expectations?
-Quality, more of, less of
-
-Features, performance, quality
-
-What would make your customers job or life easier?
-More services, lower cost of ownership, flatter learning curve
-
-depends on selling to business or consumer customers.
-You ought to be able to make a list of all the gains that they would get
-by using your product.
-
-What positive social consequences do they desire?
-Makes them look good, status, increase power, good design, specific or
-more features?
-
-How does your customer measure success and failure?
-Performance, cost?
-
-What would increase the liklihood of adopting a solution?
-lower cost, lower risk, more fun, better quality?
-
-Make that list of hypothesis, and then validate them.
-
-Chapter 5.
-Customer pains
-Undesired costs and situations, risks, negative emotions
-
-they have been walking around with an arrow through their head and have
-been accepting that for a while. But when you come about you say hey we
-can solve these problems for you.
-
-What do your customers find too costly?
-time   cost
-
-How are current solutions underperforming?
-Lack features, performance, malfunctioning
-
-What are the main difficulties and challenges?
-Was this problem in the top 3 on their list? In context, what are the
-other pains they have even if you're solving a pain. If you're down the
-list ask is there any way our product or service can solve what is in
-the top 5.
-
-what's keeping your customer awake at night?
-Big issues, concerns, worries
-
-What barriers are keeping customers from adopting?
-Upfront investment costs
-Learning curve
-Resistance to change
-
-What makes your customers feel bad?
-frustrations
-annoyances
-
-What do they fear?
-Financial risk
-social risk
-technical risk - what could go wrong, etc.
-
-You need to understand all of this
-
-Chapter 6.
-Customer Persona/Archetype
-
-know everything about those customers.
-
-Not only do you know about the pains and gains of the customers, you
-specifically know who they are. 
-
-Profile
-position/title
-age/sex
-role
-discretionary budget
-motivations
-Role models
-
-Who are you?
-Who do you buy? Where do you buy? How much money do they have to spend?
-What matters to you?
-Who influences you?
-
-Know how to reach these people and what buttons to push when you do.
-
-Start asking these questions when starting to talk to them trying to
-define them. It makes spending for marketing and demand creation and
-customer acquisition and activiation incredibly easy because you already
-asked them up front how would I get you to by this? Customers already
-told you this is how I buy, this is how much I spend, and this is who I
-listen to when I make a picture. 
-
-Chapter 7.
-JerseySquare Archetype
+JerseySquare Persona
 
 Attribute       Gasol           Junior              Becky
 Age             32              15                  24
@@ -220,16 +230,16 @@ Class           middle          middle              middle
 Facebook Status single/compl.   single              in relationship
 rental type     subscription    subscription        pay per rental
 
-Chapter 8.
+
+
 Who's the customer in context?
 User->Influencer->Recommender->Decision Maker->Economic Buyer->Saboteur
 
 Teen         Friends            Dad            Parents
 
-Is the user different from the payer?
-Buying the car example.
 
-Chapter 13 - simple two sided google search summary
+
+Simple two sided google search summary
 Multiple customer segments
 Each has its own value proposition
 each has it's own revenue stream
@@ -238,52 +248,17 @@ advertisers have google adwords
 web searchers have free search bar
 
 
-Chapter 26
-Actually talking with customers revealed that there were actually two
-customer segments. Rabid fans and casual fans
-
-Two customer segments, two value propositions, and a revenue stream that
-matches each of the segments.
-
-Archetype needs pains and gains as well -
-    is that accurate? Is that confusing? Is it in other BMC's ?
-
-Chapter 27
-Meet xing xie
-engineering graduate student
-- receives financial package to cover tuition, fees, insurance and
-  living expenses
-Chinese 4-2-1 family
-- no siblings, spoiled by parents
-- high disposable income
-1st time in america
-- no credit score, ssn or us address
-- strong ties to his community in china
-Academically responsible
--completes all homework on time
-Financially responsible
-- pays all bills on time and in full
-Social network is similarily responsible
-
-Who they are and this is their family and this is their first time in
-america.
-And becaues it was about providing financial services to foreign
-students they understood something about their credit score, social
-security number, us address, whether they were responsible socially and
-academically and whether their social network was similarily responsible
-
 Company making kite boarding equipment
-
 Professional kite surfers
 - solely concerned with performance
 Average kit surfer
--performance and cost sensitive
+- performance and cost sensitive
 - "one less thing to carry" effect
 Prospective kite surfer
 - cost sensitive
 - learning barrier
 
-They were trying to udnerstand how to segment their market and what
+They were trying to understand how to segment their market and what
 their specific performance needs for kite surfers were in each segment.
 
 
@@ -296,27 +271,6 @@ phase 3 manufacturing 8-12 weeks
 phase 4 final product 3-4 weeks
 
 And our product fits right here and here's why
-
-Detailed customer segment persona of a set of customers
-Pat the professional.
-Salary, job, spend, demographics, traits, motivations, behavior, budget
-where they worked, where they bought
-a great example of a professional class consumer that bought frequently
-online
-
-Canscan example
-oncologists
-decide what tests to order when, and how oftenr
-primary customer
-
-pathlogists
-perform in-house tests and facilitate contracts with service providers
-less important
-
-here's what they did and what they cared about and more importantly,
-here's how they paid in the hospital and here's how they got reimbursed.
-
-
 
 
 
