@@ -44,15 +44,13 @@ Pages 19-26
 
 #### Incorporation:
 
-Customer segments definition:
-
-A deep understanding of the customer persona.
+Customer segments
+GOAL: A deep understanding of the customer persona.
 
 Persona starts with:
-What functional or social jobs?
-What emotional jobs?
-What gains are we providing the customer?
+What functional, social or emotional jobs is the customer performing?
 What pains are we solving?
+What gains are we providing?
 
 Provide answers to the questions:
 Who are they, why would they buy, why won't they buy. What do you need
@@ -60,9 +58,8 @@ to say to them?
 
 
 
-A customer job could be the tasks they are trying to perform and
-complete, the problems they are trying to solve, or the needs they are
-trying to satisfy.
+The tasks they are trying to perform. The problems they are trying to
+solve. Or the needs they are trying to satisfy.
 
 Functional jobs
 Perform a specific task to solve a specific problem.
@@ -71,35 +68,34 @@ Eat healthy
 write a report
 
 Social jobs
-These jobs describe how customers want to be perceived by others
+Describe how customers want to be perceived by others
 Look good or gain power or status
 Look trendy
 Be seen as competent
 
-Personal/emotional jobs
+Emotional jobs
 Customer seeks a specific emotional state
 Feel good or secure
 Seeking peace of mind regarding investments
 
-
-Rank each job according to its significance to the customer
 Crucial or trivial?
 At what frequency does it occur?
+Rank each job according to its significance to the customer
 
-Outline the context in which a job is done, that may impose constraints
-or limitations.
+What constraints and limitations are imposed on the job based on its
+context?
 
 
 Pains
 Anything that prevents your customers from getting a job done.
 Can annoy customers before, during and after trying to get a job done.
-Also can describe risks related to getting a job done badly or not at
+Or describes risks related to getting a job done badly or not at
 all.
 
 1. Cost
 Takes a lot of time, too much money, or requires substantial efforts?
 
-2. Feel bad
+2. Feel 
 What are their frustrations, annoyances, or things that give them a
 headache?
 
@@ -108,15 +104,15 @@ What features are they missing? What performance issues annoy them or
 malfunctions do they cite?
 
 4. Challenges
-Do they understand how things work, have difficulties getting certain
-things done, or resist particular jobs for specific reasons?
+Do they not understand how things work, have difficulties getting
+certain things done, or resist particular jobs for specific reasons?
 
 5. Social consequences
 Are they afraid of losing face, power, trust or status?
 
 6. Risks
-Financial, social, or technical risks. Or are they asking themselves what
-could go wrong?
+Are there financial, social, or technical risks. Or are they asking
+themselves what could go wrong?
 
 7. Anxiety
 What are their big issues, concerns and worries?
@@ -132,8 +128,7 @@ obstacles preventing adoption?
 Make pains concrete
 "Waiting in line for 10 minutes is a waste" 
 is better than
-"Waiting in line is a waste"
-
+"I hate standing in line"
 
 Pain severity
 A customer pain can be extreme or moderate, similar to how jobs can be
@@ -193,7 +188,7 @@ focusing on the most important gains to the customer
 
 Customer Persona
 Not only do you know about the pains and gains of the customers, you
-specifically know who they are.  Know everything about those customers.
+specifically know who they are.  
 
 Profile Components
 position or title
@@ -201,13 +196,13 @@ demographics
 role
 discretionary budget
 motivations
-Role models
+Influencers
 
 Profile questions:
 Who are you?
-Who do you buy? 
+Why do you buy? 
 Where do you buy? 
-How much money do they have to spend?
+How much money do you have to spend?
 What matters to you?
 Who influences you?
 
@@ -230,9 +225,7 @@ Class           middle          middle              middle
 Facebook Status single/compl.   single              in relationship
 rental type     subscription    subscription        pay per rental
 
-
-
-Who's the customer in context?
+Who is the customer in relation to others?
 User->Influencer->Recommender->Decision Maker->Economic Buyer->Saboteur
 
 Teen         Friends            Dad            Parents
@@ -257,9 +250,6 @@ Average kit surfer
 Prospective kite surfer
 - cost sensitive
 - learning barrier
-
-They were trying to understand how to segment their market and what
-their specific performance needs for kite surfers were in each segment.
 
 
 Understanding the day in the life of the customer
@@ -286,4 +276,21 @@ And our product fits right here and here's why
 
 -------------------------------------------------------------------------
 ## Execution:
+
+Update your existing business model canvases (with snapshots), and
+popluate the customer segment area according to what you have learned
+here.
+
+Explore previous ideas that were unsuccessful and who the customer
+segments should have been:
+noticefast
+wakeneighbors
+uv breakdown glue
+abekajoy
+emailstrong
+powerquick
+others
+
+Update your current business model canvases
+
 
