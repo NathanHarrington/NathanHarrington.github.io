@@ -50,9 +50,9 @@ Customer segments
 GOAL: A deep understanding of the customer persona.
 
 Persona starts with:
-What functional, social or emotional jobs is the customer performing?
-What pains are we solving?
-What gains are we providing?
+What functional, social or emotional job is the customer performing?
+What pains do they have?
+What gains do they want?
 
 Provide answers to the questions:
 Who are they, why would they buy, why won't they buy. What do you need
