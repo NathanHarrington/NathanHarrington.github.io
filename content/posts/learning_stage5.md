@@ -51,8 +51,8 @@ GOAL: A deep understanding of the customer persona.
 
 Persona starts with:
 What functional, social or emotional jobs is the customer performing?
-What pains are we solving?
-What gains are we providing?
+What pains do they have?
+What gains do they want?
 
 Provide answers to the questions:
 Who are they, why would they buy, why won't they buy. What do you need
@@ -323,17 +323,4 @@ Deck](/images/learning/thumbnails/learning_customer_segments_examples_card_deck_
 Update your existing business model canvases (with snapshots), and
 popluate the customer segment area according to what you have learned
 here.
-
-Explore previous ideas that were unsuccessful and who the customer
-segments should have been:
-noticefast
-wakeneighbors
-uv breakdown glue
-abekajoy
-emailstrong
-powerquick
-others
-
-Update your current business model canvases
-
 
