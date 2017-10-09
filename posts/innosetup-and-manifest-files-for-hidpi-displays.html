@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="wasatch photonics" />
-        <meta name="description" content="Use PySide 1.2 and Python 2.7. Deploy to various HiDPI displays for testing. You may see text that is either clipped, too large, or too small. Everything looks fine on Linux, but on Windows with the default scaling for HiDPI displays (125%), it can look like this: You&#39;ll …" />
+        <meta name="description" content="Use PySide 1.2 and Python 2.7. Deploy to various HiDPI displays for testing. You may see text that is either clipped, too large, or too small. Everything looks fine on Linux, but on Windows with the default scaling for HiDPI displays (125%), it can look like this: You ..." />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Innosetup and manifest files for HiDPI displays"/>
         <meta property="og:url" content="/posts/innosetup-and-manifest-files-for-hidpi-displays.html"/>
-        <meta property="og:description" content="Use PySide 1.2 and Python 2.7. Deploy to various HiDPI displays for testing. You may see text that is either clipped, too large, or too small. Everything looks fine on Linux, but on Windows with the default scaling for HiDPI displays (125%), it can look like this: You&#39;ll …"/>
+        <meta property="og:description" content="Use PySide 1.2 and Python 2.7. Deploy to various HiDPI displays for testing. You may see text that is either clipped, too large, or too small. Everything looks fine on Linux, but on Windows with the default scaling for HiDPI displays (125%), it can look like this: You ..."/>
         <meta property="article:published_time" content="2017-08-21" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="wasatch photonics" />
@@ -116,27 +116,27 @@ testing.</p>
 <p>You may see text that is either clipped, too large, or too small. 
 Everything looks fine on Linux, but on Windows with the default scaling
 for HiDPI displays (125%), it can look like this:</p>
-<p><a href="/images/wasatch-images/fat_font_issue.png"><img alt="Fat font issue" src="/images/wasatch-images/fat_font_issue.png"></a></p>
+<p><a href="/images/wasatch-images/fat_font_issue.png"><img alt="Fat font issue" src="/images/wasatch-images/fat_font_issue.png" /></a></p>
 <p>You'll want it to look like this:</p>
 <p><a href="/images/wasatch-images/fixed_fat_font_issue.png"><img alt="Fixed Fat font
-issue" src="/images/wasatch-images/fixed_fat_font_issue.png"></a></p>
+issue" src="/images/wasatch-images/fixed_fat_font_issue.png" /></a></p>
 <p>The solution is to modify your innosetup configuration to modify the
 registry:</p>
 <div class="highlight"><pre><span></span><span class="k">[Registry]</span>
 <span class="c1">; PySide/PyQt 4.x does not support HiDPI displays. This mitigation</span>
 <span class="c1">; approach turns on system-wide preference for external manifest, then</span>
 <span class="c1">; installs a custom manifest file</span>
-<span class="na">Root: HKLM64; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: IsWin64;</span>
-<span class="na">Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: &quot;not IsWin64&quot;;</span>
+<span class="err">Root:</span> <span class="err">HKLM64</span><span class="c1">; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: IsWin64;</span>
+<span class="err">Root:</span> <span class="err">HKLM</span><span class="c1">; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: &quot;not IsWin64&quot;;</span>
 </pre></div>
 
 
 <p>Then copy the manifest file:</p>
 <div class="highlight"><pre><span></span><span class="k">[Files]</span>
-<span class="na">...</span>
+<span class="err">...</span>
 <span class="c1">; Manifest file for HiDPI mitigation - see above</span>
-<span class="na">Source: &quot;support_files\Enlighten.exe.manifest&quot;; DestDir: &quot;{app}\Enlighten\&quot;; Flags: recursesubdirs ignoreversion</span>
-<span class="na">...</span>
+<span class="err">Source:</span> <span class="err">&quot;support_files\Enlighten.exe.manifest&quot;</span><span class="c1">; DestDir: &quot;{app}\Enlighten\&quot;; Flags: recursesubdirs ignoreversion</span>
+<span class="err">...</span>
 </pre></div>
 
 
