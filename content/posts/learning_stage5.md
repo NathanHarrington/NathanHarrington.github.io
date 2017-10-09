@@ -324,16 +324,3 @@ Update your existing business model canvases (with snapshots), and
 popluate the customer segment area according to what you have learned
 here.
 
-Explore previous ideas that were unsuccessful and who the customer
-segments should have been:
-noticefast
-wakeneighbors
-uv breakdown glue
-abekajoy
-emailstrong
-powerquick
-others
-
-Update your current business model canvases
-
-

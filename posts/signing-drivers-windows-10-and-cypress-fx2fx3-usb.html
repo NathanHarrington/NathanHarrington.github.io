@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="wasatch photonics" />
-        <meta name="description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to …" />
+        <meta name="description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to ..." />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Signing Drivers - Windows 10 and Cypress FX2/FX3 USB"/>
         <meta property="og:url" content="/posts/signing-drivers-windows-10-and-cypress-fx2fx3-usb.html"/>
-        <meta property="og:description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to …"/>
+        <meta property="og:description" content="2016-09-14 16:53 signed windows 10 drivers: The best resource for this process is clearly David Graysons Practical Windows Code and Driver Signing Here are the refined points in that article for aparticular use case: Windows 7 and greater. Installing a driver package without loading a kernel module. Go to ..."/>
         <meta property="article:published_time" content="2016-10-17" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="wasatch photonics" />
@@ -118,7 +118,7 @@ Don't display categories on menu
 <p>The best resource for this process is clearly David Graysons <a href="http://www.davidegrayson.com/signing/">Practical
 Windows Code and Driver Signing</a></p>
 <p>Here are the refined points in that article for aparticular use case: Windows 7 and greater.  Installing a driver package without loading a kernel module.</p>
-<hr>
+<hr />
 <ol>
 <li>
 <p>Go to <a href="https://www.globalsign.com/en/code-signing-certificate/">GlobalSign</a>. Use their challenging interface to sign up for the "Code Signing" product. This costs about $219. Do this first as they then have to "verify your identity". For <a href="http://wasatchphotonics.com">Wasatch Photonics</a>, this meant calling us on the phone and telling us that we needed to provide more documentation that we were a real company. This is after I pointed them to the our <a href="https://www.sosnc.gov/Search/filings/9737537">NC official records</a> showing our phone number. I had to suggest we would move to a competitor certificate service provider before things started to progress. After this is complete, download the .pfx file into the same directory as the drivers to sign. This is the most difficult and time consuming part of the process.</p>
@@ -138,9 +138,9 @@ Windows Code and Driver Signing</a></p>
 <li>
 <p>Convert the modified INF file into a CAT file:</p>
 <blockquote>
-<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\inf2cat"  <br>
-   /v  <br>
-   /driver:%~dp0  <br>
+<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\inf2cat"  <br />
+   /v  <br />
+   /driver:%~dp0  <br />
    /os:XP_X86,Vista_X86,Vista_X64,7_X86,7_X64,8_X86,8_X64,6_3_X86,6_3_X64,10_X86,10_X64    </p>
 </blockquote>
 </li>
@@ -150,15 +150,15 @@ Windows Code and Driver Signing</a></p>
 <li>
 <p>Then run the command to actually sign the drivers:</p>
 <blockquote>
-<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool"<br>
-  sign<br>
-  /v<br>
-  /f <your pfx file><br>
-  /p <password> <br>
-  /n "Wasatch Photonics" <br>
-  /fd sha1 <br>
-  /tr http://timestamp.globalsign.com/?signature=sha2 <br>
-  /td sha256 <br>
+<p>"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool"<br />
+  sign<br />
+  /v<br />
+  /f <your pfx file><br />
+  /p <password> <br />
+  /n "Wasatch Photonics" <br />
+  /fd sha1 <br />
+  /tr http://timestamp.globalsign.com/?signature=sha2 <br />
+  /td sha256 <br />
   cyusb3.cat  </p>
 </blockquote>
 </li>
@@ -167,10 +167,10 @@ Windows Code and Driver Signing</a></p>
 INF_DRIVERS folder distributed as part of the installer build. And
 example below is included for InnoSetup</p>
 <blockquote>
-<p>Filename: "pnputil"; Parameters: "-i -a <br>
-  ""{app}\stroker_drivers\Win10\cyusb3.inf"" "; <br>
-  StatusMsg: "Installing WP drivers (this may take a few seconds) ..."; <br>
-  Flags: runhidden<br>
+<p>Filename: "pnputil"; Parameters: "-i -a <br />
+  ""{app}\stroker_drivers\Win10\cyusb3.inf"" "; <br />
+  StatusMsg: "Installing WP drivers (this may take a few seconds) ..."; <br />
+  Flags: runhidden<br />
 </p>
 </blockquote>
 </li>
