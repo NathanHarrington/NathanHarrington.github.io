@@ -49,7 +49,7 @@ We believe that:
 To verify that, we will:
 And measure:
 We are right if:
-
+(Test jobs, pains, gains and value propositions)
 
 Gather data
 How to actually talk with potential customers and surface insight about
