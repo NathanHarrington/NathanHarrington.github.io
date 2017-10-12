@@ -31,7 +31,10 @@ Strategyzer: [Value Proposition Design book
 Preview](https://assets.strategyzer.com/assets/resources/value-proposition-design-book-preview-2014.pdf) Pages: 43-48
 
 -----------
+#### Incorporation:
 
+**Card deck 1 of 1 Overview**
+```
 How do you make implicit assumptions explicit?
 Get out of the building, gain insights, then change the canvas.
 
@@ -73,17 +76,11 @@ Therefore, we will:
 Repeat
 Based on what you've learned, iterate or pivot, then make new assumptions, re-run the cycle
 
-
-
-#### Incorporation:
-
-**Card deck 1 of 1 Overview**
-```
 ```
 [![Front of Card
-Deck](/images/learning/thumbnails/learning_customer_discovery_and_pmf_card_deck_front.jpg)](/images/learning/learning_customer_discovery_and_pmf_card_deck_front.jpg)
+Deck](/images/learning/thumbnails/learning_testing_cycle_card_deck_front.jpg)](/images/learning/learning_testing_cycle_card_deck_front.jpg)
 [![Back of Card
-Deck](/images/learning/thumbnails/learning_customer_discovery_and_pmf_card_deck_back.jpg)](/images/learning/learning_customer_discovery_and_pmf_card_deck_back.jpg)
+Deck](/images/learning/thumbnails/learning_testing_cycle_card_deck_back.jpg)](/images/learning/learning_testing_cycle_card_deck_back.jpg)
 
 --------------------------------------------------
 
