@@ -163,6 +163,23 @@ sanitize() {
 
   filename_clean="${filename//+([^[:alnum:]_-\.])/_}"
 
+  # The idea is this is easier to read
+  filename_clean="${filename_clean//\:/_}"
+  filename_clean="${filename_clean//\!/_}"
+  filename_clean="${filename_clean//\?/_}"
+
+  filename_clean="${filename_clean//\é/e}"
+  filename_clean="${filename_clean//\è/e}"
+  filename_clean="${filename_clean//\ü/u}"
+  filename_clean="${filename_clean//\ô/o}"
+  filename_clean="${filename_clean//\ç/c}"
+  filename_clean="${filename_clean//\ñ/n}"
+  filename_clean="${filename_clean//\å/a}"
+  filename_clean="${filename_clean//\æ/ae}"
+  filename_clean="${filename_clean//\Œ/oe}"
+  filename_clean="${filename_clean//\ø/o}"
+  filename_clean="${filename_clean//\ß/B}"
+
   if (test "$filename" != "$filename_clean")
   then
     mv -v --backup=numbered "$1" "$directory/$filename_clean"
