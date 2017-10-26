@@ -248,7 +248,24 @@ music on android:</p>
 43
 44
 45
-46</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Convert downloaded files from mpsyt into mp3s</span>
 <span class="c1"># Sanitize the filenames so they will play on google play</span>
@@ -285,6 +302,23 @@ sanitize<span class="o">()</span> <span class="o">{</span>
   <span class="nv">directory</span><span class="o">=</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="k">)</span>
 
   <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename</span><span class="p">//+([^[:</span><span class="nv">alnum</span><span class="p">:]_-</span><span class="se">\.</span><span class="p">])/_</span><span class="si">}</span><span class="s2">&quot;</span>
+
+  <span class="c1"># The idea is this is easier to read</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\:</span><span class="p">/_</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\!</span><span class="p">/_</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\?</span><span class="p">/_</span><span class="si">}</span><span class="s2">&quot;</span>
+
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\é</span><span class="p">/e</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\è</span><span class="p">/e</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ü</span><span class="p">/u</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ô</span><span class="p">/o</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ç</span><span class="p">/c</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ñ</span><span class="p">/n</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\å</span><span class="p">/a</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\æ</span><span class="p">/ae</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\Œ</span><span class="p">/oe</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ø</span><span class="p">/o</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="nv">filename_clean</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">filename_clean</span><span class="p">//</span><span class="se">\ß</span><span class="p">/B</span><span class="si">}</span><span class="s2">&quot;</span>
 
   <span class="k">if</span> <span class="o">(</span><span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$filename</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$filename_clean</span><span class="s2">&quot;</span><span class="o">)</span>
   <span class="k">then</span>

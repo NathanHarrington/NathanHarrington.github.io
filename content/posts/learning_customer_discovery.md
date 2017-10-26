@@ -31,8 +31,8 @@ Industry Research
 Become an expert.
 Search for industry report, establish Google alerts, read scholarly
 articles, etc.
-You must become the expert. It's not hard to know more than the person
-across from you about generalized industry trends.
+It's not hard to know more than the person across from you about
+generalized industry trends.
 
 Company Research
 Read the companies website.
@@ -50,21 +50,20 @@ If the conversation stalls, fall back to:
 yeah, but why did (the last thing they said)
 that's interesting, but how (the last thing they said)
 
-Ask to keep the conversation going
+Keep communication open
 Develop a reference story and write a highly professional email getting
 right to the ASK (which is an interview)
 
 Sample Interview Questions
 Can you tell me a story about that?
 And then what happened?
-Why did you do that?
-How did you do that?
-What did you love about that?
-What did you hate about that?
+Why/how did you do that?
+
+What did you love/hate  about that?
 If you could have a magic wand, what would it be like?
-Tell me about an experience when ...
-What are the best parts about ...
-What are the worst parts about ...
+Can you tell me about the experience when ...
+
+What are the best/worts parts about ...
 Can you help me understand more about ...
 
 Practice 
