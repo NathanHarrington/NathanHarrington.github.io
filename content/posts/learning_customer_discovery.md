@@ -72,9 +72,9 @@ conversation prompts, and the end ask.
 
 ```
 [![Front of Card
-Deck](/images/learning/thumbnails/learning_testing_cycle_card_deck_front.jpg)](/images/learning/learning_testing_cycle_card_deck_front.jpg)
+Deck](/images/learning/thumbnails/learning_interview_planning_card_deck_front.jpg)](/images/learning/learning_interview_planning_card_deck_front.jpg)
 [![Back of Card
-Deck](/images/learning/thumbnails/learning_testing_cycle_card_deck_back.jpg)](/images/learning/learning_testing_cycle_card_deck_back.jpg)
+Deck](/images/learning/thumbnails/learning_interview_planning_card_deck_back.jpg)](/images/learning/learning_interview_planning_card_deck_back.jpg)
 
 --------------------------------------------------
 
@@ -147,6 +147,11 @@ It doesn't matter if they never see the prototype as long as they feel
 that you are trying to help.
 
 ```
+[![Front of Card
+Deck](/images/learning/thumbnails/learning_interview_conducting_card_deck_front.jpg)](/images/learning/learning_interview_conducting_card_deck_front.jpg)
+[![Back of Card
+Deck](/images/learning/thumbnails/learning_interview_conducting_card_deck_back.jpg)](/images/learning/learning_interview_conducting_card_deck_back.jpg)
+
 --------------------------------------------------
 
 
