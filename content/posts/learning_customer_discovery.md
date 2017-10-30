@@ -14,6 +14,9 @@ Discovery](https://www.slideshare.net/sblank/customer-discovery-23251533)
 Login to slideshare/linkedin then download as .docx for offline use
 Pages 12-17
 
+Startup Weekend [Conducting Customer
+Interviews](https://www.youtube.com/watch?v=V3syNbgSkwE)
+
 -----------
 #### Incorporation:
 
