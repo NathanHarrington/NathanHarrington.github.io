@@ -17,6 +17,12 @@ Pages 12-17
 Startup Weekend [Conducting Customer
 Interviews](https://www.youtube.com/watch?v=V3syNbgSkwE)
 
+Customer Discovery emails: [Kevin Dewalt's Blog](http://kevindewalt.com/2010/01/12/the-magic-word-in-customer-development-emails/)
+
+[Cold connecting through linkedin](https://campuspress.yale.edu/cnspy/2016/03/02/how-to-cold-connect-on-linkedin/) from yale.edu
+
+
+
 -----------
 #### Incorporation:
 
