@@ -168,4 +168,97 @@ Deck](/images/learning/thumbnails/learning_interview_conducting_card_deck_back.j
 -------------------------------------------------------------------------
 ## Execution:
 
+Here's a typical workflow:
+
+```
+search for "job role <place, technology, company>"
+
+Process each link on each results page.
+
+At the end of the page, count the number of new, valid contacts. If at
+least 3, continue to next page, otherwise stop.
+
+Process each link:
+If the domain is already in the contact list == stop
+If the domain is already in the stop list == stop
+
+In the instructions below stop means put the domain in the stop list and
+then close the page and go back to the google search page.
+
+Open the web page link
+If does not load in 10 seconds or has a security warning == stop
+Do they actually perform <role>?  No == stop
+Do they actually work in <place>? No == stop
+Are they employed by <company>?   No == stop
+
+Find email address for that person.
+    Kick off 'find emails' harvester script
+    While that is processing, do the manual search of the persons
+        history.
+
+Write a short comment about work they have done. 
+
+Get the email from the harvester, if none available, go back to the
+website and look for contact page. If not email on contact page, look at
+home page, then about page. Then instagram, twitter page - do not look
+at facebook or pinterest
+
+Send email with the subject:
+    "<short comment subject> from your blog"
+
+Paste the form phone call request
+
+Add email to contact list
+
+Go to next link.
+```
+
+To make this easier, use whois records and [theHarvester](https://github.com/laramies/theHarvester) for finding emails:
+
+```
+#!/bin/bash
+#
+# Run a basic whois and a theHarvester and only print emails
+#
+# Usage: find_emails.sh https://yourdomain.com/deep/subtree.html
+#
+# Output: email addresses from whois and the harvester
+#
+# Expects the user to setup a conda environment with:
+# conda(2) create --name harvester
+# source activate harvester
+# pip install requests
+
+export PATH=/home/nharrington/miniconda2/bin:$PATH
+source activate harvester
+
+if [[ $# -eq 0 ]] ; then
+    echo 'You must specify a domain'
+    exit 0
+fi
+
+
+# Extremely rough and ready strip of domain details. This is so you can
+# cut and paste a typical url with any file tree suffix and get just the
+# bare domain - only for .com's
+DOMAIN=$1
+DOMAIN="${DOMAIN//http:\/\//}"
+DOMAIN="${DOMAIN//https:\/\//}"
+DOMAIN="${DOMAIN//www./}"
+DOMAIN="${DOMAIN//.com*/.com}"
+
+echo "New $DOMAIN"
+
+# Filter out knowns
+whois $DOMAIN \
+    | grep @ \
+    | grep -vi abuse \
+    | grep -vi privacy
+
+python -u theHarvester.py -d $DOMAIN -b all -l 100 \
+    | grep @ \
+    | grep -v cmartorella@edge-security.com
+
+
+```
 
