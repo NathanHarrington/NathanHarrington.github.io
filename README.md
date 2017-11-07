@@ -52,8 +52,7 @@ Nathan Harrington personal static site using pelican.
 
     Make sure you edit files in content/posts/ not in posts/ !
 
-    pelican --theme ../pelican-themes/personal-bootstrap3/ content
-            --output ./
+    pelican --theme ../pelican-themes/personal-bootstrap3/ content --output ./
 
     (Test on localhost:8000, verify everything looks fine)
 

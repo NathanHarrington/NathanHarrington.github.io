@@ -250,7 +250,7 @@ fi
 DOMAIN="${DOMAIN//http:\/\//}"
 DOMAIN="${DOMAIN//https:\/\//}"
 DOMAIN="${DOMAIN//www./}"
-DOMAIN="${DOMAIN//.com*/.com}"
+DOMAIN="${DOMAIN//.com\*/.com}"  # Changed * to \* for markup reasons
 
 echo "Searching $DOMAIN"
 
@@ -267,3 +267,165 @@ python -u theHarvester.py -d $DOMAIN -b all -l 100 \
     | grep @ \
     | grep -v cmartorella@edge-security.com
 ```
+
+
+## More excellent resources that were consulted to generate the scripts for
+cold emailing and calling customers:
+
+
+[Getting Customer Interviews with Cold Emails - Customer Development Labs](http://customerdevlabs.com/2014/02/18/how-to-send-cold-emails/)
+
+
+## Setup your email for effective communication
+```
+Add a short signature with a job title and a company logo.
+```
+
+### Craft an introductory email:
+
+```
+Hi <Persons name> - <Short comment about their work you have done the
+research on>. 
+
+I'm the <job title> at <employer>, a <company description> trying to
+improve <job that the customer performs>.
+
+I'm not looking to sell anything, but since you have so much expertise
+with <specific job function>, I'd love to get your advice on our product
+so we don't build the wrong thing.
+
+If you're available, I'd love to chat for just 20 minutes - <two-day
+option> morning?
+
+Thanks for any help, <name>
+```
+
+
+### If they want more info about the company
+
+```
+Thanks for your willingness to help! I'm <job title> at
+<company website>, where we are trying to solve a problem we think
+all <customer job title> may have. We're using the Customer Discovery
+process to work to truly understand our customers, the jobs they perform
+and their real pains to make sure we don't build the wrong thing.
+
+The questions are about talking with you about what your job is, how you
+go about it on a day to day basis, and what your routines are.
+```
+
+
+### If they want more info about company and product
+```
+I'm <job title> at <company website>, where we are using the
+Customer Discovery process to work to truly understand our customers,
+the jobs they perform and their real pains to make sure we don't build
+the wrong thing. The questions are about talking with you about what
+your job is, how you go about it on a day to day basis, and what your
+routines are.
+
+It's a software product designed to <basic vague product description>
+Yes, I'm being specifically vague about the product specifications -
+this is not be be deceptive, but rather to make sure we understand you -
+our customer - so we don't build the wrong thing.
+
+I'll be glad to send you the full product description if you like, but
+we like to hold off on that until we discover if we truly understand
+your needs. If that sounds ok, I'd love to talk with you and get your
+advice.
+
+The <customer community> has been incredibly supportive of our research
+so far, and I realize that this may be your <busiest time>, so I
+just want to say thanks again for considering helping us!
+```
+
+
+### Schedule the interview 
+
+If the response is 'yes that time will work' or something similar. Pick
+the closest 1 hour window (starting at :15 after), and create a calendar
+entry of the type:
+
+```
+Call with <persons full name> at <time> who <interesting note from their
+linkedin profile or their 'about' section on their webpage>
+```
+
+Then when the call is about to happen, review their name and the
+interesting note to mention during the opening approach to build
+rapport.
+
+
+### Follow up email after connection on linkedin
+
+They accepted the connection request on linkedin, and did not respond
+with a custom message.  Find their email address from the linkedin
+profile, and send:
+
+```
+Hi <persons name> - I'm working with <company name> on building a
+<product idea> and was hoping to get your advice to make sure we
+understand the problem. Could I ask you a few questions and get your
+feedback over a fifteen minute phone call? Maybe <two-day option> morning
+of next week? Thanks! <name>
+```
+
+
+### Follow up email after interview
+
+Send this immediately after the interview
+
+```
+<Person's name> - Thanks for speaking with me today! I really value your
+advice and insight. If you can think of anyone else who might want to
+talk about <general problem descriptions covered in the meeting>,
+please send them my info:
+
+I'm <name> with <company website> and we're trying to
+solve a problem with think all <customer job title> may have. I'm not
+selling anything, but would love to get your advice to make sure we
+don't build the wrong thing.
+
+Thanks for any help!
+<your email address>
+```
+
+
+### Building a reference story email
+
+During a customer discovery interview, they mention that you should talk
+to person X. After the interview, you send the follow up email above.
+
+Wait.
+
+After the referring person says 'I will forward your info' or 'I will
+let them know you will be contacting them', send the email below:
+
+
+```
+########## Reference contact email ##############
+To: Don Jones
+cc: Joe Smith
+Subject: Referral from Joe Smith
+Hi Don, Joe may have mentioned that I would drop you a quick note
+to ask for your advice.
+
+I'm exploring an <type of> idea around making it easier for <job role>
+to <perform aspect of their job role>. Joe suggested that
+I talk to you given your expertise with <same or other job role>.
+
+Do you have time for a quick call next week? I'm not selling anything,
+just looking for advice.
+
+Joe,
+
+Thanks for your time. You can't imagine how helpful your advice was to
+me and hopefully you'll let me return the favor.
+
+Thanks in advance, Name
+```
+
+
+Left off at compiling notes from what you learned
+
+Summarize stats based on using this process above:
