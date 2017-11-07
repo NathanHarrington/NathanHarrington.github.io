@@ -283,7 +283,9 @@ Find email address for that person.
     While that is processing, do the manual search of the persons
         history.
 
-Write a short comment about work they have done. 
+Write a short comment about work they have done - this is the
+personalization step to show that you have done research and start the
+process of building rapport.
 
 Get the email from the harvester, if none available, go back to the
 website and look for contact page. If not email on contact page, look at
@@ -343,7 +345,13 @@ Go to next link.
 39
 40
 41
-42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+42
+43
+44
+45
+46
+47
+48</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Run a basic whois and a theHarvester and only print emails</span>
 <span class="c1">#</span>
@@ -355,6 +363,7 @@ Go to next link.
 <span class="c1"># conda(2) create --name harvester</span>
 <span class="c1"># source activate harvester</span>
 <span class="c1"># pip install requests</span>
+<span class="c1">#</span>
 
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/home/nharrington/miniconda2/bin:<span class="nv">$PATH</span>
 <span class="nb">source</span> activate harvester
@@ -364,23 +373,28 @@ Go to next link.
     <span class="nb">exit</span> 0
 <span class="k">fi</span>
 
+<span class="c1"># To speed this up, comment out the command line above, and just copy</span>
+<span class="c1"># the domain to the system clipboard, then run:</span>
+<span class="c1">#DOMAIN=`xclip -o`</span>
 
 <span class="c1"># Extremely rough and ready strip of domain details. This is so you can</span>
 <span class="c1"># cut and paste a typical url with any file tree suffix and get just the</span>
 <span class="c1"># bare domain - only for .com&#39;s</span>
-<span class="nv">DOMAIN</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//http:</span><span class="se">\/\/</span><span class="p">/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//https:</span><span class="se">\/\/</span><span class="p">/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//www./</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//.com*/.com</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;New </span><span class="nv">$DOMAIN</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Searching </span><span class="nv">$DOMAIN</span><span class="s2">&quot;</span>
 
 <span class="c1"># Filter out knowns</span>
 whois <span class="nv">$DOMAIN</span> <span class="se">\</span>
     <span class="p">|</span> grep @ <span class="se">\</span>
     <span class="p">|</span> grep -vi abuse <span class="se">\</span>
-    <span class="p">|</span> grep -vi privacy
+    <span class="p">|</span> grep -vi privacy <span class="se">\</span>
+    <span class="p">|</span> grep -vi domainsbyproxy.com <span class="se">\</span>
+    <span class="p">|</span> grep -vi domaindiscreet.com <span class="se">\</span>
+    <span class="p">|</span> grep -vi whoisguard.com
 
 python -u theHarvester.py -d <span class="nv">$DOMAIN</span> -b all -l <span class="m">100</span> <span class="se">\</span>
     <span class="p">|</span> grep @ <span class="se">\</span>

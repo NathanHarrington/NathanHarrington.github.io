@@ -196,7 +196,9 @@ Find email address for that person.
     While that is processing, do the manual search of the persons
         history.
 
-Write a short comment about work they have done. 
+Write a short comment about work they have done - this is the
+personalization step to show that you have done research and start the
+process of building rapport.
 
 Get the email from the harvester, if none available, go back to the
 website and look for contact page. If not email on contact page, look at
@@ -228,6 +230,7 @@ To make this easier, use whois records and [theHarvester](https://github.com/lar
 # conda(2) create --name harvester
 # source activate harvester
 # pip install requests
+#
 
 export PATH=/home/nharrington/miniconda2/bin:$PATH
 source activate harvester
@@ -237,28 +240,30 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
+# To speed this up, comment out the command line above, and just copy
+# the domain to the system clipboard, then run:
+#DOMAIN=`xclip -o`
 
 # Extremely rough and ready strip of domain details. This is so you can
 # cut and paste a typical url with any file tree suffix and get just the
 # bare domain - only for .com's
-DOMAIN=$1
 DOMAIN="${DOMAIN//http:\/\//}"
 DOMAIN="${DOMAIN//https:\/\//}"
 DOMAIN="${DOMAIN//www./}"
 DOMAIN="${DOMAIN//.com*/.com}"
 
-echo "New $DOMAIN"
+echo "Searching $DOMAIN"
 
 # Filter out knowns
 whois $DOMAIN \
     | grep @ \
     | grep -vi abuse \
-    | grep -vi privacy
+    | grep -vi privacy \
+    | grep -vi domainsbyproxy.com \
+    | grep -vi domaindiscreet.com \
+    | grep -vi whoisguard.com
 
 python -u theHarvester.py -d $DOMAIN -b all -l 100 \
     | grep @ \
     | grep -v cmartorella@edge-security.com
-
-
 ```
-
