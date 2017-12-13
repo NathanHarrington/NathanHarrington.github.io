@@ -77,15 +77,6 @@ person and share more of the strategic direction to see what level of
 insight they can provide.
 
 
-Details for actual posting on upwork.com
-
-Go on upwork.com
-
-For example:
-Find businesses that make volume phase holographic transmission
-gratings.
-
-
 
 Day 1: Post job, invite candidates
 Day 2: Screen candidate responses
@@ -115,66 +106,151 @@ utilizing my unique strengths.
 
 
 
+Details for actual posting on upwork.com
 
-===============================================
-First is the finding Johna use case.
-Second is a set of rules that you followed, including documentation of who and who does not meet requriements.
+Write the full job text first:
+<pre>
+Find the names and product listing of transmission diffraction grating companies.
 
+Search google for "transmission diffraction grating" without the quotes
 
+Ignore google scholar links.
+Ignore google image links.
+Ignore 'people also ask' links.
 
+The Stop List, Found List, and gratings list is available on this google
+doc: https://goo.gl/zhbi3v
 
-Exactly what you did to find Johna:
-Click Post a Job:
-Select Short-term, less than 30 hours per week.
-Created job posting for: Adwords setup for wakeneighbors.com 
-Choose a category and subcategory -> Sales & Marketing-> Lead Generation
+1. Select the next link of the google results
 
-Name of job posting was: Adwords setup for wakeneighbors.com 
+2. Is link in 'Stop list'?
+    Yes -> Go back to step 1.
+    No -> go to step 3
 
-Description is:
-    The goal is to test the market viability of WakeNeighbors.com
-    Create an adwords campaign of $50 per day targeting:
-    Wake County residents or those searching to move into wake county.
-    Top 20% of incomes according to Google's adwords demographics.
-    The ultimate conversion process is:
-    User sees a google adwords link.
-    User clicks through to wakeneighbors.com, then clicks the "Buy Now" page 
-    The user submits their name and email.
-    Every submission will be considered a succesful "order" conversion.
-    The google adwords account has been setup, and the website is complete.
-    Can you do this? Please reply immediately and confirm what you will plan to do to complete this task. 
+3. Is link in the 'Found list'
+    Yes -> Go to back to step 1
+    No -> Go to step 4
 
-What type of project do you have? One-time project
+4. Add the link to the Found List:
+    Open the 'Found List' tab of the google sheet.
+    Add the company name and the url
+    Continue to step 5
 
-How many freelancers do you need to hire for this job? -> I need to hire more than one freelancer -> Select quantity 5
+5. Find a list of transmission gratings on the links' website. 
+For each grating found, update the "Gratings List" tab of the
+spreadsheet.
 
-How would you like to pay? Pay by the hour
+Equivalents for lpmm column include: lines/mm, l/mm, groove density.
 
-Desired Experience Level: Select Entry Level
-
-How long do you expect this job to last?  Select  Less than one week
-
-What time commitment is required for this job?   Select I Don't know yet
+Equivalents for diffraction efficiency column include: efficiency, absolute
+efficiency.
 
 
-Do you want freelancers to find and apply to your job?  Select "Only freelancers I have invited can view this job"
+If the links website is not a company (for example an education page
+about gratings), add to the 'Stop List' and go back to step 1.
 
-Require a cover letter
+If the links website is a company, but does not have gratings for sale,
+add to the 'Stop List' and go back to step 1.
 
-Click Post job
+If the links website is a company with gratings for sale but does not
+have one of the fields of specification, fill in the value with NA.
+
+7. If this is link 1-39 processed, go back to step 1. Otherwise, continue
+to step 8.
+
+8. If this is the 40th link processed, stop the entire process, share
+results.
+
+The first example of the results populated are shown in the google drive
+document. Edmund optics is a good example because it lists the required
+fields for each grating. These gratings are all transmission gratings,
+not reflective gratings.
+
+Only include transmission gratings in the document. Here are examples of
+reflective gratings, do not include these or any like them:
+https://www.edmundoptics.com/optics/gratings/reflective-ruled-diffraction-gratings/
+https://www.newport.com/f/plane-holographic-reflection-gratings
+
+Can you do this? If not, please advise. Please reply and confirm what you will plan to do to complete this task.
+
+Thank you for your fastest reply.
+</pre>
 
 
-Searched for candidates:
-Search for a keyword from the job description, "adwords"
-Set the filters to the following settings:
-Success rate 90%+
-Earned amount: 1K+
-Freelancer type: Independent freelancer
+Go to upwork.com
 
-Then I either searched for Asia or the phillipines, and just paged through,
-inviting as they looked promising.
+Jobs -> Post a job
+
+Create a new job post
+
+Type of work is: Biotechnology market research
+Name job post: Find the names and product listing of transmission diffraction grating companies.
+
+Click Next.
+
+These options change apparently at random. Here's what was selected on
+2017-12-13:
+More specifc -> Market Research -> Competitive market research
+
+Name job posting: Find the names and product listing of transmission diffraction grating companies.
+
+Describe work to be done: The full job post from above
 
 
+No Attachments
+On-going projects
+I need to hire more than one freelancer, select 5.
+Select start date today
+Pay by the hour
+Entry level
+Less than 1 week
+Less than 30 hours a week
+Only freelancers I have invited can view job
+Yes, require a cover letter
+
+Click "Post Job"
+
+Search: for candidates:
+    Turn off U.S. only toggle
+    Search for a keyword from the job description, "diffraction"
+    Set the filters to the following settings:
+    Success rate 90%+
+    Earned amount: 1K+
+    Freelancer type: Independent freelancer
+
+    Then I either searched for Asia or the phillipines, and just paged through,
+    inviting as they looked promising.
+
+Search for candidates:
+    Search for a keyword from an education field that would include the
+        subject, for example "physics".
+
+    Set the filters to the following settings:
+        Hourly rate: $10 and below
+        Earned amount: 1K+
+        Freelancer type: Independent freelancer
+        Location: Asia
+
+Look through each candidates short biography. If they contain any of the
+keywords listed below, invite them to the job:
+
+Data Entry
+Technical report writing
+Academic writing
+information extraction
+attention to detail
+graduate of BS physics (anything indicating an actual Physics degree,
+has to be BS or higher)
+
+At first pass, this has produced about a 90% invite rate. Have invited
+26 out of the first 30 entries.
+
+
+Left off here at having sent those 26 invites, check back immediately
+tomorrow with the first round of processing instructions.
+
+Select the first 10 entries that you think will work, invite each to the job.
+Review and accept their offers.
 
 
 Johna  responded with:
@@ -287,28 +363,5 @@ Engineering and Electromechanical degree's
 
 
 
-Give them this task and choose the best:
 
-Find the names and e-mails of the most succesful volunteer coordinators in the U.S.A.
-
-An example of a such a person would be someone who has documented examples of creating or growing a team of volunteers for a charitable event. 
-
-An example of such a person is Mary Ann Sibley.  Her linkedin profile is here:
-
-https://www.linkedin.com/in/mary-ann-sibley-913b0b7a
-
-
-On her linked in page, she lists:
-
-Director, First Impressions - Core Services Hope Community Church February 2003 – October 2014 (11 years 9 months)
-Created the First Impressions Ministry at Hope in 2005 with the vision to create a welcoming environment where people are served with intentional excellence and volunteers serve with joy and passion. This ministry grew from 40 volunteers to over 1, 000 volunteers as Hope's campus locations have grew to 3 locations.
-
-
-Mary is a good example because she listed start and end times, growth numbers, and her responsibilities.
-
-I already have Mary's information, and I need more like her.
-
-Can you do this? If not, please advise. Please reply and confirm what you will plan to do to complete this task.
-
-Thank you for your fastest reply.
 
