@@ -8,7 +8,7 @@ What are your tactics used to achieve this?
 
 Perform the research, incorporation, execution cycle for each stage.
 
-```
+<pre>
 Research:
 
     Stay focused on the strategies from the known effective materials.
@@ -40,7 +40,7 @@ Execution:
     Use the tactics from the known effective materials.
     Perform the key activities for the current stage.
 
-```
+</pre>
 ** Card Deck Images**
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_res_inc_exc_card_deck_front.jpg)](/images/learning/learning_res_inc_exc_card_deck_front.jpg)

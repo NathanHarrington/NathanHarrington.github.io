@@ -33,7 +33,7 @@ Pages 1-11
 #### Incorporation:
 
 **Card deck 1 of 1 Overview**
-```
+<pre>
 The relationship between value proposition and customer segments simply:
 Product Market fit
 
@@ -65,7 +65,7 @@ The only time you know you have something worth investing your time and
 money in is if people are literally trying to force their money on you,
 or can't use your product - even in it's buggy uninitialized form -
 enough.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_discovery_and_pmf_card_deck_front.jpg)](/images/learning/learning_customer_discovery_and_pmf_card_deck_front.jpg)
 [![Back of Card

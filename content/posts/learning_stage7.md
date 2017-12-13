@@ -34,7 +34,7 @@ Preview](https://assets.strategyzer.com/assets/resources/value-proposition-desig
 #### Incorporation:
 
 **Card deck 1 of 1 Overview**
-```
+<pre>
 How do you make implicit assumptions explicit?
 Get out of the building, gain insights, then change the canvas.
 
@@ -76,7 +76,7 @@ Therefore, we will:
 Repeat
 Based on what you've learned, iterate or pivot, then make new assumptions, re-run the cycle
 
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_testing_cycle_card_deck_front.jpg)](/images/learning/learning_testing_cycle_card_deck_front.jpg)
 [![Back of Card
