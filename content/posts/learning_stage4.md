@@ -32,7 +32,7 @@ Preview](https://assets.strategyzer.com/assets/resources/value-proposition-desig
 
 **Card deck 1 of 6 INTRO**
 
-```
+<pre>
 Chapter 1. Value Proposition
 What product or service are you building, for who, and what does it
 solve for those people?
@@ -78,7 +78,7 @@ Which after-sales services?
 -free maintenance, disposal...
 
 What is it that your product features do?
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_intro_card_deck_front.jpg)](/images/learning/learning_value_proposition_intro_card_deck_front.jpg)
 [![Back of Card
@@ -91,7 +91,7 @@ Deck](/images/learning/thumbnails/learning_value_proposition_intro_card_deck_bac
 
 --------------------------------------------------
 **Card deck 2 of 6 PAIN**
-```
+<pre>
 PAIN KILLERS
 What are you going to reduce or eliminate for the customer?
 
@@ -107,7 +107,7 @@ Eliminate risk? Financial, social or technical risk
 Chapter 14. PAIN Importance
 Rank each pain according to its intensity and frequency
 
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_pain_card_deck_front.jpg)](/images/learning/learning_value_proposition_pain_card_deck_front.jpg)
 [![Back of Card
@@ -120,7 +120,7 @@ Deck](/images/learning/thumbnails/learning_value_proposition_pain_card_deck_back
 
 --------------------------------------------------
 **Card deck 3 of 6 GAIN**
-```
+<pre>
 GAIN CREATORS
 What are the benefits the customer expects, desires or is surprised by?
 
@@ -134,7 +134,7 @@ Create positive consequences? Social (need), business (more sales)
 Chapter 16. GAIN Importance
 Rank each gain your product and services create according to its
 relevance to the customer.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_gain_card_deck_front.jpg)](/images/learning/learning_value_proposition_gain_card_deck_front.jpg)
 [![Back of Card
@@ -143,7 +143,7 @@ Deck](/images/learning/thumbnails/learning_value_proposition_gain_card_deck_back
 
 --------------------------------------------------
 **Card deck 4 of 6 MVP **
-```
+<pre>
 Chapter 19. MVP Definition
 The first instance of your product or service that is delivered to
 customers. 
@@ -170,7 +170,7 @@ jobs, pains and gains.
 
 For new markets, don't ask about features, ask "How do they spend their
 time?"
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_mvp_card_deck_front.jpg)](/images/learning/learning_value_proposition_mvp_card_deck_front.jpg)
 [![Back of Card
@@ -178,7 +178,7 @@ Deck](/images/learning/thumbnails/learning_value_proposition_mvp_card_deck_back.
 
 --------------------------------------------------
 **Card deck 5 of 6 META-Value Prop**
-```
+<pre>
 Chapter 22. COMMON MISTAKES
 
 It's just a feature of someones else's product
@@ -223,7 +223,7 @@ faster                               better branding
 
 combine technology and market insights for the sweet spot of value
 propositions.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_meta_card_deck_front.jpg)](/images/learning/learning_value_proposition_meta_card_deck_front.jpg)
 [![Back of Card
@@ -231,7 +231,7 @@ Deck](/images/learning/thumbnails/learning_value_proposition_meta_card_deck_back
 
 --------------------------------------------------
 **Card deck 6 of 6 Examples**
-```
+<pre>
 Technology Insights
 Ayasdi - topological analysis, solved previously unapproachable problems
 Inscopix - smaller fluorescence microscope - created new market
@@ -256,7 +256,7 @@ Features:
 Bi-functional molecules
 Flexibility in chain length
 MVP: chem-mix blue feedstock in 50-gal drums
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_value_proposition_examples_card_deck_front.jpg)](/images/learning/learning_value_proposition_examples_card_deck_front.jpg)
 [![Back of Card
