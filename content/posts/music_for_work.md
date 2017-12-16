@@ -93,6 +93,12 @@ noise](https://youtube.com/watch?v=ZXtimhT-ff4) at about 60% music volume. It
 may seem loud at first, but it will blend in after a few minutes and you
 will realize later that it fills in the variability of office
 environment sounds resulting in increased focus.
+
+Preferrably, use sox for audio generation with one of these options:
+<pre>
+ play -c 2 -n synth [brownnoise|whitenoise|pinknoise]
+</pre>
+
     
 ## Search tools
 ```
