@@ -110,7 +110,10 @@ Details for actual posting on upwork.com
 
 Write the full job text first:
 <pre>
-Find the names and product listing of transmission diffraction grating companies.
+
+Title: Find the names and product listing of transmission diffraction grating companies.
+
+Follow the steps below and stop after 3 hours and share your results.
 
 Search google for "transmission diffraction grating" without the quotes
 
@@ -171,11 +174,14 @@ reflective gratings, do not include these or any like them:
 https://www.edmundoptics.com/optics/gratings/reflective-ruled-diffraction-gratings/
 https://www.newport.com/f/plane-holographic-reflection-gratings
 
-Can you do this? If not, please advise. Please reply and confirm what you will plan to do to complete this task.
+Stop after 3 hours and share your results.
 
 Thank you for your fastest reply.
 </pre>
 
+
+Posting the job
+---------------
 
 Go to upwork.com
 
@@ -183,13 +189,6 @@ Jobs -> Post a job
 
 Create a new job post
 
-Type of work is: Biotechnology market research
-Name job post: Find the names and product listing of transmission diffraction grating companies.
-
-Click Next.
-
-These options change apparently at random. Here's what was selected on
-2017-12-13:
 More specifc -> Market Research -> Competitive market research
 
 Name job posting: Find the names and product listing of transmission diffraction grating companies.
@@ -203,25 +202,22 @@ I need to hire more than one freelancer, select 5.
 Select start date today
 Pay by the hour
 Entry level
+Make sure the job is not-weekly. That is, it starts and then it ends and
+does not repeat on a weekly basis.
 Less than 1 week
 Less than 30 hours a week
 Only freelancers I have invited can view job
 Yes, require a cover letter
 
+Add a screening question of: 
+Please respond with what you plan to do to get started and when you will
+stop and share your results.
+
 Click "Post Job"
 
-Search: for candidates:
-    Turn off U.S. only toggle
-    Search for a keyword from the job description, "diffraction"
-    Set the filters to the following settings:
-    Success rate 90%+
-    Earned amount: 1K+
-    Freelancer type: Independent freelancer
-
-    Then I either searched for Asia or the phillipines, and just paged through,
-    inviting as they looked promising.
 
 Search for candidates:
+----------------------
     Search for a keyword from an education field that would include the
         subject, for example "physics".
 
@@ -249,8 +245,65 @@ At first pass, this has produced about a 90% invite rate. Have invited
 Left off here at having sent those 26 invites, check back immediately
 tomorrow with the first round of processing instructions.
 
-Select the first 10 entries that you think will work, invite each to the job.
-Review and accept their offers.
+If that does not produce good results, restart at page 6 of the upwork
+results according to the criteria above and change the intro text from
+the default to something that would get an instant response.
+
+This did not produce good results. This was a failure. The best results
+you had was a cut and paste job from Susil 3 hours at 6/hour that would
+have taken you maybe 1 hour at most.
+
+Well, maybe it wasn't a failure. It just feels like it's the wrong
+person. THat it's not an ultra-refined process so you need to spend alot
+more, but you don't have a budget for alot more. Hmm.. If my time is
+worth 50/hour, then every hour I save at 45/hour is still coming out
+ahead.
+
+
+Processing invited candidate responses
+--------------------------------------
+
+upwork.com -> Click 'Messages'
+
+Open the oldest message.
+
+When reviewing responses, you're looking for a blend of cut and paste
+and actually addressing the job description. 
+
+Example of response to be ignored:
+<pre>
+Puja Sha: Thanks for inviting, I am ready to work for you.
+Liza Khan: Thank you for your sending invitation.
+</pre>
+
+Example of a response indicating proceed:
+
+<pre>
+Hello,
+Thanks for the invitation.  
+I am available and can do this research.  
+Your instructions are clear .  
+Best 
+Susil
+</pre>
+
+Notice the period misalignment indicating actual typing.
+
+The initial job posting said: "Please reply and confirm what you will
+plan to do to complete this task."
+
+If they did not respond with this information like Susil above, respond
+to the message with:
+
+Thanks for your interest NAME - Can you please give a short description
+of what you plan to do to complete this task?
+
+When you ask for follow up communications, watch for red flags, like
+asking where to find the spreadsheet when it's clearly in the job
+posting. Be cautious, as language barriers can make what appear to be
+inattention to detail explainable by a poorly worded task.
+
+
 
 
 Johna  responded with:
@@ -303,12 +356,12 @@ For each positive response, ask for a time estimate.
 
 For all postings, hourly and non-hourly:
 
-As soon as the exact requirements have been met in the posting, be ready to pay.
-If they meet the requirements and say "is that ok?", or "Do you have other changes?",
-you can ask for more, but the idea
-is to establish all positive relationships with them. Even if the work is bad, or just
-a cut and paste job, give it 5 stars and all positives. That will pay dividends later
-when other contractors view your job. 
+As soon as the exact requirements have been met in the posting, be ready
+to pay.  If they meet the requirements and say "is that ok?", or "Do you
+have other changes?", you can ask for more, but the idea is to establish
+all positive relationships with them. Even if the work is bad, or just a
+cut and paste job, give it 5 stars and all positives. That will pay
+dividends later when other contractors view your job. 
 
 
 
@@ -319,10 +372,11 @@ If it's something specialized, make the job public.
 For example, the wake neighbors beautiful map task attracted Emil, who knows ArchiCAD, 
 which led to options you had not envisioned for the task.
 
-When reviewing responses, you're looking for a blend of cut and paste and actually
-addressing the job description. When you ask for follow up communications, watch for red flags, 
-like asking what the company name is, when it's clearly in the job posting. Be cautious,
-as language barriers can make what appear to be inattention to detail explainable by
+When reviewing responses, you're looking for a blend of cut and paste
+and actually addressing the job description. When you ask for follow up
+communications, watch for red flags, like asking what the company name
+is, when it's clearly in the job posting. Be cautious, as language
+barriers can make what appear to be inattention to detail explainable by
 a poorly worded task.
 
 On the other hand, when you find the talent, such as Johna - you gain instant, multiple
