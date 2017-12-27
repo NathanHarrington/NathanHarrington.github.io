@@ -3,6 +3,10 @@ Date:  2017-12-13
 Category: articles
 Tags: productivity
 
+
+Read this from top to bottom to find a path to success built on a pillar
+of failure.
+
 You are busy. You are valuable to the organization. There are things
 that you are uniquely good at. This process will help you focus on those
 things. Invest in freeing your time, and reap huge benefits as your
@@ -258,6 +262,182 @@ person. THat it's not an ultra-refined process so you need to spend alot
 more, but you don't have a budget for alot more. Hmm.. If my time is
 worth 50/hour, then every hour I save at 45/hour is still coming out
 ahead.
+
+Failure of upwork process due to lake of refinement
+---------------------------------------------------
+
+2017-12-26 13:15 I'm not clear enough about what is plain processing
+according to rules, and what requires inuitive savvy that truly
+represents your value.
+
+Working backward - the face to face interaction with innovation
+professionals, spectroscopists and potential customers is the place
+where you can bring unique value. Everything else is a task that needs
+to be automated to serve this purpose.
+
+The following are the steps required to create these rules. This is
+inspired primarily by: 
+[Email system that saved my
+life](http://hackthesystem.com/blog/the-email-management-system-that-saved-my-life/)
+and the [partner video](https://www.youtube.com/watch?v=4QNnxkrJGW8&feature=youtu.be)
+
+
+The goal here is to create a flow chart image for sharing. The time
+should be spent on rules, not on moving the components around or manual
+edge labelling. 
+
+Use graphviz to create a directed graph that will catch every email. The
+initial strategy is to setup a framework and have the discipline to
+categorize all of the emails. Write down the exact decision making
+process for each email. This is the core skill that will take time up
+front, but will pay off very quickly for you, and whomever you outsource
+your email to.
+
+Start with this general framework.
+<pre>
+/* Workflow for processing email.
+
+The goal here is a portable set of rules that anyone can be trained to
+follow.
+*/
+digraph {
+
+    bgcolor=black;
+    node [color=green, fontcolor=green];
+    edge [color=green];
+
+    1.0 [shape=diamond; label="Inbox empty?"]
+
+    2.0 [label="Update email processed worksheet, stop"]
+
+    3.0 [label="Open oldest email in inbox"]
+
+    4.0 [label="Label as Handle this Nathan"]
+
+    99.0 [label="Archive"]
+
+    rankdir=LR;
+    rank=same {1.0, 2.0, 3.0 };
+
+    1.0 -> 2.0 [label=yes]
+    1.0 -> 3.0 [label=no]
+
+    // Iterate here - alwasy go from 3.0 to a new rule, and end up at
+    // labelling as Handle this Nathan for new rule creation
+    3.0 -> 4.0
+
+    // Create rule always updates this flow chart
+    4.0 -> 99.0
+
+    99.0 -> 1.0 [color=red] // always go back to inbox
+
+}
+</pre>
+
+
+Download the graphviz wrapper script from the
+[BioWize](https://biowize.wordpress.com/2011/03/11/text-wrapping-with-dot-graphviz/)
+blog entry:
+<pre>
+#!/usr/bin/perl
+use strict;
+ 
+my $usage = "setdotlabelwidth [char-width] < [dotfile]";
+my $width = shift() or die("Usage: $usage $!");
+ 
+while(<STDIN>)
+{
+  if(m/label="(.*?)"/)
+  {
+    my $labeltext = (;
+    my @words = split(/ /, $labeltext);
+    my @newtext = ();
+    my $newline = "";
+    foreach my $word(@words)
+    {
+      if( length($newline) > 0 and
+          length($newline) + length($word) > $width )
+      {
+        push(@newtext, $newline);
+        $newline = "";
+      }
+      $newline .= " " if( length($newline) > 0 );
+      $newline .= $word;
+    }
+    push(@newtext, $newline) if( length($newline) > 0 );
+    my $newlabel = join("\\n", @newtext);
+    s/label=".*?"/label="$newlabel"/;
+  }
+  print;
+}
+</pre>
+
+On linux, run this shell script at every test iteration:
+<pre>
+#!/usr/bin/bash
+#
+# render_show_flowchart.sh - push the provided dot language file through
+# the newline label insertion tool, then render and display in eye of
+# gnome full screen
+
+if [[ $# -ne 2 ]] ; then
+    echo "You must specify a dot language filename, width"
+    exit 0
+fi
+
+FILENAME=(
+LINEWIDTH=[
+
+OUTFILE="${FILENAME/.gv/newlines.gv}"
+OUTPNG="${FILENAME/.gv/.png}"
+
+cat ${FILENAME} | perl setdotlabelwidth.pl $LINEWIDTH > ${OUTFILE}
+if [[ $? -ne 0 ]] ; then
+    echo "Problem running line converter"
+    exit 0
+fi
+
+cat ${OUTFILE} | dot -Tpng -o ${OUTPNG}
+if [[ $? -ne 0 ]] ; then
+    echo "Problem running png maker"
+    exit 0
+fi
+
+
+eog -f $OUTPNG]) 
+</pre>
+
+In practice it looks like:
+
+<pre>
+    (Make a change to the workflow graph)
+
+    ./render_show_flowchart.sh email_workflow.gv 5
+
+    (tweak, repeat)
+</pre>
+
+Implementation Narrative
+------------------------
+
+You're probably thinking - that's nice, but who wants that level of
+process and abstraction impinging on my productivity? If you're a person
+like me - hugely vulnerable to visual distractions, you desparately want
+to live with the wrongness of the dot language edge routing. You
+explicitly do not want to use ASCII art by hand, LibreOffice Draw, or
+google sheets to position boxes. You want logical flow only in text mode
+so you can rapidly iterate through the real value add: The exact
+creation of a workflow to make email processing faster:
+
+Step 1:
+Follow the workflow document.
+
+Step 2:
+When an email arrives that does not meet any rules, iterate through the
+create of a rule at this position:
+[![Iterate rules
+here](/images/thumbnails/email_workflow.jpg)](/images/email_workflow.jpg)
+
 
 
 Processing invited candidate responses
