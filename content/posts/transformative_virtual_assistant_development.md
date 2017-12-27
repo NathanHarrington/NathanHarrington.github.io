@@ -292,7 +292,7 @@ Start with this general framework.
     digraph {
         bgcolor=black;
         node [color=green, fontcolor=green];
-        edge [color=green];
+        edge [color=green, fontcolor=green];
 
         1.0 [shape=diamond; label="Inbox empty?"]
 
