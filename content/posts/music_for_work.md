@@ -113,7 +113,8 @@ Preferrably, use sox for audio generation with one of these options:
     pip install youtube_dl
 
     Start mpyst in conda3 environment, then issue:
-    >set columns user:14 date likes dislikes view
+    >set player mplayer
+    >set columns user:14 date likes dislikes views
 
 ```
 
