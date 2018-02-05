@@ -202,6 +202,17 @@ environment sounds resulting in increased focus.</p>
 <p>Select music from by configuring the columns. You're looking
 for a minimum of 100k views, with at least a 4 to 1 like to dislike
 ratio.</p>
+<p>As of 2018-02-05 13:54, you'll also need to change the download command
+to make use of chunk sizing to prevent youtube throttling. Start mpsyt
+then issue the command below (newlines are for readability)</p>
+<div class="highlight"><pre><span></span>  set download_command 
+    youtube-dl --user-agent  \
+      &quot;Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0&quot; \
+     --http-chunk-size 10M
+     --extract-audio %u -o &#39;%F&#39;
+</pre></div>
+
+
 <h2>Deploying</h2>
 <p>Use mpsyt as the primary music browser. As you find entries that meet
 the requirements, download them as 128k files. After downloading files,

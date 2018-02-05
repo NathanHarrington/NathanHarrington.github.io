@@ -122,6 +122,18 @@ Select music from by configuring the columns. You're looking
 for a minimum of 100k views, with at least a 4 to 1 like to dislike
 ratio.
 
+As of 2018-02-05 13:54, you'll also need to change the download command
+to make use of chunk sizing to prevent youtube throttling. Start mpsyt
+then issue the command below (newlines are for readability)
+
+```
+  set download_command 
+    youtube-dl --user-agent  \
+      "Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0" \
+     --http-chunk-size 10M
+     --extract-audio %u -o '%F'
+```
+
 
 ## Deploying
 
