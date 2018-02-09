@@ -163,6 +163,11 @@ ffmpeg -i "$i" -ab 128k "${i%m4a}mp3"
 rm "$i"
 done
 
+for i in *.opus
+do
+ffmpeg -i "$i" -ab 128k "${i%opus}mp3"
+rm "$i"
+done
 
 for i in *.mp4
 do

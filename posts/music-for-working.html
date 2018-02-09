@@ -281,7 +281,12 @@ music on android:</p>
 60
 61
 62
-63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+63
+64
+65
+66
+67
+68</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Convert downloaded files from mpsyt into mp3s</span>
 <span class="c1"># Sanitize the filenames so they will play on google play</span>
@@ -300,6 +305,11 @@ ffmpeg -i <span class="s2">&quot;</span><span class="nv">$i</span><span class="s
 rm <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 
+<span class="k">for</span> i in *.opus
+<span class="k">do</span>
+ffmpeg -i <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> -ab 128k <span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="p">%opus</span><span class="si">}</span><span class="s2">mp3&quot;</span>
+rm <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="k">done</span>
 
 <span class="k">for</span> i in *.mp4
 <span class="k">do</span>
@@ -403,7 +413,7 @@ directly on the phone.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 Nathan Harrington
+         <div class="col-xs-10">&copy; 2018 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
