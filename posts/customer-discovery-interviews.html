@@ -613,7 +613,9 @@ down.</p>
 45
 46
 47
-48</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+48
+49
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Run a basic whois and a theHarvester and only print emails</span>
 <span class="c1">#</span>
@@ -635,17 +637,19 @@ down.</p>
     <span class="nb">exit</span> <span class="m">0</span>
 <span class="k">fi</span>
 
+<span class="nv">DOMAIN</span><span class="o">=</span><span class="nv">$1</span>
 <span class="c1"># To speed this up, comment out the command line above, and just copy</span>
 <span class="c1"># the domain to the system clipboard, then run:</span>
 <span class="c1">#DOMAIN=`xclip -o`</span>
 
 <span class="c1"># Extremely rough and ready strip of domain details. This is so you can</span>
 <span class="c1"># cut and paste a typical url with any file tree suffix and get just the</span>
-<span class="c1"># bare domain - only for .com&#39;s</span>
+<span class="c1"># bare domain </span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//http:</span><span class="se">\/\/</span><span class="p">/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//https:</span><span class="se">\/\/</span><span class="p">/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//www./</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//.com</span><span class="se">\*</span><span class="p">/.com</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># Changed * to \* for markup reasons</span>
+<span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//.com*/.com</span><span class="si">}</span><span class="s2">&quot;</span> 
+<span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOMAIN</span><span class="p">//.org*/.org</span><span class="si">}</span><span class="s2">&quot;</span>  
 
 <span class="nb">echo</span> <span class="s2">&quot;Searching </span><span class="nv">$DOMAIN</span><span class="s2">&quot;</span>
 

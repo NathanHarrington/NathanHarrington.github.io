@@ -589,17 +589,19 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
+DOMAIN=$1
 # To speed this up, comment out the command line above, and just copy
 # the domain to the system clipboard, then run:
 #DOMAIN=`xclip -o`
 
 # Extremely rough and ready strip of domain details. This is so you can
 # cut and paste a typical url with any file tree suffix and get just the
-# bare domain - only for .com's
+# bare domain 
 DOMAIN="${DOMAIN//http:\/\//}"
 DOMAIN="${DOMAIN//https:\/\//}"
 DOMAIN="${DOMAIN//www./}"
-DOMAIN="${DOMAIN//.com\*/.com}"  # Changed * to \* for markup reasons
+DOMAIN="${DOMAIN//.com*/.com}" 
+DOMAIN="${DOMAIN//.org*/.org}"  
 
 echo "Searching $DOMAIN"
 
