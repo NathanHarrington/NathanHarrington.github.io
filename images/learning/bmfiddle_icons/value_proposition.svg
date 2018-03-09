@@ -14,7 +14,7 @@
    viewBox="0 0 50 50"
    version="1.1"
    id="svg4339"
-   inkscape:version="0.92+devel unknown"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="value_proposition.svg"
    inkscape:export-filename="/home/nharrington/projects/SoftwareWorkflow/bmfiddle_icons/50x50_spectrum.png"
    inkscape:export-xdpi="96"
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.1318643"
-     inkscape:cx="94.488189"
+     inkscape:cx="33.502149"
      inkscape:cy="94.939745"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -39,10 +39,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
+     inkscape:window-width="1600"
+     inkscape:window-height="846"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="26"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata4336">
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -61,47 +61,50 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-10.244623,-37.25136)">
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4924"
-       width="45.472504"
-       height="6.118185"
-       x="12.237679"
-       y="43.914219" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4926"
-       width="33.602821"
-       height="33.857838"
-       x="17.985628"
-       y="50.212563" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4928"
-       width="8.1154137"
-       height="33.832432"
-       x="30.370939"
-       y="50.059608" />
-    <ellipse
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4934"
-       cx="29.67609"
-       cy="41.293015"
-       rx="2.2906783"
-       ry="1.7625169" />
-    <ellipse
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4936"
-       cx="34.722492"
-       cy="40.707001"
-       rx="2.7154531"
-       ry="2.1843615" />
-    <ellipse
-       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4938"
-       cx="40.156555"
-       cy="41.274944"
-       rx="2.2901058"
-       ry="2.13607" />
+    <g
+       id="g2902">
+      <rect
+         y="43.914219"
+         x="12.237679"
+         height="6.118185"
+         width="45.472504"
+         id="rect4924"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         y="50.212563"
+         x="17.985628"
+         height="33.857838"
+         width="33.602821"
+         id="rect4926"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         y="50.059608"
+         x="30.370939"
+         height="33.832432"
+         width="8.1154137"
+         id="rect4928"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         ry="1.7625169"
+         rx="2.2906783"
+         cy="41.293015"
+         cx="29.67609"
+         id="path4934"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         ry="2.1843615"
+         rx="2.7154531"
+         cy="40.707001"
+         cx="34.722492"
+         id="path4936"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         ry="2.13607"
+         rx="2.2901058"
+         cy="41.274944"
+         cx="40.156555"
+         id="path4938"
+         style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
   </g>
 </svg>

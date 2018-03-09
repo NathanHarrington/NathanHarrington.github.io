@@ -171,3 +171,45 @@ http://www.officedepot.com/a/products/203349/Sharpie-Permanent-Fine-Point-Marker
 (/images/learning/thumbnails/Large_canvas_example_one.jpg)](/images/learning/Large_canvas_example_one.jpg)
 [![Example two](/images/learning/thumbnails/Large_canvas_example_two.jpg)](/images/learning/Large_canvas_example_two.jpg)
 
+
+
+**2018-03-09 16:11 Second pass.**
+
+
+More than 20 BMC's created on a variety of
+materials and formats. Lessons learned:
+
+[Fine point sharpie marker](http://a.co/9M1SSjj) is the one you want: 
+Do not get ultra fine or wide tip. Do not get different colors. The
+text+imagery on each sticky should all be the same color, black. The
+stickys themselves can be a wide variety of colors.
+
+Use the [![8.5x11 canvas](/images/learning/thumbnails/business_model_canvas_template_no_numbers_icons.png)](/images/learning/business_model_canvas_template_no_numbers_icons.svg) 8.5x11
+canvas with iconagraphy for tabletop, individual education sessions that 
+tare impromptu or otherwise restricted by context. Use a 'regular' pen
+or whatever fully functional tool you have on hand. Non-smearing is 
+ideal. Use the 2"x1.5" stickies in a vertical orientation. Off-brand
+2.5x1.5" stickies: [Link: http://a.co/i8XPLlI](http://a.co/i8XPLlI)
+
+Use the Office Depot 20"x23" Self-stick tabletop easel pad with [2"
+square stickies](http://a.co/4q0Dde2). This is the default size that will function for most
+contexts. Draw the canvas on the top half of the paper while still
+mounted in the easel pad. Tear off the paper and hang on the wall, then
+fold up and put out of sight the easel pad. This is to discourage
+writing on an easel pad - it's like candy - hide it.  This approach
+gives you a dedicated tool that is self contained.  The 2"x1.5" stickies
+are slightly too small for sharpie work, but are fine for good for a
+single piece of paper because they work vertically.
+
+
+
+For 13+ feet viewing distance, or more than 8 participants, use the
+office depot 22"x28" White poster board with 'regular' stickies.
+[Regular size 3x3" post it notes]( http://www.officedepot.com/a/products/877664/Post-it-Pop-Up-Notes-3/)
+
+Bring a role of blue masking tape to hang up the poster board.
+3M Scotch-Blue 2090 60 yds Length x 2" Width
+[Amazon](http://a.co/6yrsPBB)
+
+On both the mid, and large scale, use a Standard, fine-point sharpie. 
+
