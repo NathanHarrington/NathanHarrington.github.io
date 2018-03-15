@@ -217,23 +217,38 @@ them to be re-added at least 3 times, resulting in duplicates and
 confusion in the resources pane. Send them in groups of ten instead
 with:
 ```
+#!/bin/bash
+#
+# bmfiddle_resource_mailer.sh script located in:
+# nathanharrington.github.io/content/images/learning/bmfiddle_icons/uniicons
+#
+# Assumes a fully functional mutt configuration.
+# 
+# Usage: cd to the directory above (with all the folder? entires)
+#
+# run the script lke: ./bmfiddle_resource_mailer.sh CANVASID
+#
 if [[ $# -eq 0 ]] ; then
     echo 'You must specify a bmfiddle CANVASID'
     exit 0
 fi
 
 CANVASID="$1"
+EMAIL=$CANVASID@canvas.bmfiddle.com
 
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 1of10" $( printf -- '-a %q ' folder1/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 2of10" $( printf -- '-a %q ' folder2/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 3of10" $( printf -- '-a %q ' folder3/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 4of10" $( printf -- '-a %q ' folder4/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 5of10" $( printf -- '-a %q ' folder5/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 6of10" $( printf -- '-a %q ' folder6/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 7of10" $( printf -- '-a %q ' folder7/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 8of10" $( printf -- '-a %q ' folder8/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 9of10" $( printf -- '-a %q ' folder9/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s "PNGs 10of10" $( printf -- '-a %q ' folder10/*.png )
+COUNTER=1
+while [ $COUNTER -lt 11 ]; do
+    echo "Mail folder$COUNTER group"
+
+    FILES=$( printf -- '-a %q ' folder${COUNTER}/*.png )
+
+    mutt $EMAIL -s 'PNGs ${COUNTER} of 10' $FILES < /dev/null
+
+    sleep $COUNTER # Change intervals for primitive spam avoidance
+
+    let COUNTER=COUNTER+1
+
+done
 ```
 
 

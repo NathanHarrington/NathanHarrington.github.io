@@ -286,7 +286,13 @@ music on android:</p>
 65
 66
 67
-68</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+68
+69
+70
+71
+72
+73
+74</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Convert downloaded files from mpsyt into mp3s</span>
 <span class="c1"># Sanitize the filenames so they will play on google play</span>
@@ -302,6 +308,12 @@ rm <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quo
 <span class="k">for</span> i in *.m4a
 <span class="k">do</span>
 ffmpeg -i <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> -ab 128k <span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="p">%m4a</span><span class="si">}</span><span class="s2">mp3&quot;</span>
+rm <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+
+<span class="k">for</span> i in *.ogg
+<span class="k">do</span>
+ffmpeg -i <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> -ab 128k <span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="p">%ogg</span><span class="si">}</span><span class="s2">mp3&quot;</span>
 rm <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 

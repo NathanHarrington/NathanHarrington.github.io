@@ -293,25 +293,71 @@ mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs&quot; $( printf -- &#39
 them to be re-added at least 3 times, resulting in duplicates and
 confusion in the resources pane. Send them in groups of ten instead
 with:</p>
-<div class="highlight"><pre><span></span>if [[ $# -eq 0 ]] ; then
-    echo &#39;You must specify a bmfiddle CANVASID&#39;
-    exit 0
-fi
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># bmfiddle_resource_mailer.sh script located in:</span>
+<span class="c1"># nathanharrington.github.io/content/images/learning/bmfiddle_icons/uniicons</span>
+<span class="c1">#</span>
+<span class="c1"># Assumes a fully functional mutt configuration.</span>
+<span class="c1"># </span>
+<span class="c1"># Usage: cd to the directory above (with all the folder? entires)</span>
+<span class="c1">#</span>
+<span class="c1"># run the script lke: ./bmfiddle_resource_mailer.sh CANVASID</span>
+<span class="c1">#</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$#</span> -eq <span class="m">0</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s1">&#39;You must specify a bmfiddle CANVASID&#39;</span>
+    <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span>
 
-CANVASID=&quot;$1&quot;
+<span class="nv">CANVASID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="nv">EMAIL</span><span class="o">=</span><span class="nv">$CANVASID</span>@canvas.bmfiddle.com
 
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 1of10&quot; $( printf -- &#39;-a %q &#39; folder1/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 2of10&quot; $( printf -- &#39;-a %q &#39; folder2/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 3of10&quot; $( printf -- &#39;-a %q &#39; folder3/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 4of10&quot; $( printf -- &#39;-a %q &#39; folder4/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 5of10&quot; $( printf -- &#39;-a %q &#39; folder5/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 6of10&quot; $( printf -- &#39;-a %q &#39; folder6/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 7of10&quot; $( printf -- &#39;-a %q &#39; folder7/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 8of10&quot; $( printf -- &#39;-a %q &#39; folder8/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 9of10&quot; $( printf -- &#39;-a %q &#39; folder9/*.png )
-mutt $CANVASID@canvas.bmfiddle.com -s &quot;PNGs 10of10&quot; $( printf -- &#39;-a %q &#39; folder10/*.png )
+<span class="nv">COUNTER</span><span class="o">=</span><span class="m">1</span>
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$COUNTER</span> -lt <span class="m">11</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Mail folder</span><span class="nv">$COUNTER</span><span class="s2"> group&quot;</span>
+
+    <span class="nv">FILES</span><span class="o">=</span><span class="k">$(</span> <span class="nb">printf</span> -- <span class="s1">&#39;-a %q &#39;</span> folder<span class="si">${</span><span class="nv">COUNTER</span><span class="si">}</span>/*.png <span class="k">)</span>
+
+    mutt <span class="nv">$EMAIL</span> -s <span class="s1">&#39;PNGs ${COUNTER} of 10&#39;</span> <span class="nv">$FILES</span> &lt; /dev/null
+
+    sleep <span class="nv">$COUNTER</span> <span class="c1"># Change intervals for primitive spam avoidance</span>
+
+    <span class="nb">let</span> <span class="nv">COUNTER</span><span class="o">=</span>COUNTER+1
+
+<span class="k">done</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>You can use the sketch tool on bmfiddle, but it will not have a
 transparent background. </p>

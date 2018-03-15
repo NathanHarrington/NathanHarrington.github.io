@@ -179,17 +179,24 @@ http://www.officedepot.com/a/products/203349/Sharpie-Permanent-Fine-Point-Marker
 More than 20 BMC's created on a variety of
 materials and formats. Lessons learned:
 
+
 [Fine point sharpie marker](http://a.co/9M1SSjj) is the one you want: 
 Do not get ultra fine or wide tip. Do not get different colors. The
 text+imagery on each sticky should all be the same color, black. The
 stickys themselves can be a wide variety of colors.
 
+Small option:
+-------------
+
 Use the [![8.5x11 canvas](/images/learning/thumbnails/business_model_canvas_template_no_numbers_icons.png)](/images/learning/business_model_canvas_template_no_numbers_icons.svg) 8.5x11
 canvas with iconagraphy for tabletop, individual education sessions that 
-tare impromptu or otherwise restricted by context. Use a 'regular' pen
+are impromptu or otherwise restricted by context. Use a 'regular' pen
 or whatever fully functional tool you have on hand. Non-smearing is 
 ideal. Use the 2"x1.5" stickies in a vertical orientation. Off-brand
 2.5x1.5" stickies: [Link: http://a.co/i8XPLlI](http://a.co/i8XPLlI)
+
+Mid range option:
+-----------------
 
 Use the Office Depot 20"x23" Self-stick tabletop easel pad with [2"
 square stickies](http://a.co/4q0Dde2). This is the default size that will function for most
@@ -201,7 +208,8 @@ gives you a dedicated tool that is self contained.  The 2"x1.5" stickies
 are slightly too small for sharpie work, but are fine for good for a
 single piece of paper because they work vertically.
 
-
+Large size option:
+------------------
 
 For 13+ feet viewing distance, or more than 8 participants, use the
 office depot 22"x28" White poster board with 'regular' stickies.
