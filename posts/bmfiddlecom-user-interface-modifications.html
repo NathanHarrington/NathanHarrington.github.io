@@ -351,10 +351,10 @@ with:</p>
 
     mutt <span class="nv">$EMAIL</span> -s <span class="s1">&#39;PNGs ${COUNTER} of 10&#39;</span> <span class="nv">$FILES</span> &lt; /dev/null
 
-    sleep <span class="nv">$COUNTER</span> <span class="c1"># Change intervals for primitive spam avoidance</span>
+    <span class="c1"># Change intervals for primitive spam avoidance</span>
+    sleep <span class="nv">$COUNTER</span> 
 
     <span class="nb">let</span> <span class="nv">COUNTER</span><span class="o">=</span>COUNTER+1
-
 <span class="k">done</span>
 </pre></div>
 </td></tr></table>

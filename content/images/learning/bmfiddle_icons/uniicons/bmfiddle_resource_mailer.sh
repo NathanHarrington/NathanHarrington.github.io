@@ -25,8 +25,8 @@ while [ $COUNTER -lt 11 ]; do
 
     mutt $EMAIL -s 'PNGs ${COUNTER} of 10' $FILES < /dev/null
 
-    sleep $COUNTER # Change intervals for primitive spam avoidance
+    # Change intervals for primitive spam avoidance
+    sleep $COUNTER
 
     let COUNTER=COUNTER+1
-
 done
