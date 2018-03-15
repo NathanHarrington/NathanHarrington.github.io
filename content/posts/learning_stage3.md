@@ -221,3 +221,27 @@ Bring a role of blue masking tape to hang up the poster board.
 
 On both the mid, and large scale, use a Standard, fine-point sharpie. 
 
+
+**2018-03-15 09:37 Third pass**
+
+The Business Model Fiddle website (with the [modifications
+described](http://nathanharrington.info/posts/bmfiddlecom-user-interface-modifications.html) is still truly excellent. The learning points here are that there
+is real value in both approaches. Experientially, the physical movement
+of the stickies on and off a paper canvas is far superior to the digital
+equivalent. 
+
+There are many contexts in which the digital canvas excels: such as a
+presentation with live updates. (Vimimum on chrome with bmfiddle.com is
+very fast and straight forward). As a portable tool, the digital version
+is unsurpassed. For the initial capturing as well as 'snapshots' to
+track progress is also faster with the bmfiddle.
+
+The core concepts of what makes a good BMC can be applied across both
+physical and digital mediums effectively. 
+
+Action items: Any business model canvas training program should have
+both parts. It should have a primarily physical component and a
+secondary digital component. A split of about 80/20 by default, but
+can change drastically based on the audience. Both are required, as
+they complement each other and enhance the immersion of the training and
+the overall effectiveness of the tool.
