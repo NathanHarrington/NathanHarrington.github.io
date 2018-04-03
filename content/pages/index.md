@@ -7,7 +7,7 @@ template: hermann_homage_page
 
 Hi, my name is Nathan. I'm here to create, organize and give away
 businesses. I have the privilege of searching for software value
-propositions at [Wasatch Photonics](http://wasatchphotonics.com).
+propositions at [Cordince](http://www.cordince.com).
 
 Prior to this role, I focused my efforts on practicing software
 engineering at IBM, various startups, and for building spectroscopy

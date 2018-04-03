@@ -1,6 +1,6 @@
 Generate the thumbnails by:
 
-cd thumbnails
+cd content/images/learning/thumbnails
 pwd
 # Make sure you are in the thumbnails directory!
 cp ../*.jpg .

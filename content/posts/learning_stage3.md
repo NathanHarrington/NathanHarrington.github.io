@@ -47,7 +47,7 @@ Make sure to view the entire canvas here - there are sticky notes
 
 #### Incorporation:
 **Card deck one of two: Meta Business Model Canvas**
-```
+<pre>
 The business model canvas is just one tool.
 It has a place in the continuum of broad view and narrowly focused
 resources for modelling businesses.
@@ -65,7 +65,7 @@ Sketch out new business ideas or visualize existing businesses.
 Used corporately as shared language to have better strategic conversations.
 
 Individually used to structure your thinking.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_front.jpg)](/images/learning/learning_meta_bmc_card_deck_front.jpg)
 [![Back of Card
@@ -75,7 +75,7 @@ Deck](/images/learning/thumbnails/learning_meta_bmc_card_deck_back.jpg)](/images
 
 
 ** Card deck two of two: What makes a good business model canvas?**
-```
+<pre>
 Coarse grained visual indicators:
 A large rectangle, suitable for the environment and the participants.
 Regular size 3x3" post it notes
@@ -107,7 +107,7 @@ Use these same concepts for physical and virtual canvases
 
 Whether a paper on the wall or the business model canvas fiddle, follow
 the same concepts of what makes a good business model canvas.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_what_makes_a_good_bmc_card_deck_front.jpg)](/images/learning/learning_what_makes_a_good_bmc_card_deck_front.jpg)
 [![Back of Card
