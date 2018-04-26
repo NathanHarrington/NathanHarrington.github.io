@@ -134,6 +134,45 @@ then issue the command below (newlines are for readability)
      --extract-audio %u -o '%F'
 ```
 
+## Phone configuration
+
+Playing the music through cmus or mpsyt on the linux desktop is the best
+option. You still want podcasts and network connectivity through the
+phone as well. What you don't want is the various bose headsets
+announcing the calls and disrupting flow.
+
+These instructions are for a 2016 era Motorola Moto E Black (2nd Generation)
+on Ting wireless running Android 5.1.
+
+Connect the bluetooth headsets as Media audio, no phone audio, no
+contact sharing.
+
+Get a google voice number
+For the regular cell phone number, set
+
+Settings -> Sound and notification -> Interruptions
+
+When calls and notifications arrive: Allow only priority interrputions
+
+Priority interruptions:
+Events and reminders: on
+Calls: on
+Messages: on
+
+Calls/message from:
+contacts only
+
+Create a contact that has the google voice number called Google voice.
+
+Now you give out the google voice number to everyone, and it will
+automatically forward the calls to the actual phone number. Tell all
+your important contacts that you are letting everything go straight to
+voicemail on the google voice number. If they must reach you
+immediately, dial the main number.
+
+The phone will still light up, it will still vibrate for google voice
+calls. It will still light up for any other call that goes to the actual
+number as well, but only if it's already in your contact list.
 
 ## Deploying
 
