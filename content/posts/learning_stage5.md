@@ -45,7 +45,7 @@ Pages 19-26
 #### Incorporation:
 
 **Card deck 1 of 6 Overview**
-```
+<pre>
 Customer segments
 GOAL: A deep understanding of the customer persona.
 
@@ -57,7 +57,7 @@ What gains do they want?
 Provide answers to the questions:
 Who are they, why would they buy, why won't they buy. What do you need
 to say to them?
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_overview_card_deck_front.jpg)](/images/learning/learning_customer_segments_overview_card_deck_front.jpg)
 [![Back of Card
@@ -68,7 +68,7 @@ Deck](/images/learning/thumbnails/learning_customer_segments_overview_card_deck_
 
 
 **Card deck 2 of 6 Jobs**
-```
+<pre>
 The tasks they are trying to perform. The problems they are trying to
 solve. Or the needs they are trying to satisfy.
 
@@ -95,7 +95,7 @@ Rank each job according to its significance to the customer
 
 What constraints and limitations are imposed on the job based on its
 context?
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_jobs_card_deck_front.jpg)](/images/learning/learning_customer_segments_jobs_card_deck_front.jpg)
 [![Back of Card
@@ -105,7 +105,7 @@ Deck](/images/learning/thumbnails/learning_customer_segments_jobs_card_deck_back
 
 
 **Card deck 3 of 6 Pains**
-```
+<pre>
 Pains
 Anything that prevents your customers from getting a job done.
 Can annoy customers before, during and after trying to get a job done.
@@ -114,33 +114,25 @@ all.
 
 1. Cost
 Takes a lot of time, too much money, or requires substantial efforts?
-
 2. Feel 
 What are their frustrations, annoyances, or things that give them a
 headache?
-
 3. Performance 
 What features are they missing? What performance issues annoy them or
 malfunctions do they cite?
-
 4. Challenges
 Do they not understand how things work, have difficulties getting
 certain things done, or resist particular jobs for specific reasons?
-
 5. Social consequences
 Are they afraid of losing face, power, trust or status?
-
 6. Risks
 Are there financial, social, or technical risks. Or are they asking
 themselves what could go wrong?
-
 7. Anxiety
 What are their big issues, concerns and worries?
-
 8. Mistakes
 Are they using a solution the wrong way? What common mistakes do
 customers make?
-
 9. Barriers
 Are their upfront investment costs, a steep learning curve, or other
 obstacles preventing adoption?
@@ -153,7 +145,7 @@ is better than
 Pain severity
 A customer pain can be extreme or moderate, similar to how jobs can be
 important or insignificant to the customer.
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_pain_card_deck_front.jpg)](/images/learning/learning_customer_segments_pain_card_deck_front.jpg)
 [![Back of Card
@@ -165,39 +157,31 @@ Deck](/images/learning/thumbnails/learning_customer_segments_pain_card_deck_back
 
 
 **Card deck 4 of 6 Gains**
-```
+<pre>
 Gains are benefits the customer expects, desires or would be surprised
 by. Gains include functional utility, social gains, positive emotions,
 and cost savings.
 
 1. Savings
 Which time, money and effort reductions would they value. 
-
 2. Quality
 What would they wish more or less of? What quality levels do they
 expect?
-
 3. Existing features
 What specific performance do they expect? How can you improve those
 features?
-
 4. Easier
 A flatter learning curve, more services, or lower costs of ownership?
-
 5. Positive social consequences
 What increases their power or status? What makes them look good?
-
 6. Seeking most
 Are they searching for good design, guarantees, specific or more
 features?
-
 7. Feel better
 What do they aspire to achieve, or what would be a big relief to them?
-
 8. Measurements
 How does your customer gauge performance or cost? How do they measure
 success and failure?
-
 9. Obstacles
 What would increase the likelihood of adopting a solution?
 Lower cost, lower risk, more fun, better quality?
@@ -212,7 +196,7 @@ is better than
 Rank your gains
 A customer gain can feel essential or nice to have. Make sure you are
 focusing on the most important gains to the customer
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_gain_card_deck_front.jpg)](/images/learning/learning_customer_segments_gain_card_deck_front.jpg)
 [![Back of Card
@@ -223,7 +207,7 @@ Deck](/images/learning/thumbnails/learning_customer_segments_gain_card_deck_back
 
 
 **Card deck 4 of 6 Persona**
-```
+<pre>
 Not only do you know about the pains and gains of the customers, you
 specifically know who they are.  
 
@@ -254,7 +238,7 @@ Who is the customer in relation to others?
 User->Influencer->Recommender->Decision Maker->Economic Buyer->Saboteur
 
 Teen         Friends            Dad            Parents
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_persona_card_deck_front.jpg)](/images/learning/learning_customer_segments_persona_card_deck_front.jpg)
 [![Back of Card
@@ -265,7 +249,7 @@ Deck](/images/learning/thumbnails/learning_customer_segments_persona_card_deck_b
 
 
 **Card deck 6 of 6 Examples**
-```
+<pre>
 Simple two sided google search summary
 Multiple customer segments
 Each has its own value proposition
@@ -307,7 +291,7 @@ Fan Type        avid            in-season           casual
 Class           middle          middle              middle
 Facebook Status single/compl.   single              in relationship
 rental type     subscription    subscription        pay per rental
-```
+</pre>
 [![Front of Card
 Deck](/images/learning/thumbnails/learning_customer_segments_examples_card_deck_front.jpg)](/images/learning/learning_customer_segments_examples_card_deck_front.jpg)
 [![Back of Card
