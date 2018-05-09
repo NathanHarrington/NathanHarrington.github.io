@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileImage" content="/favicon-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-    <title>business model canvas - Nathan Harrington</title>
+    <title>Darktable image processing workflow - Nathan Harrington</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -32,16 +32,21 @@
 
 
 
+<link rel="canonical" href="/posts/darktable-image-processing-workflow.html">
 
-    <meta name="author" content="Nathan Harrington" />
-    <meta name="keywords" content="business model canvas" />
+        <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="productivity" />
+        <meta name="description" content="Instructions for using Darktable on a Linux system for digital photo processing. Camera: Nikon D3000 (2009) Laptop: Lenovo U430 Touch (2014) Storage: Microsd card in SD card adapter Eject card from Camera, place in laptop. Create the folder ~/Pictures/ Copy just .NEF from SD Card/DCIM/100D3000/ to ~/Pictures/ Start …" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Nathan Harrington" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Nathan Harrington"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Nathan Harrington"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Darktable image processing workflow"/>
+        <meta property="og:url" content="/posts/darktable-image-processing-workflow.html"/>
+        <meta property="og:description" content="Instructions for using Darktable on a Linux system for digital photo processing. Camera: Nikon D3000 (2009) Laptop: Lenovo U430 Touch (2014) Storage: Microsd card in SD card adapter Eject card from Camera, place in laptop. Create the folder ~/Pictures/ Copy just .NEF from SD Card/DCIM/100D3000/ to ~/Pictures/ Start …"/>
+        <meta property="article:published_time" content="2018-05-08" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="productivity" />
+            <meta property="article:author" content="Nathan Harrington" />
 
 
     <!-- Bootstrap -->
@@ -83,7 +88,7 @@ Nathan Harrington            </a>
 
 <!--
 Don't display categories on menu
-                        <li >
+                        <li class="active">
                             <a href="/category/articles.html">Articles</a>
                         </li>
                         <li >
@@ -103,37 +108,146 @@ Don't display categories on menu
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h4><a href="/posts/notes-on-transformational-learning.html">Notes on transformational learning</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="summary"><p><strong>Page 1 of 1 card deck:</strong></p>
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                <p>Instructions for using Darktable on a Linux system for digital photo
+processing.</p>
 <pre>
-The search for value propositions customers can't resist, embedded in
-profitable and scalable business models.
+Camera: Nikon D3000 (2009)
+Laptop: Lenovo U430 Touch (2014)
+Storage: Microsd card in SD card adapter
 
-How are we going to do that? The business model canvas.
+Eject card from Camera, place in laptop.
 
-What will be the result?
-A new idea shaped by the business model canvas that is profitable and …</pre>
-                            </div>
-                        </div>
-                    </div>
+Create the folder ~/Pictures/<timestamp>
+
+Copy just .NEF from SD Card/DCIM/100D3000/ to ~/Pictures/<timestamp>
+
+Start Darktable, press F11 to full screen
+
+Make sure you are in "Lighttable" mode
+
+Import -> folder 
+    Click folder: ~/Pictures/<timestamp>
+    Click open
+
+Set 3-thumbnail view on bottom slider
+
+Make a first pass in Lighttable view, clicking the red x on any that are
+clearly rejects, out of focus, etc.  Look through the entire roll for
+any corruption, other weirdness. You may have no rejects, and that is
+ok, this is partly just a sanity check so you can verify the local copy.
+
+
+
+Switch to darkroom mode, view all except rejected
+
+Now go through each image, and give a star level of 3 if acceptable.
+
+If you're unsure, don't reject, just give it a 1-2 star rating
+
+Feel free to keep all or mark as rejects all. The point is to go through
+    and look at each photo for at least 1 second.
+
+The best way to do this is to keep the mouse cursor over the thumbnail
+at the bottom, then use the keys 1-5 for star rating. Then push space to
+go to the next image. Make sure the mouse cursor stays over the center
+thumbnail.
+
+Now View all 3 stars and above. 
+
+Mark as leel 5 if it's the appropriate quality.
+
+Now View all 5 stars and above.
+
+Then do further refinements, editing, color balancing.
+
+To remove a photo, just give it a <5 star rating and it will disappear
+from the thumbnail list at the bottom. Remember to have your mouse over
+the photo you want to assign a star rating.
+
+</pre>
+
+<pre>
+Export to disk the selected images:
+
+Switch back to Lighttable view
+Choose 5 stars and above.
+
+Shift-Select all of the 5 star images.
+
+On the right side, go to Export Selected
+
+The default options are:
+Target storage:   File on Disk
+
+$(FILE_FOLDER)/darktable_exported/$(FILE_NAME)
+
+jpeg 8-bit
+quality 95
+
+Click export.
+</pre>
+
+<pre>
+Post on google workflow:
+    With username@gmail.com
+    go to: http://photos.google.com
+    Click upload
+    Choose all files from darktable exported jpg above.
+    After upload is complete Click "Shared album"
+    Click "New shared album"
+    Give it a title, click share, click google plus
+    Create a new post in the 'public' area
+</pre>
+
+<pre>
+Add to first-gen ipad screensaver picture workflow:
+
+Go to the darktable exported folder, for example:
+    cd ~/Pictures/<timestamp>/darktable_exported/
+
+mkdir smaller
+cd smaller
+cp ../*.jpg .
+mogrify -resize 50% *.jpg
+python -m http.server (python3)
+
+On the ipad, open safari, go to 192.168.0.70:8000
+where 192.168.0.70 is the ip address of the computer running the
+    python httpserver
+
+Click each file, after it loads hold-click, then 'save image'
+</pre>
+
+<pre>
+After images have been copied to the laptop, uploaded to google, and
+placed on the ipad: remove the sd card, place it back in the camera.
+Format the card when placed in the camera.
+</pre>
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-05-08T00:00:00-04:00"> Tue 08 May 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/productivity.html">productivity</a>
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
-            <hr/>
-
-        <ul class="pagination">
-                <li class="prev"><a href="/tag/business-model-canvas.html">&laquo;</a>
-                </li>
-                    <li class=""><a
-                            href="/tag/business-model-canvas.html">1</a></li>
-                    <li class="active"><a
-                            href="/tag/business-model-canvas2.html">2</a></li>
-                <li class="next disabled"><a href="#">&raquo;</a></li>
-        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
@@ -162,7 +276,7 @@ A new idea shaped by the business model canvas that is profitable and …</pre>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 Nathan Harrington
+         <div class="col-xs-10">&copy; 2018 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

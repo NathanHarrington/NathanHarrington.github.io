@@ -7,16 +7,14 @@ Tags: business model canvas
 **Page 1 of 1 card deck:**
 
 <pre>
-The search for software value propositions customers can't resist,
-embedded in profitable and scalable business models.
+The search for value propositions customers can't resist, embedded in
+profitable and scalable business models.
 
 How are we going to do that? The business model canvas.
 
 What will be the result?
 A new idea shaped by the business model canvas that is profitable and
 will compliment the processes currently in place to run the business.
-Target date is 20171231. Profitability in this context includes letters
-of intent or (preferrably) actual transactions.
 
 What are you tactics used to achieve this:
 Perform the research, incorporation, execution cycle for each stage.
@@ -38,7 +36,5 @@ Stage 7: Test assumptions, Gather data, gain insights, repeat
 </pre>
 
 ** Card Deck Images**
-[![Front of Card
-Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_front.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_front.jpg)
-[![Back of Card
-Deck](/images/learning/thumbnails/learning_what_used_to_be_done_card_deck_back.jpg)](/images/learning/learning_what_used_to_be_done_card_deck_back.jpg)
+[![Front of Card Deck](/images/learning/thumbnails/notes_on_transformational_learning_card_deck_front.jpg)](/images/learning/notes_on_transformational_learning_card_deck_front.jpg)
+[![back of Card Deck](/images/learning/thumbnails/notes_on_transformational_learning_card_deck_back.jpg)](/images/learning/notes_on_transformational_learning_card_deck_back.jpg)
