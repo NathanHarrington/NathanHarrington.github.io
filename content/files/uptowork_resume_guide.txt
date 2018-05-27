@@ -1,0 +1,994 @@
+This is life-changing - out of appreciation to the author and
+uptowork.com, here is a w3m dump of the article. This made a huge change
+in my life, and I never want to forget it.
+
+https://uptowork.com/blog/software-engineer-resume
+
+Author
+Tom Gerencer
+
+----------------------------------------------------------------------
+
+
+Welcome to your new office. There's your brand new Herman Miller chair. Your
+SSD laptop with vertical and horizontal monitors. Your business credit card.
+
+
+
+Down the hall is a staff kitchen like something from the Zuckerberg mansion.
+There's free food. Free laundry. Free massages.
+
+
+
+Basically, you've nailed a job at a unicorn company.
+
+
+
+And it all started with a software engineer resume that stood out like Linus
+Torvalds.
+
+
+
+Now. How can you make that dream a reality?
+
+
+
+It's simple. Just show that great company how much they need you.
+
+
+
+This guide will demonstrate:
+
+
+
+  • A software engineering resume example better than 9 out of 10 other
+    resumes.
+  • How to write a software engineer resume that will land you more interviews.
+  • Tips and examples of how to put skills and achievements on a software
+    engineer resume.
+  • How to describe your experience on a resume for a software engineer to get
+    any job you want.
+
+
+
+Here's a sample resume for a software engineer made using our resume builder.
+
+
+
+Want to save time and have your resume ready in 5 minutes? Try our resume
+builder. It’s fast and easy to use. Plus, you'll get tips and right vs. wrong
+examples while writing your resume. See +20 resume templates and create your
+resume here.
+
+
+
+best software engineer resume sample
+
+Software Engineer Resume Example - See +20 resume templates and create your
+resume here.
+
+
+
+1
+
+What's the Best Format for a Software Engineer Resume?
+
+
+
+The best example of a software engineer resume is one that gets the interview.
+
+
+
+Yet recruiters, and especially those at unicorn companies, spend only six
+seconds looking at each resume.
+
+
+
+That's why you must use a resume format that grabs on like a LogMeIn connection
+and doesn't let go.
+
+
+
+Use the reverse-chronological layout. It front-loads your strengths, showing
+all your best moments at a glance.
+
+
+
+To make it really pop, use clear, legible fonts and plenty of white space.
+
+
+
+Finally, save your software developer resume in PDF format. That'll keep your
+layout intact as it travels through cyberspace.
+
+
+
+Pro Tip: PDFs are the way to go unless they conflict with the company's
+Applicant Tracking System. How can you know? Check the job listing.
+
+
+
+Not completely sold on the reverse-chronological resume format? See our guide:
+3 Resume Formats: How to Choose the Best One [Examples]
+
+
+
+2
+
+How to Write a Resume Summary or Resume Objective
+
+
+
+Many career experts say, "When writing a software engineer resume, don't use a
+resume summary or objective statement."
+
+
+
+Those career experts are wrong.
+
+
+
+A generic summary or objective will make recruiters yawn.
+
+
+
+But a good one will grab hiring managers like a sudo command.
+
+
+
+Use a resume summary if you've got lots of experience.
+
+
+
+Use a resume objective if you're a new graduate or you're switching careers.
+
+
+
+Let's start with the resume summary for a software developer. It's a highlights
+reel of your best shining moments.
+
+
+
+But there's a right way and a wrong way to do it.
+
+
+
+Two Senior Software Engineer Resume Summary Examples
+
+
+
+Look at the two very different software engineer resume examples below:
+
+
+
+                                     wrong
+Software engineer with 7+ years experience, skilled in C++, ASP.NET, SQL, Java,
+Python, Javascript, C#, Perl, and PHP, looking for a position as a software
+developer for Oracle.
+
+
+
+Okay, it sounds impressive. But it's got a fatal error. It's just like all the
+others. No wonder career experts say to avoid it!
+
+
+
+Now try this short sample, from a much better software developer resume:
+
+
+
+                                     right
+Results-Focused Software Engineer
+
+
+
+Energetic software engineer with 7+ years experience developing robust code for
+high-volume businesses. Increased code-efficiency of XYZ Corp customer portal
+by 55%. Boosted customer retention by 25%. Spearheaded a team that won the 2016
+BOSSIE Award for cloud computing. An enthusiastic team player and deep creative
+thinker.
+
+
+
+Wow, right? So do you need to win a BOSSIE to get the job? No. Just sift
+through your past and find those glowing moments that scream, "Hire this
+genius!"
+
+
+
+Start with a deep, brainstormed file of all your "selling points." Then, when
+writing your software engineer resume summary section, use the 3 or 4 that
+match the job description.
+
+
+
+Our resume builder will give you tips and examples on how to write your resume
+summary or any other section. Plus, it's got a super flexible and easy text
+editor that lets you create a customized resume in no time. Check out how it
+works:
+
+
+
+Inside our resume builder you will find examples for your resume and tons of
+other useful features. Give it a try and see how easy it is!
+
+
+
+How to Write a Resume Objective for an Entry Level Software Engineer
+
+
+
+Maybe your work experience is as thin as a healthcare company firewall. Don't
+sweat it. Use a resume objective. It's the way to go for fresh graduates or
+those looking for a new niche.
+
+
+
+Use these two very different software engineer resumes as a starting point:
+
+
+
+Two Entry Level Computer Science Resume Examples
+
+
+
+                                     wrong
+Looking for a job as a software engineer because I've got a degree in it, I
+have studied 23 programming languages like everyone else, and I'm extremely
+good, trust me.
+
+
+
+That's not a resume objective statement. It's a one-way ticket to the recycle
+bin. Now of course you won't do that, but if you don't get really specific,
+that's how it'll read.
+
+
+
+Think measurable details like in the software developer resume objective below:
+
+
+
+                                     right
+Team player software engineer with a can-do attitude, phenomenal time
+management skills, and a strong user focus. Has developed several web and
+mobile apps, including a home security system using Raspberry Pi and a webcam.
+
+
+
+Wow, right? Specific. But the real key here is whether those strong points
+match the job description. If not, flat tire.
+
+
+
+But what if you don't have even that much experience? I'll explain the fix for
+that in a minute.
+
+
+
+Pro Tip: Your resume objective or resume summary is the icing on your job
+search cake. Write it last, and include the best bits from the rest of your
+resume.
+
+
+
+Still fuzzy on how to write a professional resume summary or objective for a
+software engineer resume? See the computer science resume template at the top
+of this article. Or see our guides: "How To Write A Resume Summary: 21 Best
+Examples You Will See" AND "+20 Resume Objective Examples - Use Them on Your
+Resume (Tips)"
+
+
+
+3
+
+How to Describe Your Software Engineer Experience
+
+
+
+Let's circle back to our unicorn company job. The one with lots of breaks and
+free Fitbits and a complimentary Kinesis keyboard.
+
+
+
+How much do you think experience matters to that company?
+
+If you said, "A lot," gold star.
+
+
+
+That's why your software engineer resume's experience section needs to sing
+your programming experience from the rooftops.
+
+
+
+Put your most recent work first. Showcase 4-5 wins and responsibilities that
+fit the job offer.
+
+
+
+Glance at the senior software developer resume samples below. They're for a job
+opening that values leadership, production, file management, and security.
+
+
+
+Senior Software Engineer Resume Examples
+
+
+
+                                     right
+Senior Software Engineer
+
+CloudWallop Inc.
+
+July 2015 - July 2017
+
+
+
+  • Responsible for spearheading teams that handled the software development
+    life cycle for 10 client projects, end to end.
+  • Built infrastructure to handle millions of client files in proprietary
+    systems.
+  • Led the drive to implement the Principle of Least Privilege across 100% of
+    software development staff.
+  • Reduced security breaches by 73% for all customers companywide.
+  • Built security into new product features to achieve 100% compliance with
+    industry best practices.
+
+
+
+See that? The candidate used her experience section to prove she fits the job
+like a glove. She also used great action words to do it.
+
+
+
+Now look at another senior software engineering resume example.
+
+
+
+                                     wrong
+Senior Software Engineer
+
+CloudWallop Inc.
+
+July 2015 - July 2017
+
+
+
+  • Responsible for leading teams of software developers.
+  • Used Java to implement scalable features for client software.
+  • Worked independently to meet tight deadlines in a dynamic team environment.
+  • Used a solid understanding of web protocols to handle a large workload.
+  • Worked on several security projects.
+
+
+
+Can you see the problem with that software engineer resume sample? It's
+generic. No achievements.
+
+
+
+Yet this is the same person and the same job. In the second resume objective
+example, she just hasn't figured out the hack yet!
+
+
+
+What if You Don't Have Experience?
+
+
+
+If you lack experience, don't fret.
+
+
+
+It's actually pretty easy to get some.
+
+
+
+You can do free projects for small businesses. You can contribute to open
+source projects. You can even come up with your own coding activities at home.
+
+
+
+Maybe you've designed a home security app for your apartment. To you it was all
+in fun. But it might make a hiring manager say, "This kid has drive."
+
+
+
+Which of the two junior software engineer resume samples below look more
+impressive?
+
+
+
+                                     wrong
+Freelance Software Engineer
+
+June 2016 - present
+
+
+
+  • Received my BA in Software Engineering in 2016.
+  • Still trying to build experience. I've sent off 15 software engineer
+    resumes so far.
+  • You can't blame the job candidate for not having experience. But she could
+    have the software engineer experience section below.
+
+                                     right
+Freelance Software Engineer
+
+June 2016 - present
+
+
+
+  • Composed an app to allow voice control of lights, garage door, and home
+    thermostat, using an Amazon Echo and Raspberry Pi.
+  • Built a real time stock picking app that compares current price to Uniform
+    Adjusted Financial Reporting Standards data to identify buy-now
+    opportunities.
+  • Built new search functionality into the next generation StratoDB scalable
+    database management system.
+  • President, XYZ University Young Women in Tech. Facilitated monthly meetings
+    to enhance a diverse community in software engineering. Managed activities
+    like monthly tech talks, workshops, and student panels.
+
+
+
+Here's a great list of GitHub projects beginners can chip in on to build a
+little instant PR. And this Quora thread gives suggestions for beginner
+projects that add quick experience to any resume.
+
+
+
+Pro Tip: Don't lie. If you brag about a skill or experience in your resume,
+then can't demonstrate it in the interview, you're toast. Talk up only those
+strengths you can prove.
+
+
+
+Make your professional software developer resume even better with action words.
+See our guide: "+80 Examples of Resume Action Words for Every Profession"
+
+
+
+4
+
+Is Your Education Section Underperforming? It Might Be
+
+
+
+Unless you went to Harvard or got a 4.0, your education section doesn't matter.
+
+
+
+Right?
+
+
+
+That's absolutely false.
+
+
+
+Your education section doesn't matter if you make it generic.
+
+
+
+The education section of your computer engineering resume can be the thing that
+gets you hired.
+
+
+
+Start off with the basics:
+
+
+
+  • College Name and Location.
+  • Years in School.
+  • Degree.
+
+
+
+The magic happens when you add your list of college "wins." Just like with work
+experience, make a master list of your achievements first.
+
+
+
+Then, pick those 4-6 items that best fit the job description.
+
+
+
+Can you spot the difference between these two software developer resume
+samples?
+
+
+
+Two Java Developer Resume Examples
+
+
+
+                             wrong
+2012-2015 BA, Software Engineering
+
+University of Washington Bothell
+
+
+
+  • Received a BA in Software Engineering
+  • Took classes in C#, C++, Java, PHP, SQL, Perl, Python, Ruby.
+  • GPA 3.7
+  • Worked in the cafeteria.
+
+
+
+As generic as a no-name box of noodles. It could be anyone.
+
+
+
+Now clap your eyes on a software developer resume example that grabs the
+recruiter by the eyeballs:
+
+
+
+                                     right
+2012-2015 BA, Software Engineering
+
+University of Washington Bothell
+
+
+
+  • Pursued my passion for Java server programming through six advanced
+    classes.
+  • VP of Jugger-Is, the campus machine learning club, 2014-2015.
+  • Delivered an actionable webinar on best practices for security in cloud
+    servers that was linked to by the popular "Dr. Dobbs Journal."
+  • My article, "How Cloud Computing Will Change Your Life" was published in
+    the campus magazine.
+
+
+
+See?
+
+
+
+That second software engineering resume example stands out like red-font
+annotation.
+
+
+
+The point here isn't that you should go back in time and do all those the
+activities. It's that you probably already have an impressive list and you just
+aren't using it.
+
+
+
+See the computer science resume template at the top of this article for an
+example.
+
+
+
+Pro Tip: Need help tailoring your software developer resume to the job
+description? See this great guide on how to tailor a resume any job offer.
+
+
+
+For advice to make your software engineer resume jump out like a neon pop-up
+window, see our guide: "How to Put Your Education on a Resume [Tips & Examples]
+"
+
+
+
+5
+
+How to Put Skills on a Resume for a Software Engineer
+
+
+
+Picture you're a hiring manager.
+
+
+
+You've got a folder with 250+ junior software engineer resumes.
+
+
+
+Do you read every one?
+
+
+
+No. You don't.
+
+
+
+Like Tony Stark hunting a needle in a haystack, you use a magnet.
+
+
+
+In this case, that's an Applicant Tracking System (ATS).
+
+
+
+It sends the 75 resumes with the right keywords to another folder, which you
+read. The others go to folder #2.
+
+
+
+Stay out of folder #2.
+
+
+
+Don't worry. I'm going to show you how to pick the right software engineer
+resume skills keywords to get you hired.
+
+
+
+First, build your master list of every skill you have. Soft skills, hard
+skills, any skills at all. You'll refer to it for every software developer
+resume you make, so spend a little time on it.
+
+
+
+Start with the sample resume keywords list below, then brainstorm your own.
+Look at other job offers online for inspiration too.
+
+
+
+"Soft" Skills     "Hard" Skills          Languages
+Creativity        Web Development        Java
+Leadership        Data Structures        SQL
+Communication     Open Source Experience C#
+Critical Thinking Coding                 Java Script
+Calm Demeanor     Security               C++
+Collaboration     Machine Learning       Python
+Inquisitiveness   Debugging              iOS
+Enthusiasm        Problem Solving        PHP
+Positive Attitude PHP                    Ruby/Rails
+
+
+
+Next, read the job offer. From a LinkedIn job description, we pulled the
+following skills keywords:
+
+
+
+Skills
+
+
+
+Problem analysis, problem solving, distributed systems knowledge, Java, Java
+debugging, troubleshooting, open source knowledge, interpersonal,
+self-motivated.
+
+
+
+Last, match the skills you truly have with the skills list from the job
+description. But don't just list them.
+
+
+
+Prove them on your software developer resume by weaving them into your
+experience and education sections.
+
+
+
+Example of Skills on a Software Engineer Resume
+
+
+
+Here's how to put skills on a software engineer resume.
+
+
+
+Let's say you're applying for a job at Airbnb. It values teamwork, building
+full stack applications, creative thinking, data storage skills, and Java.
+
+
+
+So, include those in your skills section, experience section, and education
+section, like this:
+
+
+
+Skills
+
+
+
+  • Skilled in teamwork, leadership, creative thinking.
+  • Adept at data structures, problem solving, end-to-end coding.
+  • Passion for Java, SQL.
+
+
+
+Experience
+
+
+
+  • Collaborated with multiple teams daily to build full stack applications for
+    dozens of clients.
+  • Used Java and SQL to build data storage solutions for several high-volume
+    businesses.
+  • Spearheaded the company idea generation program. Improved efficiency in
+    software development life cycle by 38%.
+
+
+
+Education
+
+
+
+  • Heavy concentration in data structures, Java, SQL.
+  • Organized the university hackathon in two consecutive years.
+  • Built a mock customer service webapp for a Senior Scholar project.
+
+
+
+See how the software engineer resume examples above paint a picture of a
+candidate who fills the bill like Larry Page or Bjarne Stroustrup?
+
+
+
+Finally, there's no need to fudge your skills. Find honest ways to show you've
+got the right stuff for the job. Otherwise you may get tripped up in the
+interview.
+
+
+
+Pro Tip: Once build a master skills list, you can start your own collection of
+software engineer resume templates that fit different skill sets.
+
+
+
+To make your computer engineering resume skills section crackle, follow the
+resume template at the top of this article. Also, see this guide: "+30 Best
+Examples of What Skills to Put on a Resume (Proven Tips)"
+
+
+
+6
+
+How to Add Other Sections for an Effective Resume
+
+
+
+Got awards, accolades, or certifications and want to put them in your resume?
+
+
+
+Add another section.
+
+
+
+Call it projects, awards, accolades, hobbies, or whatever seems to fit.
+
+
+
+Add only those things that'll make a hiring manager whistle like R2D2.
+
+
+
+Look at the examples below from two distinct software engineer resumes:
+
+
+
+                                 right
+Activities
+
+
+
+  • Moderated a security panel at the Developer Week convention in 2014.
+  • Shortlisted for a National Center for Women and IT Award in 2015.
+  • Member, IAENG Society of Software Engineers since 2013.
+  • Attended the Software Engineering Professionals Hackathon in 2015.
+
+                      wrong
+Activities
+
+
+
+  • Rebuilt a Briggs & Stratton lawnmower engine.
+  • Walked dogs at a local shelter three times.
+  • Long walks on the beach.
+
+
+
+The activities in the first example will make a recruiter say, "She's
+passionate. I bet she'll bring that passion to our company."
+
+
+
+Why You Need an Online Portfolio
+
+
+
+If you make a good enough resume, recruiters will weed-whack a path to your
+front steps.
+
+
+
+Right?
+
+
+
+Sadly, no.
+
+
+
+In fact, as G.I. Joe might say, making a great software engineer resume is only
+half the battle.
+
+
+
+The other half is using it to point to good examples of your work.
+
+
+
+That's why you need a solid online portfolio.
+
+
+
+For inspiration, see this great software engineer portfolio, or this, or this.
+
+
+
+Pro Tip: Use your online portfolio to show off all your projects, then link
+specifically to the ones that make the most sense for the job offer at hand.
+
+
+
+Want to show off your personality in a "hobbies" section? See our guide: "+20
+Best Examples of Hobbies & Interests To Put on a Resume (5 Tips)"
+
+
+
+7
+
+How About a Cover Letter for a Software Engineer?
+
+
+
+Nobody writes cover letters anymore, right?
+
+
+
+That's true. If you're talking about the ones who don't get hired.
+
+
+
+A cover letter is the short version of your resume. It tells recruiters whether
+you're worth looking at.
+
+
+
+Without a cover letter, nearly half of all recruiters will pass by your
+professional software engineer resume without a second look.
+
+
+
+Here are a couple tips to nail it:
+
+
+
+  • Use the recruiter's name.
+  • Mention a detail you like about the company.
+  • Show how you can help the company.
+
+
+
+For that last part, look at the sample below, from a cover letter from a
+software developer resume. The position values leadership, communication, and
+Java programming.
+
+
+
+Example
+
+
+
+  • Spearheaded development for a suite of high-volume services in Java.
+  • Deployed multiple operating services on Linux.
+  • Received a JAX Innovation Award for Java programming, 2014.
+  • Implemented pair programming company-wide for a fast-paced development
+    firm. Increased efficiency 35% for all software engineers.
+
+
+
+Pro Tip: After you send in your resume and cover letter, follow up! A quick
+email or phone call can make all the difference. Use findthat.email to dig up
+missing contact info.
+
+
+
+Plus, a great cover letter that match your resume will give you an advantage
+over other candidates. You can write your cover letter in our resume builder
+here. Here's what it may look like:
+
+ cover_letter_and_resume_template_for_a_software_engineer
+
+See more templates and create your resume and cover letter here.
+
+
+
+Need more tips to help you craft a stellar cover letter for your software
+engineer resume? Check out our guide: "Software Engineer Cover Letter: Sample &
+Step-by-step Guide [15+ Examples]"
+
+
+
+8
+
+How to Add Contact Info to Your Resume
+
+
+
+It's easy to add contact info to a software engineer resume. Isn't it?
+
+
+
+Not at all.
+
+
+
+First add the basics:
+
+
+
+  • Full Name
+  • Updated Phone Number
+  • Professional Email Address
+
+
+
+                           right
+Tabitha Hirvanen, TabithaHirvanen@gmail.com  - 773-457-2703
+
+              wrong
+Tabitha Hirvanen
+
+2053 Cherry Camp Road
+
+Email: TabithaHirvanen@gmail.com
+
+Phone: 773-457-2703
+
+
+
+But also include links to your LinkedIn profile and personal portfolio.
+
+
+
+Pro Tip: Make your LinkedIn presence sing by following the steps in our guide
+to fixing up your LinkedIn profile.
+
+
+
+Need more tips to craft a killer resume for a software engineer? Check out our
+guide: "How to Make a Resume: A Step-by-Step Guide (+30 Examples)"
+
+
+
+Key Takeaway
+
+
+
+Tailor your software engineer resume to fit each job opening. For tips on how
+to do that, see this excellent guide.
+
+
+
+Fit your experience, skills, and education sections to the job description.
+Choose measurable, memorable wins from each job, and from your education.
+
+
+
+Make an online portfolio, and link to it from your resume. An online portfolio
+lets interested recruiters take the next step on their own. That's true whether
+you're a junior freelance software developer, or you're writing a resume for a
+systems engineer position.
+
+
+Author
+Tom Gerencer
+
+Tom Gerencer is a founder and former owner of MediaNortheast Video Production
+and Training Without Boredom. A full-time writer in the fields of personal
+finance and career advice, Tom lives in West Virginia with his wife Kathy, two
+children and a couple of ornery dogs.
+
