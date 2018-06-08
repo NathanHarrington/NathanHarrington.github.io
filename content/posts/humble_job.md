@@ -230,3 +230,34 @@ Never struggle again. Never fail at this again.
 Your professional training is not your identity. Fill yourself with
 gratefulness that you can use this process to help others. You're not
 struggling as punishment, it's training so you can help others.
+
+
+Lessons Learned
+---------------
+
+They are looking for skills, and needs satisfied. Adapt yourself and
+your work experience to their needs. They are not hiring you, they are
+hiring for someone, anyone to fill the role.  Put yourself in their
+position - they acquisition of talent is burdensome for most
+organizations, how can you meet their expectations?
+
+This took approximately 30 hours total effort, including the writing of these
+systems steps and refining the approach as documented above. The results
+were 3 excited recruiters playing the usual games of leading you on,
+and 3 rejections, 1 in-person interview and 13 black holes.
+
+The real point is humility works. 
+
+1 out of 20 applications leading to an in-person interview is a decent
+rate. Being able to do 20 applications with a 5% success rate with each
+taking less than 25 minutes is hugely successful. Then you can do one
+week of this effort, for 8 hours per day, and that should lead to 5
+in-person interviews.
+
+If you must attain a job. If you must re-engage with the risks of a
+workaholic prison, this is where to start. Write down what you do, write
+down what works with a focus on humility, on gratitude for knowing that
+you're in training to help others. 
+
+Take ownership: It is your job to make this process a success for you
+and for everyone else.
