@@ -84,8 +84,8 @@ insight they can provide.
 <pre>
 Day 1: Post job, invite candidates
 Day 2: Screen candidate responses
-Day 3: Screen candidate responses, evalute estimates
-Day 4: Screen candidate responses, evalute estimates
+Day 3: Screen candidate responses, evaluate estimates
+Day 4: Screen candidate responses, evaluate estimates
 Day 5: Qualify results
 </pre>
 
@@ -310,7 +310,7 @@ Start with this general framework.
         1.0 -> 2.0 [label=yes]
         1.0 -> 3.0 [label=no]
 
-        // Iterate here - alwasy go from 3.0 to a new rule, and end up at
+        // Iterate here - always go from 3.0 to a new rule, and end up at
         // labelling as Handle this Nathan for new rule creation
         3.0 -> 4.0
 
@@ -427,7 +427,78 @@ creation of a rule at this position:
 here](/images/thumbnails/email_workflow_startup.jpg)](/images/email_workflow_startup.jpg)
 
 
+Email Results
+-------------
+
+This search for a virtual assistant rapidly transitioned to refining
+your own processes. The good news is email is now one-touch, one shot
+response. Everything has a rule to follow and takes much less time to
+process. By following the steps above, keeping that virtual assistant in
+mind, a ultra-refined set of rules were processed to drastically reduce
+email processing time.
 
 
+Mid-2018 search for a virtual assistant
+---------------------------------------
+
+I want help setting appointments, scheduling follow ups, and doing other
+customer discovery related tasks. The above approach went right to a
+single product research tabulation task in detail.  This approach is
+about selecting a virtual assistant first, then quantifying their
+results, then selecting the best option.
+
+I tried reaching out to a variety of virtual assistants on linkedin that
+were local to Raleigh, NC. I tried connecting with a few offshore
+organizations. The results were poor. Back to direct connections through
+upwork.
+
+This is based heavily on the strategies from [The Virtual
+Hub](https://www.thevirtualhub.com/blog/hiring-a-virtual-assistant/)
+
+Post the job first:
+
+Cordince LLC is looking for a virtual assistant with linkedin experience
+to complete clerical projects that are anticipated to require around
+10-15 hours per week for 3 weeks. The work will include the following
+tasks:
+
+    Linkedin research 
+    Coordinating and setting appointments
+    Product research
+    Calling potential customers to verify contact information
+
+The following skills are a must:
+
+    Great communication skills via phone, email and chat
+    Expertise in linkedin 
+    Strong knowledge of google docs and google calendar
+    Some knowledge of tele-sales (phone and email)
+    Experience with customer discovery a big plus 
+
+We're looking for a great communicator who can help us be more
+effective. We know you have great ideas about how to be more effective,
+and we want to work together to achieve them.
+
+If you're interested, please send some examples of your work as a
+virtual assistant.
+
+Thanks for your time!
+
+
+
+
+
+Invite freelancers:
+-------------------
+
+Search for "virtual assistant"
+Ensure U.S. Only is checked
+Earned amount 10k+
+Hourly rate 10 and below
+Any job success
+
+Or, just go to this [upwork summary page](
+https://www.upwork.com/hire/virtual-assistants/) and then sort by 10$
+and under.
 
 
