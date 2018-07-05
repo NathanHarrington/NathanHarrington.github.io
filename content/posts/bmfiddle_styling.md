@@ -80,7 +80,7 @@ user style [bmfiddle clarity](https://gist.github.com/NathanHarrington/b057a49a3
     .block .count {color: #ffffff;}
 
     /* make icons small on the canvas */
-    .item-asset img.scale-with-grid { max-width: 20%; }
+    .item-asset img.scale-with-grid { max-width: 10%; }
 }
 ```
 
