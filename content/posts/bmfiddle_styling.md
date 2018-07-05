@@ -29,7 +29,7 @@ Create a new fiddle
 >Title: Business Model Generation with Clarity
 
 >Description: Based on Steve Blanks Udacity course - add userstyles here:
-http://goo.gl/kjdfkjf
+http://goo.gl/oLuFte
 
 Template is the Business Model Canvas
 
@@ -58,10 +58,10 @@ Or, use the bmfiddle.com template here: [Business Model Generation with
 Clarity](https://bmfiddle.com/f/#/M7bw6)
 
 
-To eliminate more of the visual distractions, add the 'stylish' plugin
-to firefox. Click the extension icon, then write new style-> for
+To eliminate more of the visual distractions, add the [stylus plugin
+](https://add0n.com/stylus.html) (Not 'Sylish'!) to firefox. Click the extension icon, then write new style-> for
 bmfiddle.com. Add the contents of the box below, or click here for the
-user style [bmfiddle clarity](https://goo.gl/oLuFte)
+user style [bmfiddle clarity](https://gist.github.com/NathanHarrington/b057a49a38620f0bf8c20e9aa709dc55.js)
 
 ```
 @namespace url(http://www.w3.org/1999/xhtml);
