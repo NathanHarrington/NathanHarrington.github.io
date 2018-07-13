@@ -457,6 +457,8 @@ Hub](https://www.thevirtualhub.com/blog/hiring-a-virtual-assistant/)
 
 Post the job first:
 
+Job Title: Virtual assistant with LinkedIn experience
+
 Cordince LLC is looking for a virtual assistant with linkedin experience
 to complete clerical projects that are anticipated to require around
 10-15 hours per week for 3 weeks. The work will include the following
@@ -502,3 +504,80 @@ https://www.upwork.com/hire/virtual-assistants/) and then sort by 10$
 and under.
 
 
+This helped a lot too:
+
+https://medium.com/@neocody/outsourcing-101-hiring-your-first-virtual-assistant-b81b97702665
+
+Upwork notes
+------------
+I wanted to continue this process with upwork.com.  I tried signing up
+through Cordince, LLC with nathan@cordince.com  It said cordince.com was
+not a valid email. I communicated through cordince.com with their tech
+support to resolve this. They disappeared.  On to other providers.
+
+
+Hubstaff specific notes
+---------------------
+Rejection criteria:
+
+Target 4$ an hour or less offshore
+10$ or less on shore, with native english and perfect writing
+
+Offshore:
+2 punctuation or grammatical errors in first response
+Pay rate 2x the target or more 
+
+What is the cut off you need? For 8320 per year, you can have a full
+time 4$ an hour phillipine assistant.
+
+Or at 8$ an hour for 20 hours a week, 4 hours per weekday, which should
+be plenty. Are you going cheap or not?
+
+Phillipines definetly. Hubstaff talent definetly.
+
+Do two experiments, one 4$ an hour 
+one 8$ an hour 
+
+
+2018-07-11 19:36 Set up 4 calls with Phillipines contractors only.
+People who responded to the job posting and included examples of their
+work or email contact directly. All of these are probably just cut and
+pasters. Sent email requests for a phone conversation. 
+
+First one was for Maributh at 19:30 - which she made it sound like she
+was going to call me on phone number at 19:30 eastern on July 11th.
+Double checked and it was clear. This is a good test - if they can't
+figure that out then it's probably not worth pursuing. My guess is she's
+still asleep because she sent the initial response at 9:00 am her time.
+I triple checked, and it's easy to find out what time it is here. So
+that first entry is a bust. No follow up emails from her, no contact
+after she accepted the phone call request.
+
+
+
+Also contacted three local virtual assistants. One of whom did not
+respond after 24 hours to a new business request.
+
+Well that's 3 out of 4 with no feedback for the times sent. Here's the
+exact text I sent:
+
+Hi Mary - Can we talk on the phone later this week? I'd like to share
+with you some examples of the work we need done. I'd love to get your
+advice to make sure we are describing the tasks effectively.
+
+How does Wednesday, July 11th at 21:00 Eastern sound?
+
+You can reach me at 919-267-3558, or we can use skype if you prefer.
+
+Thanks!
+Mary Claire
+    
+9:41 PM (22 hours ago)
+    
+to Nathan from claire.cruz.va@gmail.com
+yes sir may I have your skype mine is clairedycatcruz
+Nathan Harrington <nathan@cordince.com>
+    
+8:02 PM (36 minutes ago)
+    
+to Mary my skype name is nathan@cordince.com

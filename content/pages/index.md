@@ -6,20 +6,12 @@ status: hidden
 template: hermann_homage_page
 
 Hi, my name is Nathan. I'm here to create, organize and give away
-businesses. I have the privilege of searching for software value
+businesses. I have the privilege of searching for value
 propositions at [Cordince](http://www.cordince.com).
 
 Prior to this role, I focused my efforts on practicing software
-engineering at IBM, various startups, and for building spectroscopy
+engineering at IBM, various startups, and building spectroscopy
 control systems. 
-
-Here are some of my more most recent software projects:
-
-* [LineGrab](https://github.com/WasatchPhotonics/LineGrab)
-* [PySideApp](https://github.com/WasatchPhotonics/PySideApp)
-* [CookBook](https://github.com/WasatchPhotonics/CookBook)
-
-
 
 
 You can read much more in the [Blog](/category/articles.html), and find
