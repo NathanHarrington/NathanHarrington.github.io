@@ -490,6 +490,7 @@ Thanks for your time!
 
 
 
+
 Invite freelancers:
 -------------------
 
@@ -553,31 +554,159 @@ I triple checked, and it's easy to find out what time it is here. So
 that first entry is a bust. No follow up emails from her, no contact
 after she accepted the phone call request.
 
+Also contacted three local, college educated US citizen virtual
+assistants. All of whom have not responded days later.
+
+Made another pass through the hubstaff interface and directly invited
+others to the job. It's saturday in the philippines, waiting to hear
+back on monday.
+
+Well finally, got somebody on the phone. He wants western union. He
+wants to send me a list of managers. That seems so shady. Like he's got
+a list and wants to send it - 4$ an hour sounded great to him.
+
+You said you would look into western union and send him some draft
+proposals. If he will actually do the work then fine, otherwise this is
+a giant frustration. In humility, you may not be understanding him
+correctly. You are new to this and you may be just simply not
+communicating effectively or mis-applying your cultural norms. The plan
+is to let that relationship sit and see what others say below:
 
 
-Also contacted three local virtual assistants. One of whom did not
-respond after 24 hours to a new business request.
+2018-07-17 13:58 Well the lack of communiation has been seriously
+frustrating. This page says that is to be expected: [staff.com
+VA](https://blog.staff.com/how-to-hire-a-virtual-assistant-from-the-philippines-for-2-50-to-5-50-per-hour/)
 
-Well that's 3 out of 4 with no feedback for the times sent. Here's the
-exact text I sent:
+Now go through all the hubstaff entries of people who have applied and
+people who you invited. Look for:
 
-Hi Mary - Can we talk on the phone later this week? I'd like to share
-with you some examples of the work we need done. I'd love to get your
-advice to make sure we are describing the tasks effectively.
+<pre>
+The next step is to filter out the qualified applicants from those that
+are unqualified.. In most cases, Rawson says, you can easily eliminate
+about 70% of the applicants based on poor quality English, a weak
+resume, or entry level experience. Once you have determined the most
+qualified applicants, you provide each one with a test; each examination
+depends on the tasks of the job. The test can range between 15 minutes
+(unpaid) to as much as three hours (paid). At the end, you peruse the
+test, evaluate them and you are left with just a few prospects.
+</pre>
 
-How does Wednesday, July 11th at 21:00 Eastern sound?
+So go through each entry and read their response:
+Do not filter out based on cost, only based on 
+poor quality english
+    (more than 2 grammatical or punctuation errors)
 
-You can reach me at 919-267-3558, or we can use skype if you prefer.
+a weak resume
+    no resume posted
+    (no high school, no exact experience with technology mentioned)
 
-Thanks!
-Mary Claire
-    
-9:41 PM (22 hours ago)
-    
-to Nathan from claire.cruz.va@gmail.com
-yes sir may I have your skype mine is clairedycatcruz
-Nathan Harrington <nathan@cordince.com>
-    
-8:02 PM (36 minutes ago)
-    
-to Mary my skype name is nathan@cordince.com
+or entry level experience.
+    (not enough of the target experience)
+
+That means connect with all the on-shore entries, all the offshore
+entries that meet the criteria. This is worth it - if you can find a VA
+even at 1/3 the cost if it's truly transformative then it's will pay for
+itself quickly.
+
+Specifically, click the first application.
+If they fail the criteria above, click the 'thumbs down' button.
+
+If they pass the criteria above, click the 'thumbs up' button, then
+click contact and send:
+
+Hi (Their name) - Thanks for your willingness to help! Our hiring process goes
+through the following stages:
+
+1. Skills test (approximately 15 minutes)
+2. Functional test (approximately 2 hours, paid)
+3. Phone interview (approximately 20 mintues)
+
+Our skills test starts simple, can you please read the document linked
+to below, and send your response to nathan@cordince.com? 
+
+Skills Test instructions: https://tinyurl.com/yabu3llj
+
+Thanks for your work on this!
+
+
+Then click the arrow to the next candidate.
+
+
+## Contents of the skills test document:
+
+<pre>
+
+Skills test (should take about 15 minutes):
+1. Create a google sheets document
+2. Put the time you started this process in the first row
+3. Google search for:   "medical device company" near Raleigh, NC -jobs
+4. For each link in the first page of results, put the company website
+in the first column, then the name of the CEO in the second column.
+5. Put the CEO's linkedin profile page link in the fourth column 
+
+Please stop after 15 minutes, or after the first page of results
+has been processed. 
+
+Put the time you stopped in the last row
+
+
+Send the google sheets link in an email:
+
+To: nathan@cordince.com
+Subject: Skills test complete (your name)
+Body: 
+
+Google sheets link: (link to your google sheet)
+
+
+
+Thanks for taking the skills test!
+
+</pre>
+
+
+This test is designed to be variable and specific. Make sure:
+They email you a link in an email.
+They put the linkedin profile of the ceo in the fourth column
+They list start and end times.
+
+If any of those are not met, add to stop list, with brief reason for
+failure.
+
+Respond to their email:
+
+Thanks <person name>, we will let you know when we are ready to work together
+further.
+
+
+
+
+Otherwise send the initial task by replying to their response email with:
+
+<pre>
+Thanks for your work on this! The next stage of our interview process is
+the paid functional test. Our current preferred payment method is Ria
+Money transfer.  The hourly rate for this job is: USD
+
+If Ria Money transfer is not OK, please respond with your preferred payment mechanism.
+
+If Ria money transfer is acceptable, please follow the instructions here:
+https://docs.google.com/document/d/1pqgxE_Kp-zO4Nx8cRjki32pSWAJzENQpi2AH-ZFlRqY/edit?usp=sharing
+
+Upon completion of the task, payment will be sent via Ria Money Transfer.
+
+Thank you for your help, and we look forward to being more successful
+together!
+</pre>
+
+On hubstaff talent:
+343 Views of job post
+41 applicants (does that include people you invited?)
+18 of those are cut and paste rejects
+23 of those I sent follow ups to
+4 passed the skills test
+3 failed the skills test (including the MS who works for oracle)
+
+
+Not really enough data, but replicatable. The rates are between 4 and 25
+dollars US. In the phillipines, india and los angeles. 
