@@ -27,6 +27,16 @@ door slams and outside vehicles. It's a beautiful thing.
 Face the wall - eliminate all peripheral vision. Literally add
 blinders to your glasses if you need to.
 
+The QuietComfort was no longer available. An 80% solution are these
+[COWIN E7 Noise Cancelling
+Headphones](https://www.amazon.com/gp/product/B019U00D7K/ref=oh_aui_search_detailpage?ie=UTF8&psc=1)
+They block significant noise. They are not as configurable. The biggest
+downside is that they hurt the ears after 2 hours instead of 3+ like the
+bose. It has nearly the same effect though. It's been about a month
+living with these as the over ears every day, and the only issue is the
+discomfort.
+
+
 A much cheaper alternative that will still let in significant outside
 noise and make your ears hurt after an hour:
 [ Howard Leight by Honeywell Sync Stereo MP3 Earmuff

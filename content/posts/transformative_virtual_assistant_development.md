@@ -658,10 +658,7 @@ Body:
 
 Google sheets link: (link to your google sheet)
 
-
-
 Thanks for taking the skills test!
-
 </pre>
 
 
@@ -677,9 +674,6 @@ Respond to their email:
 
 Thanks <person name>, we will let you know when we are ready to work together
 further.
-
-
-
 
 Otherwise send the initial task by replying to their response email with:
 
@@ -697,6 +691,14 @@ Upon completion of the task, payment will be sent via Ria Money Transfer.
 
 Thank you for your help, and we look forward to being more successful
 together!
+
+
+Payment sent email:
+##################
+Thanks for your help with this! Payment has been sent. I will review the
+results and get back to you on the next steps.
+
+Thanks again!
 </pre>
 
 On hubstaff talent:
@@ -705,8 +707,110 @@ On hubstaff talent:
 18 of those are cut and paste rejects
 23 of those I sent follow ups to
 4 passed the skills test
-3 failed the skills test (including the MS who works for oracle)
+3 failed the skills test (including the M.S. who works for oracle)
 
 
 Not really enough data, but replicatable. The rates are between 4 and 25
 dollars US. In the phillipines, india and los angeles. 
+
+
+2018-07-21 12:30 Sent 4 Functional tests
+Results:
+Nobody uses RIA - everybody wanted paypal
+
+Applicants
+PP - did not respond immediately saying what he would do. Stopped at 2.5
+hours according to his documentation
+
+Actual document produced has 8 companies 29 people, some of which are
+good, some have 'regional sales manager' and 'regional sales specialist'
+
+That was 8$ USD per hour. Sent 16 dollars through paypal
+The general feel from this doc is that formatting and making it look
+pretty makes it easier to read and leaves a good impression.
+
+TR - did not respond immediately saying what would be done. No
+indicators of how much time was spent (but didn't ask for any)
+
+Actual document produced has 19 companies, 41 people. Some of the
+companies are resellers of xrays, some are not medical device companies
+at all. To be fair that may be a specialized piece of knowledge to
+differentiate between a company like orthotools which distributes
+hundreds of medtech devices and looks like a medtech device company.
+
+Sent an email in between to follow up about paypal that was not seen.
+
+That was 25$ USD per hour for on shore.
+The general feel from this doc was it was the bare minimum done in
+anger.
+
+
+KB - did respond immediately, kind of.
+
+Actual document produced has about 50 companies, the first and last are
+not even in the state, nor do they have a location in the state. Nor are
+they even medical device companies. Not even close. Law firms in there
+too. Shockingly bad results.
+
+That was for 8$ USD per hour india.
+
+Well that sucks.  3 total responses. Minimum cost is 8$ an hour, and is
+of the quality I was expecting at 4$ an hour or less. If you remove the
+paypal exercise in frustration it wasn't that bad.
+
+
+2018-07-23 12:39 8/hr just feels too expensive. It's too much. That's
+16k per year. 4$ hour seems more reasonable at 8k per year.
+
+So the plan is to talk with PP just to finish the procedure. Ask him
+these questions in the interview:
+
+
+
+Then decide if you want to move forward with a few-week contract of a
+group of tasks that you want to see done.  Now is not a good time for
+you actually because you're feeling lazy. Because you're ready to just
+pack it in and check out. Just like they will feel sometimes. Lead
+yourself.
+
+
+
+2018-07-23 12:48 A friend posted on "Women of Hope Community Church"
+facebook page a request for virtual assistant help. Within a few days
+4 contacts of varying backgrounds. 
+
+<pre>
+Hi (Their name) - Thanks for your willingness to help! 
+
+Cordince LLC is looking for a virtual assistant with linkedin experience
+to complete clerical projects that are anticipated to require around
+10-15 hours per week for 3 weeks. The work will include the following
+tasks:
+
+    Linkedin research 
+    Coordinating and setting appointments
+    Product research
+    Calling potential customers to verify contact information
+
+The following skills are a must:
+
+    Great communication skills via phone, email and chat
+    Expertise in linkedin 
+    Strong knowledge of google docs and google calendar
+    Some knowledge of tele-sales (phone and email)
+    Experience with customer discovery a big plus 
+
+Does that sound like something you would be interested in? If so, please
+let me know how much time you may have to work on projects like this for
+the next 3-4 weeks.  If you're not interested, or you don't think you'll
+have enough time, can you please forward this note to someone you trust? 
+
+Thanks for any help! - Nathan
+</pre>
+
+
+2018-08-03 15:51 None of those women of help references were successful
+either.
+
+Did get a very long delayed response by following the referall chain
+from virtual assistants, ultimately went with that on-shore approach.
