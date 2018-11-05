@@ -4,15 +4,24 @@ Category: articles
 Tags: system administration
 
 Creation of a high-memory, low disk instance with a full Fedora
-Workstation desktop experience. Designed for a low-cost, next level up
-replacement of a powerful desktop. An order of magnitude below big data,
-and an order of magnitude more capable than a 2013 era laptop.
+Workstation desktop experience. (t2.large EC2 instance 2 Processors, 8GB
+RAM) Designed for a low-cost, next level up replacement of a powerful
+desktop. An order of magnitude below big data, and an order of magnitude
+more capable than a 2013 era laptop.
 
 Or skip to the bottom for just the Wordpress on a free tier micro
 instance instructions.
 
 Launch a Fedora 28 Cloud Base Images for [Amazon Public
 Cloud](https://alt.fedoraproject.org/cloud/).
+
+As of 2018-11-05 13:28 Fedora no longer provides links to the images for
+use with amazon, the best approach is:
+
+<pre>
+EC2 -> Launch Instance -> Community AMIs -> Fedora -> 
+Fedora-Cloud-Base-28-20180930.0.x86_64-hvm-us-east-1-gp2-0 - ami-0047163812982e5f3
+</pre>
 
 Connect to the instance with:
 <pre>
