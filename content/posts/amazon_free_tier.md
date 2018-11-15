@@ -27,7 +27,7 @@ Click Get password.
 Then start the remote desktop session with a command like:
 <pre>
 rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
-    Administrator -p 'password' -g 1920x1000
+    Administrator -p 'password' -g 1920x1000 -K
 </pre>
 
 <pre>
@@ -140,7 +140,7 @@ command below.
 
 <pre>
 rdesktop localhost:9983 -u \
-    Administrator -p 'from EC2 get password' -g 1920x1000
+    Administrator -p 'from EC2 get password' -g 1920x1000 -K
 </pre>
 
 
@@ -166,3 +166,35 @@ project: xgut
 
 6. Wait 24 hours, now the tags will become available in the AWS Cost
 Explorer.
+
+
+
+## Now that you have some base windows images, you want to encrypt the
+disks. Specifically the elastic block store volumes. 
+
+The instructions below are based heavily on:
+https://aws.amazon.com/blogs/aws/new-encrypted-ebs-boot-volumes/
+
+1. Configure a machine according to the instructions above.
+
+2. Select Instance -> Actions -> Image -> Create image
+
+3. Wait for the instance image to appear in the "AMI" section.
+
+4. Select the AMI you have just created then Actions -> Copy AMI
+
+5. Select the same destination region. Append the word 'encrypted' to
+teh AMI name. Check 'Encryption', accept defaults.
+
+
+## Now you are running an encrypted base image. 
+
+<pre>
+Install the development
+environment. After that is complete, make another AMI image of the
+encrypted development environment.
+
+This is now the basic image you use to pull down new code, setup long
+term tests, etc.
+
+</pre>
