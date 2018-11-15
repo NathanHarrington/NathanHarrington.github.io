@@ -143,26 +143,33 @@ dnf group install "GNOME Desktop Environment"
 dnf install w3m
 reboot
 
+timedatectl set-timezone American/New_York
+reboot
+
+# If you don't reboot after changing the timezone, it will lockup
+# randomly
+
+
 After reboot, install nomachine:
 
     w3m 'https://www.nomachine.com/download/linux&id=1'
-    (Download the 'plain' linux nomachine)
-
-    dnf install ./nomachine*
-
-    If you get a message about an selinux failure with systemd read from
-    nxserver.service as describe here: https://www.nomachine.com/TR11N07360
+    (Download the 'plain' x86_64 linux nomachine)
 
     vi /etc/selinux/config
-
     change 'enforcing' to 'permissive'
 
-    reinstall nomachine
+    dnf install ./nomachine*
 
     #  Change the fedora password so nomachine clients can login
     sudo su - 
     passwd fedora
     exit
+
+    # If you get a message about the connection being terminated before
+    # you ever see a desktop, and when you start gnome-session manually
+    # you get a 'terminated' error, try install tigervnc server first,
+    # then run the vncserver command, then connect with the nomachine
+    # commands below.
 
     # Connect to the nomachine instance through the tunnel on port 4010
     # If nomachine says no desktop created, check the box for "Always

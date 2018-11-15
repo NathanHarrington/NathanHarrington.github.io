@@ -36,13 +36,13 @@
 
         <meta name="author" content="Nathan Harrington" />
         <meta name="keywords" content="system administration" />
-        <meta name="description" content="Free Tier amazon instances are a game changer. Here&#39;s how to set the windows micro instances to function as an ssh server for easier transfer of files. Tested using: Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro Fedora Core 26 client (rdesktop) Using the Amazon EC2 web interface: Create a key-pair …" />
+        <meta name="description" content="Free Tier amazon instances are a game changer. Here&#39;s how to set the windows micro instances to function as an ssh server for easier transfer of files. Skip to the bottom for billing considerations. Tested using: Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro Fedora Core 26 client (rdesktop) Using the …" />
 
         <meta property="og:site_name" content="Nathan Harrington" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Amazon Free Tier SSH etc."/>
         <meta property="og:url" content="/posts/amazon-free-tier-ssh-etc.html"/>
-        <meta property="og:description" content="Free Tier amazon instances are a game changer. Here&#39;s how to set the windows micro instances to function as an ssh server for easier transfer of files. Tested using: Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro Fedora Core 26 client (rdesktop) Using the Amazon EC2 web interface: Create a key-pair …"/>
+        <meta property="og:description" content="Free Tier amazon instances are a game changer. Here&#39;s how to set the windows micro instances to function as an ssh server for easier transfer of files. Skip to the bottom for billing considerations. Tested using: Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro Fedora Core 26 client (rdesktop) Using the …"/>
         <meta property="article:published_time" content="2018-02-09" />
             <meta property="article:section" content="articles" />
             <meta property="article:tag" content="system administration" />
@@ -113,7 +113,7 @@ Don't display categories on menu
             <div class="entry-content">
                 <p>Free Tier amazon instances are a game changer. Here's how to set the
 windows micro instances to function as an ssh server for easier transfer
-of files.</p>
+of files. Skip to the bottom for billing considerations.</p>
 <p>Tested using:
 Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro</p>
 <p>Fedora Core 26 client (rdesktop)</p>
@@ -129,12 +129,11 @@ After instance launches, click connect.
 Click Get password.
 </pre>
 
-<p>Then start the remote desktop session with a command like:</p>
-<div class="highlight"><pre><span></span>rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
-    Administrator -p &#39;password&#39; -g 1920x1000
-</pre></div>
-
-
+<p>Then start the remote desktop session with a command like:
+<pre>
+rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
+    Administrator -p 'password' -g 1920x1000
+</pre></p>
 <pre>
 Directly on the Windows Server virtual machine:
 
@@ -203,31 +202,62 @@ Then change the amazon instance network rules to open port 6787
 </pre>
 
 <p>From the Linux client machine:</p>
-<div class="highlight"><pre><span></span># Create the ssh folder on the windows system
-ssh Administrator@long_hostname.aws.com &quot;mkdir ~/.ssh&quot;
+<pre>
+# Create the ssh folder on the windows system
+ssh Administrator@long_hostname.aws.com "mkdir ~/.ssh"
 
 # Append the linux public key file to the remote list of authorized
 # keys
 cat ~/.ssh/id_rsa.pub | ssh Administrator@ec2_hostname \
-    &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
-</pre></div>
+    "cat >> ~/.ssh/authorized_keys"
 
+</pre>
 
 <p>You can now ssh in with the command below, and tunnel the remote desktop
 connections over ssh:</p>
-<div class="highlight"><pre><span></span>autossh \
+<pre>
+autossh \
     -M 40001 \
     -i ~/ssh/id_rsa \
     -L 9833:localhost:3390 \
     -R 6703:localhost:22 \
     Administrator@ec2_hostname
-</pre></div>
-
+</pre>
 
 <p>Then on the windows computer, open a cygwin command prompt and verify
-the tunnel back to the host linux machine with:</p>
-<div class="highlight"><pre><span></span>    ssh -o port=6703 localhost
-</pre></div>
+the tunnel back to the host linux machine with:
+<pre>
+    ssh -o port=6703 localhost
+</pre></p>
+<h2>Use the tagging strategy to track the costs on a per-project basis.</h2>
+<ol>
+<li>At each new EC2 instance created, have the discipline to add a tag
+named 'project', with the value 'project_name'. For example:</li>
+</ol>
+<pre>
+project: predicatesai
+project: lls
+project: xgut
+</pre>
+
+<ol>
+<li>
+<p>Go to the AWS billing console: https://console.aws.amazon.com/billing/home</p>
+</li>
+<li>
+<p>Cost Allocation tags -&gt; Activate</p>
+</li>
+<li>
+<p>Wait about 10 minutes</p>
+</li>
+<li>
+<p>Select the 'project' tag, then click activate.</p>
+</li>
+<li>
+<p>Wait 24 hours, now the tags will become available in the AWS Cost
+Explorer.</p>
+</li>
+</ol>
                 <div class="panel">
                     <div class="panel-body">
 <footer class="post-info">

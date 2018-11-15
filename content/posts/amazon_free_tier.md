@@ -5,7 +5,7 @@ Tags: system administration
 
 Free Tier amazon instances are a game changer. Here's how to set the
 windows micro instances to function as an ssh server for easier transfer
-of files.
+of files. Skip to the bottom for billing considerations.
 
 Tested using:
 Microsoft Windows Server 2016 Base - ami-fe446c9b t2-micro
@@ -25,10 +25,10 @@ Click Get password.
 </pre>
 
 Then start the remote desktop session with a command like:
-```
+<pre>
 rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
     Administrator -p 'password' -g 1920x1000
-```
+</pre>
 
 <pre>
 Directly on the Windows Server virtual machine:
@@ -100,7 +100,7 @@ Then change the amazon instance network rules to open port 6787
 
 From the Linux client machine:
 
-```
+<pre>
 # Create the ssh folder on the windows system
 ssh Administrator@long_hostname.aws.com "mkdir ~/.ssh"
 
@@ -109,24 +109,44 @@ ssh Administrator@long_hostname.aws.com "mkdir ~/.ssh"
 cat ~/.ssh/id_rsa.pub | ssh Administrator@ec2_hostname \
     "cat >> ~/.ssh/authorized_keys"
 
-```
+</pre>
 
 You can now ssh in with the command below, and tunnel the remote desktop
 connections over ssh:
 
-```
+<pre>
 autossh \
     -M 40001 \
     -i ~/ssh/id_rsa \
     -L 9833:localhost:3390 \
     -R 6703:localhost:22 \
     Administrator@ec2_hostname
-```
+</pre>
 
 Then on the windows computer, open a cygwin command prompt and verify
 the tunnel back to the host linux machine with:
-```
+<pre>
     ssh -o port=6703 localhost
-```
+</pre>
 
+## Use the tagging strategy to track the costs on a per-project basis. 
 
+1. At each new EC2 instance created, have the discipline to add a tag
+named 'project', with the value 'project_name'. For example:
+
+<pre>
+project: predicatesai
+project: lls
+project: xgut
+</pre>
+
+2. Go to the AWS billing console: https://console.aws.amazon.com/billing/home
+
+3. Cost Allocation tags -> Activate
+
+4. Wait about 10 minutes
+
+5. Select the 'project' tag, then click activate.
+
+6. Wait 24 hours, now the tags will become available in the AWS Cost
+Explorer.
