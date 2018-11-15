@@ -101,11 +101,14 @@ Then change the amazon instance network rules to open port 6787
 From the Linux client machine:
 
 <pre>
-# Create the ssh folder on the windows system
+# Create the ssh folder on the windows system. Make sure to use the same
+# Administrator password that you pulled down from the EC2 interface to
+# connect over remote desktop
 ssh Administrator@long_hostname.aws.com "mkdir ~/.ssh"
 
+
 # Append the linux public key file to the remote list of authorized
-# keys
+# keys. Not the .pem file, just your local system public key
 cat ~/.ssh/id_rsa.pub | ssh Administrator@ec2_hostname \
     "cat >> ~/.ssh/authorized_keys"
 
@@ -117,8 +120,9 @@ connections over ssh:
 <pre>
 autossh \
     -M 40001 \
-    -i ~/ssh/id_rsa \
-    -L 9833:localhost:3390 \
+    -o port=6787 \
+    -i ~/.ssh/id_rsa \
+    -L 9833:localhost:3389 \
     -R 6703:localhost:22 \
     Administrator@ec2_hostname
 </pre>
@@ -128,6 +132,18 @@ the tunnel back to the host linux machine with:
 <pre>
     ssh -o port=6703 localhost
 </pre>
+
+
+To connect from a linux laptop to the remote windows instance over rdp,
+setup the tunnel in the autossh command above, then run the rdesktop
+command below.
+
+<pre>
+rdesktop localhost:9983 -u \
+    Administrator -p 'from EC2 get password' -g 1920x1000
+</pre>
+
+
 
 ## Use the tagging strategy to track the costs on a per-project basis. 
 
