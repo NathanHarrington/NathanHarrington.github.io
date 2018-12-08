@@ -169,7 +169,12 @@ After reboot, install nomachine:
     # you ever see a desktop, and when you start gnome-session manually
     # you get a 'terminated' error, try install tigervnc server first,
     # then run the vncserver command, then connect with the nomachine
-    # commands below.
+    # commands below. In practice this looks like:
+    dnf install tigervnc-server
+    vncserver 
+    # (choose password)
+    # Then on every reboot:
+    vncserver; sleep 10; sudo systemctl restart nxserver
 
     # Connect to the nomachine instance through the tunnel on port 4010
     # If nomachine says no desktop created, check the box for "Always
