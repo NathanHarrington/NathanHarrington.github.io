@@ -176,6 +176,11 @@ After reboot, install nomachine:
     # Then on every reboot:
     vncserver; sleep 10; sudo systemctl restart nxserver
 
+    # As of 2018-12-07 21:03 this will cause a lockup on the FC28 cloud
+    # micro instance. If you increase the instance size to medium you
+    # can login to the vncserver session first, then restart the
+    # nxserver without causing the lockup.
+
     # Connect to the nomachine instance through the tunnel on port 4010
     # If nomachine says no desktop created, check the box for "Always
     # create"
