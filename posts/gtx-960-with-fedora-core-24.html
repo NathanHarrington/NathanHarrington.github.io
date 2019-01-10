@@ -125,8 +125,8 @@ reboot
 dnf install kernel-devel kernel-headers
 dnf install gcc dkms acpid
 
-echo &#39;blacklist nouveau&#39; &gt;&gt; /etc/modprobe.d/disable-nouveau.conf
-echo &#39;nouveau modeset=0&#39; &gt;&gt; /etc/modprobe.d/disable-nouveau.conf
+echo &#39;blacklist nouveau&#39; &amp;gt;&amp;gt; /etc/modprobe.d/disable-nouveau.conf
+echo &#39;nouveau modeset=0&#39; &amp;gt;&amp;gt; /etc/modprobe.d/disable-nouveau.conf
 
 dnf install xorg-x11-drv-nvidia akmod-nvidia &quot;kernel-devel-uname-r == $(uname -r)&quot;
 dnf update -y

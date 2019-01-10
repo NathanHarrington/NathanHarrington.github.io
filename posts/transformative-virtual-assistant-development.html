@@ -358,17 +358,17 @@ your email to.</p>
     <span class="n">rankdir</span><span class="o">=</span><span class="n">LR</span><span class="p">;</span>
     <span class="n">rank</span><span class="o">=</span><span class="n">same</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span> <span class="p">};</span>
 
-    <span class="mf">1.0</span> <span class="o">-&gt;</span> <span class="mf">2.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">yes</span><span class="p">]</span>
-    <span class="mf">1.0</span> <span class="o">-&gt;</span> <span class="mf">3.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">no</span><span class="p">]</span>
+    <span class="mf">1.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">2.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">yes</span><span class="p">]</span>
+    <span class="mf">1.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">3.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">no</span><span class="p">]</span>
 
     <span class="o">//</span> <span class="n">Iterate</span> <span class="n">here</span> <span class="o">-</span> <span class="n">always</span> <span class="n">go</span> <span class="kn">from</span> <span class="mf">3.0</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">rule</span><span class="p">,</span> <span class="ow">and</span> <span class="n">end</span> <span class="n">up</span> <span class="n">at</span>
     <span class="o">//</span> <span class="n">labelling</span> <span class="k">as</span> <span class="n">Handle</span> <span class="n">this</span> <span class="n">Nathan</span> <span class="k">for</span> <span class="n">new</span> <span class="n">rule</span> <span class="n">creation</span>
-    <span class="mf">3.0</span> <span class="o">-&gt;</span> <span class="mf">4.0</span>
+    <span class="mf">3.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">4.0</span>
 
     <span class="o">//</span> <span class="n">Create</span> <span class="n">rule</span> <span class="n">always</span> <span class="n">updates</span> <span class="n">this</span> <span class="n">flow</span> <span class="n">chart</span>
-    <span class="mf">4.0</span> <span class="o">-&gt;</span> <span class="mf">99.0</span>
+    <span class="mf">4.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">99.0</span>
 
-    <span class="mf">99.0</span> <span class="o">-&gt;</span> <span class="mf">1.0</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">red</span><span class="p">]</span> <span class="o">//</span> <span class="n">always</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">inbox</span>
+    <span class="mf">99.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">1.0</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">red</span><span class="p">]</span> <span class="o">//</span> <span class="n">always</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">inbox</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -380,10 +380,10 @@ blog entry:</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
 <span class="n">use</span> <span class="n">strict</span><span class="p">;</span>
 
-<span class="n">my</span> <span class="err">$</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;setdotlabelwidth [char-width] &lt; [dotfile]&quot;</span><span class="p">;</span>
+<span class="n">my</span> <span class="err">$</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;setdotlabelwidth [char-width] &amp;lt; [dotfile]&quot;</span><span class="p">;</span>
 <span class="n">my</span> <span class="err">$</span><span class="n">width</span> <span class="o">=</span> <span class="n">shift</span><span class="p">()</span> <span class="ow">or</span> <span class="n">die</span><span class="p">(</span><span class="s2">&quot;Usage: $usage $!&quot;</span><span class="p">);</span>
 
-<span class="k">while</span><span class="p">(</span><span class="o">&lt;</span><span class="n">STDIN</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="k">while</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">STDIN</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;(.*?)&quot;</span><span class="o">/</span><span class="p">)</span>
   <span class="p">{</span>
@@ -393,16 +393,16 @@ blog entry:</p>
     <span class="n">my</span> <span class="err">$</span><span class="n">newline</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
     <span class="n">foreach</span> <span class="n">my</span> <span class="err">$</span><span class="n">word</span><span class="p">(</span><span class="nd">@words</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span>
-          <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="err">$</span><span class="n">width</span> <span class="p">)</span>
+      <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="ow">and</span>
+          <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">word</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">$</span><span class="n">width</span> <span class="p">)</span>
       <span class="p">{</span>
         <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">);</span>
         <span class="err">$</span><span class="n">newline</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
       <span class="p">}</span>
-      <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">);</span>
+      <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">);</span>
       <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="err">$</span><span class="n">word</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">);</span>
+    <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">);</span>
     <span class="n">my</span> <span class="err">$</span><span class="n">newlabel</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="nd">@newtext</span><span class="p">);</span>
     <span class="n">s</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;.*?&quot;</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$newlabel&quot;</span><span class="o">/</span><span class="p">;</span>
   <span class="p">}</span>
@@ -429,7 +429,7 @@ blog entry:</p>
 <span class="n">OUTFILE</span><span class="o">=</span><span class="s2">&quot;${FILENAME/.gv/newlines.gv}&quot;</span>
 <span class="n">OUTPNG</span><span class="o">=</span><span class="s2">&quot;${FILENAME/.gv/.png}&quot;</span>
 
-<span class="n">cat</span> <span class="err">$</span><span class="p">{</span><span class="n">FILENAME</span><span class="p">}</span> <span class="o">|</span> <span class="n">perl</span> <span class="n">setdotlabelwidth</span><span class="o">.</span><span class="n">pl</span> <span class="err">$</span><span class="n">LINEWIDTH</span> <span class="o">&gt;</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTFILE</span><span class="p">}</span>
+<span class="n">cat</span> <span class="err">$</span><span class="p">{</span><span class="n">FILENAME</span><span class="p">}</span> <span class="o">|</span> <span class="n">perl</span> <span class="n">setdotlabelwidth</span><span class="o">.</span><span class="n">pl</span> <span class="err">$</span><span class="n">LINEWIDTH</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTFILE</span><span class="p">}</span>
 <span class="k">if</span> <span class="p">[[</span> <span class="err">$?</span> <span class="o">-</span><span class="n">ne</span> <span class="mi">0</span> <span class="p">]]</span> <span class="p">;</span> <span class="n">then</span>
     <span class="n">echo</span> <span class="s2">&quot;Problem running line converter&quot;</span>
     <span class="nb">exit</span> <span class="mi">0</span>

@@ -112,15 +112,21 @@ Preferrably, use sox for audio generation with one of these options:
     
 ## Search tools
 ```
-    # on Fedora core 26
-    # Download and install conda3
+    # on Fedora core 29
+    # Download and install conda3, make sure to use python version 3.7
 
     dnf install mplayer
 
-    conda create --name mpsyt
-    source activate mpsyt
+    conda create --name mpsyt_py37 python=3.7
+    source activate mpsyt_py37 
     pip install mps-youtube
     pip install youtube_dl
+
+    # If that doesn't work, or it starts skipping files in playlists, or
+    # otherwise won't play large swaths of youtube, you may need to
+    # create an environment and load from source:
+    # pip install --upgrade \
+    #    https://github.com/mps-youtube/mps-youtube/archive/develop.zip
 
     Start mpyst in conda3 environment, then issue:
     >set player mplayer

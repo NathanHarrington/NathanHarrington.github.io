@@ -12,18 +12,20 @@ Nathan Harrington personal static site using pelican.
     cd ~/projects/pelican-themes
     git checkout personal-bootstrap3
 
-    export PATH=~/miniconda2/bin:$PATH
-    conda create --name pelican_env pip
-    source activate pelican_env
+    # Install miniconda3 
+    export PATH=~/miniconda3/bin:$PATH
+    conda create --name pelican_env_py27 python=2.7
+
+    source activate pelican_env_py27
     pip install pelican Markdown
     
     In one window, setup auto-reloader of content (but not .conf files)
-    source activate pelican_env
+    source activate pelican_env_py27
     cd ~/projects/NathanHarrington.github.io
     pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/ --output ./
     
     In a second window, setup the pelican webserver:
-    source activate pelican_env
+    source activate pelican_env_py27
     cd ~/projects/NathanHarrington.github.io
     python -m pelican.server
 
