@@ -5,9 +5,14 @@ save_as: index.html
 status: hidden
 template: hermann_homage_page
 
-Hi, my name is Nathan. I'm here to create, organize and give away
-businesses. I have the privilege of searching for value
-propositions at [Cordince](http://www.cordince.com).
+Hi, my name is Nathan. 
+
+I have the privilege of searching for value
+propositions at [Cordince](http://www.cordince.com),
+where we build software systems for amplifying growth. Our focus is
+software development in the tissue engineering space and machine
+learning in the clinical laboratory.
+
 
 Prior to this role, I focused my efforts on practicing software
 engineering at IBM, various startups, and building spectroscopy
