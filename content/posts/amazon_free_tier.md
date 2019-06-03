@@ -132,7 +132,10 @@ connections over ssh:
 
 <pre>
 autossh \
-    -M 40001 \
+    -M 0 \
+    -o "ServerAliveInterval 30" \
+    -o "ServerAliveCountMax 3" \
+    -o StrictHostKeyChecking=no \
     -o port=6787 \
     -i ~/.ssh/id_rsa \
     -L 9833:localhost:3389 \
