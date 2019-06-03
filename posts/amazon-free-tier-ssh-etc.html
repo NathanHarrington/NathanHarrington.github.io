@@ -132,8 +132,17 @@ Click Get password.
 <p>Then start the remote desktop session with a command like:
 <pre>
 rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
-    Administrator -p 'password' -g 1920x1000 -K
-</pre></p>
+    Administrator -p 'password' -g 1920x1000 -K</p>
+<p>On the linux machine, you may see an error message like:</p>
+<div class="highlight"><pre><span></span>Failed to connect, CredSSP required by server.
+</pre></div>
+
+
+<p>Fix this by installing freerdp, then running:</p>
+<p>xfreerdp /u:"Administrator" \
+    /v:long_hostname.us-east-2.compute.amazonaws.com:3389</p>
+</pre>
+
 <pre>
 Directly on the Windows Server virtual machine:
 

@@ -28,6 +28,17 @@ Then start the remote desktop session with a command like:
 <pre>
 rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
     Administrator -p 'password' -g 1920x1000 -K
+
+On the linux machine, you may see an error message like:
+
+    Failed to connect, CredSSP required by server.
+
+Fix this by installing freerdp, then running:
+
+xfreerdp /u:"Administrator" \
+    /v:long_hostname.us-east-2.compute.amazonaws.com:3389
+
+
 </pre>
 
 <pre>
