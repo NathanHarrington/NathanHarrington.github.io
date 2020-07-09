@@ -51,7 +51,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -118,25 +117,25 @@ Don't display categories on menu
 <p>Go to the <a href="http://www.nvidia.com/Download/Find.aspx?lang=en-us">Nvidia Drivers</a> page.</p>
 <p>Select the appropriate product, operating system etc. These steps use:</p>
 <p>NVIDIA-Linux-x86_64-375.20.run 375.20 (November 18, 2016) </p>
-<div class="highlight"><pre><span></span>sudo dnf -y update
-#(20 minutes later...)
-reboot
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">dnf</span> <span class="o">-</span><span class="n">y</span> <span class="k">update</span>
+<span class="o">#</span><span class="p">(</span><span class="mi">20</span> <span class="n">minutes</span> <span class="n">later</span><span class="p">...)</span>
+<span class="n">reboot</span>
 
-dnf install kernel-devel kernel-headers
-dnf install gcc dkms acpid
+<span class="n">dnf</span> <span class="n">install</span> <span class="n">kernel</span><span class="o">-</span><span class="n">devel</span> <span class="n">kernel</span><span class="o">-</span><span class="n">headers</span>
+<span class="n">dnf</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">dkms</span> <span class="n">acpid</span>
 
-echo &#39;blacklist nouveau&#39; &amp;gt;&amp;gt; /etc/modprobe.d/disable-nouveau.conf
-echo &#39;nouveau modeset=0&#39; &amp;gt;&amp;gt; /etc/modprobe.d/disable-nouveau.conf
+<span class="n">echo</span> <span class="s1">&#39;blacklist nouveau&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modprobe</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">disable</span><span class="o">-</span><span class="n">nouveau</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">echo</span> <span class="s1">&#39;nouveau modeset=0&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modprobe</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">disable</span><span class="o">-</span><span class="n">nouveau</span><span class="p">.</span><span class="n">conf</span>
 
-dnf install xorg-x11-drv-nvidia akmod-nvidia &quot;kernel-devel-uname-r == $(uname -r)&quot;
-dnf update -y
+<span class="n">dnf</span> <span class="n">install</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span><span class="o">-</span><span class="n">drv</span><span class="o">-</span><span class="n">nvidia</span> <span class="n">akmod</span><span class="o">-</span><span class="n">nvidia</span> <span class="ss">&quot;kernel-devel-uname-r == $(uname -r)&quot;</span>
+<span class="n">dnf</span> <span class="k">update</span> <span class="o">-</span><span class="n">y</span>
 
 
-chmod +x NVIDIA-Linux-x86_64-375.20.run
-./NVIDIA-Linux-x86_64-375.20.run
-# (Accept defaults)
-reboot
-</pre></div>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="mi">375</span><span class="p">.</span><span class="mi">20</span><span class="p">.</span><span class="n">run</span>
+<span class="p">.</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="mi">375</span><span class="p">.</span><span class="mi">20</span><span class="p">.</span><span class="n">run</span>
+<span class="o">#</span> <span class="p">(</span><span class="n">Accept</span> <span class="k">defaults</span><span class="p">)</span>
+<span class="n">reboot</span>
+</code></pre></div>
                 <div class="panel">
                     <div class="panel-body">
 <footer class="post-info">

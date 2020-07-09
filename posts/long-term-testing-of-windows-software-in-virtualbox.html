@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -133,12 +132,12 @@ each.</p>
 <p>Start each guest OS, make sure it updates a few times.
 Set it to auto login.</p>
 <p>On the Host OS:</p>
-<div class="highlight"><pre><span></span>VBoxManage.exe setextradata &quot;VM-Name&quot; CustomVideoMode1 1920x1080x32
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">VBoxManage.exe setextradata &quot;VM-Name&quot; CustomVideoMode1 1920x1080x32</span>
+</code></pre></div>
 
 
 <p>On the Guest OS:</p>
-<div class="highlight"><pre><span></span><span class="n">Open</span> <span class="n">network</span> <span class="n">adapter</span> <span class="n">properties</span><span class="p">,</span> <span class="n">change</span> <span class="n">the</span> <span class="n">IpV4</span> <span class="n">TCP</span> <span class="n">settings</span> <span class="n">to</span>
+<div class="highlight"><pre><span></span><code><span class="n">Open</span> <span class="n">network</span> <span class="n">adapter</span> <span class="n">properties</span><span class="p">,</span> <span class="n">change</span> <span class="n">the</span> <span class="n">IpV4</span> <span class="n">TCP</span> <span class="n">settings</span> <span class="n">to</span>
 <span class="n">have</span> <span class="n">the</span> <span class="n">DNS</span> <span class="n">point</span> <span class="n">to</span> <span class="mf">10.10.10.10</span><span class="p">.</span> <span class="n">This</span> <span class="n">way</span> <span class="n">numerically</span> <span class="n">addressed</span>
 <span class="n">network</span> <span class="n">locations</span> <span class="n">will</span> <span class="n">still</span> <span class="n">function</span><span class="p">,</span> <span class="n">but</span> <span class="n">windows</span> <span class="n">update</span> <span class="n">will</span> <span class="n">not</span>
 <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">reach</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">servers</span><span class="p">.</span> <span class="n">This</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">permit</span> <span class="n">mapping</span> <span class="n">of</span>
@@ -153,12 +152,12 @@ Set it to auto login.</p>
     <span class="n">SysStats</span> <span class="n">one</span> <span class="n">drive</span><span class="p">,</span> <span class="n">no</span> <span class="n">power</span>
     <span class="n">All</span> <span class="n">uptime</span><span class="p">,</span> <span class="n">rca</span><span class="p">,</span> <span class="n">tbt</span><span class="p">,</span> <span class="mi">24</span><span class="n">hour</span>
 
-    <span class="n">Set</span> <span class="n">both</span> <span class="n">control</span> <span class="n">groups</span> <span class="n">to</span> <span class="n">Position</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">Stay</span> <span class="n">Topmost</span>
+    <span class="n">Set</span> <span class="n">both</span> <span class="n">control</span> <span class="n">groups</span> <span class="n">to</span> <span class="n">Position</span><span class="o">-&gt;</span><span class="n">Stay</span> <span class="n">Topmost</span>
 
-<span class="s">&quot;Choose when to turn off the screen&quot;</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Never</span>
+<span class="s">&quot;Choose when to turn off the screen&quot;</span> <span class="o">-&gt;</span> <span class="n">Never</span>
 
 <span class="n">Change</span> <span class="n">the</span> <span class="n">display</span> <span class="n">resolution</span> <span class="n">to</span> <span class="mi">1920</span><span class="n">x1080</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Do not use this 'root image'. Make clones of this image. Do not

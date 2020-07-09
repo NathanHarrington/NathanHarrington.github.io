@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -159,10 +158,10 @@ to effectively drown out office environments.</p>
 Look at the information for the video.
 If it's a compilation, search for playlists with the song name, or the
 artist name, like:</p>
-<div class="highlight"><pre><span></span>//truecolor alchemist
-//fadex
-//organ concerto
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">//truecolor alchemist</span>
+<span class="err">//fadex</span>
+<span class="err">//organ concerto</span>
+</code></pre></div>
 
 
 <p>Then play the entire playlists, and make a note of the non-vocal
@@ -191,26 +190,26 @@ environment sounds resulting in increased focus.</p>
  play -c 2 -n synth [brownnoise|whitenoise|pinknoise]
 </pre></p>
 <h2>Search tools</h2>
-<div class="highlight"><pre><span></span>    # on Fedora core 29
-    # Download and install conda3, make sure to use python version 3.7
+<div class="highlight"><pre><span></span><code>    <span class="o">#</span> <span class="k">on</span> <span class="n">Fedora</span> <span class="n">core</span> <span class="mi">29</span>
+    <span class="o">#</span> <span class="n">Download</span> <span class="k">and</span> <span class="n">install</span> <span class="n">conda3</span><span class="p">,</span> <span class="n">make</span> <span class="n">sure</span> <span class="k">to</span> <span class="n">use</span> <span class="n">python</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">7</span>
 
-    dnf install mplayer
+    <span class="n">dnf</span> <span class="n">install</span> <span class="n">mplayer</span>
 
-    conda create --name mpsyt_py37 python=3.7
-    source activate mpsyt_py37 
-    pip install mps-youtube
-    pip install youtube_dl
+    <span class="n">conda</span> <span class="k">create</span> <span class="c1">--name mpsyt_py37 python=3.7</span>
+    <span class="k">source</span> <span class="n">activate</span> <span class="n">mpsyt_py37</span> 
+    <span class="n">pip</span> <span class="n">install</span> <span class="n">mps</span><span class="o">-</span><span class="n">youtube</span>
+    <span class="n">pip</span> <span class="n">install</span> <span class="n">youtube_dl</span>
 
-    # If that doesn&#39;t work, or it starts skipping files in playlists, or
-    # otherwise won&#39;t play large swaths of youtube, you may need to
-    # create an environment and load from source:
-    # pip install --upgrade \
-    #    https://github.com/mps-youtube/mps-youtube/archive/develop.zip
+    <span class="o">#</span> <span class="k">If</span> <span class="n">that</span> <span class="n">doesn</span><span class="s1">&#39;t work, or it starts skipping files in playlists, or</span>
+<span class="s1">    # otherwise won&#39;</span><span class="n">t</span> <span class="n">play</span> <span class="k">large</span> <span class="n">swaths</span> <span class="k">of</span> <span class="n">youtube</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span> <span class="n">need</span> <span class="k">to</span>
+    <span class="o">#</span> <span class="k">create</span> <span class="n">an</span> <span class="n">environment</span> <span class="k">and</span> <span class="k">load</span> <span class="k">from</span> <span class="k">source</span><span class="p">:</span>
+    <span class="o">#</span> <span class="n">pip</span> <span class="n">install</span> <span class="c1">--upgrade \</span>
+    <span class="o">#</span>    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">mps</span><span class="o">-</span><span class="n">youtube</span><span class="o">/</span><span class="n">mps</span><span class="o">-</span><span class="n">youtube</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">develop</span><span class="p">.</span><span class="n">zip</span>
 
-    Start mpyst in conda3 environment, then issue:
-    &gt;set player mplayer
-    &gt;set columns user:14 date likes dislikes views
-</pre></div>
+    <span class="k">Start</span> <span class="n">mpyst</span> <span class="k">in</span> <span class="n">conda3</span> <span class="n">environment</span><span class="p">,</span> <span class="k">then</span> <span class="n">issue</span><span class="p">:</span>
+    <span class="o">&gt;</span><span class="k">set</span> <span class="n">player</span> <span class="n">mplayer</span>
+    <span class="o">&gt;</span><span class="k">set</span> <span class="n">columns</span> <span class="k">user</span><span class="p">:</span><span class="mi">14</span> <span class="nb">date</span> <span class="n">likes</span> <span class="n">dislikes</span> <span class="n">views</span>
+</code></pre></div>
 
 
 <p>Select music from by configuring the columns. You're looking
@@ -219,12 +218,12 @@ ratio.</p>
 <p>As of 2018-02-05 13:54, you'll also need to change the download command
 to make use of chunk sizing to prevent youtube throttling. Start mpsyt
 then issue the command below (newlines are for readability)</p>
-<div class="highlight"><pre><span></span>  set download_command 
-    youtube-dl --user-agent  \
-      &quot;Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0&quot; \
-     --http-chunk-size 10M
-     --extract-audio %u -o &#39;%F&#39;
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  set download_command </span>
+<span class="err">    youtube-dl --user-agent  \</span>
+<span class="err">      &quot;Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0&quot; \</span>
+<span class="err">     --http-chunk-size 10M</span>
+<span class="err">     --extract-audio %u -o &#39;%F&#39;</span>
+</code></pre></div>
 
 
 <h2>Phone configuration</h2>
@@ -334,7 +333,7 @@ music on android:</p>
 71
 72
 73
-74</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+74</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Convert downloaded files from mpsyt into mp3s</span>
 <span class="c1"># Sanitize the filenames so they will play on google play</span>
@@ -408,7 +407,7 @@ sanitize<span class="o">()</span> <span class="o">{</span>
 
 <span class="nb">export</span> -f sanitize
 find <span class="nv">$1</span> -depth -exec bash -c <span class="s1">&#39;sanitize &quot;$0&quot;&#39;</span> <span class="o">{}</span> <span class="se">\;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Move them to a folder on an external micro-sd card,

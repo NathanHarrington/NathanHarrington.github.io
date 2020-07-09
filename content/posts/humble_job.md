@@ -6,28 +6,33 @@ Tags: jobs
 
 Stay humble, or get humbled. - [Jocko Willink](https://www.youtube.com/watch?v=q9IZaj-v33o)
 
-I can't find a job. I've done all the postings, I've done all the resume
-cleaning. I've applied for dozens of what I thought were good fits. I
-had a seriously disappointing number of interviews. I've done it for
+You can't find a job. You've done all the postings, You've done all the resume
+cleaning. You've applied for dozens of what you thought were good fits. You
+had a seriously disappointing number of interviews. You've done it for
 months straight, 8 hours per day.
 
-It's like there was a black hole all my work went into.
+It's like there was a black hole all your work went into.
 
-I feel rejected. I feel terrible.  I never want to apply for a job again.
+You feel rejected. You feel terrible.  You never want to apply for a job again.
 
-I need money. I need to pay bills. I am deeply afraid of the
+You need money. You need to pay bills. You are deeply afraid of the
 consequences of running out of money. The fear is paralyzing, leading to
 inaction where it matters and activity where it doesn't.
 
-Driven to humility, I started the search again. I googled: "example
-software engineer resume" without the quotes. The first link from
-uptowork.com describes a system to embrace with humility.
+Driven to humility, you started the search again. you googled: "example
+software engineer resume" without the quotes. The previous first link from
+uptowork.com used to describe a system to embrace with humility.
 
+Unfortunately they took down the article. It was truly superb, written
+by Tom Gerencer.  See this
+[repository](/content/files/uptowork_resume_guide.txt) for text dump of
+the link circa 2018. It's fantastic. Here's the link to the current
+article for comparison. Don't use this, but keep it in mind as more of
+an example of what you can get lost in:
 [Uptowork software engineer resume](https://uptowork.com/blog/software-engineer-resume)
-See this [repository](/content/files/uptowork_resume_guide.txt) for text dump if the link is broken. It's that good.
 
-Read the article - feel the burden lift. Feel that yes you can do this,
-you have something to offer. 
+Read the original article - feel the burden lift. Feel that yes you can
+do this, you have something to offer. 
 
 Use the tool, make a first pass at a cut and paste replacement of the
 descriptions of the various entries. Get encouraged.
@@ -58,10 +63,14 @@ is the one that takes the least amount of time. There is no job that is
 a substitue for your identity, there is no perfect fit that you must
 achieve.
 
+The instructions below are for the circa 2018 version of the zery resume
+builder, also known as uptowork resume builder. See the pictures folder
+for examples of the interface and what it could look like.
 
 <pre>
 Here is the workflow and timelines to follow to keep your momentum
-going:
+going. Set timers according to the values below, and do this process,
+and you will break out of a rut and have a successful job search.
 
 60 minutes: 
     Make a single master resume that lists all of your accomplishments,
@@ -77,12 +86,14 @@ going:
     Make a single master cover letter based on the cover letter tool
     from uptowork:
 
-    Cover letter software engineer:
-    https://uptowork.com/blog/software-engineer-cover-letter-example
-    Also available in contents/files of this repository
+    Cover letter software engineer linked below.
 
 10 minutes: 
     Follow their applicant submission process for the job.
+
+    If it's an Applicant Tracking System like brassring, fill out
+    everything as required. Don't get frustrated, just see it like
+    waiting in line for a ride at disney world - it's worth it.
 
     If it's an email to jobs@company_name.com:
 
@@ -115,7 +126,12 @@ going:
         Notes                     
 
 </pre>
-    
+   
+[Cover letter](/content/files/uptowork_cover_letter_guide.txt) guide
+text example text dump. Newer version that's not as good available
+[here](https://uptowork.com/blog/software-engineer-cover-letter-example)
+
+
 Now as you look at other job opportunities, follow this pattern:
 
 Given a new job posting that looks like a fit:
@@ -136,7 +152,7 @@ Given a new job posting that looks like a fit:
     Re-immerse yourself in the sights and sounds and the benefits to the
     business that those activities provided.
     
-    Creat a single work experience item based on the project. For example,
+    Create a single work experience item based on the project. For example,
     if you had a project that took a few months and exactly fit the
     requirements they are looking for, add that as a work experience item on
     the main resume. That is the success they want you to repeat, so give
@@ -150,6 +166,9 @@ Given a new job posting that looks like a fit:
 30 minutes: 
     Do something else not job search related - anything else.
     This is critical to break you out of the perfection-inaction loop.
+    You'll be tempted to get on a roll and do a bunch of these without
+    this break. Take the break! Constraints are important, both on the
+    work itself and on your 'break's. Use the timers, take the breaks.
 
 15 minutes: 
     Clone the master resume.
@@ -157,8 +176,8 @@ Given a new job posting that looks like a fit:
     Change the personal info->Profession to be the job title
     Change the summary to be tailored to the job description. 
     Remove any non-relevant parts of the experience
-        that are not tailed to this job. Choose just the work descriptions from
-        each company that apply. Delete the rest.
+        that are not tailored to this job. Choose just the work
+        descriptions from each company that apply. Delete the rest.
     Update the skills section to match the job posting.
     Only spend 15 minutes on this. 
     You must complete this in 15 minutes.
@@ -261,3 +280,12 @@ you're in training to help others.
 
 Take ownership: It is your job to make this process a success for you
 and for everyone else.
+
+Want More?
+----------
+
+There are two books that will change your focus and give you the ability
+to see the employers needs first: Extreme Ownership by Jocko Willink and
+Leif Babin, and The Irresistible Consultant's Guide to Winning Clients by
+David A. Fields. Whatever context you are in, giving them what they
+actually want will help. 

@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -229,7 +228,7 @@ nomachine, and ssh back to the local system.</p>
 30
 31
 32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># Launch the instance, get the new ip address, establish an autossh</span>
 <span class="c1"># tunnel to the AMI</span>
 <span class="c1"># Use aws cli or the web interface to get your machines&#39; instance id,</span>
@@ -262,7 +261,7 @@ autossh <span class="se">\</span>
     -L <span class="m">4010</span>:localhost:4000 <span class="se">\</span>
     -R <span class="m">6622</span>:localhost:22 <span class="se">\</span>
     fedora@<span class="nv">$DNSNAME</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Looking for wordpress on amazon? Just use <a href="https://aws.amazon.com/marketplace/pp/B00NN8Y43U?qid=1535236710075&amp;sr=0-1&amp;ref_=srh_res_product_title">bitnami

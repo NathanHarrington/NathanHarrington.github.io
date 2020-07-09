@@ -12,23 +12,13 @@ Nathan Harrington personal static site using pelican.
     cd ~/projects/pelican-themes
     git checkout personal-bootstrap3
 
-    # Install miniconda3 
-    export PATH=~/miniconda3/bin:$PATH
-    conda create --name pelican_env_py27 python=2.7
+    # Setup environment with pipenv
+    pipenv install 
 
-    source activate pelican_env_py27
-    pip install pelican Markdown
-    
-    In one window, setup auto-reloader of content (but not .conf files)
-    source activate pelican_env_py27
+    # In one window, setup auto-reloader of content (but not .conf files)
     cd ~/projects/NathanHarrington.github.io
-    pelican --autoreload --theme ../pelican-themes/personal-bootstrap3/ --output ./
+    pipenv run pelican -lr --autoreload --theme ../pelican-themes/personal-bootstrap3/ --output ./
     
-    In a second window, setup the pelican webserver:
-    source activate pelican_env_py27
-    cd ~/projects/NathanHarrington.github.io
-    python -m pelican.server
-
 
 ### CNAMEs, Aliases and branches
 
@@ -54,7 +44,7 @@ Nathan Harrington personal static site using pelican.
 
     Make sure you edit files in content/posts/ not in posts/ !
 
-    pelican --theme ../pelican-themes/personal-bootstrap3/ content --output ./
+    pipenv run pelican -lr --autoreload --theme ../pelican-themes/personal-bootstrap3/ --output ./
 
     (Test on localhost:8000, verify everything looks fine)
 
@@ -75,3 +65,12 @@ Nathan Harrington personal static site using pelican.
 
     convert source.gif -coalesce temp.gif
     convert -resize 100% temp.gif -resize 15% small.gif
+
+### Generate the thumbnails by:
+
+  cd thumbnails
+  pwd
+# Make sure you are in the thumbnails directory!
+  cp ../*.jpg .
+  morgrify -resize 200x200 *.jpg
+

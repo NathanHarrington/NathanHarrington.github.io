@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -152,25 +151,25 @@ Clarity</a></p>
 </a> (Not 'Sylish'!) to firefox. Click the extension icon, then write new style-&gt; for
 bmfiddle.com. Add the contents of the box below, or click here for the
 user style <a href="https://gist.github.com/NathanHarrington/b057a49a38620f0bf8c20e9aa709dc55.js">bmfiddle clarity</a></p>
-<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">namespace</span> <span class="nt">url</span><span class="o">(</span><span class="nt">http</span><span class="o">://</span><span class="nt">www</span><span class="p">.</span><span class="nc">w3</span><span class="p">.</span><span class="nc">org</span><span class="o">/</span><span class="nt">1999</span><span class="o">/</span><span class="nt">xhtml</span><span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">@namespace</span><span class="w"> </span><span class="n">url</span><span class="p">(</span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">w3</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="n">xhtml</span><span class="p">);</span><span class="w"></span>
 
-<span class="p">@</span><span class="k">-moz-document</span> <span class="nt">domain</span><span class="o">(</span><span class="s2">&quot;bmfiddle.com&quot;</span><span class="o">)</span> <span class="p">{</span>
+<span class="err">@</span><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">domain</span><span class="p">(</span><span class="ss">&quot;bmfiddle.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
 
-    <span class="c">/* make text color white on white to eliminate the visually</span>
-<span class="c"> * distracting</span>
-<span class="c">    component numbers*/</span>
-    <span class="p">.</span><span class="nc">block</span> <span class="p">.</span><span class="nc">order</span> <span class="p">{</span> <span class="k">background-color</span><span class="p">:</span> <span class="mh">#ffffff</span><span class="p">;}</span>
+<span class="w">    </span><span class="cm">/* make text color white on white to eliminate the visually</span>
+<span class="cm"> * distracting</span>
+<span class="cm">    component numbers*/</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">block</span><span class="w"> </span><span class="p">.</span><span class="k">order</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">background</span><span class="o">-</span><span class="nl">color</span><span class="p">:</span><span class="w"> </span><span class="n">#ffffff</span><span class="p">;</span><span class="err">}</span><span class="w"></span>
 
-    <span class="c">/* hide all of the background iconagraphy */</span>
-    <span class="p">.</span><span class="nc">bg</span> <span class="p">{</span><span class="k">background-image</span><span class="p">:</span> <span class="kc">none</span><span class="p">;}</span>
+<span class="w">    </span><span class="cm">/* hide all of the background iconagraphy */</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">bg</span><span class="w"> </span><span class="err">{</span><span class="n">background</span><span class="o">-</span><span class="nc">image</span><span class="err">:</span><span class="w"> </span><span class="k">none</span><span class="p">;</span><span class="err">}</span><span class="w"></span>
 
-    <span class="c">/* hide the count of stickys in the lower right */</span>
-    <span class="p">.</span><span class="nc">block</span> <span class="p">.</span><span class="nc">count</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="mh">#ffffff</span><span class="p">;}</span>
+<span class="w">    </span><span class="cm">/* hide the count of stickys in the lower right */</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">block</span><span class="w"> </span><span class="p">.</span><span class="nf">count</span><span class="w"> </span><span class="err">{</span><span class="nl">color</span><span class="p">:</span><span class="w"> </span><span class="n">#ffffff</span><span class="p">;</span><span class="err">}</span><span class="w"></span>
 
-    <span class="c">/* make icons small on the canvas */</span>
-    <span class="p">.</span><span class="nc">item-asset</span> <span class="nt">img</span><span class="p">.</span><span class="nc">scale-with-grid</span> <span class="p">{</span> <span class="k">max-width</span><span class="p">:</span> <span class="mi">10</span><span class="kt">%</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<span class="w">    </span><span class="cm">/* make icons small on the canvas */</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">item</span><span class="o">-</span><span class="n">asset</span><span class="w"> </span><span class="n">img</span><span class="p">.</span><span class="n">scale</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">grid</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="nf">max</span><span class="o">-</span><span class="nl">width</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="o">%</span><span class="p">;</span><span class="w"> </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Give the style the name of bmfiddle_clarity, then save. Now the canvas
@@ -284,9 +283,9 @@ uniicons</a> pngs.</p>
 <p>The easiest way to get these into the canvas resources are is to e-mail
 them to <canvas_id>@canvas.bmfiddle.com from the address used to create your
 bmfiddle.com account. On linux, this can look like:</p>
-<div class="highlight"><pre><span></span>cd uniicons/
-mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs&quot; $( printf -- &#39;-a %q &#39; *.png ) 
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">cd uniicons/</span>
+<span class="err">mutt &lt;canvas_id&gt;@canvas.bmfiddle.com -s &quot;PNGs&quot; $( printf -- &#39;-a %q &#39; *.png ) </span>
+</code></pre></div>
 
 
 <p>As of 2017-09-29 16:01, mailing these 100 files to bmfiddle will trigger
@@ -324,7 +323,7 @@ with:</p>
 29
 30
 31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># bmfiddle_resource_mailer.sh script located in:</span>
 <span class="c1"># nathanharrington.github.io/content/images/learning/bmfiddle_icons/uniicons</span>
@@ -356,7 +355,7 @@ with:</p>
 
     <span class="nb">let</span> <span class="nv">COUNTER</span><span class="o">=</span>COUNTER+1
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>You can use the sketch tool on bmfiddle, but it will not have a
@@ -386,7 +385,7 @@ will be uploaded to the resources area on bmfiddle.</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># convert_svg_to_png.sh</span>
 <span class="k">for</span> i in *.svg
 <span class="k">do</span>
@@ -398,7 +397,7 @@ convert -background none <span class="s2">&quot;</span><span class="nv">$i</span
 <span class="k">do</span>
 convert -resize 50x50 <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="s2">&quot;thumbnails/</span><span class="nv">$i</span><span class="s2">&quot;</span>
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Remember, the idea here is to tune bmfiddle.com into a tool you can use
@@ -409,16 +408,16 @@ team of people. You can make a better version that is fully digital and
 auto-backed up and is actually easier to share with people if you put in
 the tools up front, and have the disciplined flow in the future. The
 next disciplined flow will be:</p>
-<div class="highlight"><pre><span></span>Log in to bmfiddle.com 
-Fork from the clarity canvas.
-Upload the imagery resources.
+<div class="highlight"><pre><span></span><code><span class="n">Log</span> <span class="k">in</span> <span class="k">to</span> <span class="n">bmfiddle</span><span class="p">.</span><span class="n">com</span> 
+<span class="n">Fork</span> <span class="k">from</span> <span class="n">the</span> <span class="n">clarity</span> <span class="n">canvas</span><span class="p">.</span>
+<span class="n">Upload</span> <span class="n">the</span> <span class="n">imagery</span> <span class="n">resources</span><span class="p">.</span>
 
-Now for each update:
-Take a snapshot first. 
-when in doubt, just hit that snapshot button
-Move stickies on and off to the stack, or maybe the archive. Never
-delete them.
-</pre></div>
+<span class="n">Now</span> <span class="k">for</span> <span class="k">each</span> <span class="k">update</span><span class="p">:</span>
+<span class="n">Take</span> <span class="n">a</span> <span class="n">snapshot</span> <span class="k">first</span><span class="p">.</span> 
+<span class="k">when</span> <span class="k">in</span> <span class="n">doubt</span><span class="p">,</span> <span class="n">just</span> <span class="n">hit</span> <span class="n">that</span> <span class="n">snapshot</span> <span class="n">button</span>
+<span class="k">Move</span> <span class="n">stickies</span> <span class="k">on</span> <span class="k">and</span> <span class="k">off</span> <span class="k">to</span> <span class="n">the</span> <span class="n">stack</span><span class="p">,</span> <span class="k">or</span> <span class="n">maybe</span> <span class="n">the</span> <span class="n">archive</span><span class="p">.</span> <span class="n">Never</span>
+<span class="k">delete</span> <span class="n">them</span><span class="p">.</span>
+</code></pre></div>
 
 
 <p>The process above was used to create a bmfiddle.com canvas that looks

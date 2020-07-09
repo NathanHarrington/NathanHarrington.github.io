@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -615,7 +614,7 @@ down.</p>
 47
 48
 49
-50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># Run a basic whois and a theHarvester and only print emails</span>
 <span class="c1">#</span>
@@ -665,7 +664,7 @@ whois <span class="nv">$DOMAIN</span> <span class="se">\</span>
 python -u theHarvester.py -d <span class="nv">$DOMAIN</span> -b all -l <span class="m">100</span> <span class="se">\</span>
     <span class="p">|</span> grep @ <span class="se">\</span>
     <span class="p">|</span> grep -v cmartorella@edge-security.com
-</pre></div>
+</code></pre></div>
 </td></tr></table>
                 <div class="panel">
                     <div class="panel-body">

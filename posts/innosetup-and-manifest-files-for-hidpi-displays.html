@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -122,22 +121,22 @@ for HiDPI displays (125%), it can look like this:</p>
 issue" src="/images/wasatch-images/fixed_fat_font_issue.png"></a></p>
 <p>The solution is to modify your innosetup configuration to modify the
 registry:</p>
-<div class="highlight"><pre><span></span><span class="k">[Registry]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Registry]</span>
 <span class="c1">; PySide/PyQt 4.x does not support HiDPI displays. This mitigation</span>
 <span class="c1">; approach turns on system-wide preference for external manifest, then</span>
 <span class="c1">; installs a custom manifest file</span>
 <span class="na">Root: HKLM64; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: IsWin64;</span>
 <span class="na">Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: &quot;not IsWin64&quot;;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Then copy the manifest file:</p>
-<div class="highlight"><pre><span></span><span class="k">[Files]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Files]</span>
 <span class="na">...</span>
 <span class="c1">; Manifest file for HiDPI mitigation - see above</span>
 <span class="na">Source: &quot;support_files\Enlighten.exe.manifest&quot;; DestDir: &quot;{app}\Enlighten\&quot;; Flags: recursesubdirs ignoreversion</span>
 <span class="na">...</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>All is well, except when running the application post install in

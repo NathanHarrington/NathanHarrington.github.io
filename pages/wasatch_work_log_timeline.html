@@ -48,7 +48,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -114,10 +113,10 @@ integration time and laser control linkage in mains. Reset of
 virtualization setups to have base system with full hd, non-dns resolved
 network connections for windows update inhibit. Simulated temperatures
 and noise margins representative of integration time changes.</p>
-<div class="highlight"><pre><span></span>3fd3562 hardware capture updates with live simulation data
-...
-77c4e5f tests of 1-10k integration change
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">3fd3562 hardware capture updates with live simulation data</span>
+<span class="err">...</span>
+<span class="err">77c4e5f tests of 1-10k integration change</span>
+</code></pre></div>
 
 
 <p>2016-12-13 16:30</p>
@@ -127,8 +126,8 @@ maintenance rule clarification. Setup of dual monitor configuration for
 6 visualizations on new primary virtualization machine. VM configuration
 and appveyor build testing. Laser button stylesheet change. Material
 simulation with high fidelity noise indicators.</p>
-<div class="highlight"><pre><span></span>1c745b9 toggle laser button stylesheet change
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">1c745b9 toggle laser button stylesheet change</span>
+</code></pre></div>
 
 
 <p>2016-12-12 16:33</p>
@@ -138,12 +137,12 @@ Investigation into cigna healthcare changes. Website down detection.
 Startup page setting on command line. Start with laser communication and
 command and control queues in multiprocessing simulator. Correction of
 delay and non-exit with terminate and join in sub processes.</p>
-<div class="highlight"><pre><span></span>afa808c shallow copy
-890f1d9 non increasing copy of data
-d99ce88 startup setting command line
-ac7779e laser with record setting reading and writing
-fedaefc strip down of older simulatespectra test cases
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">afa808c shallow copy</span>
+<span class="err">890f1d9 non increasing copy of data</span>
+<span class="err">d99ce88 startup setting command line</span>
+<span class="err">ac7779e laser with record setting reading and writing</span>
+<span class="err">fedaefc strip down of older simulatespectra test cases</span>
+</code></pre></div>
 
 
 <p>2016-12-08 06:24 vtt 1000 manual discovery, it support, processing
@@ -152,11 +151,11 @@ dash. Determination of valid and invalid firmware configurations on test
 hardware. Recovery and documentation of Dash.py vs. Dash with no suffix
 build issue on appveyor machine. Log level case management on command
 line</p>
-<div class="highlight"><pre><span></span>c2f61a1 recovery of dash.py for pyinstaller
-aea97ec tests recovered in appveyor
-bc936d9 case management of log level on command line
-858c389 log level in controller
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">c2f61a1 recovery of dash.py for pyinstaller</span>
+<span class="err">aea97ec tests recovered in appveyor</span>
+<span class="err">bc936d9 case management of log level on command line</span>
+<span class="err">858c389 log level in controller</span>
+</code></pre></div>
 
 
 <p>2016-12-08 16:31</p>
@@ -166,11 +165,11 @@ and windows 7. Rebuild of appveyor configuration to isolate build flaw
 and executable non-inclusion. Setup of secondary virtualization system .
 Validation of appveyor vs. local system build differences.  Log-level
 default to INFO, setup on executable for linux and windows.</p>
-<div class="highlight"><pre><span></span>f701cc6 no tests, just build
-24dcd37 dash.py renamed in appveyor builds
-664aaf6 corrected log level required for windows tests
-398dbbe default log level INFO, runtime assignment
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">f701cc6 no tests, just build</span>
+<span class="err">24dcd37 dash.py renamed in appveyor builds</span>
+<span class="err">664aaf6 corrected log level required for windows tests</span>
+<span class="err">398dbbe default log level INFO, runtime assignment</span>
+</code></pre></div>
 
 
 <p>2016-12-07 16:34</p>
@@ -180,8 +179,8 @@ the multiprocessing demonstration tests. Specification of data
 structures and api's for controlling multiple devices with
 multiprocessing and wasatchusb with libusb drivers, finish power control
 with web power switch.</p>
-<div class="highlight"><pre><span></span>195a60f style recovery
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">195a60f style recovery</span>
+</code></pre></div>
 
 
 <p>2016-12-06 16:15</p>
@@ -189,9 +188,9 @@ with web power switch.</p>
 inhibit to prevent name conflicts. Dash runtime error on windows 7
 investigation. Configuration parser, ini file of Dash simulated device
 control. Testing of simulation script and demo, project planning.</p>
-<div class="highlight"><pre><span></span>a2973d4 restoration of default startup
-50ba7a9 name cleanup
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">a2973d4 restoration of default startup</span>
+<span class="err">50ba7a9 name cleanup</span>
+</code></pre></div>
 
 
 <p>2016-12-06 16:30</p>
@@ -213,19 +212,19 @@ control with tab widget sytled buttons. This gets around the repaint
 events of signals triggered from a handler added to a logging module
 that has other subprocess handlers. Continued refinment of long term
 power cycling tests and hardware setups.</p>
-<div class="highlight"><pre><span></span>e371efc test correction
-8b9bc0e recover of log queue variable
-0b5c9d7 bare switch between hardware and logging simulated tabs
-156f848 pygtail integration in appveyor and travis and setup.py
-b950da7 pygtail integration to text edit control
-1bd65b1 pygtail
-1e9d346 showing inhibit of qt interface when logging post subprocess
-setup
-0ad10f8 display log text crash
-2fffb02 various attempts at signal logging
-8a3777e removal of pyside-unsupported qtabwidget, addition of custom
-button solution layout
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">e371efc test correction</span>
+<span class="err">8b9bc0e recover of log queue variable</span>
+<span class="err">0b5c9d7 bare switch between hardware and logging simulated tabs</span>
+<span class="err">156f848 pygtail integration in appveyor and travis and setup.py</span>
+<span class="err">b950da7 pygtail integration to text edit control</span>
+<span class="err">1bd65b1 pygtail</span>
+<span class="err">1e9d346 showing inhibit of qt interface when logging post subprocess</span>
+<span class="err">setup</span>
+<span class="err">0ad10f8 display log text crash</span>
+<span class="err">2fffb02 various attempts at signal logging</span>
+<span class="err">8a3777e removal of pyside-unsupported qtabwidget, addition of custom</span>
+<span class="err">button solution layout</span>
+</code></pre></div>
 
 
 <p>2016-12-01 16:30</p>
@@ -234,10 +233,10 @@ demo meeting with screenshots. transformation of raman testing platform.
 Investigation of web power switch reset mechanisms. Milestone updates
 for next dash demo. Selection and ordering of new testing computer
 components. Initiation of new test schedule to meet PW requirements.</p>
-<div class="highlight"><pre><span></span>acceef5 slight interface mods
-40fa949 new hardware capture layout
-2c93fe7 raman capture by default
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">acceef5 slight interface mods</span>
+<span class="err">40fa949 new hardware capture layout</span>
+<span class="err">2c93fe7 raman capture by default</span>
+</code></pre></div>
 
 
 <p>2016-11-30 17:00</p>
@@ -246,13 +245,13 @@ meeting and communications with customer visit. Debug and testing of csv
 dictreader failure in sub-process on windows. Switch to raw csv
 processing with context for simulated raman data. Layout of raman
 controls and line plots for raman setup screen.</p>
-<div class="highlight"><pre><span></span>47f690a with raw file load instead of dictreader which was causing a
-    multiprocess exit inhibit
-56392be simulated raman data
-0c36f41 simulated raman data
-0cb1dd6 layout of raman capture controls
-8cfaf6f control to defaults for test passing
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">47f690a with raw file load instead of dictreader which was causing a</span>
+<span class="err">    multiprocess exit inhibit</span>
+<span class="err">56392be simulated raman data</span>
+<span class="err">0c36f41 simulated raman data</span>
+<span class="err">0cb1dd6 layout of raman capture controls</span>
+<span class="err">8cfaf6f control to defaults for test passing</span>
+</code></pre></div>
 
 
 <p>2016-11-29 18:13</p>
@@ -262,15 +261,15 @@ headshots and email. Raman graph layout and placeholders. Addition of
 setup and capture navigational signals. Default geometry changes,
 expansion of css loading of runtime components. Multi-os verificationa
 nd spacing consistencies.</p>
-<div class="highlight"><pre><span></span>434b24f base level graph placeholders
-c7e29f7 baseline raman capture placeholder graphs
-7b313be through raman capture layout
-096e031 techniques in utils
-...
-d13afbe raman setup layout tests with saved area iconagraphy
-dc8d6df adding controls to setup catpure
-657486d partial raman setup capture
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">434b24f base level graph placeholders</span>
+<span class="err">c7e29f7 baseline raman capture placeholder graphs</span>
+<span class="err">7b313be through raman capture layout</span>
+<span class="err">096e031 techniques in utils</span>
+<span class="err">...</span>
+<span class="err">d13afbe raman setup layout tests with saved area iconagraphy</span>
+<span class="err">dc8d6df adding controls to setup catpure</span>
+<span class="err">657486d partial raman setup capture</span>
+</code></pre></div>
 
 
 <p>2016-11-28 16:33</p>
@@ -279,16 +278,16 @@ remote software diagnosis and support for Layne Bradley at UGA -
 addressed with driver signature enforcement disabling. Project planning
 for Dash releases to coincide with hard dates. Detailed setup and long
 term testing of newest build deploy level for inter-vacation testing</p>
-<div class="highlight"><pre><span></span>6700dd0 change right side control layout to have consistent width
-with left side saved data area
-da4dd83 upand down icons
-c7dd0bd upand down icons
-6c90b6c hardware setup by defaul
-d5b7be6 simulated temperatures
-249ee6e simulated temperatures
-236793c Merge branch &#39;winmaster&#39;
-2da0999 corrected build ordering
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">6700dd0 change right side control layout to have consistent width</span>
+<span class="err">with left side saved data area</span>
+<span class="err">da4dd83 upand down icons</span>
+<span class="err">c7dd0bd upand down icons</span>
+<span class="err">6c90b6c hardware setup by defaul</span>
+<span class="err">d5b7be6 simulated temperatures</span>
+<span class="err">249ee6e simulated temperatures</span>
+<span class="err">236793c Merge branch &#39;winmaster&#39;</span>
+<span class="err">2da0999 corrected build ordering</span>
+</code></pre></div>
 
 
 <p>2016-11-21 16:30</p>
@@ -299,15 +298,15 @@ Isolation and correction of build compatability issues 32bit python vs.
 64bit python. Put mechanisms in place to force 32bit python in
 documentation and build environments. Updated iconagraphy names, setup
 for second long term iteration pass on virtualization tester.</p>
-<div class="highlight"><pre><span></span>133deab Merge branch &#39;winmaster&#39;
-d1578fe designer updates, uic imagery name correction
-0186885 uic and designer imagery updates
-a1dd7cb matching 32bit build instructions
-ae9014c files renamed
-1daf2a7 restoration of expected startup states
-4f28096 building updates
-a22f238 documentation notes, example data
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">133deab Merge branch &#39;winmaster&#39;</span>
+<span class="err">d1578fe designer updates, uic imagery name correction</span>
+<span class="err">0186885 uic and designer imagery updates</span>
+<span class="err">a1dd7cb matching 32bit build instructions</span>
+<span class="err">ae9014c files renamed</span>
+<span class="err">1daf2a7 restoration of expected startup states</span>
+<span class="err">4f28096 building updates</span>
+<span class="err">a22f238 documentation notes, example data</span>
+</code></pre></div>
 
 
 <p>2016-11-18 16:30</p>
@@ -317,19 +316,19 @@ installation on actual hardware compared to virutal machine. Traced down
 to mkl_avx2 and other appveyor custom-build files. Setup virtual machine
 to verify installation build differentiations. Continued full
 development through hardware capture and setup.</p>
-<div class="highlight"><pre><span></span>0ff19b1 with minimum height
-b34ac5d updated instructions
-81f2efb pre-local merge
-38c1ac2 rebuilt to merge
-e5d7ac6 mkl_p4m3.dll and mkl_p4.dll
-7c8ac08 mkl_avx2.dll on appveyor
-aa18d55 appveyor non windowed
-cc3e7cb temporary removal of windowed parameter for debug
-0d16cec through basic hardware setup, updating iconagraphy for buttons
-and resources
-55a6f74 placehodler iamgery
-9662f45 hide interface from design time
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">0ff19b1 with minimum height</span>
+<span class="err">b34ac5d updated instructions</span>
+<span class="err">81f2efb pre-local merge</span>
+<span class="err">38c1ac2 rebuilt to merge</span>
+<span class="err">e5d7ac6 mkl_p4m3.dll and mkl_p4.dll</span>
+<span class="err">7c8ac08 mkl_avx2.dll on appveyor</span>
+<span class="err">aa18d55 appveyor non windowed</span>
+<span class="err">cc3e7cb temporary removal of windowed parameter for debug</span>
+<span class="err">0d16cec through basic hardware setup, updating iconagraphy for buttons</span>
+<span class="err">and resources</span>
+<span class="err">55a6f74 placehodler iamgery</span>
+<span class="err">9662f45 hide interface from design time</span>
+</code></pre></div>
 
 
 <p>2016-11-17 17:15</p>
@@ -339,15 +338,15 @@ mustard tree inventory search. User account management, suspension of
 report indicated users. Full linkage checks and border layout
 experiements for hardware capture portion of interface. Simulated and
 multi-component data.</p>
-<div class="highlight"><pre><span></span>0a0ea84 second level border removed on hardware capture details
-62bb9db geometry on command line
-24ba70f deep naming, through hardware capture details layout
-55027bc image view included
-5405d1d hard border investigation
-d3d88af hard border investigation
-3bd7bfb partial way through hardware setup details layout conversion
-55ba8fe defined devices.qrc location, hardware capture layouts
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">0a0ea84 second level border removed on hardware capture details</span>
+<span class="err">62bb9db geometry on command line</span>
+<span class="err">24ba70f deep naming, through hardware capture details layout</span>
+<span class="err">55027bc image view included</span>
+<span class="err">5405d1d hard border investigation</span>
+<span class="err">d3d88af hard border investigation</span>
+<span class="err">3bd7bfb partial way through hardware setup details layout conversion</span>
+<span class="err">55ba8fe defined devices.qrc location, hardware capture layouts</span>
+</code></pre></div>
 
 
 <p>2016-11-16 16:44</p>
@@ -357,20 +356,20 @@ setup. change of firewall rules and prerequisites updates for cookbook
 instructions. will come back in two weeks to validate. Removal of lambda
 calls to address segfaults on application exits. Re-insertion of test
 driven concepts for interface components.</p>
-<div class="highlight"><pre><span></span>123c529 include stylesheets at runtime
-ead80ea updated initial state, start of hardware capture realtime graphs
-968ad6e control correct close
-643231c lambda removed, no more segfaults, now trying to get test
-control windows to exit after single tests
-b97f7b5 with lambda enabled
-9d91a7c back to seg fault and core dump
-6940773 restore of debug log print in devices
-799f24d files are important
-399bc06 toggle through buttons in operations with style sheets changing
-f8bc117 through basic load css testing in styles
-65077e5 start of styles testing group
-aca863b populate stylesheets- segfault was in empty function return
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">123c529 include stylesheets at runtime</span>
+<span class="err">ead80ea updated initial state, start of hardware capture realtime graphs</span>
+<span class="err">968ad6e control correct close</span>
+<span class="err">643231c lambda removed, no more segfaults, now trying to get test</span>
+<span class="err">control windows to exit after single tests</span>
+<span class="err">b97f7b5 with lambda enabled</span>
+<span class="err">9d91a7c back to seg fault and core dump</span>
+<span class="err">6940773 restore of debug log print in devices</span>
+<span class="err">799f24d files are important</span>
+<span class="err">399bc06 toggle through buttons in operations with style sheets changing</span>
+<span class="err">f8bc117 through basic load css testing in styles</span>
+<span class="err">65077e5 start of styles testing group</span>
+<span class="err">aca863b populate stylesheets- segfault was in empty function return</span>
+</code></pre></div>
 
 
 <p>2016-11-15 16:30</p>
@@ -384,12 +383,12 @@ build through hardware setup and capture. Full integration and
 commitment to current build process on appveyor. Linkage and detaile
 system notes for iteration cycles. Merge with agile tracking structure
 in asana.</p>
-<div class="highlight"><pre><span></span>4612f58 start of initial setup
-a9d51cd move to long polling widget
-dda1a00 start application maximized
-f6693a6 start application maximized
-a4c424d full screen graph layout for tests
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">4612f58 start of initial setup</span>
+<span class="err">a9d51cd move to long polling widget</span>
+<span class="err">dda1a00 start application maximized</span>
+<span class="err">f6693a6 start application maximized</span>
+<span class="err">a4c424d full screen graph layout for tests</span>
+</code></pre></div>
 
 
 <p>2016-11-11 16:30</p>
@@ -413,9 +412,9 @@ visualizer for windows 10, and 7 in place. Built version of Dash
 straight from appveyor installer on virgin systems in virtualization.
 Investigation of testing as a service providers. Noise reduction and
 interruption compensation options and long term plans.</p>
-<div class="highlight"><pre><span></span>50dcd74 full screen auto timer updates
-547df15 autofalloff typo
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">50dcd74 full screen auto timer updates</span>
+<span class="err">547df15 autofalloff typo</span>
+</code></pre></div>
 
 
 <p>2016-11-08 16:30</p>
@@ -436,18 +435,18 @@ distraction reduction plans. Matched replication of autofalloff
 pyqtgraph and numpy appveyor configuration with new dash codebase.
 Segmentation of Win10 Dash3 and Win10 Dash4 virtual machine development
 environments. Communication and sprints, plans, and focus.</p>
-<div class="highlight"><pre><span></span>7070fed environment typo fixes
-0590a2a mkl_avx in appvyeor conda env
-42dd55d conda install cle4anup in appvyeor
-373f3cb different order of appveyor install
-fb535a4 pyside with no python version at install
-88ac8d8 with conda list and pip freeze
-51fa6df init restore
-3f262c8 direct copy match of autofalloff appveyor
-987fcc3 built with pyqtgraph included
-fe75d2e documentation updates
-77bf625 designer installation notes
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">7070fed environment typo fixes</span>
+<span class="err">0590a2a mkl_avx in appvyeor conda env</span>
+<span class="err">42dd55d conda install cle4anup in appvyeor</span>
+<span class="err">373f3cb different order of appveyor install</span>
+<span class="err">fb535a4 pyside with no python version at install</span>
+<span class="err">88ac8d8 with conda list and pip freeze</span>
+<span class="err">51fa6df init restore</span>
+<span class="err">3f262c8 direct copy match of autofalloff appveyor</span>
+<span class="err">987fcc3 built with pyqtgraph included</span>
+<span class="err">fe75d2e documentation updates</span>
+<span class="err">77bf625 designer installation notes</span>
+</code></pre></div>
 
 
 <p>2016-11-03 16:35</p>
@@ -457,14 +456,14 @@ appveyor and matching virtualbox win10 development environment with svg
 support. Established baseline procedures for new system development all
 the way through svg inclusion, qt designer cross platform development,
 and completed applications with included libraries.</p>
-<div class="highlight"><pre><span></span>841a280 with svg and uifile from windows designer
-...
-76c686a corrected travis, add appveyor
-54e4e06 travis update
-0b7f47e updated environment in readme
-...
-65ef3dd rebuild instruction and uic rcc in conda
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">841a280 with svg and uifile from windows designer</span>
+<span class="err">...</span>
+<span class="err">76c686a corrected travis, add appveyor</span>
+<span class="err">54e4e06 travis update</span>
+<span class="err">0b7f47e updated environment in readme</span>
+<span class="err">...</span>
+<span class="err">65ef3dd rebuild instruction and uic rcc in conda</span>
+</code></pre></div>
 
 
 <p>2016-11-02 18:47</p>
@@ -473,11 +472,11 @@ evaluation and environment match of svg-utilization in python setup for
 windows and linux cross platform variations. Evaluated back through
 wheel builds, build from sources for versions 1.2.0, 1.2.1 and 1.2.4.
 Established baseline functionality for png iconagraphy only</p>
-<div class="highlight"><pre><span></span>04248f5 package list comparisons
-020f5ee png only resource file
-cb0c86c rebuilt on windows
-8573c3c resources file
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">04248f5 package list comparisons</span>
+<span class="err">020f5ee png only resource file</span>
+<span class="err">cb0c86c rebuilt on windows</span>
+<span class="err">8573c3c resources file</span>
+</code></pre></div>
 
 
 <p>2016-11-02 17:54 </p>
@@ -486,39 +485,39 @@ Full nested layout tests of qt designer with new dash integration. Start
 of software test platform recovery plan and integration into
 production. Beginning of ME addition interview process. VPN setup and
 zemax remote support. Transmission integration steps</p>
-<div class="highlight"><pre><span></span>3386581 manual addition of hardware capture
-8bbb5e9 recovery of resources
-8fdaff0 scroll bars by default with deep named nesting and resource
-correction
-78e6984 names for all hsd components
-3621325 start of hardware setup display details
-3d5a711 scroll area embedded reverse order for hardware setup
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">3386581 manual addition of hardware capture</span>
+<span class="err">8bbb5e9 recovery of resources</span>
+<span class="err">8fdaff0 scroll bars by default with deep named nesting and resource</span>
+<span class="err">correction</span>
+<span class="err">78e6984 names for all hsd components</span>
+<span class="err">3621325 start of hardware setup display details</span>
+<span class="err">3d5a711 scroll area embedded reverse order for hardware setup</span>
+</code></pre></div>
 
 
 <p>2016-10-31 16:30</p>
 <p>2016-10-28 10:12 mac preparation of dash integration. Full project
 rebuild of dash from pysideapp basics. Recovery of test and integration
 badges and auto build capability for pysideapp, autofalloff, and Dash</p>
-<div class="highlight"><pre><span></span>4c6bffc first layer of layout updates
-ddd748a rebuild check
-24d24bd resources specified
-ae6a970 realignment of filesystem
-a1ccc27 cleanup
-4dfb32b structure files
-fc36978 cleanup
-fe30fbe tracking of generated files
-4046fcd compensation for pyside-uic failure
-e66318d asset segmentation
-8ab5a06 asset segmentation
-4674f16 detailed testing instructions
-f3e3bf4 corrected badges
-a2816d0 badgets
-f4b9a41 build check
-6144f4e setup file
-414b100 manual conversion structure
-ddf4da1 cleanup
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">4c6bffc first layer of layout updates</span>
+<span class="err">ddd748a rebuild check</span>
+<span class="err">24d24bd resources specified</span>
+<span class="err">ae6a970 realignment of filesystem</span>
+<span class="err">a1ccc27 cleanup</span>
+<span class="err">4dfb32b structure files</span>
+<span class="err">fc36978 cleanup</span>
+<span class="err">fe30fbe tracking of generated files</span>
+<span class="err">4046fcd compensation for pyside-uic failure</span>
+<span class="err">e66318d asset segmentation</span>
+<span class="err">8ab5a06 asset segmentation</span>
+<span class="err">4674f16 detailed testing instructions</span>
+<span class="err">f3e3bf4 corrected badges</span>
+<span class="err">a2816d0 badgets</span>
+<span class="err">f4b9a41 build check</span>
+<span class="err">6144f4e setup file</span>
+<span class="err">414b100 manual conversion structure</span>
+<span class="err">ddf4da1 cleanup</span>
+</code></pre></div>
 
 
 <p>2016-10-28 16:30</p>
@@ -564,8 +563,8 @@ firmware load onto 830 product. OceanView training.</p>
 software roadmap plan. Down select of interface items for new version of
 Dash. Architecture build and design limitation review. Available IT
 hardware resources review for accelerated development.A</p>
-<div class="highlight"><pre><span></span>830 product documentation and deconflict
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">830 product documentation and deconflict</span>
+</code></pre></div>
 
 
 <p>2016-10-18 18:57</p>
@@ -578,13 +577,13 @@ Review of 401K plan. Reconfiguration of remote systems with hybrid ssd,
 <p>2016-10-17 18:00 </p>
 <p>2016-10-14 06:34 Initial software prototype demonstration with David,
       Michael, and Chris.</p>
-<div class="highlight"><pre><span></span>  c22b999  for demo
-  ee9ac8c light and dark steps navigation bar exmaple
-  39a0d0e green color status fix
-  868da8c start of major rework for wider bar at top
-  5eca8a2 reflance and absorbance clean
-  a28dbf8 loads o iconagraphy and layout updates
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  c22b999  for demo</span>
+<span class="err">  ee9ac8c light and dark steps navigation bar exmaple</span>
+<span class="err">  39a0d0e green color status fix</span>
+<span class="err">  868da8c start of major rework for wider bar at top</span>
+<span class="err">  5eca8a2 reflance and absorbance clean</span>
+<span class="err">  a28dbf8 loads o iconagraphy and layout updates</span>
+</code></pre></div>
 
 
 <p>2016-10-14 16:30</p>

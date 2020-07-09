@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -335,7 +334,7 @@ process for each email. This is the core skill that will take time up
 front, but will pay off very quickly for you, and whomever you outsource
 your email to.</p>
 <p>Start with this general framework.</p>
-<div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Workflow</span> <span class="k">for</span> <span class="n">processing</span> <span class="n">email</span><span class="o">.</span>
+<div class="highlight"><pre><span></span><code><span class="o">/*</span> <span class="n">Workflow</span> <span class="k">for</span> <span class="n">processing</span> <span class="n">email</span><span class="o">.</span>
 
 <span class="n">The</span> <span class="n">goal</span> <span class="n">here</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">portable</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">rules</span> <span class="n">that</span> <span class="n">anyone</span> <span class="n">can</span> <span class="n">be</span> <span class="n">trained</span> <span class="n">to</span>
 <span class="n">follow</span><span class="o">.</span>
@@ -358,32 +357,32 @@ your email to.</p>
     <span class="n">rankdir</span><span class="o">=</span><span class="n">LR</span><span class="p">;</span>
     <span class="n">rank</span><span class="o">=</span><span class="n">same</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span> <span class="p">};</span>
 
-    <span class="mf">1.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">2.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">yes</span><span class="p">]</span>
-    <span class="mf">1.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">3.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">no</span><span class="p">]</span>
+    <span class="mf">1.0</span> <span class="o">-&gt;</span> <span class="mf">2.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">yes</span><span class="p">]</span>
+    <span class="mf">1.0</span> <span class="o">-&gt;</span> <span class="mf">3.0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="n">no</span><span class="p">]</span>
 
     <span class="o">//</span> <span class="n">Iterate</span> <span class="n">here</span> <span class="o">-</span> <span class="n">always</span> <span class="n">go</span> <span class="kn">from</span> <span class="mf">3.0</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">rule</span><span class="p">,</span> <span class="ow">and</span> <span class="n">end</span> <span class="n">up</span> <span class="n">at</span>
     <span class="o">//</span> <span class="n">labelling</span> <span class="k">as</span> <span class="n">Handle</span> <span class="n">this</span> <span class="n">Nathan</span> <span class="k">for</span> <span class="n">new</span> <span class="n">rule</span> <span class="n">creation</span>
-    <span class="mf">3.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">4.0</span>
+    <span class="mf">3.0</span> <span class="o">-&gt;</span> <span class="mf">4.0</span>
 
     <span class="o">//</span> <span class="n">Create</span> <span class="n">rule</span> <span class="n">always</span> <span class="n">updates</span> <span class="n">this</span> <span class="n">flow</span> <span class="n">chart</span>
-    <span class="mf">4.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">99.0</span>
+    <span class="mf">4.0</span> <span class="o">-&gt;</span> <span class="mf">99.0</span>
 
-    <span class="mf">99.0</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">1.0</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">red</span><span class="p">]</span> <span class="o">//</span> <span class="n">always</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">inbox</span>
+    <span class="mf">99.0</span> <span class="o">-&gt;</span> <span class="mf">1.0</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="n">red</span><span class="p">]</span> <span class="o">//</span> <span class="n">always</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">inbox</span>
 
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Download the graphviz wrapper script from the
 <a href="https://biowize.wordpress.com/2011/03/11/text-wrapping-with-dot-graphviz/">BioWize</a>
 blog entry:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/perl</span>
 <span class="n">use</span> <span class="n">strict</span><span class="p">;</span>
 
-<span class="n">my</span> <span class="err">$</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;setdotlabelwidth [char-width] &amp;lt; [dotfile]&quot;</span><span class="p">;</span>
+<span class="n">my</span> <span class="err">$</span><span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;setdotlabelwidth [char-width] &lt; [dotfile]&quot;</span><span class="p">;</span>
 <span class="n">my</span> <span class="err">$</span><span class="n">width</span> <span class="o">=</span> <span class="n">shift</span><span class="p">()</span> <span class="ow">or</span> <span class="n">die</span><span class="p">(</span><span class="s2">&quot;Usage: $usage $!&quot;</span><span class="p">);</span>
 
-<span class="k">while</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">STDIN</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;)</span>
+<span class="k">while</span><span class="p">(</span><span class="o">&lt;</span><span class="n">STDIN</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;(.*?)&quot;</span><span class="o">/</span><span class="p">)</span>
   <span class="p">{</span>
@@ -393,26 +392,26 @@ blog entry:</p>
     <span class="n">my</span> <span class="err">$</span><span class="n">newline</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
     <span class="n">foreach</span> <span class="n">my</span> <span class="err">$</span><span class="n">word</span><span class="p">(</span><span class="nd">@words</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="ow">and</span>
-          <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">word</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">$</span><span class="n">width</span> <span class="p">)</span>
+      <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span>
+          <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="err">$</span><span class="n">width</span> <span class="p">)</span>
       <span class="p">{</span>
         <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">);</span>
         <span class="err">$</span><span class="n">newline</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
       <span class="p">}</span>
-      <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">);</span>
+      <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">);</span>
       <span class="err">$</span><span class="n">newline</span> <span class="o">.=</span> <span class="err">$</span><span class="n">word</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="p">);</span>
+    <span class="n">push</span><span class="p">(</span><span class="nd">@newtext</span><span class="p">,</span> <span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="n">newline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">);</span>
     <span class="n">my</span> <span class="err">$</span><span class="n">newlabel</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="nd">@newtext</span><span class="p">);</span>
     <span class="n">s</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;.*?&quot;</span><span class="o">/</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$newlabel&quot;</span><span class="o">/</span><span class="p">;</span>
   <span class="p">}</span>
-  <span class="k">print</span><span class="p">;</span>
+  <span class="nb">print</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>On linux, run this shell script at every test iteration:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1"># render_show_flowchart.sh - push the provided dot language file through</span>
 <span class="c1"># the newline label insertion tool, then render and display in eye of</span>
@@ -420,7 +419,7 @@ blog entry:</p>
 
 <span class="k">if</span> <span class="p">[[</span> <span class="err">$</span><span class="c1"># -ne 2 ]] ; then</span>
     <span class="n">echo</span> <span class="s2">&quot;You must specify a dot language filename, width&quot;</span>
-    <span class="nb">exit</span> <span class="mi">0</span>
+    <span class="n">exit</span> <span class="mi">0</span>
 <span class="n">fi</span>
 
 <span class="n">FILENAME</span><span class="o">=</span><span class="p">(</span>
@@ -429,21 +428,21 @@ blog entry:</p>
 <span class="n">OUTFILE</span><span class="o">=</span><span class="s2">&quot;${FILENAME/.gv/newlines.gv}&quot;</span>
 <span class="n">OUTPNG</span><span class="o">=</span><span class="s2">&quot;${FILENAME/.gv/.png}&quot;</span>
 
-<span class="n">cat</span> <span class="err">$</span><span class="p">{</span><span class="n">FILENAME</span><span class="p">}</span> <span class="o">|</span> <span class="n">perl</span> <span class="n">setdotlabelwidth</span><span class="o">.</span><span class="n">pl</span> <span class="err">$</span><span class="n">LINEWIDTH</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTFILE</span><span class="p">}</span>
+<span class="n">cat</span> <span class="err">$</span><span class="p">{</span><span class="n">FILENAME</span><span class="p">}</span> <span class="o">|</span> <span class="n">perl</span> <span class="n">setdotlabelwidth</span><span class="o">.</span><span class="n">pl</span> <span class="err">$</span><span class="n">LINEWIDTH</span> <span class="o">&gt;</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTFILE</span><span class="p">}</span>
 <span class="k">if</span> <span class="p">[[</span> <span class="err">$?</span> <span class="o">-</span><span class="n">ne</span> <span class="mi">0</span> <span class="p">]]</span> <span class="p">;</span> <span class="n">then</span>
     <span class="n">echo</span> <span class="s2">&quot;Problem running line converter&quot;</span>
-    <span class="nb">exit</span> <span class="mi">0</span>
+    <span class="n">exit</span> <span class="mi">0</span>
 <span class="n">fi</span>
 
 <span class="n">cat</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTFILE</span><span class="p">}</span> <span class="o">|</span> <span class="n">dot</span> <span class="o">-</span><span class="n">Tpng</span> <span class="o">-</span><span class="n">o</span> <span class="err">$</span><span class="p">{</span><span class="n">OUTPNG</span><span class="p">}</span>
 <span class="k">if</span> <span class="p">[[</span> <span class="err">$?</span> <span class="o">-</span><span class="n">ne</span> <span class="mi">0</span> <span class="p">]]</span> <span class="p">;</span> <span class="n">then</span>
     <span class="n">echo</span> <span class="s2">&quot;Problem running png maker&quot;</span>
-    <span class="nb">exit</span> <span class="mi">0</span>
+    <span class="n">exit</span> <span class="mi">0</span>
 <span class="n">fi</span>
 
 
 <span class="n">eog</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">OUTPNG</span><span class="p">])</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>In practice it looks like:</p>
@@ -496,20 +495,20 @@ Hub</a></p>
 to complete clerical projects that are anticipated to require around
 10-15 hours per week for 3 weeks. The work will include the following
 tasks:</p>
-<div class="highlight"><pre><span></span>Linkedin research 
-Coordinating and setting appointments
-Product research
-Calling potential customers to verify contact information
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Linkedin research </span>
+<span class="err">Coordinating and setting appointments</span>
+<span class="err">Product research</span>
+<span class="err">Calling potential customers to verify contact information</span>
+</code></pre></div>
 
 
 <p>The following skills are a must:</p>
-<div class="highlight"><pre><span></span>Great communication skills via phone, email and chat
-Expertise in linkedin 
-Strong knowledge of google docs and google calendar
-Some knowledge of tele-sales (phone and email)
-Experience with customer discovery a big plus
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Great communication skills via phone, email and chat</span>
+<span class="err">Expertise in linkedin </span>
+<span class="err">Strong knowledge of google docs and google calendar</span>
+<span class="err">Some knowledge of tele-sales (phone and email)</span>
+<span class="err">Experience with customer discovery a big plus</span>
+</code></pre></div>
 
 
 <p>We're looking for a great communicator who can help us be more

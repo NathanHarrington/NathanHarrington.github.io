@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -126,8 +125,8 @@ files:</p>
 amount of pyinstaller machinations, includes, or path updates seem to
 make this possible. You must overwrite the pyinstaller included file at
 the location:</p>
-<div class="highlight"><pre><span></span>&amp;lt;program files&amp;gt;\&amp;lt;application name&amp;gt;\qt4_plugins\imageformats\
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">&lt;program files&gt;\&lt;application name&gt;\qt4_plugins\imageformats\</span>
+</code></pre></div>
 
 
 <p>With the qsvg4.dll file that is 22,016KB in size. In
@@ -135,9 +134,9 @@ the location:</p>
 directive in the InnoSetup installation file, after the application has
 been installed. When using appveyor, make sure the environment names
 match precisely, as you are hard-coding file locations such as:</p>
-<div class="highlight"><pre><span></span><span class="nt">Source</span><span class="o">:</span> <span class="s2">&quot;C:\Miniconda\envs\conda_dash\Library\plugins\imageformats\qsvg4.dll&quot;</span><span class="o">;</span> <span class="err">\</span>
-<span class="nt">DestDir</span><span class="o">:</span> <span class="s2">&quot;{app}\dash\qt4_plugins\imageformats&quot;</span><span class="o">;</span> <span class="nt">Flags</span><span class="o">:</span> <span class="nt">recursesubdirs</span> <span class="nt">ignoreversion</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">Source: &quot;C:\Miniconda\envs\conda_dash\Library\plugins\imageformats\qsvg4.dll&quot;; \</span>
+<span class="c">DestDir: &quot;{app}\dash\qt4_plugins\imageformats&quot;; Flags: recursesubdirs ignoreversion</span>
+</code></pre></div>
                 <div class="panel">
                     <div class="panel-body">
 <footer class="post-info">

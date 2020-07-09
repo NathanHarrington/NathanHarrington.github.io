@@ -53,7 +53,6 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -115,58 +114,58 @@ Don't display categories on menu
 system, and on appveyor. For example:</p>
 <p><a href="https://github.com/WasatchPhotonics/Dash/tree/75dd8525541cc5f55a73bce91884628324e2776b">Dash 75dd852554</a></p>
 <p>Run a pyinstaller script like:</p>
-<div class="highlight"><pre><span></span>pyinstaller 
-    --distpath=scripts/built-dist 
-    --workpath=scripts/work-path 
-    --noconfirm 
-    --clean 
-    --icon dash/assets/uic_qrc/images/DashIcon.ico 
-    --specpath scripts 
-    scripts/Dash.py
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">pyinstaller </span>
+<span class="err">    --distpath=scripts/built-dist </span>
+<span class="err">    --workpath=scripts/work-path </span>
+<span class="err">    --noconfirm </span>
+<span class="err">    --clean </span>
+<span class="err">    --icon dash/assets/uic_qrc/images/DashIcon.ico </span>
+<span class="err">    --specpath scripts </span>
+<span class="err">    scripts/Dash.py</span>
+</code></pre></div>
 
 
 <p>On Windows 10 Home and premium, you will see a succesful build.  On
 appveyor, you will see lines like:</p>
-<div class="highlight"><pre><span></span>...
-493882 INFO: Building PKG (CArchive) out00-PKG.pkg
-494023 INFO: Bootloader c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\bootloader\Windows-32bit\run.exe
-494023 INFO: checking EXE
-494023 INFO: Building EXE because out00-EXE.toc is non existent
-494023 INFO: Building EXE from out00-EXE.toc
-...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="err">493882 INFO: Building PKG (CArchive) out00-PKG.pkg</span>
+<span class="err">494023 INFO: Bootloader c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\bootloader\Windows-32bit\run.exe</span>
+<span class="err">494023 INFO: checking EXE</span>
+<span class="err">494023 INFO: Building EXE because out00-EXE.toc is non existent</span>
+<span class="err">494023 INFO: Building EXE from out00-EXE.toc</span>
+<span class="err">...</span>
+</code></pre></div>
 
 
 <p>Change the Dash.py filename to Dash, and rebuild with the command:</p>
-<div class="highlight"><pre><span></span>pyinstaller 
-    --distpath=scripts/built-dist 
-    --workpath=scripts/work-path 
-    --noconfirm 
-    --clean 
-    --icon dash/assets/uic_qrc/images/DashIcon.ico 
-    --specpath scripts 
-    scripts/Dash
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">pyinstaller </span>
+<span class="err">    --distpath=scripts/built-dist </span>
+<span class="err">    --workpath=scripts/work-path </span>
+<span class="err">    --noconfirm </span>
+<span class="err">    --clean </span>
+<span class="err">    --icon dash/assets/uic_qrc/images/DashIcon.ico </span>
+<span class="err">    --specpath scripts </span>
+<span class="err">    scripts/Dash</span>
+</code></pre></div>
 
 
 <p>Windows 10 Home will still build fine. The appveyor build will break
 however, with the message below:</p>
-<div class="highlight"><pre><span></span>...
-90423 INFO: Building PKG (CArchive) out00-PKG.pkg
-Traceback (most recent call last):
-File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 174, in _run_module_as_main
-    &quot;__main__&quot;, fname, loader, pkg_name)
-File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 72, in _run_code
-    exec code in run_globals
-...
-    code = get_code_object(nm, pathnm)
-File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 545, in get_code_object
-    co = _load_code(modname, filename)
-File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 521, in _load_code
-    assert loader and hasattr(loader, &#39;get_code&#39;)
-AssertionError
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="err">90423 INFO: Building PKG (CArchive) out00-PKG.pkg</span>
+<span class="err">Traceback (most recent call last):</span>
+<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 174, in _run_module_as_main</span>
+<span class="err">    &quot;__main__&quot;, fname, loader, pkg_name)</span>
+<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 72, in _run_code</span>
+<span class="err">    exec code in run_globals</span>
+<span class="err">...</span>
+<span class="err">    code = get_code_object(nm, pathnm)</span>
+<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 545, in get_code_object</span>
+<span class="err">    co = _load_code(modname, filename)</span>
+<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 521, in _load_code</span>
+<span class="err">    assert loader and hasattr(loader, &#39;get_code&#39;)</span>
+<span class="err">AssertionError</span>
+</code></pre></div>
 
 
 <p>This happens in a wide variety of contexts, with various indicators
