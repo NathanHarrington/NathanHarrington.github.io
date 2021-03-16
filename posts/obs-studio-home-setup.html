@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+
+<head>
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+	<link rel="apple-touch-icon" href="/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="/favicon-144.png">
+	<meta name="msapplication-config" content="/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+    <title>OBS Studio home setup - Nathan Harrington</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/posts/obs-studio-home-setup.html">
+
+        <meta name="author" content="Nathan Harrington" />
+        <meta name="keywords" content="videoconferencing" />
+        <meta name="description" content="OBS Studio hardware and software configuration focused on a better videoconferencing experience. The short answer is: get a ring light for your phone. This 20$ investment will make your videoconferences 80% better. Here&#39;s an example unit that worked fine with a 2020 era budget smart phone: https://www.amazon.com …" />
+
+        <meta property="og:site_name" content="Nathan Harrington" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="OBS Studio home setup"/>
+        <meta property="og:url" content="/posts/obs-studio-home-setup.html"/>
+        <meta property="og:description" content="OBS Studio hardware and software configuration focused on a better videoconferencing experience. The short answer is: get a ring light for your phone. This 20$ investment will make your videoconferences 80% better. Here&#39;s an example unit that worked fine with a 2020 era budget smart phone: https://www.amazon.com …"/>
+        <meta property="article:published_time" content="2021-03-02" />
+            <meta property="article:section" content="articles" />
+            <meta property="article:tag" content="videoconferencing" />
+            <meta property="article:author" content="Nathan Harrington" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Nathan Harrington            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about.html">
+                             About
+                          </a></li>
+                         <li><a href="/pages/standing-invitation.html">
+                             Standing Invitation
+                          </a></li>
+                    <!-- custom link to blog roll/articles -->
+                    <li><a href="/category/articles.html">Blog</a></li>
+
+<!--
+Don't display categories on menu
+                        <li class="active">
+                            <a href="/category/articles.html">Articles</a>
+                        </li>
+                        <li >
+                            <a href="/category/patents.html">Patents</a>
+                        </li>
+-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <div class="entry-content">
+                    <div style="padding-bottom:20px">
+                        <img src="/images/obs_config.png"></img>
+                    </div>
+                <p>OBS Studio hardware and software configuration focused on a better
+videoconferencing experience.</p>
+<p>The short answer is: get a ring light for your phone. This 20$
+investment will make your videoconferences 80% better. Here's an example
+unit that worked fine with a 2020 era budget smart phone:
+https://www.amazon.com/gp/product/B075ZLCSGP/</p>
+<p>Read on for the long answer on how to expand your videoconferencing
+setup to achieve many of the broadcast-studio effects. </p>
+<p>Requirements:
+Space, lens, and light.</p>
+<h3>Space:</h3>
+<p>The remainder of this guide assumes that you have a room or a section in
+a room that is 8 feet long, 4 feet wide, and 9 feet tall. Every inch is
+required. Stand during the video conference or sit on a tall stool.</p>
+<h3>Lens:</h3>
+<p>The actual camera sensor megapixels is not important anymore. What is
+important is that you have camera with a mechanically movable lens, and
+a depth of field that is more shallow than the typical webcam. The key
+is to differentiate your appearance on screen from nearly all 'webcams'. </p>
+<h3>Light:</h3>
+<p>Two softboxes with LED's. They need to be positionable far from the
+camera, on their own tripods.</p>
+<p>Everything below here is additional, if you do the above three you will
+differentiate your videoconference from 95% of other participants.</p>
+<h2>Hardware setup</h2>
+<h3>Total cost</h3>
+<p>If you include the computer, monitor, everything: $1725
+If you include just what was purchased new: $818</p>
+<h3>Computer.</h3>
+<p>This entire guide was developed on a 2013-era Lenovo laptop with an i5
+at 1.6ghz. It works fine for videoconferencing. It gets hot, but it does
+work for hours on end with no issues. This computer cost 700$ 9 years
+ago.</p>
+<h3>Video Components.</h3>
+<p><pre>
+$250 Canon VIXIA HF R800 setup.<br>
+Comes with all cables needed out of the box.
+https://www.walmart.com/ip/Canon-VIXIA-HF-R800-Camcorder-Black/600185698?wmlspartner=wlpa&amp;selectedSellerId=0</p>
+<p>Settings changed from default:
+Home-&gt;Display
+  onscreen markers: level grey
+  output onscreen markers: off
+  demo mode: off</p>
+<p>Zoom speed static, not dynamic.
+Shooting mode: highlight priority.</p>
+<p>$107 Elgato Cam Link 4K — Broadcast Live, Record via DSLR, Camcorder, USB 3.0
+https://www.amazon.com/gp/product/B07K3FN5MR/</p>
+<p>$140 Computer Monitor - the monitor used here is a 11 year old samsung
+display. It's completely fine once the backlight warms up, again for
+videoconferencing. Any newer full-hd display will be fine as long as it
+has a vesa mount.</p>
+</pre>
+
+<h3>Audio Components.</h3>
+<p><pre>
+$65 Alvoxcon USB lavalier Mic System 
+https://www.amazon.com/gp/product/B08DV5NJJM/</p>
+<p>$13 Clip-Type Bluetooth 4.2 Transmitter and Receiver -2-in-1 Wireless 3.5mm Adapter,
+https://www.amazon.com/gp/product/B07YG13BPR/</p>
+<p>$12 Greyghost Single Earbud, Earphone, 3.5mm Monaural Hollow Air Tube Wired Headphone
+https://www.amazon.com/gp/product/B07F7SW7ZZ/</p>
+</pre>
+
+<h3>Furniture and Lighting</h3>
+<p><pre>
+$168 DEVAISE Adjustable Height Standing Desk, 47 inch Sit to Stand Up Desk Workstaion with Crank Handle for Office Home, White
+https://www.amazon.com/gp/product/B07QVLBNJH/</p>
+<p>$30 11" Adjustable Heavy Duty Robust Magic Arm
+https://www.amazon.com/gp/product/B07CTFZSXZ/
+Note that this requires operator skill, but once you learn how to use it
+it's exactly as the reviews describe.</p>
+<p>150$ MOUNTDOG Photography Lighting Kit,6.6X 10ft Backdrop Stand System and 900W 6400K LED Bulbs Softbox and Umbrellas Continuous Lighting Kit for Photo Video Shooting,etc.
+https://www.amazon.com/gp/product/B08FMGDTR1/</p>
+<p>The umbrella lights are not required. The various stands can be
+repurposed based on your existing hardware.</p>
+<p>$40 Insignia monitor mount with arm:
+https://www.bestbuy.com/site/insignia-monitor-mount-silver-and-black/4374500.p?skuId=4374500</p>
+</pre>
+
+<h3>Miscellaneous</h3>
+<p><pre>
+$14 3 pack 1" inch x 60yd STIKK White Painters Tape 14 Day Easy Removal Trim Edge Finishing Decorative Marking Masking Tape (.94 IN 24MM)
+https://www.amazon.com/gp/product/B07SFLPX1G/</p>
+<p>$9 Pro Tapes Pocket Gaff Tape 1 inch (24mm) x 6 Yards Length Black Matte.
+https://www.amazon.com/gp/product/B01EN7GZE0/</p>
+<p>$14 Power strip</p>
+<p>$13 Extension cord</p>
+</pre>
+
+<h3>Software setup</h3>
+<pre>
+
+</pre>
+
+<h3>Lobby videos</h3>
+<p><pre>
+Use pexels and pixabay, and search for abstract patterns, geometrical,
+and lobby videos, etc.</p>
+<p>Loading a 4k video will seriously slow down your system. You will not
+need that resolution for videconferencing. HD resolution (960x540) works
+fine and is indescernible from anything higher on most peoples phones
+and computers.</p>
+<p>If you have a lobby video that is larger than HD, scale it down with:
+ffmpeg -i 4k_lobby.mp4 -filter:v scale=960:-1 hd_lobby.mp4</p>
+<p>Matching color schemes can be performed by adjusting curves. Use ffplay
+for previewing. 
+Make a video much bluer:
+ffplay -i hd_lobby.mp4 -vf curves=blue='0.3/0.3 1/1'</p>
+<p>Make a video de-saturated:
+ffplay -i hd_lobby.mp4 -vf eq=brightness=0:saturation=0.8 </p>
+<p>When you are satisfied, replace ffplay with ffmpeg:
+ffmpeg -i hd_lobby.mp4 -vf eq=brightness=0:saturation=0.8 hd_lobby_gray.mp4
+</pre></p>
+<h3>Green screen configuration</h3>
+<p><pre>
+Select color from screen.
+Color correct
+</pre></p>
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2021-03-02T00:00:00-05:00"> Tue 02 March 2021</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/videoconferencing.html">videoconferencing</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/NathanHarrington"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/harringtonnathan"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://plus.google.com/100412424991063551562"><i class="fa fa-google-plus-square fa-lg"></i> google-plus</a></li>
+              </ul>
+            </li>
+
+
+
+
+
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-4602287-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
