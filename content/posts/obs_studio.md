@@ -137,6 +137,7 @@ $13 Extension cord
 
 </pre>
 
+[![Hardware Configuration](/images/obs_hardware.jpg)](/images/obs_hardware.jpg)
 ### Physical setup of camera.
 <pre>
 Turn the standing desk sideways, and mount the arm as far back as
@@ -162,7 +163,7 @@ angle, approximately 6 feet away directly to the side of the subject. If
 you don't have that much room, place it as close as you need it and turn
 the power down.  
 
-More on the detailed lighting configuration belowi n 'Green screen'.
+More on the detailed lighting configuration below in 'Green screen'.
 </pre>
 
 
@@ -186,6 +187,7 @@ bar directly on the wall. You can use the clamps at the top to attach
 the other color cloths, but in practice only the green cloth is
 necessary. Wrinkles and waves make almost no difference and will be
 smoothed out by the correct lighting configuration.
+</pre>
 
 ### Audio setup 
 <pre>
@@ -207,15 +209,26 @@ it. This allows you to reach down and push the 'power off' button on the
 wireless portion, and you'll see the USB dongle lights turn off
 indicating you're on mute.
 
+Major issues: Using the combination of bluetooth transmitter for
+listening and 900mhz to usb for microphone works 'sometimes'. On some
+computers it works out of the box with zero issues. On others it will
+have bluetooth pairing issues and when it does pair, cause incredible
+audio and video delays. The workaround is just to use wired. In practice
+noone will see the wires, and you won't be moving around that much
+anyways.
 
 </pre>
 
-### Software setup
+
+### Software setup 
 <pre>
+If you are on windows, install the most recent version of OBS studio,
+then skip to the 'start obs' section below.
+
 dnf install snapd
 snap install obs-studio 
-# If you get a message about 'too early/device not seeded', wait 3
-# seconds and try again.
+If you get a message about 'too early/device not seeded', wait 3
+seconds and try again.
 snap connect obs-studio:alsa
 snap connect obs-studio:audio-record
 snap connect obs-studio:avahi-control
@@ -280,66 +293,13 @@ reboot
 
 Set static ip address in network configuration
 
-dnf -y install make automake gcc gcc-c++ kernel-devel cmake
-dnf -y install git autossh tmux
-dnf -y install redhat-rpm-config python-devel
-dnf -y install parcellite vim vim-X11 ncdu cmus sox rofi
-dnf -y install bat ripgrep
-
-
-
-start parcellite,
-Activate the parcellite config interface by pressing ctrl+alt+p
-
-In parcellite config: 
-    check "Use Copy" and "Use Primary", then click synchronize clipboards
-
-curl https://pyenv.run | bash
-Possibly needed prereqs:
-yum install compat-openssl10-devel --allowerasing
-dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel xz xz-devel libffi-devel findutils
-
-git config --global core.editor "vim"
-git config --global credential.helper "cache --timeout=360000"
-
-dnf -y install gimp inkscape graphviz w3m nmap thunar ImageMagick
-dnf -y install surfraw tig darktable
-
-### Install nomachine
-
-Download nomachine from: https://www.nomachine.com/download/linux&id=1 
-
-run:
-
-dnf install ./nomachine
-
-If you get a message about an selinux failure with systemd read from
-nxserver.service as described here: https://www.nomachine.com/TR11N07360
-
-vi /etc/selinux/config
-
-change 'enforcing' to 'permissive'
-
-reinstall nomachine
-
-### Chrome configuration
-
-Google Chrome:
-  Install google chrome from google's page.
-  Sign in to chrome 
-
-## Auto-start
-Set the machine to autostart chrome.
-  Make sure you use the format:
-  /usr/bin/google-chrome --password-store=basic --profile-directory=LabProspects
-
-Disable dragora auto start, anything else you don't need.
-Reboot, verify chrome comes up.
-
-At this point you might see various boxes that say keys were not
-unlocked, but you can cancel them with the mouse.
+Change the startup config to auto start obs with virtualcamera enabled.
+Add a startup of chrome, delayed 30 seconds so obs studio has time to
+start.
+</pre>
 
 ## Green screen OBS configuration
+<pre>
 The settings described below are all included in the default
 configuration OBS file here:
 
@@ -349,7 +309,8 @@ Choose 1920x1080 as the source resolution.
 Click filters.
 Add the chromakey.
 If you're using the lighting setup described above, the default settings
-are nearly perfect. 
+are nearly perfect.  You may need to turn the similarity metric up
+slightly. Use the arrow keys and nudge it up 1-3 levels as needed.
 
 If you need to adjust for different lighting temperatures, choose
 ChromaKey, then move off the screen. Select a custom color, then pick
@@ -360,43 +321,6 @@ results here are not as good as just using the 'white' color temperature
 lights with default chromakey and no color correction.
 
 </pre>
-
-
-### PIP Configuration
-<pre>
-</pre>
-
-### Studio Mode
-<pre>
-</pre>
-
-### Lower thirds animated displays
-<pre>
-</pre>
-
-### Lower thirds animated displays
-<pre>
-</pre>
-
-### Using phone as mute button, scene switcher. 
-<pre>
-Try ipad too
-</pre>
-
-### Try a phone as a secondary camera.
-<pre>
-This is about giving a differntiated experience, and if you use NDI to
-feed the camera image back into the presentation at a different angle
-when you do different demos, talk about different things, share a
-screen, etc. Or even if it just changes automatically and you shift your
-eyeleline, that would be a huge differentiator.
-</pre>
-
-### Try shotgun mike mounted to camera or direct to computer.
-<pre>
-</pre>
-
-
 
 ### Lobby videos
 <pre>
@@ -425,3 +349,76 @@ ffmpeg -i hd_lobby.mp4 -vf eq=brightness=0:saturation=0.8 hd_lobby_gray.mp4
 Another alternative that works just as well is applying the filters in
 OBS studio directly. Make sure you resize the videos first.
 </pre>
+
+
+## Work in Progress...
+
+
+### PIP Configuration
+<pre>
+</pre>
+
+### Studio Mode
+<pre>
+</pre>
+
+
+### Lower thirds animated displays
+<pre>
+</pre>
+
+### Lower thirds animated displays
+<pre>
+</pre>
+
+### Using phone as mute button, scene switcher. 
+<pre>
+</pre>
+
+### BRB type scenes 
+<pre>
+With a single click it shows a 'brb' image or video, and mutes the audio
+microphone. 
+
+Also a different setting that is 'video muted' where you can hear and be
+heard but your camera is off for adjustments without it looking like you
+are gone.
+</pre>
+
+### OBS integration of sound into the stream.
+<pre>
+</pre>
+
+### Try a phone as a secondary camera.
+<pre>
+This is about giving a differentiated experience, and if you use NDI to
+feed the camera image back into the presentation at a different angle
+when you do different demos, talk about different things, share a
+screen, etc. Or even if it just changes automatically and you shift your
+eyeleline, that would be a huge differentiator.
+</pre>
+
+### Try shotgun mike mounted to camera or direct to computer.
+<pre>
+</pre>
+
+### Try level 2 configuration.
+<pre>
+Level 1 is the self contained setup here. Level 2 is you go back to
+wireless, then detach the entire monitor and camera stack and put it on
+the other side of the room. Then you get the much further focal distance
+setup in place. So it really looks like a studio, and you have your
+laptop on the desk so you can see the conference, etc.
+</pre>
+
+### Try level 3 configuration.
+<pre>
+Dolly moves of the camera. The ultimate version of this is simulating a
+person behind the camera. Where it tracks the person and adjusts focus
+and pan/tilt/zoom in a way that is much more organic than the auto-zoom
+tracking systems. Something like piston translators on a rack that move
+the camera, or actuators that move a tripod head, organically. And on
+top that, the whole thing moves on a translation stage or a rolling
+pedestal.
+</pre>
+
