@@ -245,7 +245,9 @@ modprobe -r v4l2loopback
 modprobe v4l2loopback devices=1 video_nr=13 card_label='OBS_Virtual_Camera' exclusive_caps=1
 reboot
 
-Install the fonts from this repo system-wide into
+Install the fonts from this repo:
+https://github.com/Cordince/OBS-Studio-Setup
+into: 
 /usr/share/fonts/proxima-nova-fonts. 
 
 Start obs.
@@ -260,7 +262,9 @@ At this point, you can clone this repo, and change the file locations
 with a text editor.
 
 Then import the scene collection into obs-studio, and everything should
-be setup correctly. Continue on for details on how it was built.
+be setup correctly. Continue on for details on how it was built. This
+repo contains the scene collection:
+https://github.com/Cordince/OBS-Studio-Setup
 </pre>
 
 
@@ -302,6 +306,7 @@ start.
 <pre>
 The settings described below are all included in the default
 configuration OBS file here:
+https://github.com/Cordince/OBS-Studio-Setup
 
 Create a scene, call it External Camera.
 Add a video capture source for the camlink device, name it camlink.

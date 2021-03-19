@@ -305,7 +305,9 @@ echo "v4l2loopback" | sudo tee /etc/modules-load.d/v4l2loopback.conf
 modprobe -r v4l2loopback
 modprobe v4l2loopback devices=1 video_nr=13 card_label='OBS_Virtual_Camera' exclusive_caps=1
 reboot</p>
-<p>Install the fonts from this repo system-wide into
+<p>Install the fonts from this repo:
+https://github.com/Cordince/OBS-Studio-Setup
+into: 
 /usr/share/fonts/proxima-nova-fonts. </p>
 <p>Start obs.
 When it starts for the first time, choose 'i will only be using the
@@ -316,7 +318,9 @@ produces much less load on your system.</p>
 <p>At this point, you can clone this repo, and change the file locations
 with a text editor.</p>
 <p>Then import the scene collection into obs-studio, and everything should
-be setup correctly. Continue on for details on how it was built.
+be setup correctly. Continue on for details on how it was built. This
+repo contains the scene collection:
+https://github.com/Cordince/OBS-Studio-Setup
 </pre></p>
 <h2>Computing system configuration</h2>
 <p><pre>
@@ -347,7 +351,8 @@ start.
 <h2>Green screen OBS configuration</h2>
 <p><pre>
 The settings described below are all included in the default
-configuration OBS file here:</p>
+configuration OBS file here:
+https://github.com/Cordince/OBS-Studio-Setup</p>
 <p>Create a scene, call it External Camera.
 Add a video capture source for the camlink device, name it camlink.
 Choose 1920x1080 as the source resolution.
