@@ -27,7 +27,24 @@ door slams and outside vehicles. It's a beautiful thing.
 Face the wall - eliminate all peripheral vision. Literally add
 blinders to your glasses if you need to.
 
-The QuietComfort was no longer available. An 80% solution are these
+
+As of 2021-10-25, the second best choice is a combination of noise
+isolating (not cancelling) ear buds, and noise cancelling over-ears.
+This is probably a 90% solution to the Bose setup before, for 1/7th the
+cost. Neckbands are definetly the way to go, as they have true all day
+battery life and over ears can fit over them.
+
+[SoundCore U2 neckband](https://www.amazon.com/gp/product/B086L8WF4D/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+Put this in with the default silicone covers. Use the full spectrum
+music and noise generation setup described below.
+
+[Soundcore Q20 over
+ears](https://www.amazon.com/dp/B07NM3RSRQ?psc=1&ref=ppx_yo2_dt_b_product_details)
+Just turn these on with noise cancelling enabled, do not play any sound
+through them.
+
+
+The QuietComfort was no longer available. A comparable 70% solution are these
 [COWIN E7 Noise Cancelling
 Headphones](https://www.amazon.com/gp/product/B019U00D7K/ref=oh_aui_search_detailpage?ie=UTF8&psc=1)
 They block significant noise. They are not as configurable. The biggest
