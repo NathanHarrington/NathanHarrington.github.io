@@ -127,14 +127,15 @@ EC2 -> Launch Instance -> Community AMIs -> Fedora ->
 Fedora-Cloud-Base-28-20180930.0.x86_64-hvm-us-east-1-gp2-0 - ami-0047163812982e5f3
 </pre>
 
-<p>Connect to the instance with:
+<p>Connect to the instance with:</p>
 <pre>
 ssh \
     -i your_key_pair.pem \
     -L 4010:localhost:4000 \
     -R 6622:localhost:22 \
     fedora@amazon-ec2-public-dnsname
-</pre></p>
+</pre>
+
 <pre>
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
@@ -197,73 +198,40 @@ connection. Use the script below to establish a tunnel over port 4010 to
 nomachine, and ssh back to the local system.</p>
 <p>From this stage, follow the standard
 <a href="https://github.com/NathanHarrigton/dotfiles">dotfiles</a> configuration.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># Launch the instance, get the new ip address, establish an autossh</span>
 <span class="c1"># tunnel to the AMI</span>
 <span class="c1"># Use aws cli or the web interface to get your machines&#39; instance id,</span>
 <span class="c1"># replace the variable below:</span>
 
 <span class="nv">INSTANCEID</span><span class="o">=</span>i-GUID
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/home/nharrington/miniconda3/bin:<span class="nv">$PATH</span>
-<span class="nb">source</span> activate conda_awscli
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/home/nharrington/miniconda3/bin:<span class="nv">$PATH</span>
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>conda_awscli
 
-aws ec2 start-instances <span class="se">\</span>
-    --instance-ids <span class="nv">$INSTANCEID</span> <span class="se">\</span>
-    --output<span class="o">=</span>text
+aws<span class="w"> </span>ec2<span class="w"> </span>start-instances<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-ids<span class="w"> </span><span class="nv">$INSTANCEID</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="o">=</span>text
 
 <span class="nv">QRY</span><span class="o">=</span><span class="s2">&quot;Reservations[*].Instances[*].[InstanceId,PublicDnsName,Tags\</span>
 <span class="s2">[?Key==\`Application\`].Value]&quot;</span>
 
-<span class="nv">DNSNAME</span><span class="o">=</span><span class="sb">`</span>aws ec2 describe-instances <span class="se">\</span>
-                --instance-ids<span class="o">=</span><span class="nv">$INSTANCEID</span> <span class="se">\</span>
-                --query <span class="nv">$QRY</span> <span class="se">\</span>
-                --output<span class="o">=</span>text <span class="se">\</span>
-                <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+<span class="nv">DNSNAME</span><span class="o">=</span><span class="sb">`</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--instance-ids<span class="o">=</span><span class="nv">$INSTANCEID</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--query<span class="w"> </span><span class="nv">$QRY</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--output<span class="o">=</span>text<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
 
-<span class="nb">echo</span> <span class="nv">$DNSNAME</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$DNSNAME</span>
 
-autossh <span class="se">\</span>
-    -M <span class="m">36622</span> <span class="se">\</span>
-    -oStrictHostKeyChecking<span class="o">=</span>no <span class="se">\</span>
-    -i lls_key_pair.pem <span class="se">\</span>
-    -L <span class="m">8839</span>:localhost:5901 <span class="se">\</span>
-    -L <span class="m">4010</span>:localhost:4000 <span class="se">\</span>
-    -R <span class="m">6622</span>:localhost:22 <span class="se">\</span>
-    fedora@<span class="nv">$DNSNAME</span>
+autossh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-M<span class="w"> </span><span class="m">36622</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-oStrictHostKeyChecking<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>lls_key_pair.pem<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span><span class="m">8839</span>:localhost:5901<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span><span class="m">4010</span>:localhost:4000<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-R<span class="w"> </span><span class="m">6622</span>:localhost:22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>fedora@<span class="nv">$DNSNAME</span>
 </code></pre></div>
-</td></tr></table>
 
 <p>Looking for wordpress on amazon? Just use <a href="https://aws.amazon.com/marketplace/pp/B00NN8Y43U?qid=1535236710075&amp;sr=0-1&amp;ref_=srh_res_product_title">bitnami
 image</a>, then add the
@@ -318,7 +286,7 @@ elementor plugin:</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

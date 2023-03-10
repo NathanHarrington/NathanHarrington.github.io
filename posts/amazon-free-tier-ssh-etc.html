@@ -129,18 +129,21 @@ After instance launches, click connect.
 Click Get password.
 </pre>
 
-<p>Then start the remote desktop session with a command like:
+<p>Then start the remote desktop session with a command like:</p>
 <pre>
 rdesktop long_hostname.us-east-2.compute.amazonaws.com -u \
-    Administrator -p 'password' -g 1920x1000 -K</p>
-<p>On the linux machine, you may see an error message like:</p>
-<div class="highlight"><pre><span></span><code><span class="err">Failed to connect, CredSSP required by server.</span>
-</code></pre></div>
+    Administrator -p 'password' -g 1920x1000 -K
+
+On the linux machine, you may see an error message like:
+
+    Failed to connect, CredSSP required by server.
+
+Fix this by installing freerdp, then running:
+
+xfreerdp /u:"Administrator" \
+    /v:long_hostname.us-east-2.compute.amazonaws.com:3389
 
 
-<p>Fix this by installing freerdp, then running:</p>
-<p>xfreerdp /u:"Administrator" \
-    /v:long_hostname.us-east-2.compute.amazonaws.com:3389</p>
 </pre>
 
 <pre>
@@ -219,6 +222,7 @@ Then change the amazon instance network rules to open port 6787
 # connect over remote desktop
 ssh Administrator@long_hostname.aws.com "mkdir ~/.ssh"
 
+
 # Append the linux public key file to the remote list of authorized
 # keys. Not the .pem file, just your local system public key
 cat ~/.ssh/id_rsa.pub | ssh Administrator@ec2_hostname \
@@ -242,10 +246,11 @@ autossh \
 </pre>
 
 <p>Then on the windows computer, open a cygwin command prompt and verify
-the tunnel back to the host linux machine with:
+the tunnel back to the host linux machine with:</p>
 <pre>
     ssh -o port=6703 localhost
-</pre></p>
+</pre>
+
 <p>To connect from a linux laptop to the remote windows instance over rdp,
 setup the tunnel in the autossh command above, then run the rdesktop
 command below.</p>
@@ -365,7 +370,7 @@ term tests, etc.
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

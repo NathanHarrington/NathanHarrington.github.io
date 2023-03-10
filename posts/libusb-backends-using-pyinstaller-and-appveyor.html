@@ -121,33 +121,30 @@ Integration</a> environment. PyInstaller
 builds an exe.  InnoSetup builds a distributable installer. The
 installer is succesful. Then when running the installed application,
 you'll see the message:</p>
-<div class="highlight"><pre><span></span><code><span class="err">Traceback (most recent call last):</span>
-<span class="err">  ...</span>
-<span class="err">  File &quot;site-packages\usb\legacy.py&quot;, line 353, in busses</span>
-<span class="err">  File &quot;site-packages\usb\core.py&quot;, line 1263, in find</span>
-<span class="err">  usb.core.NoBackendError: No backend available</span>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  ...
+  File &quot;site-packages\usb\legacy.py&quot;, line 353, in busses
+  File &quot;site-packages\usb\core.py&quot;, line 1263, in find
+  usb.core.NoBackendError: No backend available
 </code></pre></div>
-
 
 <p>There are many subtle differences between a typical windows 10 build
 environment and the Appveyor configuration. Here are the changes
 required to have an installer built on appveyor:</p>
 <p>In setup.py, manually include pyusb:</p>
-<div class="highlight"><pre><span></span><code><span class="err">requires = [</span>
-<span class="err">    &quot;pytest-qt&quot;,</span>
-<span class="err">    ...</span>
-<span class="err">    &quot;pyusb&quot;,</span>
-<span class="err">    ]</span>
+<div class="highlight"><pre><span></span><code>requires = [
+    &quot;pytest-qt&quot;,
+    ...
+    &quot;pyusb&quot;,
+    ]
 </code></pre></div>
-
 
 <p>In appveyor configuration, manually include pyusb:</p>
-<div class="highlight"><pre><span></span><code><span class="c">install:</span>
-<span class="c">    - &quot;set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%&quot; </span>
-<span class="c">    ...</span>
-<span class="c">    - pip install pyusb</span>
+<div class="highlight"><pre><span></span><code><span class="nt">install</span><span class="o">:</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="s2">&quot;set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="nt">pip</span><span class="w"> </span><span class="nt">install</span><span class="w"> </span><span class="nt">pyusb</span>
 </code></pre></div>
-
 
 <p>Straightforward to this point. Sure, appveyor should respect the
 setup.py requirement of pyusb, but for some reason it's not listed in
@@ -166,22 +163,21 @@ includes the new usb hook like so:</p>
 <p>The above will cause a +<commit hash> to appear in the pyinstaller
 version suffix. This in turn will cause a ValueError when pyinstaller is
 run. But only on appveyor:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">Traceback</span> <span class="p">(</span><span class="s s-Atom">most</span> <span class="s s-Atom">recent</span> <span class="s s-Atom">call</span> <span class="s s-Atom">last</span><span class="p">)</span><span class="s s-Atom">:</span>
-  <span class="nv">File</span> <span class="err">&quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\</span><span class="nv">Scripts</span><span class="s s-Atom">\pyinstaller</span><span class="o">-</span><span class="s s-Atom">script</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 6, in &lt;module&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">Traceback</span> <span class="p">(</span><span class="s s-Atom">most</span> <span class="s s-Atom">recent</span> <span class="s s-Atom">call</span> <span class="s s-Atom">last</span><span class="p">)</span><span class="o">:</span>
+  <span class="nv">File</span> <span class="err">&quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\</span><span class="nv">Scripts</span><span class="s s-Atom">\pyinstaller</span><span class="o">-</span><span class="s s-Atom">script</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 6, in &lt;module&gt;</span>
 <span class="s2">    from pkg_resources import load_entry_point</span>
-<span class="s2">  File &quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2850, in &lt;module&gt;</span>
+<span class="s2">  File &quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2850, in &lt;module&gt;</span>
 <span class="s2">    working_set.require(__requires__)</span>
-<span class="s2">  File &quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 696, in require</span>
+<span class="s2">  File &quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 696, in require</span>
 <span class="s2">    needed = self.resolve(parse_requirements(requirements))</span>
-<span class="s2">  File &quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 566, in resolve</span>
+<span class="s2">  File &quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 566, in resolve</span>
 <span class="s2">    requirements = list(requirements)[::-1]  # set up the stack</span>
-<span class="s2">  File &quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2650, in parse_requirements</span>
+<span class="s2">  File &quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2650, in parse_requirements</span>
 <span class="s2">    line, p, specs = scan_list(VERSION,LINE_END,line,p,(1,2),&quot;</span><span class="s s-Atom">version</span> <span class="s s-Atom">spec</span><span class="s2">&quot;)</span>
-<span class="s2">  File &quot;</span><span class="nv">C</span><span class="s s-Atom">:\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2628, in scan_list</span>
+<span class="s2">  File &quot;</span><span class="nv">C</span><span class="o">:</span><span class="s s-Atom">\</span><span class="nv">Miniconda</span><span class="s s-Atom">\envs\conda_dash\lib\site</span><span class="o">-</span><span class="s s-Atom">packages\pkg_resources</span><span class="p">.</span><span class="s s-Atom">py</span><span class="s2">&quot;, line 2628, in scan_list</span>
 <span class="s2">    &quot;</span><span class="nv">Expected</span> <span class="s s-Atom">&#39;,&#39;</span> <span class="s s-Atom">or</span> <span class="s s-Atom">end</span><span class="o">-</span><span class="s s-Atom">of</span><span class="o">-</span><span class="s s-Atom">list</span> <span class="s s-Atom">in</span><span class="s2">&quot;,line,&quot;</span><span class="s s-Atom">at</span><span class="s2">&quot;,line[p:]</span>
 <span class="s2">  ValueError: (&quot;</span><span class="nv">Expected</span> <span class="s s-Atom">&#39;,&#39;</span> <span class="s s-Atom">or</span> <span class="s s-Atom">end</span><span class="o">-</span><span class="s s-Atom">of</span><span class="o">-</span><span class="s s-Atom">list</span> <span class="s s-Atom">in</span><span class="err">&quot;</span><span class="p">,</span> <span class="s s-Atom">&#39;PyInstaller==3.3.dev0+483c819&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;at&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;+483c819&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>The fix is to strip out the commit hash suffix from the installed
 version number. Run setup.py with sdist first to insert just
@@ -197,8 +193,8 @@ the major version number without the commit hash suffix.</p>
 <p>This is still not enough. You'll need to include the libusb dll for use
 by the application.  In the InnoSetup configuration file, include the
 line:</p>
-<div class="highlight"><pre><span></span><code><span class="c">Source: &quot;support_files\libusb_drivers\x86\libusb0_x86.dll&quot;; \</span>
-<span class="c">DestDir: &quot;{app}\dash\&quot;; Flags: recursesubdirs ignoreversion</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;support_files\libusb_drivers\x86\libusb0_x86.dll&quot;</span><span class="o">;</span><span class="w"> </span><span class="err">\</span>
+<span class="nt">DestDir</span><span class="o">:</span><span class="w"> </span><span class="err">&quot;</span><span class="p">{</span><span class="err">app</span><span class="p">}</span><span class="err">\</span><span class="nt">dash</span><span class="err">\&quot;</span><span class="o">;</span><span class="w"> </span><span class="nt">Flags</span><span class="o">:</span><span class="w"> </span><span class="nt">recursesubdirs</span><span class="w"> </span><span class="nt">ignoreversion</span>
 </code></pre></div>
                 <div class="panel">
                     <div class="panel-body">
@@ -250,7 +246,7 @@ line:</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

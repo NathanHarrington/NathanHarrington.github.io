@@ -103,6 +103,23 @@ Don't display categories on menu
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h4><a href="/posts/libusb-backends-using-pyinstaller-and-appveyor.html">LibUsb backends using pyinstaller and appveyor</a></h4>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="summary"><p>With a development machine all set up for communicating in python with
+pyusb and libusb on Windows 10. The signed drivers are available, the
+device is communicating on the build machine. Building the installer on
+the development machine also is successful. Redistributing the installer
+built on the development machine delivers …</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <hr/>
+            <article>
                 <h4><a href="/posts/svg-icons-in-pyside-on-windows-7.html">SVG icons in PySide on Windows 7</a></h4>
                 <div class="container-fluid">
                     <div class="row">
@@ -148,16 +165,15 @@ into Qt Designer, and distributed with pyinstaller as resource files.</p>
 system, and on appveyor. For example:</p>
 <p><a href="https://github.com/WasatchPhotonics/Dash/tree/75dd8525541cc5f55a73bce91884628324e2776b">Dash 75dd852554</a></p>
 <p>Run a pyinstaller script like:</p>
-<div class="highlight"><pre><span></span><code><span class="err">pyinstaller </span>
-<span class="err">    --distpath=scripts/built-dist </span>
-<span class="err">    --workpath=scripts/work-path </span>
-<span class="err">    --noconfirm </span>
-<span class="err">    --clean </span>
-<span class="err">    --icon dash/assets/uic_qrc/images/DashIcon.ico </span>
-<span class="err">    --specpath scripts </span>
-<span class="err">    scripts/Dash.py</span>
+<div class="highlight"><pre><span></span><code>pyinstaller 
+    --distpath=scripts/built-dist 
+    --workpath=scripts/work-path 
+    --noconfirm 
+    --clean 
+    --icon dash/assets/uic_qrc/images/DashIcon.ico 
+    --specpath scripts 
+    scripts/Dash.py
 </code></pre></div>
-
 
 <p>On Windows 10 …</p>
                             </div>
@@ -308,23 +324,6 @@ systems.</p>
             </article>
 
             <hr/>
-            <article>
-                <h4><a href="/posts/pysideapp-minimal-application-demonstrating-core-features-for-deployable-applications.html">PySideApp -  Minimal application demonstrating core features for deployable applications</a></h4>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="summary"><p>What I always wished I had the time to develop earlier. Multiprocessing
-that is tested. Log setups that spawn processes and all messages go to
-the same file. MVC architecture with separately tested components. </p>
-<p>Fully automated application builds on windows, including
-the installer. This is the basis for a wide …</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="/author/nathan-harrington2.html">&laquo;</a>
@@ -382,7 +381,7 @@ the installer. This is the basis for a wide …</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

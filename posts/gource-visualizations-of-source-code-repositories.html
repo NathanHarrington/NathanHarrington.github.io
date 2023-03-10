@@ -120,17 +120,16 @@ collaboration over years, without some of the default details. The
 commands below are designed to produce the visualizations to show
 collaboration and general activity levels, as well as produce animated
 gifs and smaller sets of imagery designed for presentations.</p>
-<div class="highlight"><pre><span></span><code><span class="err">./gource </span>
-<span class="err">~/wasatch/Software/Dash3 </span>
-<span class="err">--title &quot;Dash Development&quot;</span>
-<span class="err">--seconds-per-day 0.01 </span>
-<span class="err">--file-filter &quot;(famfam|png|jpg|bmp|xcf)&quot; </span>
-<span class="err">--hide dirnames,filenames,usernames </span>
-<span class="err">--file-extensions </span>
-<span class="err">--key </span>
-<span class="err">-o dash_withkey_gource.ppm</span>
+<div class="highlight"><pre><span></span><code>./gource 
+~/wasatch/Software/Dash3 
+--title &quot;Dash Development&quot;
+--seconds-per-day 0.01 
+--file-filter &quot;(famfam|png|jpg|bmp|xcf)&quot; 
+--hide dirnames,filenames,usernames 
+--file-extensions 
+--key 
+-o dash_withkey_gource.ppm
 </code></pre></div>
-
 
 <p>Dash version 3 has a set of unique attributes that tend to limit the
 usefulness of a gource visualization. The command line switches above
@@ -140,62 +139,57 @@ Many image files, frequently modified (file-filter)
 Long file and directory names that do not expire (hide, file-extensions)</p>
 <p>Show just the key with (key), and save the results to a ppm file.</p>
 <p>Then the conversion to a video:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ffmpeg </span>
-<span class="err">-y </span>
-<span class="err">-r 60 </span>
-<span class="err">-f image2pipe -vcodec ppm </span>
-<span class="err">-i dash_withkey_gource.ppm</span>
-<span class="err">-vcodec libx264 </span>
-<span class="err">-preset ultrafast </span>
-<span class="err">-pix_fmt yuv420p </span>
-<span class="err">-crf 1 </span>
-<span class="err">-threads 0 </span>
-<span class="err">-bf 0 </span>
-<span class="err">dash_withkey_gource.mp4</span>
+<div class="highlight"><pre><span></span><code>ffmpeg 
+-y 
+-r 60 
+-f image2pipe -vcodec ppm 
+-i dash_withkey_gource.ppm
+-vcodec libx264 
+-preset ultrafast 
+-pix_fmt yuv420p 
+-crf 1 
+-threads 0 
+-bf 0 
+dash_withkey_gource.mp4
 </code></pre></div>
-
 
 <p>And finally a conversion to a thumbnail animated gif:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ffmpeg -i ../dash_withkey_gource_2015.mp4 -r 5 &#39;frames/frame-%03d.jpg&#39;</span>
-<span class="err">convert -resize 25% -delay 10 -loop 0 \*.jpg dash_gource.gif</span>
+<div class="highlight"><pre><span></span><code>ffmpeg -i ../dash_withkey_gource_2015.mp4 -r 5 &#39;frames/frame-%03d.jpg&#39;
+convert -resize 25% -delay 10 -loop 0 \*.jpg dash_gource.gif
 </code></pre></div>
-
 
 <p>If you run through the instructions above verbatim, you will have
 something close to a 1GB ppm file, a 600MB mp4, and .gif file totally
 approximately 10GB.  </p>
 <p>To cut that down to something manageable for the web, run:</p>
 <p>Gource conversion to a ppm with one year of data:</p>
-<div class="highlight"><pre><span></span><code><span class="err">./gource </span>
-<span class="err">~/wasatch/Software/Dash3 </span>
-<span class="err">--title &quot;Dash Development&quot;</span>
-<span class="err">--seconds-per-day 0.01 </span>
-<span class="err">--file-filter &quot;(famfam|png|jpg|bmp|xcf)&quot; </span>
-<span class="err">--hide dirnames,filenames,usernames </span>
-<span class="err">--file-extensions </span>
-<span class="err">--key </span>
-<span class="err">--start-date &#39;2015-01-01&#39;</span>
-<span class="err">--stop-date &#39;2016-01-01&#39;</span>
-<span class="err">-o dash_withkey_gource_2015.ppm</span>
+<div class="highlight"><pre><span></span><code>./gource 
+~/wasatch/Software/Dash3 
+--title &quot;Dash Development&quot;
+--seconds-per-day 0.01 
+--file-filter &quot;(famfam|png|jpg|bmp|xcf)&quot; 
+--hide dirnames,filenames,usernames 
+--file-extensions 
+--key 
+--start-date &#39;2015-01-01&#39;
+--stop-date &#39;2016-01-01&#39;
+-o dash_withkey_gource_2015.ppm
 </code></pre></div>
-
 
 <p>Conversion to an mp4:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i</span>
-<span class="err">dash_withkey_gource_2015.ppm -vcodec libx264 -preset ultrafast -pix_fmt</span>
-<span class="err">yuv420p -crf 1 -threads 0 -bf 0 dash_withkey_gource_2015.mp4</span>
+<div class="highlight"><pre><span></span><code>ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i
+dash_withkey_gource_2015.ppm -vcodec libx264 -preset ultrafast -pix_fmt
+yuv420p -crf 1 -threads 0 -bf 0 dash_withkey_gource_2015.mp4
 </code></pre></div>
-
 
 <p>Extract each frame into a jpg:</p>
-<div class="highlight"><pre><span></span><code><span class="err">mkdir frames</span>
-<span class="err">ffmpeg -i ../dash_withkey_gource_2015.mp4 -r 5 &#39;frames/frame-%03d.jpg&#39;</span>
+<div class="highlight"><pre><span></span><code>mkdir frames
+ffmpeg -i ../dash_withkey_gource_2015.mp4 -r 5 &#39;frames/frame-%03d.jpg&#39;
 </code></pre></div>
 
-
 <p>Shrink and combine into an animated gif:</p>
-<div class="highlight"><pre><span></span><code><span class="err">cd frames</span>
-<span class="err">convert -resize 25% -delay 10 -loop 0 *.jpg dash_gource.gif</span>
+<div class="highlight"><pre><span></span><code><span class="nv">cd</span><span class="w"> </span><span class="nv">frames</span>
+<span class="nv">convert</span><span class="w"> </span><span class="o">-</span><span class="nv">resize</span><span class="w"> </span><span class="mi">25</span><span class="o">%</span><span class="w"> </span><span class="o">-</span><span class="nv">delay</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="k">loop</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">*</span>.<span class="nv">jpg</span><span class="w"> </span><span class="nv">dash_gource</span>.<span class="nv">gif</span>
 </code></pre></div>
                 <div class="panel">
                     <div class="panel-body">
@@ -247,7 +241,7 @@ approximately 10GB.  </p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

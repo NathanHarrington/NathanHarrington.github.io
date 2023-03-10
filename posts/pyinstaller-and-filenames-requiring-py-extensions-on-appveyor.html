@@ -115,59 +115,55 @@ Don't display categories on menu
 system, and on appveyor. For example:</p>
 <p><a href="https://github.com/WasatchPhotonics/Dash/tree/75dd8525541cc5f55a73bce91884628324e2776b">Dash 75dd852554</a></p>
 <p>Run a pyinstaller script like:</p>
-<div class="highlight"><pre><span></span><code><span class="err">pyinstaller </span>
-<span class="err">    --distpath=scripts/built-dist </span>
-<span class="err">    --workpath=scripts/work-path </span>
-<span class="err">    --noconfirm </span>
-<span class="err">    --clean </span>
-<span class="err">    --icon dash/assets/uic_qrc/images/DashIcon.ico </span>
-<span class="err">    --specpath scripts </span>
-<span class="err">    scripts/Dash.py</span>
+<div class="highlight"><pre><span></span><code>pyinstaller 
+    --distpath=scripts/built-dist 
+    --workpath=scripts/work-path 
+    --noconfirm 
+    --clean 
+    --icon dash/assets/uic_qrc/images/DashIcon.ico 
+    --specpath scripts 
+    scripts/Dash.py
 </code></pre></div>
-
 
 <p>On Windows 10 Home and premium, you will see a succesful build.  On
 appveyor, you will see lines like:</p>
-<div class="highlight"><pre><span></span><code><span class="err">...</span>
-<span class="err">493882 INFO: Building PKG (CArchive) out00-PKG.pkg</span>
-<span class="err">494023 INFO: Bootloader c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\bootloader\Windows-32bit\run.exe</span>
-<span class="err">494023 INFO: checking EXE</span>
-<span class="err">494023 INFO: Building EXE because out00-EXE.toc is non existent</span>
-<span class="err">494023 INFO: Building EXE from out00-EXE.toc</span>
-<span class="err">...</span>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="mi">493882</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">Building</span><span class="w"> </span><span class="n">PKG</span><span class="w"> </span><span class="p">(</span><span class="n">CArchive</span><span class="p">)</span><span class="w"> </span><span class="n">out00</span><span class="o">-</span><span class="n">PKG</span><span class="o">.</span><span class="n">pkg</span>
+<span class="mi">494023</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">Bootloader</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">miniconda</span>\<span class="n">envs</span>\<span class="n">conda_dash</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">PyInstaller</span>\<span class="n">bootloader</span>\<span class="n">Windows</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span>\<span class="n">run</span><span class="o">.</span><span class="n">exe</span>
+<span class="mi">494023</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">EXE</span>
+<span class="mi">494023</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">Building</span><span class="w"> </span><span class="n">EXE</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="n">out00</span><span class="o">-</span><span class="n">EXE</span><span class="o">.</span><span class="n">toc</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">existent</span>
+<span class="mi">494023</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">Building</span><span class="w"> </span><span class="n">EXE</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">out00</span><span class="o">-</span><span class="n">EXE</span><span class="o">.</span><span class="n">toc</span>
+<span class="o">...</span>
 </code></pre></div>
-
 
 <p>Change the Dash.py filename to Dash, and rebuild with the command:</p>
-<div class="highlight"><pre><span></span><code><span class="err">pyinstaller </span>
-<span class="err">    --distpath=scripts/built-dist </span>
-<span class="err">    --workpath=scripts/work-path </span>
-<span class="err">    --noconfirm </span>
-<span class="err">    --clean </span>
-<span class="err">    --icon dash/assets/uic_qrc/images/DashIcon.ico </span>
-<span class="err">    --specpath scripts </span>
-<span class="err">    scripts/Dash</span>
+<div class="highlight"><pre><span></span><code>pyinstaller 
+    --distpath=scripts/built-dist 
+    --workpath=scripts/work-path 
+    --noconfirm 
+    --clean 
+    --icon dash/assets/uic_qrc/images/DashIcon.ico 
+    --specpath scripts 
+    scripts/Dash
 </code></pre></div>
-
 
 <p>Windows 10 Home will still build fine. The appveyor build will break
 however, with the message below:</p>
-<div class="highlight"><pre><span></span><code><span class="err">...</span>
-<span class="err">90423 INFO: Building PKG (CArchive) out00-PKG.pkg</span>
-<span class="err">Traceback (most recent call last):</span>
-<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 174, in _run_module_as_main</span>
-<span class="err">    &quot;__main__&quot;, fname, loader, pkg_name)</span>
-<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\runpy.py&quot;, line 72, in _run_code</span>
-<span class="err">    exec code in run_globals</span>
-<span class="err">...</span>
-<span class="err">    code = get_code_object(nm, pathnm)</span>
-<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 545, in get_code_object</span>
-<span class="err">    co = _load_code(modname, filename)</span>
-<span class="err">File &quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller\building\utils.py&quot;, line 521, in _load_code</span>
-<span class="err">    assert loader and hasattr(loader, &#39;get_code&#39;)</span>
-<span class="err">AssertionError</span>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="mi">90423</span><span class="w"> </span><span class="n">INFO</span><span class="p">:</span><span class="w"> </span><span class="n">Building</span><span class="w"> </span><span class="n">PKG</span><span class="w"> </span><span class="p">(</span><span class="n">CArchive</span><span class="p">)</span><span class="w"> </span><span class="n">out00</span><span class="o">-</span><span class="n">PKG</span><span class="o">.</span><span class="n">pkg</span>
+<span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p">):</span>
+<span class="n">File</span><span class="w"> </span><span class="s2">&quot;c:\miniconda\envs\conda_dash\lib</span><span class="se">\r</span><span class="s2">unpy.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">174</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_run_module_as_main</span>
+<span class="w">    </span><span class="s2">&quot;__main__&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">loader</span><span class="p">,</span><span class="w"> </span><span class="n">pkg_name</span><span class="p">)</span>
+<span class="n">File</span><span class="w"> </span><span class="s2">&quot;c:\miniconda\envs\conda_dash\lib</span><span class="se">\r</span><span class="s2">unpy.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_run_code</span>
+<span class="w">    </span><span class="n">exec</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">run_globals</span>
+<span class="o">...</span>
+<span class="w">    </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_code_object</span><span class="p">(</span><span class="n">nm</span><span class="p">,</span><span class="w"> </span><span class="n">pathnm</span><span class="p">)</span>
+<span class="n">File</span><span class="w"> </span><span class="s2">&quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller</span><span class="se">\b</span><span class="s2">uilding\utils.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">545</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_code_object</span>
+<span class="w">    </span><span class="n">co</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_load_code</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span>
+<span class="n">File</span><span class="w"> </span><span class="s2">&quot;c:\miniconda\envs\conda_dash\lib\site-packages\PyInstaller</span><span class="se">\b</span><span class="s2">uilding\utils.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">521</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_load_code</span>
+<span class="w">    </span><span class="nb">assert</span><span class="w"> </span><span class="n">loader</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="n">loader</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;get_code&#39;</span><span class="p">)</span>
+<span class="n">AssertionError</span>
 </code></pre></div>
-
 
 <p>This happens in a wide variety of contexts, with various indicators
 pointing back to the lack of the .py extension being an issue:</p>
@@ -226,7 +222,7 @@ file extension changes.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

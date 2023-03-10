@@ -126,19 +126,17 @@ registry:</p>
 <span class="c1">; PySide/PyQt 4.x does not support HiDPI displays. This mitigation</span>
 <span class="c1">; approach turns on system-wide preference for external manifest, then</span>
 <span class="c1">; installs a custom manifest file</span>
-<span class="na">Root: HKLM64; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: IsWin64;</span>
-<span class="na">Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: &quot;not IsWin64&quot;;</span>
+<span class="na">Root</span><span class="o">:</span><span class="w"> </span><span class="s">HKLM64</span><span class="c1">; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: IsWin64;</span>
+<span class="na">Root</span><span class="o">:</span><span class="w"> </span><span class="s">HKLM</span><span class="c1">; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide&quot;; ValueType: dword; ValueName: &quot;PreferExternalManifest&quot;; ValueData: &quot;1&quot;; check: &quot;not IsWin64&quot;;</span>
 </code></pre></div>
-
 
 <p>Then copy the manifest file:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Files]</span>
 <span class="na">...</span>
 <span class="c1">; Manifest file for HiDPI mitigation - see above</span>
-<span class="na">Source: &quot;support_files\Enlighten.exe.manifest&quot;; DestDir: &quot;{app}\Enlighten\&quot;; Flags: recursesubdirs ignoreversion</span>
+<span class="na">Source</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;support_files\Enlighten.exe.manifest&quot;</span><span class="c1">; DestDir: &quot;{app}\Enlighten\&quot;; Flags: recursesubdirs ignoreversion</span>
 <span class="na">...</span>
 </code></pre></div>
-
 
 <p>All is well, except when running the application post install in
 InnoSetup. </p>
@@ -200,7 +198,7 @@ demonstration application.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

@@ -126,17 +126,16 @@ files:</p>
 amount of pyinstaller machinations, includes, or path updates seem to
 make this possible. You must overwrite the pyinstaller included file at
 the location:</p>
-<div class="highlight"><pre><span></span><code><span class="err">&lt;program files&gt;\&lt;application name&gt;\qt4_plugins\imageformats\</span>
+<div class="highlight"><pre><span></span><code>&lt;program files&gt;\&lt;application name&gt;\qt4_plugins\imageformats\
 </code></pre></div>
-
 
 <p>With the qsvg4.dll file that is 22,016KB in size. In
 <a href="http://github.com/WasatchPhotonics/Dash">Dash</a>, this is done by a
 directive in the InnoSetup installation file, after the application has
 been installed. When using appveyor, make sure the environment names
 match precisely, as you are hard-coding file locations such as:</p>
-<div class="highlight"><pre><span></span><code><span class="c">Source: &quot;C:\Miniconda\envs\conda_dash\Library\plugins\imageformats\qsvg4.dll&quot;; \</span>
-<span class="c">DestDir: &quot;{app}\dash\qt4_plugins\imageformats&quot;; Flags: recursesubdirs ignoreversion</span>
+<div class="highlight"><pre><span></span><code><span class="nt">Source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;C:\Miniconda\envs\conda_dash\Library\plugins\imageformats\qsvg4.dll&quot;</span><span class="o">;</span><span class="w"> </span><span class="err">\</span>
+<span class="nt">DestDir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{app}\dash\qt4_plugins\imageformats&quot;</span><span class="o">;</span><span class="w"> </span><span class="nt">Flags</span><span class="o">:</span><span class="w"> </span><span class="nt">recursesubdirs</span><span class="w"> </span><span class="nt">ignoreversion</span>
 </code></pre></div>
                 <div class="panel">
                     <div class="panel-body">
@@ -188,7 +187,7 @@ match precisely, as you are hard-coding file locations such as:</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2021 Nathan Harrington
+         <div class="col-xs-10">&copy; 2023 Nathan Harrington
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
