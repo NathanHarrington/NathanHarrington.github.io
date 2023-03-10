@@ -3,6 +3,14 @@ Date:  2023-03-10
 Category: articles
 Tags: productivity
 
+Outsource your technical cofounder
+-----------------------------------------------------
+
+Here's how to amplify your skills and create a psuedo
+co-founder using offshore talent.  Maintain control of your software and
+free yourself from managing software dev teams. Use this approach to
+find talent with integrity and ability. Extend your runway or rapidly
+develop more features to enhance your customer discovery capabilities. 
 
 Feature development through social marketing material
 -----------------------------------------------------
